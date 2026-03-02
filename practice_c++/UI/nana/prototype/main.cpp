@@ -7,6 +7,7 @@
 #include <nana/gui/msgbox.hpp>
 #include <nana/gui/widgets/textbox.hpp>
 #include <nana/paint/detail/ptdefs.hpp>
+#include <wx/wx.h>
 
 #define WIDTH 500
 #define HEIGHT 350
