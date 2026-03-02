@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/fen/office/Work/practice_c++/imgui/nana",
-      "program": "/home/fen/office/Work/practice_c++/imgui/nana/build/Debug/outDebug",
+      "cwd": "/home/stefen/office/QUICKCON-PROJECTS/practice_c++/UI/nana/prototype",
+      "program": "/home/stefen/office/QUICKCON-PROJECTS/practice_c++/UI/nana/prototype/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
