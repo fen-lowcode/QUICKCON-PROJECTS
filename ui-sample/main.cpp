@@ -1,4 +1,4 @@
-#include <wx/wx.h>
+#include <wx-3.2/wx/wx.h>
 
 class LoginFrame : public wxFrame
 {
@@ -24,6 +24,7 @@ public:
     }
 
 private:
+
     wxTextCtrl* firstnameCtrl;
     wxTextCtrl* lastnameCtrl;
     wxTextCtrl* passwordCtrl;
