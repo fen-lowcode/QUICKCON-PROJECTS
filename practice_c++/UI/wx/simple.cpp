@@ -1,36 +1,42 @@
-#include "wx/chartype.h"
-#include "wx/event.h"
-#include "wx/generic/statusbr.h"
-#include "wx/version.h"
 #include <wx/wx.h>
-#include <iostream>
+#include <wx/version.h>
 
 class MyFrame : public wxFrame {
-    public:
-        MyFrame(std::string title);
+public:
+    MyFrame(const std::string& title);
 
-        void onAbout(wxCommandEvent& event) {
-            wxString msg;
-            msg.Printf(wxT("Hello and welcome to %s"), wxVERSION_STRING);
-        }
-
-        void onQuit(wxCommandEvent& event) {
-            Close();
-        }
-
-    private:
-        DECLARE_EVENT_TABLE();
+private:
+    
 };
 
-BEGIN_EVENT_TABLE(MyFrame, wxFrame);
-EVT_MENU(wxID_ABOUT, MyFrame::OnAbout);
-EVT_MENU(wxID_EXIT, MyFrame::OnQuit);
-END_EVENT_TABLE();
+MyFrame::MyFrame(const std::string& title)
+    : wxFrame(nullptr, wxID_ANY, title)
+{
+     // Panel (always use a panel for controls)
+    wxPanel* panel = new wxPanel(this);
+
+    // Text box
+    wxTextCtrl* firstname = new wxTextCtrl(panel, wxID_ANY, "",
+                                           wxPoint(20, 20), wxSize(200, 30));
+
+    // Button
+    wxButton* button = new wxButton(panel, wxID_ANY, "Click Me",
+                                     wxPoint(20, 70), wxSize(100, 30));
+
+    // Bind button click event (modern way)
+    button->Bind(wxEVT_BUTTON, [](wxCommandEvent&) {
+        wxMessageBox("Button Clicked!", "Info");
+    });
+}
 
 
 class MyApp : public wxApp {
-
 public:
-    virtual bool onInit(
-    );
+    virtual bool OnInit() override {
+        MyFrame *frame = new MyFrame("My wxWidgets App");
+        frame->Show(true);
+        return true;
+    }
 };
+
+wxIMPLEMENT_APP(MyApp);
