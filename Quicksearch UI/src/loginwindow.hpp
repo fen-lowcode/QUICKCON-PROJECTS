@@ -1,6 +1,8 @@
 #pragma once
 #include "includes.hpp"
 
+#define LOGO "./assets/quick_search_logo.png"
+
 class LoginWindow : public wxFrame {
 public:
     LoginWindow(const std::string& title);
@@ -32,8 +34,9 @@ LoginWindow::LoginWindow(const std::string& title)
     this->Center();
 
       // everything widget goes here
+
     wxPanel* panel = new wxPanel(this);
-    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(200, 1));
+    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(300, 1));
 
     line->SetBackgroundColour(wxColour(200,200,200));  // light gray line
 
@@ -43,7 +46,7 @@ LoginWindow::LoginWindow(const std::string& title)
 
     // --- Logo image ---
     wxImage::AddHandler(new wxPNGHandler());        // to handle png file
-    wxImage img("assets/quick_search_logo.png", wxBITMAP_TYPE_PNG);    // load png image
+    wxImage img(LOGO, wxBITMAP_TYPE_PNG);    // load png image
     wxStaticBitmap* logo;
 
     if (img.IsOk()) {
@@ -58,7 +61,7 @@ LoginWindow::LoginWindow(const std::string& title)
     // Place holder logic for firstname and lastname box
     // --- Firstname text box ---
     firstnameBox = new wxTextCtrl(
-            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, wxSize(200,20)
+            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
     );
     
     firstnameBox->SetForegroundColour(*wxLIGHT_GREY);
@@ -79,7 +82,7 @@ LoginWindow::LoginWindow(const std::string& title)
 
     // // --- Lastname text box ---
     lastnameBox = new wxTextCtrl(
-        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, wxSize(200,20)
+        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
     );
 
     lastnameBox->SetForegroundColour(*wxLIGHT_GREY);
@@ -110,7 +113,7 @@ LoginWindow::LoginWindow(const std::string& title)
 
     mainSizer->Add(line, 0, wxALIGN_CENTER | wxBOTTOM, 50);
     mainSizer->Add(firstnameBox, 0, wxALIGN_CENTER | wxBOTTOM );
-    mainSizer -> AddSpacer(2);
+    mainSizer -> AddSpacer(5);
     mainSizer->Add(lastnameBox, 0, wxALIGN_CENTER | wxBOTTOM);
     mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
     mainSizer->Add(btnEnter, 0, wxALIGN_CENTER | wxALL, 10);
