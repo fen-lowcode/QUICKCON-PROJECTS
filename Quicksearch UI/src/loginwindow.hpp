@@ -15,8 +15,32 @@ private:
     wxString lastnameBoxPlaceHol {"                    Lastname"};
     bool isClosing {false};
 
+    void setTextBoxPlacehol(wxTextCtrl* textbox,const wxString placeHolder, const bool isClosing);
     void CheckUsername(wxCommandEvent& event);
 };
+
+void LoginWindow::setTextBoxPlacehol(
+    wxTextCtrl* textbox, 
+    const wxString placeHolder,
+    const bool isClosing) {
+
+    textbox -> SetForegroundColour(*wxLIGHT_GREY);
+    textbox -> Bind(wxEVT_SET_FOCUS, [textbox, placeHolder](wxFocusEvent& event) {
+        if (textbox ->GetValue() == placeHolder) {
+            textbox->SetValue("");
+            textbox->SetForegroundColour(*wxBLACK);
+        }
+        event.Skip();
+    });
+    textbox -> Bind(wxEVT_KILL_FOCUS, [textbox, placeHolder, isClosing](wxFocusEvent& event) {
+        if (!isClosing && textbox -> GetValue().IsEmpty()) {
+            textbox->SetValue(placeHolder);
+            textbox->SetForegroundColour(*wxLIGHT_GREY);
+        }
+        event.Skip();
+    });
+
+}
 
 void LoginWindow::CheckUsername(wxCommandEvent& event) {
     std::string firstname = firstnameBox->GetValue().ToStdString();
@@ -38,9 +62,13 @@ LoginWindow::LoginWindow(const std::string& title)
     wxPanel* panel = new wxPanel(this);
     wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(300, 1));
 
+    wxSize panelFizedSize {300, 400};
+    panel -> SetMinSize(panelFizedSize);
+    panel -> SetMaxSize(panelFizedSize);
+
     line->SetBackgroundColour(wxColour(200,200,200));  // light gray line
 
-    panel->SetBackgroundColour(*wxWHITE);
+    panel->SetBackgroundColour( wxColour(*wxWHITE));
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
 
@@ -62,46 +90,13 @@ LoginWindow::LoginWindow(const std::string& title)
     // --- Firstname text box ---
     firstnameBox = new wxTextCtrl(
             panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
-    );
-    
-    firstnameBox->SetForegroundColour(*wxLIGHT_GREY);
-    firstnameBox->Bind(wxEVT_SET_FOCUS, [this](wxFocusEvent& event) {
-        if (firstnameBox->GetValue() == firstnameBoxPlaceHol) {
-            firstnameBox->SetValue("");
-            firstnameBox->SetForegroundColour(*wxBLACK);
-        }
-        event.Skip();
-    });
-    firstnameBox->Bind(wxEVT_KILL_FOCUS, [this](wxFocusEvent& event) {
-        if (!isClosing && firstnameBox->GetValue().IsEmpty()) {
-            firstnameBox->SetValue(firstnameBoxPlaceHol);
-            firstnameBox->SetForegroundColour(*wxLIGHT_GREY);
-        }
-        event.Skip();
-    });
-
+    ); setTextBoxPlacehol(firstnameBox, firstnameBoxPlaceHol, isClosing);
     // // --- Lastname text box ---
     lastnameBox = new wxTextCtrl(
         panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
-    );
-
-    lastnameBox->SetForegroundColour(*wxLIGHT_GREY);
-    lastnameBox->Bind(wxEVT_SET_FOCUS, [this](wxFocusEvent& event) {
-        if (lastnameBox->GetValue() == lastnameBoxPlaceHol) {
-            lastnameBox->SetValue("");
-            lastnameBox->SetForegroundColour(*wxBLACK);
-        }
-        event.Skip();
-    });
-
-    lastnameBox->Bind(wxEVT_KILL_FOCUS, [this](wxFocusEvent& event) {
-        if (!isClosing && lastnameBox->GetValue().IsEmpty()) {
-            lastnameBox->SetValue(lastnameBoxPlaceHol);
-            lastnameBox->SetForegroundColour(*wxLIGHT_GREY);
-        }
-        event.Skip();
-    });
-
+    ); setTextBoxPlacehol(lastnameBox, lastnameBoxPlaceHol, isClosing);
+    
+    
     wxButton*  btnEnter = new wxButton(panel, wxID_ANY, "Log in", wxDefaultPosition, wxDefaultSize,  wxBORDER_NONE);
 
 
