@@ -85,6 +85,7 @@ LoginWindow::LoginWindow(const std::string& title)
         logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
     }
 
+    
 
     // Place holder logic for firstname and lastname box
     // --- Firstname text box ---
