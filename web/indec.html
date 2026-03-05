@@ -1,0 +1,109 @@
+<html>
+<head> 
+    <title> QuickCon </title>
+</head>
+<body>
+    <div class = "bg"></div>
+    <div class = "webRibbon">
+        <img id = "QCLogo" src = "QuickCon Logo.png">
+        <div id = "BLogin"> Login </div>
+        <div id = "BLogout"> Logout </div>
+        <div id = "BHome"> Home </div>
+    </div>
+    <div class = "priceSelection">
+        <div id = "B65mbps">
+            <div id = "base"> Apply Now </div>
+            <div id = "face">
+                <div id = "mbps"> 65Mbps </div>
+                <div id = "price"> ₱ 1000.00 </div>
+                <div id = "monthly"> MONTHLY </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<style>
+    html {
+        font-family: "custom";
+        font-weight: light;
+    }
+    body{
+        background: linear-gradient(to bottom,#9FD2FF, #f5e893 90%);
+    }
+    .bg {     
+        height: 100%;
+    }
+    .webRibbon { /* RIBBON _______________________________________________ */
+        position: fixed; top:0; left: 0;
+        width: 100%; height: 60px;
+        background-color: #cee7ff;
+    }
+    .webRibbon #QCLogo{
+        visibility: visible;
+
+        position: absolute; top: 10px; left: 30px;
+        height: 40px;
+        border-right: 2px solid #95A9BA; padding-right: 15px;
+    }
+    .webRibbon #BLogin{
+        position: absolute; top: 10; right: 30;
+        height: 40; width: 80; font-size: 18px;
+        text-align: center; line-height: 37px;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1; cursor: pointer;
+    }
+    .webRibbon #BLogout{
+        visibility: hidden;
+
+        position: absolute; top: 10; right: 30;
+        height: 40; width: 80; font-size: 18px;
+        text-align: center; line-height: 37px;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1;
+    }
+    .webRibbon #BHome{
+        position: absolute; top: 10; right: 112;
+        height: 40; width: 80; font-size: 18px;
+        text-align: center; line-height: 37px;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1;
+    }
+    
+    .priceSelection{
+        position: fixed; top: 100; left: 50%; transform: translateX(-50%);
+        background-color: #fc6cff; opacity: 70%;
+        height: 300; width: 450;
+
+        display: flex;
+    }
+    .priceSelection #B65mbps #base{
+        position: absolute; bottom: 0;
+        background-color: #353a4d;
+        border-radius: 15px;
+        height: 220; width: 170;
+
+        color: white; text-align: center; 
+        font-weight: bold; font-size: calc(0.9 * 100%);
+        line-height: 25px; 
+        border: 4px solid;
+    }
+    .priceSelection #B65mbps #face{
+        position: absolute; bottom: 0;
+        background: linear-gradient(to bottom,#74bdfd, #ffed7e 90%);
+        border-radius: 10px;
+        height: 195; width: 170;
+        margin: 4px;
+    }
+
+    @font-face {
+        font-family: "custom";
+        src: url('Quicksand/Quicksand-VariableFont_wght.ttf') format("truetype");
+    }
+
+    /* EVENTSs _______________________________________________ */
+    .webRibbon #BLogin:hover, #BLogout:hover, #BHome:hover{
+        background-color: #9FD2FF;
+        transition: background-color 0.2s;
+    }
+        
+</style>
