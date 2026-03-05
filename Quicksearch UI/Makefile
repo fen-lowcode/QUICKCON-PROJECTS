@@ -1,2 +1,2 @@
 make:
-	 g++ src/login.cpp -o app `wx-config --cxxflags --libs`
+	 g++ src/main.cpp -o app `wx-config --cxxflags --libs` -lsodium

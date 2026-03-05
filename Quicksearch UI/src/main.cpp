@@ -1,5 +1,6 @@
-// #include "wx/gtk/textctrl.h"
-#include "includes.hpp"
+
+#include <wx/wx.h>
+#include "loginwindow.hpp"
 
 
 class MyApp : public wxApp {

@@ -1,30 +1,40 @@
 #pragma once
-#include "includes.hpp"
+
+#include <wx/wx.h>
+#include <wx/image.h>
+#include "accountuser.hpp"
+#include <sodium.h>
 
 #define LOGO "./assets/quick_search_logo.png"
 
-class LoginWindow : public wxFrame {
+class LoginWindow : public wxFrame, public User {
 public:
     LoginWindow(const std::string& title);
 
 private:
     wxTextCtrl* firstnameBox;
     wxTextCtrl* lastnameBox;
+    wxTextCtrl* passwordBox;
 
-    wxString firstnameBoxPlaceHol {"                    Firstname"};
-    wxString lastnameBoxPlaceHol {"                    Lastname"};
+    wxString firstnameBoxPlaceHol {"Firstname"};
+    wxString lastnameBoxPlaceHol {"Lastname"};
+    wxString passwordBoxPlaceHol {"Password"};
     bool isClosing {false};
 
     void setTextBoxPlacehol(wxTextCtrl* textbox,const wxString placeHolder, const bool isClosing);
-    void CheckUsername(wxCommandEvent& event);
+    void setPasswordPlacehol(wxTextCtrl* textbox, const wxString& placeHolderconst, const bool isClosing);
+    void sendInput(wxCommandEvent& event);
+
+    void hashPassword(std::string passBuffer);
 };
 
+
 void LoginWindow::setTextBoxPlacehol(
-    wxTextCtrl* textbox, 
+    wxTextCtrl* textbox,
     const wxString placeHolder,
     const bool isClosing) {
 
-    textbox -> SetForegroundColour(*wxLIGHT_GREY);
+    textbox -> SetForegroundColour(*wxColour(128, 128, 128));
     textbox -> Bind(wxEVT_SET_FOCUS, [textbox, placeHolder](wxFocusEvent& event) {
         if (textbox ->GetValue() == placeHolder) {
             textbox->SetValue("");
@@ -35,18 +45,56 @@ void LoginWindow::setTextBoxPlacehol(
     textbox -> Bind(wxEVT_KILL_FOCUS, [textbox, placeHolder, isClosing](wxFocusEvent& event) {
         if (!isClosing && textbox -> GetValue().IsEmpty()) {
             textbox->SetValue(placeHolder);
-            textbox->SetForegroundColour(*wxLIGHT_GREY);
+            textbox->SetForegroundColour(*wxColour(128, 128, 128));
+        }
+        event.Skip();
+    });
+}
+
+void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& placeHolder, const bool isClosing) {
+
+    // 1. Initial State: No password masking, grey text
+    textbox->SetWindowStyleFlag( wxTE_CENTER); //center text
+    textbox->SetForegroundColour(wxColour(128, 128, 128));
+    textbox->SetValue(placeHolder);
+
+    // 2. Handle Gaining Focus
+    textbox->Bind(wxEVT_SET_FOCUS, [textbox, placeHolder](wxFocusEvent& event) {
+        if (textbox->GetValue() == placeHolder) {
+            textbox->SetValue("");
+            textbox->SetWindowStyleFlag(wxTE_CENTER | wxTE_PASSWORD); 
+            textbox->SetForegroundColour(*wxBLACK);
+            
+            // Refresh the control to apply the style change visually
+            textbox->Refresh(); 
         }
         event.Skip();
     });
 
+    // 3. Handle Losing Focus
+    textbox->Bind(wxEVT_KILL_FOCUS, [isClosing, textbox, placeHolder](wxFocusEvent& event) {
+        if (!isClosing && textbox->GetValue().IsEmpty()) {
+            // Disable password masking to show the hint text
+            textbox->SetWindowStyleFlag( wxTE_CENTER);
+            textbox->SetForegroundColour(wxColour(128, 128, 128));
+            textbox->SetValue(placeHolder);
+
+            textbox->Refresh();
+        }
+        event.Skip();
+    });
 }
 
-void LoginWindow::CheckUsername(wxCommandEvent& event) {
-    std::string firstname = firstnameBox->GetValue().ToStdString();
-    std::string lastname = lastnameBox->GetValue().ToStdString();
+void LoginWindow::hashPassword(std::string passBuffer) {
+    crypto_hash_sha256(password,(unsigned const char*) passBuffer.c_str(), passBuffer.size());
+};
 
-    std::cout << firstname << " " << lastname << "\n";
+void LoginWindow::sendInput(wxCommandEvent& event) {
+    firstname = firstnameBox->GetValue().ToStdString();
+    lastname = lastnameBox->GetValue().ToStdString();
+    hashPassword(passwordBox->GetValue().ToStdString());
+
+    login(firstname, lastname, password);
 }
 
 
@@ -78,51 +126,73 @@ LoginWindow::LoginWindow(const std::string& title)
     wxStaticBitmap* logo;
 
     if (img.IsOk()) {
-        img = img.Scale(300, 100, wxIMAGE_QUALITY_HIGH);
+        img = img.Scale(250, 100, wxIMAGE_QUALITY_HIGH);
         wxBitmap bitmap(img);
         mainSizer->AddStretchSpacer(2);
         // show image
         logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
     }
 
-    
+
 
     // Place holder logic for firstname and lastname box
     // --- Firstname text box ---
     firstnameBox = new wxTextCtrl(
-            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
+            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, 
+            wxSize(200,30),  wxTE_CENTER | wxBORDER_NONE
     ); setTextBoxPlacehol(firstnameBox, firstnameBoxPlaceHol, isClosing);
-    // // --- Lastname text box ---
-    lastnameBox = new wxTextCtrl(
-        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, wxSize(200,30)
-    ); setTextBoxPlacehol(lastnameBox, lastnameBoxPlaceHol, isClosing);
-    
-    
-    wxButton*  btnEnter = new wxButton(panel, wxID_ANY, "Log in", wxDefaultPosition, wxDefaultSize,  wxBORDER_NONE);
 
+    // --- Lastname text box ---
+    lastnameBox = new wxTextCtrl(
+        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, 
+        wxSize(200,30),  wxTE_CENTER |  wxBORDER_NONE
+    ); setTextBoxPlacehol(lastnameBox, lastnameBoxPlaceHol, isClosing);
+
+    // -- Password text box
+    passwordBox = new wxTextCtrl(
+        panel, wxID_ANY, passwordBoxPlaceHol, wxDefaultPosition, 
+        wxSize(200,30),  wxTE_CENTER | wxBORDER_NONE
+    ); setPasswordPlacehol(passwordBox, passwordBoxPlaceHol, isClosing);
+    
+    
+    wxButton*  btnEnter = new wxButton(
+    panel, wxID_ANY, "Login  ", wxDefaultPosition,
+            wxSize(200,30), wxBORDER_NONE);
+    btnEnter->SetBackgroundColour(* wxColour(168, 212, 255));
 
     // ---- set all widgets into their proper position
 
     mainSizer-> AddStretchSpacer(5);  // push everything to vertical center
     mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
-    mainSizer-> AddStretchSpacer(5);  // push everything to vertical center
-
     mainSizer->Add(line, 0, wxALIGN_CENTER | wxBOTTOM, 50);
     mainSizer->Add(firstnameBox, 0, wxALIGN_CENTER | wxBOTTOM );
-    mainSizer -> AddSpacer(5);
     mainSizer->Add(lastnameBox, 0, wxALIGN_CENTER | wxBOTTOM);
-    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
-    mainSizer->Add(btnEnter, 0, wxALIGN_CENTER | wxALL, 10);
-    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
+    mainSizer->Add(passwordBox, 0, wxALIGN_CENTER | wxBOTTOM);
+    mainSizer-> AddSpacer(30);  // push everything to vertical center
+    mainSizer->Add(btnEnter, 0, wxALIGN_RIGHT | wxRIGHT, 100);
+    mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
     panel->SetSizer(mainSizer);
 
 
-    btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::CheckUsername, this);
-
+    btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::sendInput, this);
     // “Only run placeholder logic if we are NOT closing.”
     this->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event)
     {
         isClosing = true;
         event.Skip();
     });    
+
+    // 2. Handle Mouse Hover (Enter)
+    btnEnter->Bind(wxEVT_ENTER_WINDOW, [btnEnter](wxMouseEvent& event) {
+        btnEnter->SetBackgroundColour(wxColour(0, 105, 217)); // Darker Blue
+        btnEnter->Refresh(); // Ensure the OS redraws the button
+    event.Skip();
+    });
+
+        // 3. Handle Mouse Leave (Exit)
+    btnEnter->Bind(wxEVT_LEAVE_WINDOW, [btnEnter](wxMouseEvent& event) {
+        btnEnter->SetBackgroundColour(wxColour(168, 212, 255)); // Back to Original
+        btnEnter->Refresh();
+        event.Skip();
+    });
 }
