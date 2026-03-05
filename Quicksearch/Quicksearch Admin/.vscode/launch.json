@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/fen/office/Work/quickcon-database-interface-software",
-      "program": "/home/fen/office/Work/quickcon-database-interface-software/build/Debug/outDebug",
+      "cwd": "/home/stefen/office/QUICKCON-PROJECTS/Quicksearch/Quicksearch Admin",
+      "program": "/home/stefen/office/QUICKCON-PROJECTS/Quicksearch/Quicksearch Admin/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

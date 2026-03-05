@@ -1,0 +1,111 @@
+
+
+
+void Adduser::hashPassword(const std::string& passBuf) {
+
+    unsigned char hash[crypto_hash_sha256_BYTES];
+
+    crypto_hash_sha256(hash, (const unsigned char*) (passBuf.c_str(), passBuf.size());
+
+    std::stringstream ss;
+
+    for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
+        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+    }
+
+
+    password = ss.str();
+}
+
+Absolutely — let’s go **byte by byte** on this line so it’s crystal clear. 😄
+
+```cpp
+ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+```
+
+Here’s what each part does:
+
+---
+
+### 1️⃣ `hash[i]`
+
+* `hash` is an array of bytes (e.g., `unsigned char hash[32]` for SHA256).
+* `hash[i]` is a single byte (0–255).
+* Example: `hash[i] = 15` (in decimal) → 0x0f in hex.
+
+---
+
+### 2️⃣ `(int)hash[i]`
+
+* Converts the `unsigned char` to an **integer**.
+* Important because `stringstream` treats `char` as a character by default.
+* Without `(int)`, `0x41` would print as `'A'` instead of `"41"`.
+
+---
+
+### 3️⃣ `std::hex`
+
+* Tells the stream to **print numbers in hexadecimal** instead of decimal.
+* Example: 15 → `"f"` instead of `"15"`.
+
+---
+
+### 4️⃣ `std::setw(2)`
+
+* Sets the **field width to 2 characters** for the next insertion.
+* Ensures every byte occupies **exactly 2 characters**.
+* Example: `0x0f` → `" f"` (without padding), `"0f"` (with padding).
+
+---
+
+### 5️⃣ `std::setfill('0')`
+
+* Fills empty space with `'0'`.
+* Used together with `setw(2)` to make `"0f"` instead of `" f"`.
+
+---
+
+### 6️⃣ `ss << …`
+
+* Appends the formatted byte into the `stringstream ss`.
+* After looping over all 32 bytes, `ss` will contain **64 hex characters**, representing the full SHA256 hash.
+
+---
+
+### Example
+
+```cpp
+unsigned char hash[4] = {0x0f, 0xa4, 0x00, 0xff};
+std::stringstream ss;
+for (int i = 0; i < 4; i++)
+    ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+
+std::cout << ss.str() << std::endl;
+```
+
+**Output:**
+
+```
+0fa400ff
+```
+
+✅ Each byte is represented as **two hex digits**, zero-padded if necessary.
+
+---
+
+**Summary:**
+
+This line converts **a single byte of binary data** into **two-character hexadecimal text**, suitable for storing as a string or displaying.
+
+* `(int)hash[i]` → make it a number
+* `std::hex` → print in hex
+* `setw(2)` → 2 characters wide
+* `setfill('0')` → pad with 0
+* `ss <<` → append to stringstream
+
+---
+
+If you want, I can make a **tiny diagram showing how 32 bytes of SHA256 become 64 hex characters** — visually makes it click immediately.
+
+Do you want me to do that?
+s
