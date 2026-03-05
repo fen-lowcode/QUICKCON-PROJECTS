@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/stefen/practice_lab",
-      "program": "/home/stefen/practice_lab/build/Debug/outDebug",
+      "cwd": "/home/stefen/office/QUICKCON-PROJECTS/practice_c++/qt",
+      "program": "/home/stefen/office/QUICKCON-PROJECTS/practice_c++/qt/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

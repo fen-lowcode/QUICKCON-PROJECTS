@@ -1,0 +1,33 @@
+[
+  {
+    "file": "login.cpp",
+    "arguments": [
+      "g++",
+      "-c",
+      "-pipe",
+      "-O2",
+      "-flto",
+      "-fno-fat-lto-objects",
+      "-Wall",
+      "-Wextra",
+      "-D_REENTRANT",
+      "-fPIC",
+      "-DQT_NO_DEBUG",
+      "-DQT_WIDGETS_LIB",
+      "-DQT_GUI_LIB",
+      "-DQT_CORE_LIB",
+      "-I.",
+      "-I/usr/include/qt",
+      "-I/usr/include/qt/QtWidgets",
+      "-I/usr/include/qt/QtGui",
+      "-I/usr/include/qt/QtCore",
+      "-I.",
+      "-I/usr/lib/qt/mkspecs/linux-g++",
+      "-o",
+      "login.o",
+      "login.cpp"
+    ],
+    "directory": "/home/stefen/office/QUICKCON-PROJECTS/practice_c++/qt",
+    "output": "login.o"
+  }
+]

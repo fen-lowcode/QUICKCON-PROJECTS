@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "linux-gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "compileCommands": "${workspaceFolder}/compile_commands.json",
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "linux-gcc-x64",
+      "includePath": [
+        "${workspaceFolder}/**"
+      ]
+    }
+  ],
+  "version": 4
+}
