@@ -6,8 +6,8 @@
 class MyApp : public wxApp {
 public:
     virtual bool OnInit() override {
-        LoginWindow* frame = new LoginWindow("Welcome to Quicksearch");
-        frame->Show();
+        LoginWindow* loginWindow = new LoginWindow("Welcome to Quicksearch");
+        loginWindow -> Show();
         return true;
     }
 };

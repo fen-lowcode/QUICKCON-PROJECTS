@@ -17,20 +17,13 @@ private:
     }; struct accountInfo accountinfo;
 
 public:
-
-    // verify user crendentials before loog in
-    bool autheticateLogin(std::string_view firstname, std::string_view lastname);
-
-    // this checks if the verified user is an admin
-    bool checkIsAdmin();
-
+    bool autheticateLogin();     // verify user crendentials before loog in
+    bool checkIsAdmin();        // this checks if the verified user is an admin
+    
     // this updates the account status to isActive = true in the database 
     // purpose: for preventing an account to have multiple sessions
     bool autheticateAccess();
 };
-
-
-
 
 class User : public Account{
 
@@ -42,9 +35,3 @@ protected:
 public:
     void login(std::string_view firstname, std::string_view lastname, unsigned char password[]);
 };
-
-void User::login(std::string_view firstname, std::string_view lastname, unsigned char password[]) {
-    std::cout << firstname << " " << lastname << std::endl;
-    std::cout << "Password is ";
-    std::cout << password << std::endl;
-}
