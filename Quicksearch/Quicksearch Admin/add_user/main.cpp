@@ -69,14 +69,17 @@ void Adduser::hashPassword(const std::string& passBuf) {
 
     unsigned char hash[crypto_hash_sha256_BYTES];
 
+    // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
     crypto_hash_sha256(hash, (const unsigned char *)passBuf.c_str(), passBuf.size());
 
     std::stringstream ss;
 
+    // Converts each bytes of the sha256 hash into an integer and then into it's hex character set to two bytes
     for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
         ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
     }
 
+    // after the loop converrsion above it then stores it as a string object
     password = ss.str();
 }
 
@@ -144,7 +147,6 @@ public:
             stmt -> setString(3, password);
             stmt -> setBoolean(4, isAdmin);
             stmt -> executeUpdate();
-
             std::cout << "Successfully added new account to database!\n";
         } catch (sql::SQLException& e) {
             std::cout << "SQL Error: " << e.what() << std::endl;

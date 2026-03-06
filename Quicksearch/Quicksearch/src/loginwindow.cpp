@@ -1,4 +1,5 @@
 #include "loginwindow.hpp"
+#include <iomanip>
 
 void LoginWindow::setTextBoxPlacehol(
     wxTextCtrl* textbox,
@@ -56,9 +57,24 @@ void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& place
     });
 }
 
+// hashes the password into sha256 and converts the hash into a 64 byte long string 
 void LoginWindow::hashPassword(std::string passBuffer) {
-    crypto_hash_sha256(password,(unsigned const char*) passBuffer.c_str(), passBuffer.size());
+     unsigned char hash[crypto_hash_sha256_BYTES];
+
+    // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
+    crypto_hash_sha256(hash, (const unsigned char *)passBuffer.c_str(), passBuffer.size());
+
+    std::stringstream ss;
+
+    // Converts each bytes of the sha256 hash into an integer and then into it's hex character set to two bytes
+    for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
+        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+    }
+
+    // after the loop converrsion above it then stores it as a string object
+    password = ss.str();
 };
+
 
 void LoginWindow::sendInput(wxCommandEvent& event) {
     firstname = firstnameBox->GetValue().ToStdString();
@@ -145,6 +161,7 @@ LoginWindow::LoginWindow(const std::string& title)
     panel->SetSizer(mainSizer);
 
 
+    // handle login button upon click
     btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::sendInput, this);
     // “Only run placeholder logic if we are NOT closing.”
     this->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event)
