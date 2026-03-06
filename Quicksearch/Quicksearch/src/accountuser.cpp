@@ -4,92 +4,93 @@
 #include <mariadb/conncpp/PreparedStatement.hpp>
 #include <mariadb/conncpp/ResultSet.hpp>
 #include <mariadb/conncpp/SQLString.hpp>
-
-#define HOST "127.0.0.1"
-#define USER "fen"
-#define UPASSWORD "1234"
-#define DATABASE "test"
-#define PORT 3306
-
-sql::Connection * Account::connToDB() {
-    
-    dbcredentials.host = HOST;
-    dbcredentials.user = USER;
-    dbcredentials.userpassword = UPASSWORD;
-    dbcredentials.database = DATABASE;
-    dbcredentials.port = PORT;
-
-    try {
-        // Instantiate Driver
-        sql::Driver* driver = sql::mariadb::get_driver_instance(); 
-
-        std::string url = 
-            "jdbc:mariadb://" + 
-            dbcredentials.host + 
-            ":" + 
-            std::to_string(dbcredentials.port) + 
-            "/" + 
-            dbcredentials.database;
-
-        sql::Connection * conn {driver->connect(url, dbcredentials.user, dbcredentials.userpassword)};
-        std::cout << "Connection Success!\n";
-        return conn;
-    }
-
-    catch(sql::SQLException& e) {
-        std::cout << "SQL Error: " << e.what() << std::endl;
-        exit(1);
-    };
-}
-
+#include <mariadb/conncpp/Statement.hpp>
+#include <memory>
+#include <string>
 
 // refactor this SHIT!!
-bool Account::autheticateLogin(const std::string& firstname,const std::string& lastname,const std::string& password) {
+bool Account::autheticateLogin(
+    std::shared_ptr<sql::Connection> conn, 
+    const std::string& firstname,
+    const std::string& lastname,
+    const std::string& password
+) {
 
-    // connect to db
-    sql::Connection* conn = connToDB();
-    
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(
+        conn->prepareStatement(
+            "SELECT USERID, PASSWORD FROM users WHERE FIRSTNAME = ? AND LASTNAME = ?"
+        )
+    );
+
+    stmt -> setString(1, firstname);
+    stmt -> setString(2, lastname);
+
+
     try{
-        sql::PreparedStatement * stmt  = conn -> 
-        prepareStatement("SELECT PASSWORD FROM users WHERE FIRSTNAME = ? AND LASTNAME = ?");
-        stmt -> setString(1, firstname);
-        stmt -> setString(2, lastname);
 
-        sql::ResultSet * res = stmt -> executeQuery();
-        if (res->next()) {  // move to first row
-            sql::SQLString passwordFromDB = res->getString("PASSWORD");
+        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
+        if (!res->next()) {  std::cout << "No result\n"; return false;} 
 
-            if(password == passwordFromDB) {
-                stmt = conn ->  prepareStatement("SELECT USERID FROM users WHERE FIRSTNAME = ? AND LASTNAME = ?");
-                stmt -> setString(1, firstname);
-                stmt -> setString(2, lastname);
-                sql::ResultSet * res2 = stmt -> executeQuery();
-                    if (res2->next()) {
-                        accountinfo.userID = res2->getInt("userID"); 
-                        std::cout << "Welcome! User " << accountinfo.userID << std::endl;
-                    }
+        // get's th password from the database
+        std::string passwordFromDB = std::string(res->getString("PASSWORD")); 
 
-                    return true;
+        // check if password don't matches from what is in the database
+        if( password != passwordFromDB) { std::cout << "Password dont match\n"; return false; }
+
+        accountinfo.userID = res->getInt("userID"); 
+        std::cout << "Welcome! User " << accountinfo.userID << std::endl;
+
+    } catch (sql::SQLException& e) {
+        std::cout << "SQL error: " << e.what() << std::endl; return false;
+    }
+    return true;
+}
+
+bool Account::checkIsAdmin(std::shared_ptr<sql::Connection> conn) {
+
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(
+            conn -> prepareStatement("select isAdmin from users where userid = ?")
+    ); stmt -> setInt(1, accountinfo.userID);
+
+    try {
+        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
+
+        if(res -> next()) {
+
+            // debug
+            bool result =  res -> getBoolean("isAdmin");
+
+            if (result == true) {
+                std::cout << "is account Admin: true\n";
+                return true;
             } else {
-                std::cout << "Password dont match\n";
+                std::cout << "is account Admin: false\n";
+
+                return false;
             }
         }
 
-
-    } catch (sql::SQLException& e) {
+        
+    } catch(sql::SQLException& e) {
         std::cout << "SQL error: " << e.what() << std::endl;
     }
 
-    delete conn;
     return false;
 }
 
 
-void User::login(std::string& firstname, std::string& lastname, std::string& password) {
 
-    std::cout << firstname << " " << lastname << std::endl;
-    std::cout << "Password is ";
-    std::cout << password << std::endl;
+void User::useProgram(std::string& firstname, std::string& lastname, std::string& password) {
 
-    autheticateLogin(firstname, lastname, password);
+    // Connect to database
+    std::shared_ptr<sql::Connection> conn = connToDB();
+
+    // initialize a log in
+    if (autheticateLogin( conn, firstname, lastname, password)) {
+        if (checkIsAdmin(conn)) {
+            accountinfo.isAdmin = true;
+        } else {
+            accountinfo.isAdmin = false;
+        }
+    }
 }

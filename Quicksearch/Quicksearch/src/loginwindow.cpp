@@ -59,7 +59,7 @@ void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& place
 
 // hashes the password into sha256 and converts the hash into a 64 byte long string 
 void LoginWindow::hashPassword(std::string passBuffer) {
-     unsigned char hash[crypto_hash_sha256_BYTES];
+    unsigned char hash[crypto_hash_sha256_BYTES];
 
     // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
     crypto_hash_sha256(hash, (const unsigned char *)passBuffer.c_str(), passBuffer.size());
@@ -75,20 +75,10 @@ void LoginWindow::hashPassword(std::string passBuffer) {
     password = ss.str();
 };
 
-
-void LoginWindow::sendInput(wxCommandEvent& event) {
-    firstname = firstnameBox->GetValue().ToStdString();
-    lastname = lastnameBox->GetValue().ToStdString();
-    hashPassword(passwordBox->GetValue().ToStdString());
-
-    login(firstname, lastname, password);
-}
-
-
 LoginWindow::LoginWindow(const std::string& title)
     : wxFrame(nullptr, wxID_ANY, title,
-              wxDefaultPosition, wxSize(400, 400),
-              wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
+            wxDefaultPosition, wxSize(400, 400),
+            wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
 {
     this->Center();
 
@@ -184,3 +174,15 @@ LoginWindow::LoginWindow(const std::string& title)
         event.Skip();
     });
 }
+
+
+void LoginWindow::sendInput(wxCommandEvent& event) {
+    firstname = firstnameBox->GetValue().ToStdString();
+    lastname = lastnameBox->GetValue().ToStdString();
+
+    std::cout << firstname << lastname;
+
+    hashPassword(passwordBox->GetValue().ToStdString());
+    useProgram(firstname, lastname, password);
+}
+
