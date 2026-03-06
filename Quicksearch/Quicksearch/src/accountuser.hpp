@@ -6,19 +6,12 @@
 #include <wx/wx.h>
 #include <sodium.h>
 #include <mariadb/conncpp.hpp>
+#include "databaseconnect.hpp"
 
-class Account {
+class Account : public DatabaseConnect{
 
-private:
+protected:
 
-    struct DBCredentials {
-        std::string host;
-        std::string user;
-        std::string userpassword;
-        std::string database;
-        unsigned int port;
-    }; struct DBCredentials dbcredentials;
-   
     struct accountInfo {
 
         int userID;
@@ -27,14 +20,11 @@ private:
     }; struct accountInfo accountinfo;
 
 public:
-
-    // conncting to Database
-
-    sql::Connection * connToDB();
     // verify user crendentials
-    bool autheticateLogin(const std::string& firstname,const std::string& lastname,const std::string& password);    
-    bool checkIsAdmin();        // this checks if the verified user is an admin
+    bool autheticateLogin(std::shared_ptr<sql::Connection> conn, const std::string& firstname,const std::string& lastname,const std::string& password);    
     
+    
+    bool checkIsAdmin(std::shared_ptr<sql::Connection> conn);        // this checks if the verified user is an admin 
     // this updates the account status to isActive = true in the database 
     // purpose: for preventing an account to have multiple sessions
     bool updateAccessState();
@@ -48,5 +38,5 @@ protected:
     std::string password;
 
 public:
-    void login(std::string& firstname, std::string& lastname, std::string& password);
+    void useProgram(std::string& firstname, std::string& lastname, std::string& password);
 };
