@@ -1,5 +1,6 @@
 #include "loginwindow.hpp"
 #include "accountuser.hpp"
+#include "wx/gdicmn.h"
 #include <iomanip>
 #include <memory>
 
@@ -120,26 +121,26 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     // --- Firstname text box ---
     firstnameBox = new wxTextCtrl(
             panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, 
-            wxSize(200,30),  wxTE_CENTER | wxBORDER_NONE
+            wxSize(200,30),  wxTE_CENTER 
     ); setTextBoxPlacehol(firstnameBox, firstnameBoxPlaceHol, isClosing);
 
     // --- Lastname text box ---
     lastnameBox = new wxTextCtrl(
         panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER |  wxBORDER_NONE
+        wxSize(200,30),  wxTE_CENTER  
     ); setTextBoxPlacehol(lastnameBox, lastnameBoxPlaceHol, isClosing);
 
     // -- Password text box
     passwordBox = new wxTextCtrl(
         panel, wxID_ANY, passwordBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER | wxBORDER_NONE
+        wxSize(200,30),  wxTE_CENTER 
     ); setPasswordPlacehol(passwordBox, passwordBoxPlaceHol, isClosing);
     
     
     wxButton*  btnEnter = new wxButton(
     panel, wxID_ANY, "Login  ", wxDefaultPosition,
             wxSize(200,30), wxBORDER_NONE);
-    btnEnter->SetBackgroundColour(* wxColour(168, 212, 255));
+    btnEnter->SetBackgroundColour(*wxWHITE);
 
     // ---- set all widgets into their proper position
 
@@ -173,13 +174,13 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
 
         // 3. Handle Mouse Leave (Exit)
     btnEnter->Bind(wxEVT_LEAVE_WINDOW, [btnEnter](wxMouseEvent& event) {
-        btnEnter->SetBackgroundColour(wxColour(168, 212, 255)); // Back to Original
+        btnEnter->SetBackgroundColour(*wxWHITE); // Back to Original
         btnEnter->Refresh();
         event.Skip();
     });
 }
 
-
+// 
 void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
     user -> setUsername(
@@ -195,7 +196,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
         user ->checkIsAdmin();
         user->identifyCollectors();
 
-        DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management");
+        DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
         dashboard -> Show();
 
         this -> Destroy();

@@ -22,7 +22,7 @@ bool Account::autheticateLogin(
     try{
 
         auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
-        if (!res->next()) {  std::cout << "No result\n"; return false;} 
+        if (!res->next()) {  wxMessageBox("User not found", "Login failure", wxOK | wxICON_ERROR);} 
 
         // get's th password from the database
         std::string passwordFromDB = std::string(res->getString("PASSWORD")); 
@@ -126,4 +126,9 @@ bool User::login() {
         this -> lastname, 
         this -> password
     );
+}
+
+std::string User::fetchUsername() {
+    std::string username = firstname + " " + lastname;
+    return username;
 }

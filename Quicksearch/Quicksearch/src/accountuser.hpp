@@ -55,5 +55,6 @@ public:
     User(std::shared_ptr<sql::Connection> conn) : Account(conn) {}
     void setUsername(std::string firstname, std::string lastname);
     void setPassword(std::string password);
+    std::string fetchUsername();
     bool login();
 };
