@@ -1,4 +1,4 @@
-
+#pragma once
 #include <mariadb/conncpp.hpp>
 #include <mariadb/conncpp/Connection.hpp>
 #include <iostream>
@@ -14,6 +14,5 @@ public:
         unsigned int port;
     }; struct DBCredentials dbcredentials;
 
-protected:
     std::shared_ptr<sql::Connection>connToDB();
 };

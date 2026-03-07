@@ -1,17 +1,21 @@
 #pragma once
 
+#include <memory>
 #include <wx/wx.h>
 #include <wx/image.h>
 #include "accountuser.hpp"
 #include <sodium.h>
+#include "dashboard.hpp"
 
 #define LOGO "./assets/quick_search_logo.png"
 
-class LoginWindow : public wxFrame, public User {
+class LoginWindow : public wxFrame {
 public:
-    LoginWindow(const std::string& title);
+    LoginWindow(const std::string& title, std::shared_ptr<User>);
 
 private:
+
+    std::shared_ptr<User> user;
     wxTextCtrl* firstnameBox;
     wxTextCtrl* lastnameBox;
     wxTextCtrl* passwordBox;
@@ -23,7 +27,6 @@ private:
 
     void setTextBoxPlacehol(wxTextCtrl* textbox,const wxString placeHolder, const bool isClosing);
     void setPasswordPlacehol(wxTextCtrl* textbox, const wxString& placeHolderconst, const bool isClosing);
-    void sendInput(wxCommandEvent& event);
-
-    void hashPassword(std::string passBuffer);
+    std::string hashPassword(std::string passBuffer);
+    void initializeLogin(wxCommandEvent& event);
 };
