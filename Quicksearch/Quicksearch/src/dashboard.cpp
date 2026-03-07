@@ -22,7 +22,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     wxBoxSizer* headerSizer = new wxBoxSizer(wxHORIZONTAL);
 
     std::string usrname = user -> fetchUsername();
-    wxStaticText* usernameLabel = new wxStaticText(panel, wxID_ANY, wxString(usrname));
+    wxStaticText* usernameLabel = new wxStaticText(panel, wxID_ANY, wxString("Welcome back " + usrname + "!!"));
 
     headerSizer->Add(usernameLabel, 0, wxALIGN_CENTER_VERTICAL);
     mainSizer->Add(headerSizer, 0, wxALL, 10);
