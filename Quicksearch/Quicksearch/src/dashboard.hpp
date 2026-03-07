@@ -17,5 +17,4 @@ public:
 private:
     wxSearchCtrl* searchBox;
     wxListCtrl* resultList;
-    std::string usrname;
 };
