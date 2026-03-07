@@ -27,7 +27,10 @@ public:
     bool checkIsAdmin(std::shared_ptr<sql::Connection> conn);        // this checks if the verified user is an admin 
     // this updates the account status to isActive = true in the database 
     // purpose: for preventing an account to have multiple sessions
-    bool updateAccessState();
+    bool updateAccessState(std::unique_ptr<sql::Connection> conn);
+
+    // ------ TEMPORARY ------
+    void identifyCollectors(std::shared_ptr<sql::Connection> conn);
 };
 
 class User : public Account{

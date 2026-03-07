@@ -75,16 +75,30 @@ bool Account::checkIsAdmin(std::shared_ptr<sql::Connection> conn) {
         std::cout << "SQL error: " << e.what() << std::endl;
     }
 
-    return false;
+    return false;                                                   
 }
+
+
+// bool Account::updateAccessState(std::unique_ptr<sql::Connection> conn) {
+
+//     auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(""));
+//     try {
+
+
+
+//     }  catch(sql::SQLException& e) {
+//         std::cout << "SQL error: " << e.what();
+//     }
+    
+//     return true;
+// }
 
 
 
 void User::useProgram(std::string& firstname, std::string& lastname, std::string& password) {
 
-    // Connect to database
+      // Connect to database
     std::shared_ptr<sql::Connection> conn = connToDB();
-
     // initialize a log in
     if (autheticateLogin( conn, firstname, lastname, password)) {
         if (checkIsAdmin(conn)) {
@@ -92,5 +106,35 @@ void User::useProgram(std::string& firstname, std::string& lastname, std::string
         } else {
             accountinfo.isAdmin = false;
         }
+        identifyCollectors(conn);
+    }
+}
+
+  // ------ TEMPORARY ------
+
+// It prints the name of all the collectors associated with the logged in user
+void Account::identifyCollectors(std::shared_ptr<sql::Connection> conn) {
+
+    sql::SQLString statement = 
+        "SELECT u.firstname AS user_firstname, "
+        "c.collectorID, "
+        "c.firstname AS collector_firstname "
+        "FROM users u "
+        "INNER JOIN users_to_collectors utc ON u.userID = utc.userID "
+        "INNER JOIN collectors c ON c.collectorID = utc.collectorID "
+        "WHERE u.userID = ?";
+    
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
+    stmt -> setInt(1, accountinfo.userID);
+    try {
+        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
+
+        while(res->next()) {
+            std::string collectorName = std::string(res->getString("collector_firstname"));
+            std::cout << collectorName << std::endl;
+        }
+
+    }  catch(sql::SQLException& e) {
+        std::cout << "SQL error: " << e.what();
     }
 }
