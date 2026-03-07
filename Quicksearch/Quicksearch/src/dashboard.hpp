@@ -1,13 +1,21 @@
 #pragma once
 
 #include <wx/wx.h>
+#include <wx/listctrl.h>
+#include <wx/srchctrl.h>
+#include "accountuser.hpp"
+#include "wx/string.h"
 
-#define WIDTH 800
+
+#define WIDTH 1300
 #define HEIGHT 800
 
 class DataDashboard : public wxFrame {
 public:
-    DataDashboard(const wxString& title);
+    DataDashboard(const wxString& title, std::shared_ptr<User> user);
 
 private:
+    wxSearchCtrl* searchBox;
+    wxListCtrl* resultList;
+    std::string usrname;
 };

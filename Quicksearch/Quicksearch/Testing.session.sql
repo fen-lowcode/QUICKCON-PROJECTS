@@ -21,4 +21,9 @@ values (
 
 --@block
 
-    select * from collectors;
+SELECT u.firstname, c.firstname 
+from users u
+inner join users_to_collectors usc on
+u.userID = usc.userID
+inner join collectors c on 
+c.collectorID = usc.collectorID
