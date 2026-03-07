@@ -64,7 +64,7 @@ public:
         // ===== TABLE =====
         employeeTable =
             new wxListCtrl(panel, wxID_ANY, wxPoint(20, 90), wxSize(1150, 670),
-                           wxLC_REPORT | wxLC_SINGLE_SEL);
+                        wxLC_REPORT | wxLC_SINGLE_SEL);
 
         employeeTable->InsertColumn(0, "ID", wxLIST_FORMAT_LEFT, 60);
         employeeTable->InsertColumn(1, "Name", wxLIST_FORMAT_LEFT, 220);
@@ -227,8 +227,7 @@ private:
 class LoginFrame : public wxFrame {
 public:
     LoginFrame()
-        : wxFrame(nullptr, wxID_ANY, "QuickSearch Login",
-                  wxDefaultPosition, wxSize(600, 450))
+        : wxFrame(nullptr, wxID_ANY, "QuickSearch Login", wxDefaultPosition, wxSize(600, 450))
     {
         SetBackgroundColour(wxColour(255, 255, 255));
 

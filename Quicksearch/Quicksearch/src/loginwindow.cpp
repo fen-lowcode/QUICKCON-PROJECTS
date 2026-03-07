@@ -1,5 +1,7 @@
 #include "loginwindow.hpp"
+#include "accountuser.hpp"
 #include <iomanip>
+#include <memory>
 
 void LoginWindow::setTextBoxPlacehol(
     wxTextCtrl* textbox,
@@ -58,7 +60,7 @@ void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& place
 }
 
 // hashes the password into sha256 and converts the hash into a 64 byte long string 
-void LoginWindow::hashPassword(std::string passBuffer) {
+std::string LoginWindow::hashPassword(std::string passBuffer) {
     unsigned char hash[crypto_hash_sha256_BYTES];
 
     // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
@@ -72,14 +74,16 @@ void LoginWindow::hashPassword(std::string passBuffer) {
     }
 
     // after the loop converrsion above it then stores it as a string object
-    password = ss.str();
+    return ss.str();
 };
 
-LoginWindow::LoginWindow(const std::string& title)
+LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     : wxFrame(nullptr, wxID_ANY, title,
             wxDefaultPosition, wxSize(400, 400),
             wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
 {
+
+    this -> user = user;
     this->Center();
 
       // everything widget goes here
@@ -152,7 +156,7 @@ LoginWindow::LoginWindow(const std::string& title)
 
 
     // handle login button upon click
-    btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::sendInput, this);
+    btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::initializeLogin, this);
     // “Only run placeholder logic if we are NOT closing.”
     this->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event)
     {
@@ -176,13 +180,25 @@ LoginWindow::LoginWindow(const std::string& title)
 }
 
 
-void LoginWindow::sendInput(wxCommandEvent& event) {
-    firstname = firstnameBox->GetValue().ToStdString();
-    lastname = lastnameBox->GetValue().ToStdString();
+void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
-    std::cout << firstname << lastname;
+    user -> setUsername(
+        firstnameBox->GetValue().ToStdString(), 
+        lastnameBox->GetValue().ToStdString()
+    );
 
-    hashPassword(passwordBox->GetValue().ToStdString());
-    useProgram(firstname, lastname, password);
+    user -> setPassword(
+        hashPassword(passwordBox->GetValue().ToStdString())
+    );
+
+    if (user -> login() == true) {
+        user ->checkIsAdmin();
+        user->identifyCollectors();
+
+        DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management");
+        dashboard -> Show();
+
+        this -> Destroy();
+
+    }
 }
-

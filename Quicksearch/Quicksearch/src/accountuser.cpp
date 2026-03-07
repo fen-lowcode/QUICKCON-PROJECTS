@@ -1,16 +1,9 @@
 #include "accountuser.hpp"
-#include <mariadb/conncpp/Connection.hpp>
-#include <mariadb/conncpp/Exception.hpp>
-#include <mariadb/conncpp/PreparedStatement.hpp>
-#include <mariadb/conncpp/ResultSet.hpp>
-#include <mariadb/conncpp/SQLString.hpp>
-#include <mariadb/conncpp/Statement.hpp>
-#include <memory>
 #include <string>
+#include <wx/wx.h>
 
 // refactor this SHIT!!
-bool Account::autheticateLogin(
-    std::shared_ptr<sql::Connection> conn, 
+bool Account::autheticateLogin( 
     const std::string& firstname,
     const std::string& lastname,
     const std::string& password
@@ -35,18 +28,22 @@ bool Account::autheticateLogin(
         std::string passwordFromDB = std::string(res->getString("PASSWORD")); 
 
         // check if password don't matches from what is in the database
-        if( password != passwordFromDB) { std::cout << "Password dont match\n"; return false; }
+        if( password != passwordFromDB) {   
+            wxMessageBox("Wrong password please try again", "Login failure", wxOK | wxICON_ERROR);
+            return false;
+        }
 
         accountinfo.userID = res->getInt("userID"); 
         std::cout << "Welcome! User " << accountinfo.userID << std::endl;
 
     } catch (sql::SQLException& e) {
-        std::cout << "SQL error: " << e.what() << std::endl; return false;
+        std::cout << "SQL error: " << e.what() << std::endl;
+        return false;
     }
     return true;
 }
 
-bool Account::checkIsAdmin(std::shared_ptr<sql::Connection> conn) {
+bool Account::checkIsAdmin() {
 
     auto stmt = std::unique_ptr<sql::PreparedStatement>(
             conn -> prepareStatement("select isAdmin from users where userid = ?")
@@ -77,43 +74,10 @@ bool Account::checkIsAdmin(std::shared_ptr<sql::Connection> conn) {
 
     return false;                                                   
 }
-
-
-// bool Account::updateAccessState(std::unique_ptr<sql::Connection> conn) {
-
-//     auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(""));
-//     try {
-
-
-
-//     }  catch(sql::SQLException& e) {
-//         std::cout << "SQL error: " << e.what();
-//     }
-    
-//     return true;
-// }
-
-
-
-void User::useProgram(std::string& firstname, std::string& lastname, std::string& password) {
-
-      // Connect to database
-    std::shared_ptr<sql::Connection> conn = connToDB();
-    // initialize a log in
-    if (autheticateLogin( conn, firstname, lastname, password)) {
-        if (checkIsAdmin(conn)) {
-            accountinfo.isAdmin = true;
-        } else {
-            accountinfo.isAdmin = false;
-        }
-        identifyCollectors(conn);
-    }
-}
-
   // ------ TEMPORARY ------
 
 // It prints the name of all the collectors associated with the logged in user
-void Account::identifyCollectors(std::shared_ptr<sql::Connection> conn) {
+void Account::identifyCollectors() {
 
     sql::SQLString statement = 
         "SELECT u.firstname AS user_firstname, "
@@ -126,6 +90,10 @@ void Account::identifyCollectors(std::shared_ptr<sql::Connection> conn) {
     
     auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
     stmt -> setInt(1, accountinfo.userID);
+
+    // Debug 
+    std::cout << "hello: " << accountinfo.userID << std::endl;
+
     try {
         auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
 
@@ -137,4 +105,25 @@ void Account::identifyCollectors(std::shared_ptr<sql::Connection> conn) {
     }  catch(sql::SQLException& e) {
         std::cout << "SQL error: " << e.what();
     }
+}
+
+
+void User::setUsername(std::string firstname, std::string lastname) {
+    this -> firstname = firstname;
+    this -> lastname = lastname;
+}
+
+
+void User::setPassword(std::string password) {
+    this -> password = password;
+}
+
+
+
+bool User::login() {
+    return autheticateLogin(
+        this -> firstname, 
+        this -> lastname, 
+        this -> password
+    );
 }
