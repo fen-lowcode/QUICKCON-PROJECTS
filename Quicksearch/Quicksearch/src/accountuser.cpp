@@ -129,6 +129,13 @@ bool User::login() {
 }
 
 std::string User::fetchUsername() {
-    std::string username = firstname + " " + lastname;
+    auto convertToUpper = [](std::string username) -> std::string {
+        for(char& c: username) {
+            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+        }
+        return username;
+    };
+
+    std::string username = convertToUpper(firstname + " " + lastname);
     return username;
 }
