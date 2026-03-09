@@ -23,7 +23,7 @@ std::shared_ptr<sql::Connection> DatabaseConnect::connToDB() {
         std::string url = 
         "jdbc:mariadb://" + dbcredentials.host + ":" + std::to_string(dbcredentials.port) + "/" + dbcredentials.database;
         std::shared_ptr<sql::Connection> conn (driver->connect(url, dbcredentials.user, dbcredentials.userpassword));
-        std::cout << "Database: Connection Success!\n";
+        std::cout << "Database: Connection established\n";
         return conn;
     }
 

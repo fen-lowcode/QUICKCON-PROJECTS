@@ -10,7 +10,7 @@
 #include "dashboard.hpp"
 
 
-#define LOGO "./assets/quick_search_logo.png"
+#define LOGO "./assets/quicksearch_logo.png"
 
 class LoginWindow : public wxFrame {
 public:
