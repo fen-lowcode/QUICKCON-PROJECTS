@@ -1,8 +1,80 @@
 #include "loginwindow.hpp"
 #include "accountuser.hpp"
-#include "wx/gdicmn.h"
-#include <iomanip>
-#include <memory>
+
+LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
+    : wxFrame(nullptr, wxID_ANY, title,
+            wxDefaultPosition, wxSize(400, 400),
+            wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
+{
+
+    this -> user = user;
+    this->Center();
+
+    // every widget goes in this panel 
+    wxPanel* panel = new wxPanel(this);
+    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(300, 1));
+    wxSize panelFizedSize {300, 400};
+
+    panel -> SetMinSize(panelFizedSize);
+    panel -> SetMaxSize(panelFizedSize);
+    line->SetBackgroundColour(wxColour(200,200,200));  // light gray line
+    panel->SetBackgroundColour( wxColour(*wxWHITE));
+
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL); 
+
+    // --- Logo image ---
+    wxImage::AddHandler(new wxPNGHandler());        // to handle png file
+    wxImage img(LOGO, wxBITMAP_TYPE_PNG);    // load png image
+    wxStaticBitmap* logo;
+
+    // check if logo is loaded properly
+    if (img.IsOk()) {
+        img = img.Scale(250, 100, wxIMAGE_QUALITY_HIGH);
+        wxBitmap bitmap(img);
+        mainSizer->AddStretchSpacer(2);
+        // show image
+        logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
+    }
+
+    // Place holder logic for firstname and lastname box
+    // --- Firstname text box ---
+    firstnameBox = std::make_unique<wxTextCtrl>(
+            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, 
+            wxSize(200,30),  wxTE_CENTER 
+    ); setTextBoxPlacehol(firstnameBox.get(), firstnameBoxPlaceHol, isClosing);
+
+      // --- Lastname text box ---
+    lastnameBox = std::make_shared<wxTextCtrl>(
+        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, 
+        wxSize(200,30),  wxTE_CENTER  
+    ); setTextBoxPlacehol(lastnameBox.get(), lastnameBoxPlaceHol, isClosing);
+
+     // -- Password text box
+    passwordBox =  std::make_shared<wxTextCtrl>(
+        panel, wxID_ANY, passwordBoxPlaceHol, wxDefaultPosition, 
+        wxSize(200,30),  wxTE_CENTER 
+    ); setPasswordPlacehol(passwordBox.get(), passwordBoxPlaceHol, isClosing);
+    
+    btnEnter = std::make_shared<wxButton>(
+        panel, wxID_ANY, "Login  ", wxDefaultPosition,
+        wxSize(200,30), wxBORDER_NONE
+    ); btnEnter->SetBackgroundColour(*wxWHITE);
+
+    // ---- set all widgets into their proper position
+    mainSizer-> AddStretchSpacer(5);  // push everything to vertical center
+    mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
+    mainSizer->Add(line, 0, wxALIGN_CENTER | wxBOTTOM, 50);
+    mainSizer->Add(firstnameBox.get(), 0, wxALIGN_CENTER | wxBOTTOM );
+    mainSizer->Add(lastnameBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
+    mainSizer->Add(passwordBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
+    mainSizer-> AddSpacer(30);  // push everything to vertical center
+    mainSizer->Add(btnEnter.get(), 0, wxALIGN_RIGHT | wxRIGHT, 100);
+    mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
+    panel->SetSizer(mainSizer);
+    this -> btnEvents();
+
+}
+
 
 void LoginWindow::setTextBoxPlacehol(
     wxTextCtrl* textbox,
@@ -60,6 +132,7 @@ void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& place
     });
 }
 
+
 // hashes the password into sha256 and converts the hash into a 64 byte long string 
 std::string LoginWindow::hashPassword(std::string passBuffer) {
     unsigned char hash[crypto_hash_sha256_BYTES];
@@ -78,83 +151,7 @@ std::string LoginWindow::hashPassword(std::string passBuffer) {
     return ss.str();
 };
 
-LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
-    : wxFrame(nullptr, wxID_ANY, title,
-            wxDefaultPosition, wxSize(400, 400),
-            wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
-{
-
-    this -> user = user;
-    this->Center();
-
-      // everything widget goes here
-
-    wxPanel* panel = new wxPanel(this);
-    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(300, 1));
-
-    wxSize panelFizedSize {300, 400};
-    panel -> SetMinSize(panelFizedSize);
-    panel -> SetMaxSize(panelFizedSize);
-
-    line->SetBackgroundColour(wxColour(200,200,200));  // light gray line
-
-    panel->SetBackgroundColour( wxColour(*wxWHITE));
-
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
-
-    // --- Logo image ---
-    wxImage::AddHandler(new wxPNGHandler());        // to handle png file
-    wxImage img(LOGO, wxBITMAP_TYPE_PNG);    // load png image
-    wxStaticBitmap* logo;
-
-    if (img.IsOk()) {
-        img = img.Scale(250, 100, wxIMAGE_QUALITY_HIGH);
-        wxBitmap bitmap(img);
-        mainSizer->AddStretchSpacer(2);
-        // show image
-        logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
-    }
-
-
-
-    // Place holder logic for firstname and lastname box
-    // --- Firstname text box ---
-    firstnameBox = new wxTextCtrl(
-            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, 
-            wxSize(200,30),  wxTE_CENTER 
-    ); setTextBoxPlacehol(firstnameBox, firstnameBoxPlaceHol, isClosing);
-
-    // --- Lastname text box ---
-    lastnameBox = new wxTextCtrl(
-        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER  
-    ); setTextBoxPlacehol(lastnameBox, lastnameBoxPlaceHol, isClosing);
-
-    // -- Password text box
-    passwordBox = new wxTextCtrl(
-        panel, wxID_ANY, passwordBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER 
-    ); setPasswordPlacehol(passwordBox, passwordBoxPlaceHol, isClosing);
-    
-    
-    wxButton*  btnEnter = new wxButton(
-    panel, wxID_ANY, "Login  ", wxDefaultPosition,
-            wxSize(200,30), wxBORDER_NONE);
-    btnEnter->SetBackgroundColour(*wxWHITE);
-
-    // ---- set all widgets into their proper position
-
-    mainSizer-> AddStretchSpacer(5);  // push everything to vertical center
-    mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
-    mainSizer->Add(line, 0, wxALIGN_CENTER | wxBOTTOM, 50);
-    mainSizer->Add(firstnameBox, 0, wxALIGN_CENTER | wxBOTTOM );
-    mainSizer->Add(lastnameBox, 0, wxALIGN_CENTER | wxBOTTOM);
-    mainSizer->Add(passwordBox, 0, wxALIGN_CENTER | wxBOTTOM);
-    mainSizer-> AddSpacer(30);  // push everything to vertical center
-    mainSizer->Add(btnEnter, 0, wxALIGN_RIGHT | wxRIGHT, 100);
-    mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
-    panel->SetSizer(mainSizer);
-
+void LoginWindow::btnEvents() {
 
     // handle login button upon click
     btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::initializeLogin, this);
@@ -165,22 +162,24 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
         event.Skip();
     });    
 
-    // 2. Handle Mouse Hover (Enter)
-    btnEnter->Bind(wxEVT_ENTER_WINDOW, [btnEnter](wxMouseEvent& event) {
-        btnEnter->SetBackgroundColour(wxColour(0, 105, 217)); // Darker Blue
-        btnEnter->Refresh(); // Ensure the OS redraws the button
-    event.Skip();
-    });
+    // Capture the raw pointer and name it 'btnEnter' inside the lambda
+    btnEnter->Bind(wxEVT_ENTER_WINDOW, [btnEnter = btnEnter.get()](wxMouseEvent& event) {
+            btnEnter->SetBackgroundColour(wxColour(0, 105, 217)); 
+            btnEnter->Refresh(); 
+            event.Skip();
+        }
+    ); // Added the missing };
 
         // 3. Handle Mouse Leave (Exit)
-    btnEnter->Bind(wxEVT_LEAVE_WINDOW, [btnEnter](wxMouseEvent& event) {
-        btnEnter->SetBackgroundColour(*wxWHITE); // Back to Original
-        btnEnter->Refresh();
-        event.Skip();
-    });
+    btnEnter->Bind(wxEVT_LEAVE_WINDOW, [btnEnter = btnEnter.get()](wxMouseEvent& event) {
+            btnEnter->SetBackgroundColour(*wxWHITE); // Back to Original
+            btnEnter->Refresh();
+            event.Skip();
+        }   
+    );
 }
 
-// 
+
 void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
     user -> setUsername(
