@@ -17,4 +17,6 @@ public:
 private:
     wxSearchCtrl* searchBox;
     wxListCtrl* resultList;
+
+    void loadCustomers(std::shared_ptr<sql::Connection> conn);
 };

@@ -1,9 +1,14 @@
 #include "loginwindow.hpp"
 #include "accountuser.hpp"
+#include "wx/sizer.h"
+#include "wx/wx.h"
+
+#define WINDOW_WIDTH 700
+#define WINDOW_HEIGHT 400
 
 LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     : wxFrame(nullptr, wxID_ANY, title,
-            wxDefaultPosition, wxSize(400, 400),
+            wxDefaultPosition, wxSize(WINDOW_WIDTH, WINDOW_HEIGHT),
             wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
 {
 
@@ -12,15 +17,17 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
 
     // every widget goes in this panel 
     wxPanel* panel = new wxPanel(this);
-    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(300, 1));
+    wxPanel* line = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxSize(600, 1));
     wxSize panelFizedSize {300, 400};
 
     panel -> SetMinSize(panelFizedSize);
     panel -> SetMaxSize(panelFizedSize);
+    panel->SetBackgroundColour(wxColour(245,245,245)); // light modern gray
     line->SetBackgroundColour(wxColour(200,200,200));  // light gray line
     panel->SetBackgroundColour( wxColour(*wxWHITE));
 
     wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL); 
+    wxBoxSizer* usernamesizer = new wxBoxSizer(wxHORIZONTAL);
 
     // --- Logo image ---
     wxImage::AddHandler(new wxPNGHandler());        // to handle png file
@@ -39,24 +46,24 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     // Place holder logic for firstname and lastname box
     // --- Firstname text box ---
     firstnameBox = std::make_unique<wxTextCtrl>(
-            panel, wxID_ANY, firstnameBoxPlaceHol, wxDefaultPosition, 
-            wxSize(200,30),  wxTE_CENTER 
-    ); setTextBoxPlacehol(firstnameBox.get(), firstnameBoxPlaceHol, isClosing);
+            panel, wxID_ANY, "", wxDefaultPosition, 
+            wxSize(300,30),  wxTE_CENTER 
+    ); firstnameBox -> SetHint("Firstname");
 
       // --- Lastname text box ---
     lastnameBox = std::make_shared<wxTextCtrl>(
-        panel, wxID_ANY, lastnameBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER  
-    ); setTextBoxPlacehol(lastnameBox.get(), lastnameBoxPlaceHol, isClosing);
+        panel, wxID_ANY, "", wxDefaultPosition, 
+        wxSize(300,30),  wxTE_CENTER  
+    ); lastnameBox -> SetHint("Lastname");
 
      // -- Password text box
     passwordBox =  std::make_shared<wxTextCtrl>(
-        panel, wxID_ANY, passwordBoxPlaceHol, wxDefaultPosition, 
-        wxSize(200,30),  wxTE_CENTER 
-    ); setPasswordPlacehol(passwordBox.get(), passwordBoxPlaceHol, isClosing);
+        panel, wxID_ANY, "", wxDefaultPosition, 
+        wxSize(610,30),  wxTE_CENTER | wxTE_PASSWORD
+    ); passwordBox -> SetHint("Password");
     
     btnEnter = std::make_shared<wxButton>(
-        panel, wxID_ANY, "Login  ", wxDefaultPosition,
+        panel, wxID_ANY, "Login", wxDefaultPosition,
         wxSize(200,30), wxBORDER_NONE
     ); btnEnter->SetBackgroundColour(*wxWHITE);
 
@@ -64,74 +71,19 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     mainSizer-> AddStretchSpacer(5);  // push everything to vertical center
     mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
     mainSizer->Add(line, 0, wxALIGN_CENTER | wxBOTTOM, 50);
-    mainSizer->Add(firstnameBox.get(), 0, wxALIGN_CENTER | wxBOTTOM );
-    mainSizer->Add(lastnameBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
+    usernamesizer->Add(firstnameBox.get(), 0, wxALIGN_CENTER, 50);
+    usernamesizer-> AddSpacer(10);
+    usernamesizer->Add(lastnameBox.get(), 0, wxALIGN_CENTER, 50);
+    mainSizer -> Add(usernamesizer, 0, wxALIGN_CENTER);
+    mainSizer-> AddStretchSpacer(1);
     mainSizer->Add(passwordBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
     mainSizer-> AddSpacer(30);  // push everything to vertical center
-    mainSizer->Add(btnEnter.get(), 0, wxALIGN_RIGHT | wxRIGHT, 100);
+    mainSizer->Add(btnEnter.get(), 0, wxALIGN_CENTER);
     mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
     panel->SetSizer(mainSizer);
     this -> btnEvents();
 
 }
-
-
-void LoginWindow::setTextBoxPlacehol(
-    wxTextCtrl* textbox,
-    const wxString placeHolder,
-    const bool isClosing) {
-
-    textbox -> SetForegroundColour(*wxColour(128, 128, 128));
-    textbox -> Bind(wxEVT_SET_FOCUS, [textbox, placeHolder](wxFocusEvent& event) {
-        if (textbox ->GetValue() == placeHolder) {
-            textbox->SetValue("");
-            textbox->SetForegroundColour(*wxBLACK);
-        }
-        event.Skip();
-    });
-    textbox -> Bind(wxEVT_KILL_FOCUS, [textbox, placeHolder, isClosing](wxFocusEvent& event) {
-        if (!isClosing && textbox -> GetValue().IsEmpty()) {
-            textbox->SetValue(placeHolder);
-            textbox->SetForegroundColour(*wxColour(128, 128, 128));
-        }
-        event.Skip();
-    });
-}
-
-void LoginWindow::setPasswordPlacehol(wxTextCtrl* textbox, const wxString& placeHolder, const bool isClosing) {
-
-    // 1. Initial State: No password masking, grey text
-    textbox->SetWindowStyleFlag( wxTE_CENTER); //center text
-    textbox->SetForegroundColour(wxColour(128, 128, 128));
-    textbox->SetValue(placeHolder);
-
-    // 2. Handle Gaining Focus
-    textbox->Bind(wxEVT_SET_FOCUS, [textbox, placeHolder](wxFocusEvent& event) {
-        if (textbox->GetValue() == placeHolder) {
-            textbox->SetValue("");
-            textbox->SetWindowStyleFlag(wxTE_CENTER | wxTE_PASSWORD); 
-            textbox->SetForegroundColour(*wxBLACK);
-            
-            // Refresh the control to apply the style change visually
-            textbox->Refresh(); 
-        }
-        event.Skip();
-    });
-
-    // 3. Handle Losing Focus
-    textbox->Bind(wxEVT_KILL_FOCUS, [isClosing, textbox, placeHolder](wxFocusEvent& event) {
-        if (!isClosing && textbox->GetValue().IsEmpty()) {
-            // Disable password masking to show the hint text
-            textbox->SetWindowStyleFlag( wxTE_CENTER);
-            textbox->SetForegroundColour(wxColour(128, 128, 128));
-            textbox->SetValue(placeHolder);
-
-            textbox->Refresh();
-        }
-        event.Skip();
-    });
-}
-
 
 // hashes the password into sha256 and converts the hash into a 64 byte long string 
 std::string LoginWindow::hashPassword(std::string passBuffer) {

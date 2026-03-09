@@ -51,8 +51,10 @@ private:
     std::string lastname;
     std::string password;
 public:
+    User(std::shared_ptr<sql::Connection> conn);
 
-    User(std::shared_ptr<sql::Connection> conn) : Account(conn) {}
+    std::shared_ptr<sql::Connection> conn;
+
     void setUsername(std::string firstname, std::string lastname);
     void setPassword(std::string password);
     std::string fetchUsername();

@@ -1,4 +1,6 @@
 #include "accountuser.hpp"
+#include <mariadb/conncpp/Connection.hpp>
+#include <memory>
 #include <string>
 #include <wx/wx.h>
 
@@ -107,6 +109,9 @@ void Account::identifyCollectors() {
     }
 }
 
+User::User(std::shared_ptr<sql::Connection> conn) : Account(conn) {
+    this -> conn = conn;
+}
 
 void User::setUsername(std::string firstname, std::string lastname) {
     this -> firstname = firstname;
