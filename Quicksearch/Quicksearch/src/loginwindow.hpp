@@ -1,5 +1,6 @@
 #pragma once
 
+#include <mariadb/conncpp/Connection.hpp>
 #include <memory>
 #include <wx/wx.h>
 #include <wx/image.h>
@@ -13,7 +14,7 @@
 
 class LoginWindow : public wxFrame {
 public:
-    LoginWindow(const std::string& title, std::shared_ptr<User>);
+    LoginWindow(const std::string& title, std::shared_ptr<User> user);
 
 private:
 
@@ -23,13 +24,8 @@ private:
     std::shared_ptr<wxTextCtrl> passwordBox;
     std::shared_ptr<wxButton> btnEnter;
 
-    wxString firstnameBoxPlaceHol {"Firstname"};
-    wxString lastnameBoxPlaceHol {"Lastname"};
-    wxString passwordBoxPlaceHol {"Password"};
     bool isClosing {false};
-
-    void setTextBoxPlacehol(wxTextCtrl* textbox,const wxString placeHolder, const bool isClosing);
-    void setPasswordPlacehol(wxTextCtrl* textbox, const wxString& placeHolderconst, const bool isClosing);
+    
     std::string hashPassword(std::string passBuffer);
 
     void btnEvents();
