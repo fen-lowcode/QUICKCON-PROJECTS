@@ -4,6 +4,7 @@
 #include <wx/listctrl.h>
 #include <wx/srchctrl.h>
 #include "accountuser.hpp"
+#include "wx/gtk/srchctrl.h"
 #include "wx/string.h"
 
 
@@ -15,7 +16,8 @@ public:
     DataDashboard(const wxString& title, std::shared_ptr<User> user);
 
 private:
-    wxSearchCtrl* searchBox;
+    wxSearchCtrl* nameSearchBox;
+    wxSearchCtrl* contactSearchBar;
     wxListCtrl* resultList;
 
     void loadCustomers(std::shared_ptr<sql::Connection> conn);
