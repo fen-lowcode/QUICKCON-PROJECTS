@@ -80,3 +80,12 @@ VALUES
 ('Patrick','Flores',39,'M',9175551019,'Chef','1985-01-16','Bulacan','Blk 20 Lot 5 Towerville 2 SJDM Bulacan',150,'2025-02-25',10,2,9,1,2,31,5,20,5,'Mark Reyes'),
 
 ('Sophia','Alvarez',25,'F',9175551020,'Call Center Agent','1999-08-07','Manila','Blk 21 Lot 4 Towerville 4 SJDM Bulacan',300,'2025-02-26',6,1,3,1,1,21,3,14,3,'Mark Reyes');
+
+
+--@block
+
+select * from users;
+
+
+
+-- alter table users drop column isactive

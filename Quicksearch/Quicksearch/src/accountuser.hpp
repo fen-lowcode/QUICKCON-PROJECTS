@@ -7,6 +7,7 @@
 #include <wx/wx.h>
 #include <sodium.h>
 #include <mariadb/conncpp.hpp>
+#include <thread>
 
 
 
@@ -30,15 +31,19 @@ public:
     };
 
     // verify user crendentials
-    bool autheticateLogin( const std::string& firstname,const std::string& lastname,const std::string& password);    
-    
-    
-    bool checkIsAdmin();        // this checks if the verified user is an admin 
-    // this updates the account status to isActive = true in the database 
-    // purpose: for preventing an account to have multiple sessions
-    bool updateAccessState();
+    bool autheticateLogin( const std::string& firstname,const std::string& lastname,const std::string& password);  
 
-    // ------ TEMPORARY ------
+    // this checks if the verified user is an admin 
+    bool checkIsAdmin();   
+
+    // this updates the account status lastsen to rcent tim 30 sc interval  purpose: for preventing an account to have multiple sessions
+    void updateActiveStatus();
+
+    // check the active status of a user
+    bool checkActiveStatus(std::string firstname, std::string lastname, std::string password);
+    
+
+    // identifis collctors;
     void identifyCollectors();
 };
 
@@ -50,13 +55,19 @@ private:
     std::string firstname;
     std::string lastname;
     std::string password;
+
 public:
+
     User(std::shared_ptr<sql::Connection> conn);
 
     std::shared_ptr<sql::Connection> conn;
-
+    
     void setUsername(std::string firstname, std::string lastname);
     void setPassword(std::string password);
+    std::string getFirstName();
+    std::string getLastName();
+    std::string getPassword();
+
     std::string fetchUsername();
     bool login();
 };
