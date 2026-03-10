@@ -1,5 +1,11 @@
 #include "dashboard.hpp"
+#include "wx/event.h"
+#include "wx/gdicmn.h"
+#include "wx/gtk/button.h"
+#include "wx/gtk/srchctrl.h"
+#include "wx/sizer.h"
 #include "wx/string.h"
+#include "wx/wx.h"
 
 
 DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
@@ -13,6 +19,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
 ) {
 
     wxPanel* panel = new wxPanel(this);
+
     // panel->SetBackgroundColour(wxColour(245,245,245)); // light modern gray
 
     // =========================
@@ -38,20 +45,29 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     mainSizer->Add(headerSizer, 0, wxLEFT | wxTOP, 20);
 
 
-    // =========================
     // SEARCH BAR
 
+    wxFont uiFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_LIGHT);
     wxBoxSizer* searchSizer {new wxBoxSizer(wxHORIZONTAL)};
 
-    searchBox = new wxSearchCtrl(panel, wxID_ANY, "");
-    searchBox->SetHint("Search customer...");
-    searchBox->SetMinSize(wxSize(300,35));
+    nameSearchBox = new wxSearchCtrl(panel, wxID_ANY, "", wxDefaultPosition, wxDefaultSize); 
+    nameSearchBox->SetHint("Search customer info..");  
+    nameSearchBox->SetMinSize(wxSize(300,35));
+    nameSearchBox->SetFont(uiFont);
 
-    searchSizer->Add(searchBox, 0, wxRIGHT, 10);
+    // ------- refresh button experemental
+    wxButton*  refreshButton = new wxButton(panel,wxID_ANY, "Refresh table", wxDefaultPosition, wxDefaultSize);
+    refreshButton -> SetSize({100, 36});
+    refreshButton -> SetFont(uiFont);
 
+    searchSizer  -> Add(nameSearchBox, 0, wxRIGHT, 10);
+    searchSizer -> Add(refreshButton, 1 , wxLEFT, 10);
     mainSizer->Add(searchSizer, 0, wxLEFT | wxRIGHT | wxTOP | wxBOTTOM, 20);
 
-
+    refreshButton -> Bind(wxEVT_BUTTON, [this, user](wxCommandEvent& event){
+        loadCustomers(user -> conn);
+    });
+    
     // =========================
     // RESULTS TABLE
 
@@ -60,7 +76,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
         wxID_ANY,
         wxDefaultPosition,
         wxDefaultSize,
-        wxLC_REPORT | wxLC_SINGLE_SEL | wxBORDER_SIMPLE
+        wxLC_REPORT | wxLC_SINGLE_SEL | wxBORDER_SIMPLE 
     );
 
     resultList->SetFont(dataTableFont);
