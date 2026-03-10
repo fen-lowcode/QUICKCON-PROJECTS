@@ -1,6 +1,7 @@
 #include "loginwindow.hpp"
 #include "accountuser.hpp"
 #include "wx/gdicmn.h"
+#include "wx/msgdlg.h"
 #include "wx/sizer.h"
 #include "wx/wx.h"
 
@@ -145,14 +146,25 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
         hashPassword(passwordBox->GetValue().ToStdString())
     );
 
+    // Checks user credentials
     if (user -> login() == true) {
-        user ->checkIsAdmin();
-        user->identifyCollectors();
 
-        DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
-        dashboard -> Show();
+        // checks if the user have already an open session
+        if (user -> checkActiveStatus(user->getFirstName(), user->getLastName(), user -> getPassword())) {
+            user -> checkIsAdmin();
+            user -> identifyCollectors();
+            std::thread t = std::thread(&User::updateActiveStatus, user);
+            t.detach();
 
-        this -> Destroy();
+            DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
+            dashboard -> Show();
 
+            this -> Destroy();
+        } else  {
+            wxMessageBox(
+                "This user is already active, or just recently log out if you are the owner of this account just wait for a 30 seconds befor logging in again", 
+                "Login failure"
+            );
+        }
     }
 }

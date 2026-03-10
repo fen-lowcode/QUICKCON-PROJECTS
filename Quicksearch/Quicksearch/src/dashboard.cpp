@@ -25,7 +25,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
 
     wxBoxSizer* headerSizer = new wxBoxSizer(wxVERTICAL);
 
-    std::string usrname = user->fetchUsername();
+    std::string usrname {user->fetchUsername()};
     wxStaticText* welcomeMessage =
         new wxStaticText(panel, wxID_ANY,
             "WELCOME " + wxString(usrname));
@@ -41,7 +41,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     // =========================
     // SEARCH BAR
 
-    wxBoxSizer* searchSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxBoxSizer* searchSizer {new wxBoxSizer(wxHORIZONTAL)};
 
     searchBox = new wxSearchCtrl(panel, wxID_ANY, "");
     searchBox->SetHint("Search customer...");
