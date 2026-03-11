@@ -1,9 +1,5 @@
 #include "loginwindow.hpp"
 #include "user.hpp"
-#include "wx/gdicmn.h"
-#include "wx/msgdlg.h"
-#include "wx/sizer.h"
-#include "wx/wx.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
