@@ -1,9 +1,10 @@
 #pragma once
 
+#include <iostream>
 #include <wx/wx.h>
 #include <wx/listctrl.h>
 #include <wx/srchctrl.h>
-#include "accountuser.hpp"
+#include "user.hpp"
 #include "wx/gtk/srchctrl.h"
 #include "wx/string.h"
 

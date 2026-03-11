@@ -1,0 +1,30 @@
+[2026-03-11 14:24:56.948] [file-log] [info] Databse connection established
+[2026-03-11 14:27:50.385] [file-log] [info] Database connection established
+[2026-03-11 14:50:52.082] [file-log] [info] Database connection established
+[2026-03-11 14:51:07.099] [file-log] [info] Checking username from the database
+[2026-03-11 15:09:18.850] [file-log] [info] Database connection established
+[2026-03-11 15:09:39.194] [file-log] [info] Fetching password from the database
+[2026-03-11 15:09:39.194] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:09:39.194] [file-log] [info] Login success User: 1
+[2026-03-11 15:12:08.268] [file-log] [info] Database connection established
+[2026-03-11 15:12:13.813] [file-log] [info] Fetching password from the database
+[2026-03-11 15:12:16.685] [file-log] [warning] User was not found in the database
+[2026-03-11 15:12:16.685] [file-log] [error] SQL failure from account authentication
+[2026-03-11 15:12:36.861] [file-log] [info] Fetching password from the database
+[2026-03-11 15:12:36.862] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:12:38.118] [file-log] [warning] Login failure input password don't match
+[2026-03-11 15:14:30.210] [file-log] [info] Fetching password from the database
+[2026-03-11 15:14:30.210] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:14:35.474] [file-log] [warning] Login failure input password don't match
+[2026-03-11 15:14:37.426] [file-log] [info] Fetching password from the database
+[2026-03-11 15:14:37.426] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:14:38.242] [file-log] [warning] Login failure input password don't match
+[2026-03-11 15:14:39.050] [file-log] [info] Fetching password from the database
+[2026-03-11 15:14:39.050] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:14:39.442] [file-log] [warning] Login failure input password don't match
+[2026-03-11 15:14:47.114] [file-log] [info] Fetching password from the database
+[2026-03-11 15:14:47.114] [file-log] [info] Checking if input password is correct
+[2026-03-11 15:14:48.067] [file-log] [warning] Login failure input password don't match
+[2026-03-11 15:14:53.882] [file-log] [info] Fetching password from the database
+[2026-03-11 15:14:54.675] [file-log] [warning] User was not found in the database
+[2026-03-11 15:14:54.675] [file-log] [error] SQL failure from account authentication

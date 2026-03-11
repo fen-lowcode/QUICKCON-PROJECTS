@@ -1,7 +1,7 @@
-#include "accountuser.hpp"
-#include <mariadb/conncpp/PreparedStatement.hpp>
-#include <mariadb/conncpp/ResultSet.hpp>
-#include <memory>
+
+#include "account.hpp"
+#include "logs.hpp"
+#include <sstream>
 
 
 // check if the credentials matches from the database
@@ -13,7 +13,7 @@ bool Account::autheticateLogin(
 
     auto stmt = std::unique_ptr<sql::PreparedStatement>(
         conn->prepareStatement(
-            "SELECT USERID, PASSWORD FROM users WHERE FIRSTNAME = ? AND LASTNAME = ?"
+            "SELECT USERID, PASSWORD FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ?"
         )
     );
 
@@ -24,27 +24,43 @@ bool Account::autheticateLogin(
     try{
 
         auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
-        if (!res->next()) {  wxMessageBox("User not found", "Login failure", wxOK | wxICON_ERROR);} 
+        LOGINFO(this-> FILE_LOG, "Fetching password from the database");
 
-        // get's th password from the database
+        if (!res->next()) {  wxMessageBox(
+            "User not found", "Login failure", wxOK | wxICON_ERROR);
+            LOGWARNING(FILE_LOG, "User was not found in the database");
+        } 
+
+
+        // place the password hash from the database and put it in a temporary variable for comparison
         std::string passwordFromDB = std::string(res->getString("PASSWORD")); 
 
         // check if password don't matches from what is in the database
+        LOGINFO(this-> FILE_LOG, "Checking if input password is correct");
+
         if( password != passwordFromDB) {   
             wxMessageBox("Wrong password please try again", "Login failure", wxOK | wxICON_ERROR);
+            LOGWARNING(FILE_LOG, "Login failure input password don't match");
             return false;
         }
 
+        // assign userID from the database
         accountinfo.userID = res->getInt("userID"); 
-        std::cout << "Welcome! User " << accountinfo.userID << std::endl;
+    
+        std::stringstream logMessage; logMessage << "Login success " << "User: " << accountinfo.userID;
+        LOGINFO(FILE_LOG, logMessage.str());
 
     } catch (sql::SQLException& e) {
+        LOGERROR(FILE_LOG, "SQL failure from account authentication");
         std::cout << "SQL error: " << e.what() << std::endl;
         return false;
     }
     return true;
 }
 
+std::shared_ptr<sql::Connection> Account::getConnection() {
+    return this -> conn;
+}
 
 
 bool Account::checkIsAdmin() {
@@ -78,44 +94,11 @@ bool Account::checkIsAdmin() {
 
     return false;                                                   
 }
-  // ------ TEMPORARY ------
-
-// It prints the name of all the collectors associated with the logged in user
-void Account::identifyCollectors() {
-
-    sql::SQLString statement {
-        "SELECT u.firstname AS user_firstname, "
-        "c.collectorID, "
-        "c.firstname AS collector_firstname "
-        "FROM users u "
-        "INNER JOIN users_to_collectors utc ON u.userID = utc.userID "
-        "INNER JOIN collectors c ON c.collectorID = utc.collectorID "
-        "WHERE u.userID = ?"
-    };
-    
-    auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
-    stmt -> setInt(1, accountinfo.userID);
-
-    // Debug 
-    std::cout << "hello: " << accountinfo.userID << std::endl;
-
-    try {
-        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
-
-        while(res->next()) {
-            std::string collectorName = std::string(res->getString("collector_firstname"));
-            std::cout << collectorName << std::endl;
-        }
-
-    }  catch(sql::SQLException& e) {
-        std::cout << "SQL error: " << e.what();
-    }
-}
 
  // updates "lastseen column" to the most recent time
 void Account::updateActiveStatus() {
     sql::SQLString statement {
-        "UPDATE users "
+        "UPDATE USERS "
             "SET lastseen = NOW() "
             "where userID = ?"
     };
@@ -141,7 +124,7 @@ void Account::updateActiveStatus() {
 
 // check if a user is active or not
 bool Account::checkActiveStatus(std::string firstname, std::string lastname, std::string password) {
-    std::string statement = "SELECT lastseen FROM users WHERE firstname = ? AND lastname = ? AND password = ? AND (lastseen IS NULL OR lastseen < NOW() - INTERVAL 35 SECOND)";
+    std::string statement = "SELECT LASTSEEN FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ? AND PASSWORD = ? AND (LASTSEEN IS NULL OR LASTSEEN < NOW() - INTERVAL 35 SECOND)";
     auto stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
     stmt -> setString(1, firstname);
     stmt -> setString(2, lastname);
@@ -159,52 +142,4 @@ bool Account::checkActiveStatus(std::string firstname, std::string lastname, std
     }
 
     return false;
-}
-
-User::User(std::shared_ptr<sql::Connection> conn) : Account(conn) {
-    this -> conn = conn;
-}
-
-void User::setUsername(std::string firstname, std::string lastname) {
-    this -> firstname = firstname;
-    this -> lastname = lastname;
-}
-
-
-void User::setPassword(std::string password) {
-    this -> password = password;
-}
-
-std::string User::getFirstName() {
-    return this -> firstname;
-}
-
-
-std::string User::getLastName() {
-    return this -> lastname;
-}
-
-std::string User::getPassword() {
-    return this -> password;
-}
-
-
-bool User::login() {
-    return autheticateLogin(
-        this -> firstname, 
-        this -> lastname, 
-        this -> password
-    );
-}
-
-std::string User::fetchUsername() {
-    auto convertToUpper = [](std::string username) -> std::string {
-        for(char& c: username) {
-            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
-        }
-        return username;
-    };
-
-    std::string username = convertToUpper(this -> getFirstName() + " " + getLastName());
-    return username;
 }

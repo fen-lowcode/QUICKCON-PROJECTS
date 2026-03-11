@@ -1,20 +1,16 @@
-#pragma once
-
-#include <mariadb/conncpp/Connection.hpp>
-#include <mariadb/conncpp/Driver.hpp>
-#include <memory>
-#include <sodium/crypto_hash_sha256.h>
 #include <wx/wx.h>
-#include <sodium.h>
+#include <memory>
 #include <mariadb/conncpp.hpp>
 #include <thread>
-
-
+#include <chrono>
+#include "logs.hpp"
+#include "sstream"
 
 class Account {
 
 protected:
 
+    std::shared_ptr<spdlog::logger> FILE_LOG;
     std::shared_ptr<sql::Connection> conn;
 
     struct accountInfo {
@@ -26,9 +22,12 @@ protected:
 
 public:
 
-    Account(std::shared_ptr<sql::Connection> conn) {
+    Account(std::shared_ptr<spdlog::logger>  FILE_LOG, std::shared_ptr<sql::Connection> conn) {
+        this -> FILE_LOG = FILE_LOG;
         this -> conn = conn;
     };
+
+    std::shared_ptr<sql::Connection> getConnection();
 
     // verify user crendentials
     bool autheticateLogin( const std::string& firstname,const std::string& lastname,const std::string& password);  
@@ -41,33 +40,6 @@ public:
 
     // check the active status of a user
     bool checkActiveStatus(std::string firstname, std::string lastname, std::string password);
-    
 
-    // identifis collctors;
-    void identifyCollectors();
 };
 
-
-
-class User : public Account{
-
-private:
-    std::string firstname;
-    std::string lastname;
-    std::string password;
-
-public:
-
-    User(std::shared_ptr<sql::Connection> conn);
-
-    std::shared_ptr<sql::Connection> conn;
-    
-    void setUsername(std::string firstname, std::string lastname);
-    void setPassword(std::string password);
-    std::string getFirstName();
-    std::string getLastName();
-    std::string getPassword();
-
-    std::string fetchUsername();
-    bool login();
-};

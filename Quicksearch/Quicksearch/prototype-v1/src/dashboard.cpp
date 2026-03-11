@@ -1,11 +1,5 @@
 #include "dashboard.hpp"
-#include "wx/event.h"
-#include "wx/gdicmn.h"
-#include "wx/gtk/button.h"
-#include "wx/gtk/srchctrl.h"
-#include "wx/sizer.h"
 #include "wx/string.h"
-#include "wx/wx.h"
 
 
 DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
@@ -65,7 +59,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     mainSizer->Add(searchSizer, 0, wxLEFT | wxRIGHT | wxTOP | wxBOTTOM, 20);
 
     refreshButton -> Bind(wxEVT_BUTTON, [this, user](wxCommandEvent& event){
-        loadCustomers(user -> conn);
+        loadCustomers(user -> getConnection());
     });
     
     // =========================
@@ -82,27 +76,28 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     resultList->SetFont(dataTableFont);
 
     // Set all collumn
-    resultList->InsertColumn(0,  "Firstname", wxLIST_FORMAT_LEFT, 120);
-    resultList->InsertColumn(1,  "Lastname", wxLIST_FORMAT_LEFT, 120);
-    resultList->InsertColumn(2,  "Age", wxLIST_FORMAT_LEFT, 50);
-    resultList->InsertColumn(3,  "Sex", wxLIST_FORMAT_LEFT, 50);
-    resultList->InsertColumn(4,  "Contact", wxLIST_FORMAT_LEFT, 120);
-    resultList->InsertColumn(5,  "Occupation", wxLIST_FORMAT_LEFT, 150);
-    resultList->InsertColumn(6,  "Date of Birth", wxLIST_FORMAT_LEFT, 110);
-    resultList->InsertColumn(7,  "Place of Birth", wxLIST_FORMAT_LEFT, 150);
-    resultList->InsertColumn(8,  "Address", wxLIST_FORMAT_LEFT, 250);
-    resultList->InsertColumn(9,  "Plan (Mbps)", wxLIST_FORMAT_LEFT, 90);
-    resultList->InsertColumn(10, "Date Applied", wxLIST_FORMAT_LEFT, 110);
-    resultList->InsertColumn(11, "LP", wxLIST_FORMAT_LEFT, 60);
-    resultList->InsertColumn(12, "NP", wxLIST_FORMAT_LEFT, 60);
-    resultList->InsertColumn(13, "Port", wxLIST_FORMAT_LEFT, 60);
-    resultList->InsertColumn(14, "Optical", wxLIST_FORMAT_LEFT, 70);
-    resultList->InsertColumn(15, "SC Connector", wxLIST_FORMAT_LEFT, 110);
-    resultList->InsertColumn(16, "FbrDrop", wxLIST_FORMAT_LEFT, 80);
-    resultList->InsertColumn(17, "Tapping", wxLIST_FORMAT_LEFT, 80);
-    resultList->InsertColumn(18, "Cable Tie", wxLIST_FORMAT_LEFT, 90);
-    resultList->InsertColumn(19, "FClamp", wxLIST_FORMAT_LEFT, 80);
-    resultList->InsertColumn(20, "Installed By", wxLIST_FORMAT_LEFT, 140);
+    resultList->InsertColumn(0,  "Credentials", wxLIST_FORMAT_LEFT, 100);
+    resultList->InsertColumn(1,  "Firstname", wxLIST_FORMAT_LEFT, 120);
+    resultList->InsertColumn(2,  "Lastname", wxLIST_FORMAT_LEFT, 120);
+    resultList->InsertColumn(3,  "Age", wxLIST_FORMAT_LEFT, 50);
+    resultList->InsertColumn(4,  "Sex", wxLIST_FORMAT_LEFT, 50);
+    resultList->InsertColumn(5,  "Contact", wxLIST_FORMAT_LEFT, 120);
+    resultList->InsertColumn(6,  "Occupation", wxLIST_FORMAT_LEFT, 150);
+    resultList->InsertColumn(7,  "Date of Birth", wxLIST_FORMAT_LEFT, 110);
+    resultList->InsertColumn(8,  "Place of Birth", wxLIST_FORMAT_LEFT, 150);
+    resultList->InsertColumn(9,  "Address", wxLIST_FORMAT_LEFT, 250);
+    resultList->InsertColumn(10,  "Plan (Mbps)", wxLIST_FORMAT_LEFT, 90);
+    resultList->InsertColumn(11, "Date Applied", wxLIST_FORMAT_LEFT, 110);
+    resultList->InsertColumn(12, "LP", wxLIST_FORMAT_LEFT, 60);
+    resultList->InsertColumn(13, "NP", wxLIST_FORMAT_LEFT, 60);
+    resultList->InsertColumn(14, "Port", wxLIST_FORMAT_LEFT, 60);
+    resultList->InsertColumn(15, "Optical", wxLIST_FORMAT_LEFT, 70);
+    resultList->InsertColumn(16, "SC Connector", wxLIST_FORMAT_LEFT, 110);
+    resultList->InsertColumn(17, "FbrDrop", wxLIST_FORMAT_LEFT, 80);
+    resultList->InsertColumn(18, "Tapping", wxLIST_FORMAT_LEFT, 80);
+    resultList->InsertColumn(19, "Cable Tie", wxLIST_FORMAT_LEFT, 90);
+    resultList->InsertColumn(20, "FClamp", wxLIST_FORMAT_LEFT, 80);
+    resultList->InsertColumn(21, "Installed By", wxLIST_FORMAT_LEFT, 140);
 
     resultList->SetBackgroundColour(*wxWHITE);
 
@@ -110,7 +105,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
 
     panel->SetSizer(mainSizer);
 
-    loadCustomers(user -> conn);
+    loadCustomers(user -> getConnection());
 }
 
 

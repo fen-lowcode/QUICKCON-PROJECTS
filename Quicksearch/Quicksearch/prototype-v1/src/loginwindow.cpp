@@ -1,5 +1,5 @@
 #include "loginwindow.hpp"
-#include "accountuser.hpp"
+#include "user.hpp"
 #include "wx/gdicmn.h"
 #include "wx/msgdlg.h"
 #include "wx/sizer.h"
@@ -152,7 +152,6 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
         // checks if the user have already an open session
         if (user -> checkActiveStatus(user->getFirstName(), user->getLastName(), user -> getPassword())) {
             user -> checkIsAdmin();
-            user -> identifyCollectors();
             std::thread t = std::thread(&User::updateActiveStatus, user);
             t.detach();
 
