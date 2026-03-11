@@ -1,5 +1,4 @@
 #include "dashboard.hpp"
-#include "wx/string.h"
 
 
 DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
