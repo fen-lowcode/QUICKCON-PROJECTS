@@ -18,4 +18,7 @@ March 7
     Logical:
         *   Add a featuree in Dashboard window where it has a profile and the user name at the side  DONE
         *   Display a list bar where it shows all the collectors under a user                   
-        *   Make the Dashboard Bar look prettier                                        
+        *   Make the Dashboard Bar look prettier  
+March 11:
+
+    add Logs to all classes and functionalitiess
