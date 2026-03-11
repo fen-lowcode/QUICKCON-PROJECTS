@@ -28,3 +28,8 @@
 [2026-03-11 15:14:53.882] [file-log] [info] Fetching password from the database
 [2026-03-11 15:14:54.675] [file-log] [warning] User was not found in the database
 [2026-03-11 15:14:54.675] [file-log] [error] SQL failure from account authentication
+[2026-03-11 20:12:17.854] [file-log] [info] Database connection established
+[2026-03-11 20:38:09.272] [file-log] [info] Database connection established
+[2026-03-11 20:38:23.383] [file-log] [info] Fetching password from the database
+[2026-03-11 20:38:23.383] [file-log] [info] Checking if input password is correct
+[2026-03-11 20:38:23.384] [file-log] [info] Login success User: 1
