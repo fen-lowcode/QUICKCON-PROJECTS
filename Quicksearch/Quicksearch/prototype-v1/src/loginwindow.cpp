@@ -172,7 +172,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
             // spawn admin panel window
             if(user -> checkIsAdmin()) {
-                AdminPanel* adminpanel = new AdminPanel("Quicksearch Admin Panel");
+                AdminPanel* adminpanel = new AdminPanel("Quicksearch Admin Panel", user);
                 adminpanel -> Show();
             }
 
@@ -182,7 +182,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
             LOGWARNING(FILE_LOG, "Login: Attempted Multiple Session");
             wxMessageBox(
-                "This user is already active, or just recently log out if you are the owner of this account just wait for a 30 seconds befor logging in again", 
+                "This user is already active, or just recently log out if you are the owner of this account just wait for 30 seconds then try in again", 
                 "Login failure"
             );
         }
