@@ -1,13 +1,18 @@
+#include "user.hpp"
 #include "wx/string.h"
-#include "wx/listctrl.h"
+#include <memory>
+#include <wx/listctrl.h>
 #include <wx/wx.h>
+#include <mariadb/conncpp.hpp>
+#include <wx/dataview.h>
 
 class AdminPanel : public wxFrame {
 public: 
-    AdminPanel(const wxString& title);
+    AdminPanel(const wxString& title, std::shared_ptr<User> user);
 
 private:
-    wxFont uiFont;
-    wxPanel* panel;
-    wxSizer* mainSizer;
+    std::shared_ptr<User> user;
+    // wxListCtrl* userTable;
+    wxDataViewListCtrl* userTable;
+    void showUserMasterlist();
 };

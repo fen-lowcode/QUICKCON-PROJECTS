@@ -104,7 +104,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
 
     panel->SetSizer(mainSizer);
 
-    loadCustomers(user -> getConnection());
+    // loadCustomers(user -> getConnection());
 }
 
 
