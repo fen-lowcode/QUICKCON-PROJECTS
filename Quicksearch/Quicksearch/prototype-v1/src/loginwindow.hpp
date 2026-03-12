@@ -8,17 +8,25 @@
 #include <iomanip>
 #include <memory>
 #include "dashboard.hpp"
-
-
-#define LOGO "./assets/quicksearch_logo.png"
+#include "wx/gdicmn.h"
+#include "wx/generic/statusbr.h"
+#include "wx/statbmp.h"
+#include "logs.hpp"
+#include "adminpanel.hpp"
 
 class LoginWindow : public wxFrame {
 public:
-    LoginWindow(const std::string& title, std::shared_ptr<User> user);
+    LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG ,const std::string& title, std::shared_ptr<User> user);
 
 private:
-
     std::shared_ptr<User> user;
+    std::shared_ptr<spdlog::logger> FILE_LOG;
+
+    wxPanel* panel;
+    wxBoxSizer* mainSizer;
+    wxBoxSizer* userNameSizer;
+    wxStaticBitmap* logo;
+
     std::shared_ptr<wxTextCtrl> firstnameBox;
     std::shared_ptr<wxTextCtrl> lastnameBox;
     std::shared_ptr<wxTextCtrl> passwordBox;
@@ -28,6 +36,8 @@ private:
     
     std::string hashPassword(std::string passBuffer);
 
+    void setUpLogo();
+    void setUpInputBoxes();
     void btnEvents();
     void initializeLogin(wxCommandEvent& event);
 };

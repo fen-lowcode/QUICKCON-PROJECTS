@@ -1,6 +1,7 @@
 #include <wx/wx.h>
 #include <memory>
 #include <mariadb/conncpp.hpp>
+#include <sodium.h>
 #include <thread>
 #include <chrono>
 #include "logs.hpp"

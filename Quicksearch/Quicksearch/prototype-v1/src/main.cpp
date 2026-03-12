@@ -16,7 +16,7 @@ public:
         auto conn = db -> connToDB();
     
         auto user = std::make_shared<User>(FILE_LOG, conn);
-        LoginWindow* loginWindow = new LoginWindow("Welcome to Quicksearch", user);
+        LoginWindow* loginWindow = new LoginWindow(FILE_LOG, "Welcome to Quicksearch", user);
         loginWindow -> Show();
 
         return true;
