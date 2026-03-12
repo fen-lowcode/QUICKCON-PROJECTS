@@ -165,14 +165,16 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
             
             std::thread t = std::thread(&User::updateActiveStatus, user);
             t.detach();
+            
+            // spawn dashboard window
+            DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
+            dashboard -> Show();
 
+            // spawn admin panel window
             if(user -> checkIsAdmin()) {
                 AdminPanel* adminpanel = new AdminPanel("Quicksearch Admin Panel");
                 adminpanel -> Show();
             }
-
-            DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
-            dashboard -> Show();
 
 
             this -> Destroy();
