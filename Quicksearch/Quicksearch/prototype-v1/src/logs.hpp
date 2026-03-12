@@ -16,6 +16,7 @@
 
 inline std::shared_ptr<spdlog::logger> initLog() {
     try {
+        spdlog::set_level(spdlog::level::debug);
         auto FILE_LOGS = spdlog::basic_logger_mt("file-log", "./tmp/logs.txt");
         FILE_LOGS->flush_on(spdlog::level::info);
         return FILE_LOGS;
@@ -24,6 +25,12 @@ inline std::shared_ptr<spdlog::logger> initLog() {
         spdlog::error("Failed to initialize logger file(logs.txt)");
         exit (EXIT_FAILURE);
     }
+}
+
+
+inline void LOGDEBUG(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> debug(msg);
+    spdlog::debug(msg);
 }
 
 inline void LOGINFO(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {

@@ -1,14 +1,6 @@
 #pragma once
 
-#include <mariadb/conncpp/Connection.hpp>
-#include <mariadb/conncpp/Driver.hpp>
 #include <memory>
-#include <sodium/crypto_hash_sha256.h>
-#include <wx/wx.h>
-#include <sodium.h>
-#include <mariadb/conncpp.hpp>
-#include <thread>
-
 #include "account.hpp"
 
 

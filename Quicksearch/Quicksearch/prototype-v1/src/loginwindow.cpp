@@ -1,46 +1,55 @@
 #include "loginwindow.hpp"
-#include "user.hpp"
+#include "logs.hpp"
+#include <cstdio>
+#include <sstream>
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
 
-LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
+#define LOGO "./assets/quicksearch_logo.png"
+
+LoginWindow::LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG, const std::string& title, std::shared_ptr<User> user)
     : wxFrame(nullptr, wxID_ANY, title,
             wxDefaultPosition, wxSize(WINDOW_WIDTH, WINDOW_HEIGHT),
             wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX)
 {
-
+    this -> FILE_LOG = FILE_LOG;
     this -> user = user;
     this->Center();
 
-    // every widget goes in this panel 
-    wxPanel* panel = new wxPanel(this);
-    wxSize panelFizedSize {300, 400};
+    // setting up panel,  every widget goes in this panel 
+    panel = new wxPanel(this); panel -> SetMinSize({300, 400});
+    panel -> SetMaxSize({300, 400}); panel->SetBackgroundColour( wxColour(*wxWHITE));
 
-    panel -> SetMinSize(panelFizedSize);
-    panel -> SetMaxSize(panelFizedSize);
-    panel->SetBackgroundColour( wxColour(*wxWHITE));
+    mainSizer = new wxBoxSizer(wxVERTICAL); 
+    userNameSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL); 
-    wxBoxSizer* usernamesizer = new wxBoxSizer(wxHORIZONTAL);
+    // render logo
 
-    // --- Logo image ---
-    wxImage::AddHandler(new wxPNGHandler());        // to handle png file
-    wxImage img(LOGO, wxBITMAP_TYPE_PNG);    // load png image
-    wxStaticBitmap* logo;
+    this -> setUpLogo(); // Render QuickSearch Logo
+    this -> setUpInputBoxes(); // render input boxes
 
-    // check if logo is loaded properly
-    if (img.IsOk()) {
-        img = img.Scale(270, 110, wxIMAGE_QUALITY_HIGH);
-        wxBitmap bitmap(img);
-        mainSizer->AddStretchSpacer(2);
-        // show image
-        logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
-    }
-    // Place holder logic for firstname and lastname box
+    // asign position to all elements 
+    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
+    mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
+    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
+    userNameSizer->Add(firstnameBox.get(), 0, wxALIGN_CENTER, 50);
+    userNameSizer-> AddSpacer(10);
+    userNameSizer->Add(lastnameBox.get(), 0, wxALIGN_CENTER, 50);
+    mainSizer -> Add(userNameSizer, 0, wxALIGN_CENTER);
+    mainSizer-> AddStretchSpacer(1);
+    mainSizer->Add(passwordBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
+    mainSizer-> AddSpacer(10);  // push everything to vertical center
+    mainSizer->Add(btnEnter.get(), 0, wxALIGN_CENTER);
+    mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
+    panel->SetSizer(mainSizer);
 
+    this -> btnEvents();
+}
+
+
+void LoginWindow::setUpInputBoxes() {
     wxFont fontstyle(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_LIGHT);
-
     // --- Firstname text box ---
     firstnameBox = std::make_unique<wxTextCtrl>(
             panel, wxID_ANY, "", wxDefaultPosition, 
@@ -62,30 +71,33 @@ LoginWindow::LoginWindow(const std::string& title, std::shared_ptr<User> user)
     btnEnter = std::make_shared<wxButton>(
         panel, wxID_ANY, "LOGIN", wxDefaultPosition,
         wxSize(200,30), wxBORDER_NONE
-    ); btnEnter->SetBackgroundColour(*wxWHITE);
+    ); btnEnter->SetBackgroundColour(*wxWHITE); btnEnter -> SetFont(fontstyle);
+}
 
-    btnEnter -> SetFont(fontstyle);
 
-    // ---- set all widgets into their proper position
-    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
-    mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
-     mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
-    usernamesizer->Add(firstnameBox.get(), 0, wxALIGN_CENTER, 50);
-    usernamesizer-> AddSpacer(10);
-    usernamesizer->Add(lastnameBox.get(), 0, wxALIGN_CENTER, 50);
-    mainSizer -> Add(usernamesizer, 0, wxALIGN_CENTER);
-    mainSizer-> AddStretchSpacer(1);
-    mainSizer->Add(passwordBox.get(), 0, wxALIGN_CENTER | wxBOTTOM);
-    mainSizer-> AddSpacer(10);  // push everything to vertical center
-    mainSizer->Add(btnEnter.get(), 0, wxALIGN_CENTER);
-    mainSizer-> AddStretchSpacer(4);  // push everything to vertical center
-    panel->SetSizer(mainSizer);
-    this -> btnEvents();
+// loads the image and define it's properpties
+void LoginWindow::setUpLogo() {
 
+    LOGINFO(FILE_LOG, "Login: Initializing logo image");
+    wxImage::AddHandler(new wxPNGHandler());        // to handle png file
+    wxImage logoImg(LOGO, wxBITMAP_TYPE_PNG);    // load png image
+
+    // check if logo is loaded properly
+    if (logoImg.IsOk()) {
+        LOGINFO(FILE_LOG, "Login: Initialized Logo image");
+        logoImg = logoImg.Scale(270, 110, wxIMAGE_QUALITY_HIGH);
+        wxBitmap bitmap(logoImg);
+        logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
+
+    } else {
+        LOGERROR(FILE_LOG, "Login: Failed to initialize logo");
+        exit(-1);
+    }
 }
 
 // hashes the password into sha256 and converts the hash into a 64 byte long string 
 std::string LoginWindow::hashPassword(std::string passBuffer) {
+
     unsigned char hash[crypto_hash_sha256_BYTES];
 
     // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
@@ -133,6 +145,8 @@ void LoginWindow::btnEvents() {
 
 void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
+    LOGDEBUG(FILE_LOG, "LOGIN BUTTON IS CLICKED");
+
     user -> setUsername(
         firstnameBox->GetValue().ToStdString(), 
         lastnameBox->GetValue().ToStdString()
@@ -146,16 +160,25 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
     if (user -> login() == true) {
 
         // checks if the user have already an open session
-        if (user -> checkActiveStatus(user->getFirstName(), user->getLastName(), user -> getPassword())) {
-            user -> checkIsAdmin();
+        // must return FALSE to let the user proceed 
+        if (!user -> checkActiveStatus(user->getFirstName(), user->getLastName(), user -> getPassword())) {
+            
             std::thread t = std::thread(&User::updateActiveStatus, user);
             t.detach();
+
+            if(user -> checkIsAdmin()) {
+                AdminPanel* adminpanel = new AdminPanel("Quicksearch Admin Panel");
+                adminpanel -> Show();
+            }
 
             DataDashboard* dashboard = new DataDashboard("Quicksearch Data Management", user);
             dashboard -> Show();
 
+
             this -> Destroy();
         } else  {
+
+            LOGWARNING(FILE_LOG, "Login: Attempted Multiple Session");
             wxMessageBox(
                 "This user is already active, or just recently log out if you are the owner of this account just wait for a 30 seconds befor logging in again", 
                 "Login failure"

@@ -113,10 +113,10 @@ class Database : public Adduser {
 
 private:
 
-    std::string host = "127.0.0.1";
-    std::string user = "fen";
-    std::string userpassword = "1234";
-    std::string database = "test";
+    std::string host = "192.168.1.16";
+    std::string user = "quicksearch";
+    std::string userpassword = "G=]&I[v;k!gbegi(PLQh";
+    std::string database = "quickcon_data";
     unsigned int port = 3306;
 
 public:
@@ -141,7 +141,7 @@ public:
     void insertNewusertoDB(sql::Connection * conn) {
 
         try {
-            sql::PreparedStatement* stmt = conn -> prepareStatement("INSERT INTO users(FIRSTNAME, LASTNAME, PASSWORD, ISADMIN) value (?, ?, ?, ?)");
+            sql::PreparedStatement* stmt = conn -> prepareStatement("INSERT INTO USERS(FIRSTNAME, LASTNAME, PASSWORD, ISADMIN) value (?, ?, ?, ?)");
             stmt -> setString(1, firstname);
             stmt -> setString(2, lastname);
             stmt -> setString(3, password);

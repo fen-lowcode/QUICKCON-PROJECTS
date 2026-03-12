@@ -13,6 +13,29 @@ void User::setPassword(std::string password) {
     this -> password = password;
 }
 
+
+bool User::login() {
+    return autheticateLogin(
+        this -> firstname, 
+        this -> lastname, 
+        this -> password
+    );
+}
+
+// Getters
+
+std::string User::fetchUsername() {
+    auto convertToUpper = [](std::string username) -> std::string {
+        for(char& c: username) {
+            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+        }
+        return username;
+    };
+
+    std::string username = convertToUpper(this -> getFirstName() + " " + getLastName());
+    return username;
+}
+
 std::string User::getFirstName() {
     return this -> firstname;
 }
@@ -27,22 +50,3 @@ std::string User::getPassword() {
 }
 
 
-bool User::login() {
-    return autheticateLogin(
-        this -> firstname, 
-        this -> lastname, 
-        this -> password
-    );
-}
-
-std::string User::fetchUsername() {
-    auto convertToUpper = [](std::string username) -> std::string {
-        for(char& c: username) {
-            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
-        }
-        return username;
-    };
-
-    std::string username = convertToUpper(this -> getFirstName() + " " + getLastName());
-    return username;
-}

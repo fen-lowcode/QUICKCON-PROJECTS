@@ -1,10 +1,10 @@
 
 #include "databaseconnect.hpp"
 
-#define HOST "127.0.0.1"
-#define USER "fen"
-#define UPASSWORD "1234"
-#define DATABASE "test"
+#define HOST "192.168.1.16"
+#define USER "quicksearch"
+#define UPASSWORD "G=]&I[v;k!gbegi(PLQh"
+#define DATABASE "quickcon_data"
 #define PORT 3306
 
 DatabaseConnect::DatabaseConnect(std::shared_ptr<spdlog::logger> FILE_LOG) {

@@ -34,3 +34,163 @@
 [2026-03-11 20:38:23.383] [file-log] [info] Checking if input password is correct
 [2026-03-11 20:38:23.384] [file-log] [info] Login success User: 1
 [2026-03-11 20:42:07.831] [file-log] [info] Database connection established
+[2026-03-11 21:02:58.763] [file-log] [info] Database connection established
+[2026-03-11 21:03:49.822] [file-log] [info] Fetching password from the database
+[2026-03-11 21:03:49.822] [file-log] [info] Checking if input password is correct
+[2026-03-11 21:03:49.822] [file-log] [info] Login success User: 1
+[2026-03-11 21:15:52.173] [file-log] [info] Database connection established
+[2026-03-11 21:17:30.376] [file-log] [info] Database connection established
+[2026-03-11 21:17:46.597] [file-log] [info] Fetching password from the database
+[2026-03-11 21:17:46.597] [file-log] [info] Checking if input password is correct
+[2026-03-11 21:17:46.597] [file-log] [info] Login success User: 1
+[2026-03-12 08:55:12.972] [file-log] [info] Database connection established
+[2026-03-12 08:55:51.629] [file-log] [info] Fetching password from the database
+[2026-03-12 08:55:51.629] [file-log] [info] Checking if input password is correct
+[2026-03-12 08:55:51.629] [file-log] [info] Login success User: 1
+[2026-03-12 09:07:00.979] [file-log] [info] Database connection established
+[2026-03-12 09:07:35.124] [file-log] [info] Fetching password from the database
+[2026-03-12 09:07:35.124] [file-log] [info] Checking if input password is correct
+[2026-03-12 09:07:35.124] [file-log] [info] Login success User: 5
+[2026-03-12 09:57:19.514] [file-log] [info] Database connection established
+[2026-03-12 09:57:33.906] [file-log] [info] Fetching password from the database
+[2026-03-12 09:57:33.906] [file-log] [info] Checking if input password is correct
+[2026-03-12 09:57:34.263] [file-log] [warning] Login failure input password don't match
+[2026-03-12 09:57:40.013] [file-log] [info] Fetching password from the database
+[2026-03-12 09:57:40.013] [file-log] [info] Checking if input password is correct
+[2026-03-12 09:57:40.013] [file-log] [info] Login success User: 1
+[2026-03-12 10:07:53.706] [file-log] [info] Database connection established
+[2026-03-12 10:08:09.331] [file-log] [info] Fetching password from the database
+[2026-03-12 10:08:09.332] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:08:10.178] [file-log] [warning] Login failure input password don't match
+[2026-03-12 10:08:18.314] [file-log] [info] Fetching password from the database
+[2026-03-12 10:08:18.314] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:08:19.457] [file-log] [warning] Login failure input password don't match
+[2026-03-12 10:08:26.377] [file-log] [info] Fetching password from the database
+[2026-03-12 10:08:26.377] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:08:27.145] [file-log] [warning] Login failure input password don't match
+[2026-03-12 10:08:32.832] [file-log] [info] Fetching password from the database
+[2026-03-12 10:08:32.832] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:08:33.593] [file-log] [warning] Login failure input password don't match
+[2026-03-12 10:08:41.070] [file-log] [info] Fetching password from the database
+[2026-03-12 10:08:41.070] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:08:41.070] [file-log] [info] Login success User: 1
+[2026-03-12 10:36:41.289] [file-log] [info] Database connection established
+[2026-03-12 10:36:41.296] [file-log] [info] Loginpage: Initializing logo image
+[2026-03-12 10:36:41.299] [file-log] [info] Loginpage: Initialized Logo image
+[2026-03-12 10:36:41.302] [file-log] [info] Loginpage: Initializing input boxes
+[2026-03-12 10:36:58.587] [file-log] [info] Fetching password from the database
+[2026-03-12 10:36:58.587] [file-log] [info] Checking if input password is correct
+[2026-03-12 10:36:58.588] [file-log] [info] Login success User: 1
+[2026-03-12 11:18:57.143] [file-log] [info] Database connection established
+[2026-03-12 11:18:57.146] [file-log] [info] Loginpage: Initializing logo image
+[2026-03-12 11:18:57.148] [file-log] [info] Loginpage: Initialized Logo image
+[2026-03-12 11:18:57.150] [file-log] [info] Loginpage: Initializing input boxes
+[2026-03-12 11:19:07.741] [file-log] [info] Fetching password from the database
+[2026-03-12 11:19:07.741] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:19:07.741] [file-log] [info] Login success User: 1
+[2026-03-12 11:33:44.128] [file-log] [info] Database connection established
+[2026-03-12 11:33:44.134] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:33:44.138] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:33:44.140] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 11:33:55.289] [file-log] [info] login: Hashing input password
+[2026-03-12 11:33:55.299] [file-log] [info] Fetching password from the database
+[2026-03-12 11:33:55.299] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:33:55.299] [file-log] [info] Login success User: 1
+[2026-03-12 11:33:55.313] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-12 11:38:45.060] [file-log] [info] Database connection established
+[2026-03-12 11:38:45.065] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:38:45.069] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:38:45.071] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 11:38:48.975] [file-log] [info] login: Hashing input password
+[2026-03-12 11:38:48.979] [file-log] [info] Fetching password from the database
+[2026-03-12 11:38:49.688] [file-log] [warning] User was not found in the database
+[2026-03-12 11:38:49.689] [file-log] [error] SQL failure from account authentication
+[2026-03-12 11:41:29.063] [file-log] [info] Database connection established
+[2026-03-12 11:41:29.069] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:41:29.072] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:41:29.075] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 11:41:30.188] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:41:30.188] [file-log] [info] login: Hashing input password
+[2026-03-12 11:41:30.191] [file-log] [info] Fetching password from the database
+[2026-03-12 11:41:31.508] [file-log] [warning] User was not found in the database
+[2026-03-12 11:41:31.508] [file-log] [error] SQL failure from account authentication
+[2026-03-12 11:41:48.105] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:41:48.105] [file-log] [info] login: Hashing input password
+[2026-03-12 11:41:48.172] [file-log] [info] Fetching password from the database
+[2026-03-12 11:41:48.172] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:41:48.172] [file-log] [info] Login success User: 1
+[2026-03-12 11:54:40.470] [file-log] [info] Database connection established
+[2026-03-12 11:54:40.474] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:54:40.476] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:54:40.477] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 11:54:54.751] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:54:54.751] [file-log] [info] login: Hashing input password
+[2026-03-12 11:54:54.762] [file-log] [info] Fetching password from the database
+[2026-03-12 11:54:54.762] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:54:54.763] [file-log] [info] Login success User: 1
+[2026-03-12 11:56:35.498] [file-log] [info] Database connection established
+[2026-03-12 11:56:35.501] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:56:35.503] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:56:35.504] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 11:56:42.597] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:56:42.597] [file-log] [info] login: Hashing input password
+[2026-03-12 11:56:42.724] [file-log] [info] Fetching password from the database
+[2026-03-12 11:56:42.724] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:56:44.150] [file-log] [warning] Login failure input password don't match
+[2026-03-12 11:56:48.117] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:56:48.117] [file-log] [info] login: Hashing input password
+[2026-03-12 11:56:48.122] [file-log] [info] Fetching password from the database
+[2026-03-12 11:56:48.123] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:56:48.886] [file-log] [warning] Login failure input password don't match
+[2026-03-12 11:56:57.828] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 11:56:57.828] [file-log] [info] login: Hashing input password
+[2026-03-12 11:56:57.883] [file-log] [info] Fetching password from the database
+[2026-03-12 11:56:57.883] [file-log] [info] Checking if input password is correct
+[2026-03-12 11:56:57.883] [file-log] [info] Login success User: 1
+[2026-03-12 11:59:49.052] [file-log] [info] Database connection established
+[2026-03-12 11:59:49.055] [file-log] [info] Login: Initializing logo image
+[2026-03-12 11:59:49.057] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 11:59:49.058] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 12:00:02.647] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 12:00:02.647] [file-log] [info] login: Hashing input password
+[2026-03-12 12:00:02.659] [file-log] [info] Fetching password from the database
+[2026-03-12 12:00:02.659] [file-log] [info] Checking if input password is correct
+[2026-03-12 12:00:02.659] [file-log] [info] Login success User: 1
+[2026-03-12 12:01:51.778] [file-log] [info] Database connection established
+[2026-03-12 12:01:51.781] [file-log] [info] Login: Initializing logo image
+[2026-03-12 12:01:51.783] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 12:01:51.785] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 12:02:02.077] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 12:02:02.077] [file-log] [info] login: Hashing input password
+[2026-03-12 12:02:02.237] [file-log] [info] Fetching password from the database
+[2026-03-12 12:02:02.237] [file-log] [info] Checking if input password is correct
+[2026-03-12 12:02:02.237] [file-log] [info] Login success User: 1
+[2026-03-12 12:02:27.958] [file-log] [info] Database connection established
+[2026-03-12 12:02:27.964] [file-log] [info] Login: Initializing logo image
+[2026-03-12 12:02:27.968] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 12:02:27.970] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 12:02:37.584] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 12:02:37.584] [file-log] [info] login: Hashing input password
+[2026-03-12 12:02:37.678] [file-log] [info] Fetching password from the database
+[2026-03-12 12:02:37.678] [file-log] [info] Checking if input password is correct
+[2026-03-12 12:02:37.678] [file-log] [info] Login success User: 2
+[2026-03-12 12:02:37.691] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-12 12:02:44.438] [file-log] [info] Database connection established
+[2026-03-12 12:02:44.443] [file-log] [info] Login: Initializing logo image
+[2026-03-12 12:02:44.445] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 12:02:44.446] [file-log] [info] Login: Initializing input boxes
+[2026-03-12 12:02:53.237] [file-log] [debug] Login: Login button is clicked
+[2026-03-12 12:02:53.237] [file-log] [info] login: Hashing input password
+[2026-03-12 12:02:53.246] [file-log] [info] Fetching password from the database
+[2026-03-12 12:02:53.246] [file-log] [info] Checking if input password is correct
+[2026-03-12 12:02:53.246] [file-log] [info] Login success User: 1
+[2026-03-12 12:02:53.248] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-12 12:09:50.365] [file-log] [info] Database connection established
+[2026-03-12 12:09:50.369] [file-log] [info] Login: Initializing logo image
+[2026-03-12 12:09:50.371] [file-log] [info] Login: Initialized Logo image
+[2026-03-12 12:09:59.803] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-12 12:09:59.819] [file-log] [info] Fetching password from the database
+[2026-03-12 12:09:59.819] [file-log] [info] Login success User: 1
+[2026-03-12 12:10:00.000] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-12 12:10:00.197] [file-log] [info] Account is Admin

@@ -1,5 +1,7 @@
 
 #include "account.hpp"
+#include "logs.hpp"
+#include <ios>
 
 
 // check if the credentials matches from the database
@@ -29,22 +31,15 @@ bool Account::autheticateLogin(
             LOGWARNING(FILE_LOG, "User was not found in the database");
         } 
 
-
         // place the password hash from the database and put it in a temporary variable for comparison
-        std::string passwordFromDB = std::string(res->getString("PASSWORD")); 
-
-        // check if password don't matches from what is in the database
-        LOGINFO(this-> FILE_LOG, "Checking if input password is correct");
-
+        std::string passwordFromDB = std::string(res->getString("PASSWORD"));
         if( password != passwordFromDB) {   
             wxMessageBox("Wrong password please try again", "Login failure", wxOK | wxICON_ERROR);
-            LOGWARNING(FILE_LOG, "Login failure input password don't match");
             return false;
         }
 
         // assign userID from the database
         accountinfo.userID = res->getInt("userID"); 
-    
         std::stringstream logMessage; logMessage << "Login success " << "User: " << accountinfo.userID;
         LOGINFO(FILE_LOG, logMessage.str());
 
@@ -63,8 +58,9 @@ std::shared_ptr<sql::Connection> Account::getConnection() {
 
 bool Account::checkIsAdmin() {
 
+    LOGDEBUG(FILE_LOG, "CHECKING ADMIN STATUS");
     auto stmt = std::unique_ptr<sql::PreparedStatement>(
-            conn -> prepareStatement("select isAdmin from users where userid = ?")
+            conn -> prepareStatement("select isAdmin from USERS where userid = ?")
     ); stmt -> setInt(1, accountinfo.userID);
 
     try {
@@ -76,11 +72,10 @@ bool Account::checkIsAdmin() {
             bool result =  res -> getBoolean("isAdmin");
 
             if (result == true) {
-                std::cout << "is account Admin: true\n";
+                LOGINFO(FILE_LOG, "Account is Admin");
                 return true;
             } else {
-                std::cout << "is account Admin: false\n";
-
+                LOGINFO(FILE_LOG, "Account is not Admin");
                 return false;
             }
         }
@@ -132,12 +127,17 @@ bool Account::checkActiveStatus(std::string firstname, std::string lastname, std
         auto res = std::shared_ptr<sql::ResultSet>(stmt -> executeQuery());
 
         if (res -> next()) {
-            return true;
+            return false;
+        } else {
+            std::stringstream logMessage;
+            logMessage << "Attempted Multiple loggin session on User: " << accountinfo.userID << "\n";
+            LOGWARNING(FILE_LOG, logMessage.str());
         }
 
     } catch (sql::SQLException& e) {
+
         std::cout << "SQL error: " << e.what() << std::endl;
     }
 
-    return false;
+    return true;
 }
