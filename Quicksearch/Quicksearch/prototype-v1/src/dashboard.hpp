@@ -2,11 +2,11 @@
 
 #include <iostream>
 #include <wx/wx.h>
-#include <wx/listctrl.h>
+#include <wx/dataview.h>
 #include <wx/srchctrl.h>
 #include "user.hpp"
-#include "wx/gtk/srchctrl.h"
-#include "wx/string.h"
+#include "adminpanel.hpp"
+
 
 
 #define WIDTH 1300
@@ -19,7 +19,7 @@ public:
 private:
     wxSearchCtrl* nameSearchBox;
     wxSearchCtrl* contactSearchBar;
-    wxListCtrl* resultList;
+    wxDataViewListCtrl* customerList;
 
     void loadCustomers(std::shared_ptr<sql::Connection> conn);
 };
