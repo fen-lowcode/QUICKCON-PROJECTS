@@ -9,7 +9,8 @@ SRC = src/main.cpp \
     src/loginwindow.cpp \
     src/databaseconnect.cpp \
     src/dashboard.cpp \
-    src/adminpanel.cpp
+    src/adminpanel.cpp \
+    src/userconfigwindow.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

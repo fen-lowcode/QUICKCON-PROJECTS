@@ -1,5 +1,4 @@
 #include "loginwindow.hpp"
-#include "logs.hpp"
 #include <cstdio>
 #include <sstream>
 
@@ -172,7 +171,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
             // spawn admin panel window
             if(user -> checkIsAdmin()) {
-                AdminPanel* adminpanel = new AdminPanel("Quicksearch Admin Panel", user);
+                AdminPanelWindow * adminpanel = new AdminPanelWindow("Quicksearch Admin Panel", FILE_LOG, user);
                 adminpanel -> Show();
             }
 

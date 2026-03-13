@@ -8,9 +8,6 @@
 #include <iomanip>
 #include <memory>
 #include "dashboard.hpp"
-#include "wx/gdicmn.h"
-#include "wx/generic/statusbr.h"
-#include "wx/statbmp.h"
 #include "logs.hpp"
 #include "adminpanel.hpp"
 
