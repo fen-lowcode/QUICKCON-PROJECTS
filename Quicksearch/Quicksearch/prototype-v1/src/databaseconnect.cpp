@@ -12,6 +12,9 @@ DatabaseConnect::DatabaseConnect(std::shared_ptr<spdlog::logger> FILE_LOG) {
 }
 
 std::shared_ptr<sql::Connection> DatabaseConnect::connToDB() {
+
+    std::stringstream logMessage;
+
     dbcredentials.host = HOST;
     dbcredentials.user = USER;
     dbcredentials.userpassword = UPASSWORD;
@@ -25,13 +28,14 @@ std::shared_ptr<sql::Connection> DatabaseConnect::connToDB() {
         "jdbc:mariadb://" + dbcredentials.host + ":" + std::to_string(dbcredentials.port) + "/" + dbcredentials.database;
 
         std::shared_ptr<sql::Connection> conn (driver->connect(url, dbcredentials.user, dbcredentials.userpassword));
-        LOGINFO(FILE_LOG, "Database connection established");
+        logMessage << "Database connection established on HOST: " << dbcredentials.host << " on PORT: " << dbcredentials.port;
+        LOGINFO(FILE_LOG, logMessage.str());
         return conn;
     }
 
     catch(sql::SQLException& e) {
-        LOGFATAL(FILE_LOG, "Database connection not established");
-        std::cout << "SQL Error: " << e.what() << std::endl;
+        logMessage << "Database connection NOT established on HOST: " << dbcredentials.host << " on PORT: " << dbcredentials.port << "SQL error: " << e.what();
+        LOGFATAL(FILE_LOG, logMessage.str());
         exit(1);
     };
 }

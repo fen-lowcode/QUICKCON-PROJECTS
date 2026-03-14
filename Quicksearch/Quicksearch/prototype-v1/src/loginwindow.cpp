@@ -164,7 +164,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
             t.detach();
 
             //!! spawn dashboard window
-            // (new DataDashboard("Quicksearch Data Management", user)) -> Show();
+            (new DataDashboard("Quicksearch Data Management", user)) -> Show();
 
             // spawn admin panel window
             if(this -> user -> checkIsAdmin()) {
@@ -178,7 +178,7 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
 
             LOGWARNING(FILE_LOG, "Login: Attempted Multiple Session");
             wxMessageBox(
-                "This user is already active, or just recently log out if you are the owner of this account just wait for 30 seconds then try in again", 
+                "This user is already active, or just recently log out if you are the owner of this account just wait for 15 seconds then try in again", 
                 "Login failure"
             );
         }

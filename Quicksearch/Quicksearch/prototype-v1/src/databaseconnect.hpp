@@ -4,6 +4,7 @@
 #include <memory>
 #include <mariadb/conncpp.hpp>
 #include "logs.hpp"
+#include <sstream>
 
 class DatabaseConnect {
 

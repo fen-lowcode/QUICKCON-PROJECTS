@@ -36,13 +36,11 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     gridSizer->Add(this->userIDTab, 0, wxEXPAND);
 
     gridSizer->Add(new wxStaticText(panel, wxID_ANY, "First Name:"), 0, wxALIGN_CENTER_VERTICAL);
-    this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,
-        wxTE_READONLY | wxBORDER_NONE);
+    this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,wxBORDER_NONE);
     gridSizer->Add(this->firstnameTab, 0, wxEXPAND);
 
     gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Last Name:"), 0, wxALIGN_CENTER_VERTICAL);
-    this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize,
-        wxTE_READONLY | wxBORDER_NONE);
+    this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
     gridSizer->Add(this->lastnameTab, 0, wxEXPAND);
 
     gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Admin Status:"), 0, wxALIGN_CENTER_VERTICAL);
@@ -67,8 +65,8 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     saveButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
     this->user->updateUserConfiguration(
         this->userID,
-        std::string(this->firstname),
-        std::string(this->lastname),
+        std::string(this->firstnameTab->GetValue()),
+        std::string(this->lastnameTab->GetValue()),
         (this->adminStatusTab->GetSelection() == 0 ? true : false)
     );
 });
