@@ -42,5 +42,7 @@ public:
     // check the active status of a user
     bool checkActiveStatus(std::string firstname, std::string lastname, std::string password);
 
+
+    void updateUserConfiguration(int userID, std::string firstname, std::string lastname, bool isAdmin);
 };
 

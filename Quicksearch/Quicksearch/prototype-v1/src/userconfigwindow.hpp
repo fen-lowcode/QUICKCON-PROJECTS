@@ -1,19 +1,21 @@
 #pragma once
 #include "wx/choice.h"
 #include "wx/gtk/choice.h"
+#include <memory>
 #include <wx/wx.h>
+#include "user.hpp"
 
 
-//TODO: WORK ON THIS
 
 class UserConfigWindow : public wxFrame {
 
         
 private:
+    std::shared_ptr<User> user;
     wxPanel* panel;
     wxSizer* userNameTab;
 
-    wxString userID;
+    int userID;
     wxString firstname;
     wxString lastname;
     wxString adminStatus;
@@ -24,5 +26,5 @@ private:
     wxChoice* adminStatusTab;
 
 public:
-    UserConfigWindow(const wxString& title, std::string userID, std::string firstname, std::string lastname, std::string adminStatus);
+    UserConfigWindow(const wxString& title, std::shared_ptr<User> user, int userID, wxString  firstname,wxString lastname,wxString adminStatus);
 };

@@ -24,10 +24,10 @@ private:
     wxBoxSizer* userNameSizer;
     wxStaticBitmap* logo;
 
-    std::shared_ptr<wxTextCtrl> firstnameBox;
-    std::shared_ptr<wxTextCtrl> lastnameBox;
-    std::shared_ptr<wxTextCtrl> passwordBox;
-    std::shared_ptr<wxButton> btnEnter;
+    wxTextCtrl* firstnameBox;
+    wxTextCtrl* lastnameBox;
+    wxTextCtrl* passwordBox;
+    wxButton* btnEnter;
 
     bool isClosing {false};
     
@@ -35,6 +35,7 @@ private:
 
     void setUpLogo();
     void setUpInputBoxes();
+    void setupLayout();
     void btnEvents();
     void initializeLogin(wxCommandEvent& event);
 };

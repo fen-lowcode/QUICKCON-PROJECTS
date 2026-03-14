@@ -1412,3 +1412,755 @@
 [2026-03-13 15:15:44.626] [file-log] [debug] User 1 is selected
 [2026-03-13 15:15:51.682] [file-log] [debug] User 5 is selected
 [2026-03-13 15:16:39.203] [file-log] [debug] User 2 is selected
+[2026-03-14 09:32:49.608] [file-log] [info] Database connection established
+[2026-03-14 09:32:49.611] [file-log] [info] Login: Initializing logo image
+[2026-03-14 09:32:49.613] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 09:32:56.016] [file-log] [info] Database connection established
+[2026-03-14 09:32:56.023] [file-log] [info] Login: Initializing logo image
+[2026-03-14 09:32:56.027] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 09:53:57.165] [file-log] [info] Database connection established
+[2026-03-14 09:53:57.168] [file-log] [info] Login: Initializing logo image
+[2026-03-14 09:53:57.171] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 09:54:09.007] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 09:54:09.011] [file-log] [info] Fetching password from the database
+[2026-03-14 09:54:09.011] [file-log] [info] Login success User: 1
+[2026-03-14 09:54:09.049] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 09:54:09.156] [file-log] [info] Account is Admin
+[2026-03-14 09:54:11.199] [file-log] [debug] User 2 is selected
+[2026-03-14 09:54:12.943] [file-log] [debug] User 4 is selected
+[2026-03-14 09:54:14.463] [file-log] [debug] User 1 is selected
+[2026-03-14 09:57:53.517] [file-log] [info] Database connection established
+[2026-03-14 09:57:53.523] [file-log] [info] Login: Initializing logo image
+[2026-03-14 09:57:53.525] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 09:58:04.347] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 09:58:04.350] [file-log] [info] Fetching password from the database
+[2026-03-14 09:58:04.350] [file-log] [info] Login success User: 1
+[2026-03-14 09:58:04.401] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 09:58:04.405] [file-log] [info] Account is Admin
+[2026-03-14 09:58:05.563] [file-log] [debug] User 2 is selected
+[2026-03-14 09:58:07.419] [file-log] [debug] User 4 is selected
+[2026-03-14 09:59:59.704] [file-log] [info] Database connection established
+[2026-03-14 09:59:59.721] [file-log] [info] Login: Initializing logo image
+[2026-03-14 09:59:59.723] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:00:58.338] [file-log] [info] Database connection established
+[2026-03-14 10:00:58.353] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:00:58.356] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:01:09.389] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:01:09.396] [file-log] [info] Fetching password from the database
+[2026-03-14 10:01:09.396] [file-log] [info] Login success User: 1
+[2026-03-14 10:01:09.447] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:01:09.450] [file-log] [info] Account is Admin
+[2026-03-14 10:01:59.999] [file-log] [info] Database connection established
+[2026-03-14 10:02:00.008] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:02:00.010] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:02:09.485] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:02:09.488] [file-log] [info] Fetching password from the database
+[2026-03-14 10:02:09.488] [file-log] [info] Login success User: 1
+[2026-03-14 10:02:09.491] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 10:02:09.491] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 10:02:47.956] [file-log] [info] Database connection established
+[2026-03-14 10:02:47.965] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:02:47.968] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:03:07.453] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:03:07.582] [file-log] [info] Fetching password from the database
+[2026-03-14 10:03:07.582] [file-log] [info] Login success User: 1
+[2026-03-14 10:03:07.622] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:03:07.890] [file-log] [info] Account is Admin
+[2026-03-14 10:04:06.376] [file-log] [info] Database connection established
+[2026-03-14 10:04:06.385] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:04:06.387] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:04:23.894] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:04:23.916] [file-log] [info] Fetching password from the database
+[2026-03-14 10:04:23.917] [file-log] [info] Login success User: 1
+[2026-03-14 10:04:23.973] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:04:23.977] [file-log] [info] Account is Admin
+[2026-03-14 10:10:12.922] [file-log] [info] Database connection established
+[2026-03-14 10:10:12.931] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:10:12.933] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:10:23.556] [file-log] [info] Database connection established
+[2026-03-14 10:10:23.565] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:10:23.567] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:10:34.926] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:10:34.929] [file-log] [info] Fetching password from the database
+[2026-03-14 10:10:34.929] [file-log] [info] Login success User: 1
+[2026-03-14 10:10:34.982] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:10:34.985] [file-log] [info] Account is Admin
+[2026-03-14 10:16:26.227] [file-log] [info] Database connection established
+[2026-03-14 10:16:26.235] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:16:26.238] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:16:38.702] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:16:38.705] [file-log] [info] Fetching password from the database
+[2026-03-14 10:16:38.705] [file-log] [info] Login success User: 1
+[2026-03-14 10:16:38.752] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:16:38.755] [file-log] [info] Account is Admin
+[2026-03-14 10:16:41.406] [file-log] [debug] User 3 is selected
+[2026-03-14 10:16:44.430] [file-log] [debug] User 5 is selected
+[2026-03-14 10:16:51.135] [file-log] [debug] User 1 is selected
+[2026-03-14 10:16:54.895] [file-log] [debug] User 3 is selected
+[2026-03-14 10:16:56.582] [file-log] [debug] User 5 is selected
+[2026-03-14 10:16:58.502] [file-log] [debug] User 3 is selected
+[2026-03-14 10:59:24.470] [file-log] [info] Database connection established
+[2026-03-14 10:59:24.485] [file-log] [info] Login: Initializing logo image
+[2026-03-14 10:59:24.492] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 10:59:46.918] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 10:59:46.921] [file-log] [info] Fetching password from the database
+[2026-03-14 10:59:46.921] [file-log] [info] Login success User: 1
+[2026-03-14 10:59:47.041] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 10:59:47.043] [file-log] [info] Account is Admin
+[2026-03-14 10:59:50.574] [file-log] [debug] User 4 is selected
+[2026-03-14 11:05:41.948] [file-log] [info] Database connection established
+[2026-03-14 11:05:41.962] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:05:41.964] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:19:36.265] [file-log] [info] Database connection established
+[2026-03-14 11:19:36.274] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:19:36.276] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:19:50.644] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:19:50.650] [file-log] [info] Fetching password from the database
+[2026-03-14 11:19:50.650] [file-log] [info] Login success User: 1
+[2026-03-14 11:20:33.572] [file-log] [info] Database connection established
+[2026-03-14 11:20:33.581] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:20:33.583] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:20:42.915] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:20:42.920] [file-log] [info] Fetching password from the database
+[2026-03-14 11:20:52.219] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:20:52.223] [file-log] [info] Fetching password from the database
+[2026-03-14 11:20:52.223] [file-log] [info] Login success User: 1
+[2026-03-14 11:20:54.436] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:20:54.438] [file-log] [info] Account is Admin
+[2026-03-14 11:25:53.545] [file-log] [info] Database connection established
+[2026-03-14 11:25:53.554] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:25:53.556] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:26:03.074] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:26:03.078] [file-log] [info] Fetching password from the database
+[2026-03-14 11:26:03.078] [file-log] [info] Login success User: 1
+[2026-03-14 11:26:04.682] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:26:04.684] [file-log] [info] Account is Admin
+[2026-03-14 11:26:12.171] [file-log] [info] Database connection established
+[2026-03-14 11:26:12.180] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:26:12.182] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:26:22.154] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:26:22.161] [file-log] [info] Fetching password from the database
+[2026-03-14 11:26:22.161] [file-log] [info] Login success User: 1
+[2026-03-14 11:26:22.169] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 11:26:22.169] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 11:27:16.674] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:27:16.680] [file-log] [info] Fetching password from the database
+[2026-03-14 11:27:16.680] [file-log] [info] Login success User: 1
+[2026-03-14 11:27:32.159] [file-log] [info] Database connection established
+[2026-03-14 11:27:32.167] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:27:32.170] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:27:43.395] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:27:43.401] [file-log] [info] Fetching password from the database
+[2026-03-14 11:27:43.401] [file-log] [info] Login success User: 1
+[2026-03-14 11:27:43.414] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 11:27:43.415] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 11:27:57.027] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:27:57.033] [file-log] [info] Fetching password from the database
+[2026-03-14 11:27:57.033] [file-log] [info] Login success User: 1
+[2026-03-14 11:29:38.179] [file-log] [info] Database connection established
+[2026-03-14 11:29:38.188] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:29:38.190] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:30:43.194] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:30:43.199] [file-log] [info] Fetching password from the database
+[2026-03-14 11:30:43.199] [file-log] [info] Login success User: 1
+[2026-03-14 11:32:13.110] [file-log] [info] Database connection established
+[2026-03-14 11:32:13.119] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:32:13.121] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:32:21.938] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:32:21.949] [file-log] [info] Fetching password from the database
+[2026-03-14 11:32:21.949] [file-log] [info] Login success User: 1
+[2026-03-14 11:33:11.419] [file-log] [info] Database connection established
+[2026-03-14 11:33:11.428] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:33:11.430] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:33:21.706] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:33:21.709] [file-log] [info] Fetching password from the database
+[2026-03-14 11:33:21.709] [file-log] [info] Login success User: 1
+[2026-03-14 11:34:17.112] [file-log] [info] Database connection established
+[2026-03-14 11:34:17.121] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:34:17.123] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:34:27.226] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:34:27.259] [file-log] [info] Fetching password from the database
+[2026-03-14 11:34:27.259] [file-log] [info] Login success User: 1
+[2026-03-14 11:34:27.264] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:34:27.272] [file-log] [info] Account is Admin
+[2026-03-14 11:34:34.434] [file-log] [debug] User 4 is selected
+[2026-03-14 11:34:36.665] [file-log] [debug] User 2 is selected
+[2026-03-14 11:34:38.225] [file-log] [debug] User 1 is selected
+[2026-03-14 11:35:40.812] [file-log] [info] Database connection established
+[2026-03-14 11:35:40.821] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:35:40.823] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:35:51.313] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:35:51.428] [file-log] [info] Fetching password from the database
+[2026-03-14 11:35:51.428] [file-log] [info] Login success User: 1
+[2026-03-14 11:35:51.432] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:35:51.439] [file-log] [info] Account is Admin
+[2026-03-14 11:52:45.787] [file-log] [info] Database connection established
+[2026-03-14 11:52:45.804] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:52:45.808] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:52:54.920] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:52:54.926] [file-log] [info] Fetching password from the database
+[2026-03-14 11:52:54.926] [file-log] [info] Login success User: 1
+[2026-03-14 11:52:54.929] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:52:54.931] [file-log] [info] Account is Admin
+[2026-03-14 11:56:40.714] [file-log] [info] Database connection established
+[2026-03-14 11:56:40.728] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:56:40.730] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:56:50.103] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:56:50.137] [file-log] [info] Fetching password from the database
+[2026-03-14 11:56:50.138] [file-log] [info] Login success User: 1
+[2026-03-14 11:56:50.145] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:56:50.244] [file-log] [info] Account is Admin
+[2026-03-14 11:56:53.999] [file-log] [debug] User 2 is selected
+[2026-03-14 11:56:58.975] [file-log] [debug] User 1 is selected
+[2026-03-14 11:57:00.991] [file-log] [debug] User 5 is selected
+[2026-03-14 11:57:41.104] [file-log] [info] Database connection established
+[2026-03-14 11:57:41.112] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:57:41.115] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:57:50.663] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:57:50.882] [file-log] [info] Fetching password from the database
+[2026-03-14 11:57:50.882] [file-log] [info] Login success User: 1
+[2026-03-14 11:57:50.890] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:57:50.896] [file-log] [info] Account is Admin
+[2026-03-14 11:58:03.455] [file-log] [debug] User 3 is selected
+[2026-03-14 11:58:06.911] [file-log] [debug] User 1 is selected
+[2026-03-14 11:58:12.927] [file-log] [debug] User 5 is selected
+[2026-03-14 11:58:14.551] [file-log] [debug] User 4 is selected
+[2026-03-14 11:58:16.271] [file-log] [debug] User 3 is selected
+[2026-03-14 11:58:18.895] [file-log] [debug] User 2 is selected
+[2026-03-14 11:58:22.575] [file-log] [debug] User 5 is selected
+[2026-03-14 11:58:57.281] [file-log] [info] Database connection established
+[2026-03-14 11:58:57.289] [file-log] [info] Login: Initializing logo image
+[2026-03-14 11:58:57.292] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 11:59:08.759] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 11:59:08.776] [file-log] [info] Fetching password from the database
+[2026-03-14 11:59:08.776] [file-log] [info] Login success User: 1
+[2026-03-14 11:59:08.787] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 11:59:08.789] [file-log] [info] Account is Admin
+[2026-03-14 11:59:12.943] [file-log] [debug] User 2 is selected
+[2026-03-14 12:00:40.206] [file-log] [info] Database connection established
+[2026-03-14 12:00:40.215] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:00:40.217] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:00:49.902] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:00:49.923] [file-log] [info] Fetching password from the database
+[2026-03-14 12:00:49.923] [file-log] [info] Login success User: 1
+[2026-03-14 12:00:49.928] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:00:49.930] [file-log] [info] Account is Admin
+[2026-03-14 12:04:37.709] [file-log] [info] Database connection established
+[2026-03-14 12:04:37.717] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:04:37.719] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:07:04.062] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:07:04.065] [file-log] [info] Fetching password from the database
+[2026-03-14 12:07:04.065] [file-log] [info] Login success User: 1
+[2026-03-14 12:07:04.093] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:07:04.095] [file-log] [info] Account is Admin
+[2026-03-14 12:07:05.550] [file-log] [debug] User 3 is selected
+[2026-03-14 12:07:11.159] [file-log] [debug] User 1 is selected
+[2026-03-14 12:07:15.318] [file-log] [debug] User 4 is selected
+[2026-03-14 12:07:18.198] [file-log] [debug] User 1 is selected
+[2026-03-14 12:07:21.638] [file-log] [debug] User 4 is selected
+[2026-03-14 12:07:24.879] [file-log] [debug] User 3 is selected
+[2026-03-14 12:08:41.472] [file-log] [debug] User 1 is selected
+[2026-03-14 12:08:44.792] [file-log] [debug] User 5 is selected
+[2026-03-14 12:08:48.152] [file-log] [debug] User 2 is selected
+[2026-03-14 12:08:50.840] [file-log] [debug] User 1 is selected
+[2026-03-14 12:28:05.488] [file-log] [info] Database connection established
+[2026-03-14 12:28:05.497] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:28:05.499] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:28:15.408] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:28:15.411] [file-log] [info] Fetching password from the database
+[2026-03-14 12:28:15.411] [file-log] [info] Login success User: 1
+[2026-03-14 12:28:15.414] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:28:15.416] [file-log] [info] Account is Admin
+[2026-03-14 12:28:17.320] [file-log] [debug] User 5 is selected
+[2026-03-14 12:28:17.340] [file-log] [info] User: 1Suucessfully updated 1 Configuration
+[2026-03-14 12:28:36.240] [file-log] [debug] User 5 is selected
+[2026-03-14 12:28:36.249] [file-log] [info] User: 1Suucessfully updated 1 Configuration
+[2026-03-14 12:32:44.751] [file-log] [info] Database connection established
+[2026-03-14 12:32:44.760] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:32:44.762] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:32:53.344] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:32:53.572] [file-log] [info] Fetching password from the database
+[2026-03-14 12:32:53.573] [file-log] [info] Login success User: 1
+[2026-03-14 12:32:53.575] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:32:53.577] [file-log] [info] Account is Admin
+[2026-03-14 12:32:54.896] [file-log] [debug] User 2 is selected
+[2026-03-14 12:32:58.963] [file-log] [info] User: 1 ucessfully updated 1 Configuration
+[2026-03-14 12:33:07.207] [file-log] [info] Database connection established
+[2026-03-14 12:33:07.216] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:33:07.218] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:33:19.136] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:33:19.141] [file-log] [info] Fetching password from the database
+[2026-03-14 12:33:19.141] [file-log] [info] Login success User: 2
+[2026-03-14 12:33:19.146] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:33:19.148] [file-log] [info] Account is not Admin
+[2026-03-14 12:34:11.687] [file-log] [info] Database connection established
+[2026-03-14 12:34:11.696] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:34:11.698] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:34:37.648] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:34:37.655] [file-log] [info] Fetching password from the database
+[2026-03-14 12:34:37.655] [file-log] [info] Login success User: 1
+[2026-03-14 12:34:37.662] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:34:37.664] [file-log] [info] Account is Admin
+[2026-03-14 12:34:39.105] [file-log] [debug] User 1 is selected
+[2026-03-14 12:34:41.899] [file-log] [info] User: 1 ucessfully updated 1 Configuration
+[2026-03-14 12:35:26.695] [file-log] [info] Database connection established
+[2026-03-14 12:35:26.704] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:35:26.706] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:35:35.881] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:35:35.895] [file-log] [info] Fetching password from the database
+[2026-03-14 12:35:35.895] [file-log] [info] Login success User: 1
+[2026-03-14 12:35:35.945] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:35:35.953] [file-log] [info] Account is not Admin
+[2026-03-14 12:36:09.804] [file-log] [info] Database connection established
+[2026-03-14 12:36:09.813] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:36:09.815] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:36:18.808] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:36:18.815] [file-log] [info] Fetching password from the database
+[2026-03-14 12:36:18.815] [file-log] [info] Login success User: 1
+[2026-03-14 12:36:18.824] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:36:18.830] [file-log] [info] Account is Admin
+[2026-03-14 12:36:20.505] [file-log] [debug] User 2 is selected
+[2026-03-14 12:36:24.299] [file-log] [info] User: 1 sucessfully updated 2 Configuration
+[2026-03-14 12:36:39.344] [file-log] [info] Database connection established
+[2026-03-14 12:36:39.353] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:36:39.355] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:36:49.545] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:36:49.552] [file-log] [info] Fetching password from the database
+[2026-03-14 12:36:49.552] [file-log] [info] Login success User: 2
+[2026-03-14 12:36:49.762] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:36:49.763] [file-log] [info] Account is not Admin
+[2026-03-14 12:36:51.630] [file-log] [info] Database connection established
+[2026-03-14 12:36:51.639] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:36:51.641] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:37:02.225] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:37:02.230] [file-log] [info] Fetching password from the database
+[2026-03-14 12:37:04.201] [file-log] [warning] User was not found in the database
+[2026-03-14 12:37:04.202] [file-log] [error] SQL failure from account authentication
+[2026-03-14 12:37:09.289] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:37:09.295] [file-log] [info] Fetching password from the database
+[2026-03-14 12:37:10.153] [file-log] [warning] User was not found in the database
+[2026-03-14 12:37:10.153] [file-log] [error] SQL failure from account authentication
+[2026-03-14 12:37:21.624] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:37:21.747] [file-log] [info] Fetching password from the database
+[2026-03-14 12:37:21.747] [file-log] [info] Login success User: 1
+[2026-03-14 12:37:21.749] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:37:21.753] [file-log] [info] Account is Admin
+[2026-03-14 12:37:23.241] [file-log] [debug] User 2 is selected
+[2026-03-14 12:37:26.123] [file-log] [info] User: 1 sucessfully updated 2 Configuration
+[2026-03-14 12:37:39.577] [file-log] [debug] User 1 is selected
+[2026-03-14 12:37:42.264] [file-log] [info] User: 1 sucessfully updated 1 Configuration
+[2026-03-14 12:37:52.468] [file-log] [info] User: 1 sucessfully updated 1 Configuration
+[2026-03-14 12:39:09.301] [file-log] [info] Database connection established
+[2026-03-14 12:39:09.318] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:39:09.321] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:39:17.961] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:39:18.044] [file-log] [info] Fetching password from the database
+[2026-03-14 12:39:18.044] [file-log] [info] Login success User: 1
+[2026-03-14 12:39:18.046] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:39:18.049] [file-log] [info] Account is not Admin
+[2026-03-14 12:39:37.814] [file-log] [info] Database connection established
+[2026-03-14 12:39:37.822] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:39:37.824] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:40:05.017] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:40:05.020] [file-log] [info] Fetching password from the database
+[2026-03-14 12:40:05.020] [file-log] [info] Login success User: 1
+[2026-03-14 12:40:05.023] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:40:05.025] [file-log] [info] Account is not Admin
+[2026-03-14 12:40:12.620] [file-log] [info] Database connection established
+[2026-03-14 12:40:12.629] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:40:12.631] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:40:27.433] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:40:27.436] [file-log] [info] Fetching password from the database
+[2026-03-14 12:40:27.436] [file-log] [info] Login success User: 1
+[2026-03-14 12:40:27.438] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 12:40:27.438] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 12:40:37.361] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:40:37.552] [file-log] [info] Fetching password from the database
+[2026-03-14 12:40:37.552] [file-log] [info] Login success User: 1
+[2026-03-14 12:40:37.553] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 12:40:37.553] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 12:41:05.881] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:41:05.954] [file-log] [info] Fetching password from the database
+[2026-03-14 12:41:05.954] [file-log] [info] Login success User: 1
+[2026-03-14 12:41:05.957] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:41:05.959] [file-log] [info] Account is Admin
+[2026-03-14 12:41:07.722] [file-log] [debug] User 2 is selected
+[2026-03-14 12:41:11.237] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:19.376] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:19.853] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:20.048] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:20.351] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:20.761] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:21.114] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:21.128] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:36.484] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:37.043] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:37.248] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:37.386] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:37.492] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:37.939] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:41.246] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:41.357] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:41:41.370] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:42:20.099] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:42:20.272] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:42:20.412] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:42:20.564] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:42:32.211] [file-log] [info] Database connection established
+[2026-03-14 12:42:32.220] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:42:32.222] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:43:05.505] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:43:05.509] [file-log] [info] Fetching password from the database
+[2026-03-14 12:43:05.509] [file-log] [info] Login success User: 1
+[2026-03-14 12:43:05.512] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:43:05.519] [file-log] [info] Account is Admin
+[2026-03-14 12:43:07.258] [file-log] [debug] User 2 is selected
+[2026-03-14 12:43:10.212] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:43:15.042] [file-log] [info] Database connection established
+[2026-03-14 12:43:15.051] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:43:15.054] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:43:33.133] [file-log] [info] Database connection established
+[2026-03-14 12:43:33.142] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:43:33.144] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:43:41.809] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:43:41.813] [file-log] [info] Fetching password from the database
+[2026-03-14 12:43:41.814] [file-log] [info] Login success User: 1
+[2026-03-14 12:43:41.817] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:43:41.819] [file-log] [info] Account is Admin
+[2026-03-14 12:43:45.034] [file-log] [debug] User 2 is selected
+[2026-03-14 12:43:54.367] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:43:57.003] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:09.180] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:09.373] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:09.764] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:09.948] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:10.100] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:10.271] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:44:21.833] [file-log] [info] Database connection established
+[2026-03-14 12:44:21.842] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:44:21.844] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:44:31.242] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:44:31.244] [file-log] [info] Fetching password from the database
+[2026-03-14 12:44:31.245] [file-log] [info] Login success User: 2
+[2026-03-14 12:44:31.247] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:44:31.248] [file-log] [info] Account is not Admin
+[2026-03-14 12:45:56.848] [file-log] [info] Database connection established
+[2026-03-14 12:45:56.862] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:45:56.864] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:46:05.985] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:46:05.988] [file-log] [info] Fetching password from the database
+[2026-03-14 12:46:05.988] [file-log] [info] Login success User: 1
+[2026-03-14 12:46:05.989] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:46:05.991] [file-log] [info] Account is Admin
+[2026-03-14 12:46:09.170] [file-log] [debug] User 1 is selected
+[2026-03-14 12:46:11.399] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:46:21.818] [file-log] [debug] User 4 is selected
+[2026-03-14 12:46:25.766] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 12:46:32.506] [file-log] [debug] User 1 is selected
+[2026-03-14 12:46:34.979] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:47:23.025] [file-log] [info] Database connection established
+[2026-03-14 12:47:23.033] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:47:23.036] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:47:31.594] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:47:31.596] [file-log] [info] Fetching password from the database
+[2026-03-14 12:47:31.596] [file-log] [info] Login success User: 1
+[2026-03-14 12:47:31.599] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:47:31.601] [file-log] [info] Account is not Admin
+[2026-03-14 12:47:40.151] [file-log] [info] Database connection established
+[2026-03-14 12:47:40.162] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:47:40.164] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:47:50.170] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:47:50.187] [file-log] [info] Fetching password from the database
+[2026-03-14 12:47:50.187] [file-log] [info] Login success User: 1
+[2026-03-14 12:47:50.192] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 12:47:50.192] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 12:48:02.505] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:48:02.512] [file-log] [info] Fetching password from the database
+[2026-03-14 12:48:02.512] [file-log] [info] Login success User: 1
+[2026-03-14 12:48:02.517] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 12:48:02.517] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 12:48:13.713] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:48:13.717] [file-log] [info] Fetching password from the database
+[2026-03-14 12:48:13.717] [file-log] [info] Login success User: 1
+[2026-03-14 12:48:13.719] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:48:13.721] [file-log] [info] Account is Admin
+[2026-03-14 12:48:15.058] [file-log] [debug] User 2 is selected
+[2026-03-14 12:48:17.845] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:48:23.572] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:48:25.393] [file-log] [debug] User 3 is selected
+[2026-03-14 12:48:26.665] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 12:48:27.978] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 12:48:34.013] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 12:48:34.210] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 12:49:04.396] [file-log] [info] Database connection established
+[2026-03-14 12:49:04.404] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:49:04.407] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:49:13.873] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:49:13.877] [file-log] [info] Fetching password from the database
+[2026-03-14 12:49:13.877] [file-log] [info] Login success User: 1
+[2026-03-14 12:49:13.884] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 12:49:13.884] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 12:49:24.538] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:49:24.607] [file-log] [info] Fetching password from the database
+[2026-03-14 12:49:24.607] [file-log] [info] Login success User: 1
+[2026-03-14 12:49:24.609] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:49:24.611] [file-log] [info] Account is Admin
+[2026-03-14 12:49:29.377] [file-log] [debug] User 2 is selected
+[2026-03-14 12:49:30.189] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:34.908] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:35.742] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:35.925] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:36.085] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:36.261] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:49:38.026] [file-log] [debug] User 5 is selected
+[2026-03-14 12:49:40.412] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:49:40.564] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:49:40.716] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:49:47.194] [file-log] [debug] User 1 is selected
+[2026-03-14 12:49:47.948] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:49:49.979] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:49:50.327] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:49:50.356] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:49:51.841] [file-log] [debug] User 5 is selected
+[2026-03-14 12:49:54.908] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:49:55.060] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:49:55.212] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:50:24.054] [file-log] [info] Database connection established
+[2026-03-14 12:50:24.062] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:50:24.064] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:50:38.746] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:50:38.823] [file-log] [info] Fetching password from the database
+[2026-03-14 12:50:38.823] [file-log] [info] Login success User: 1
+[2026-03-14 12:50:38.837] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:50:38.844] [file-log] [info] Account is Admin
+[2026-03-14 12:50:43.842] [file-log] [debug] User 1 is selected
+[2026-03-14 12:50:45.940] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:50:46.525] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:50:46.708] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:50:46.940] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 12:50:50.530] [file-log] [debug] User 2 is selected
+[2026-03-14 12:50:54.796] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:50:55.316] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:50:56.997] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:50:57.158] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:53:35.092] [file-log] [info] Database connection established
+[2026-03-14 12:53:35.101] [file-log] [info] Login: Initializing logo image
+[2026-03-14 12:53:35.103] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 12:53:48.746] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 12:53:48.756] [file-log] [info] Fetching password from the database
+[2026-03-14 12:53:48.756] [file-log] [info] Login success User: 1
+[2026-03-14 12:53:48.758] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 12:53:48.760] [file-log] [info] Account is Admin
+[2026-03-14 12:53:50.170] [file-log] [debug] User 2 is selected
+[2026-03-14 12:53:53.185] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 12:53:58.970] [file-log] [debug] User 5 is selected
+[2026-03-14 12:54:03.976] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 12:54:06.650] [file-log] [debug] User 4 is selected
+[2026-03-14 12:54:07.829] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 13:24:50.875] [file-log] [debug] User 3 is selected
+[2026-03-14 13:24:53.947] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 13:25:02.467] [file-log] [debug] User 3 is selected
+[2026-03-14 13:25:06.797] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 13:25:08.868] [file-log] [debug] User 2 is selected
+[2026-03-14 13:25:11.109] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:25:13.475] [file-log] [debug] User 5 is selected
+[2026-03-14 13:25:16.401] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 13:25:17.147] [file-log] [debug] User 4 is selected
+[2026-03-14 13:25:19.256] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 13:25:20.275] [file-log] [debug] User 3 is selected
+[2026-03-14 13:25:22.529] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 13:25:23.539] [file-log] [debug] User 2 is selected
+[2026-03-14 13:25:25.985] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:26:02.049] [file-log] [info] Database connection established
+[2026-03-14 13:26:02.058] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:26:02.060] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:26:12.683] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:26:12.685] [file-log] [info] Fetching password from the database
+[2026-03-14 13:26:12.685] [file-log] [info] Login success User: 1
+[2026-03-14 13:26:12.687] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:26:12.688] [file-log] [info] Account is Admin
+[2026-03-14 13:26:18.012] [file-log] [debug] User 4 is selected
+[2026-03-14 13:26:19.572] [file-log] [debug] User 3 is selected
+[2026-03-14 13:26:21.548] [file-log] [debug] User 1 is selected
+[2026-03-14 13:38:06.611] [file-log] [info] Database connection established
+[2026-03-14 13:38:06.620] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:38:06.622] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:38:21.744] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:38:21.846] [file-log] [info] Fetching password from the database
+[2026-03-14 13:38:21.846] [file-log] [info] Login success User: 1
+[2026-03-14 13:38:21.850] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:38:21.853] [file-log] [info] Account is Admin
+[2026-03-14 13:39:24.131] [file-log] [info] Database connection established
+[2026-03-14 13:39:24.140] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:39:24.142] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:39:34.143] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:39:34.234] [file-log] [info] Fetching password from the database
+[2026-03-14 13:39:34.235] [file-log] [info] Login success User: 1
+[2026-03-14 13:39:34.237] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:39:34.239] [file-log] [info] Account is Admin
+[2026-03-14 13:40:53.884] [file-log] [info] Database connection established
+[2026-03-14 13:40:53.897] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:40:53.899] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:41:03.943] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:41:04.076] [file-log] [info] Fetching password from the database
+[2026-03-14 13:41:04.076] [file-log] [info] Login success User: 1
+[2026-03-14 13:41:04.090] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:41:04.314] [file-log] [info] Account is Admin
+[2026-03-14 13:41:05.719] [file-log] [debug] User 2 is selected
+[2026-03-14 13:41:08.688] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:41:19.623] [file-log] [debug] User 2 is selected
+[2026-03-14 13:41:20.743] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:41:23.975] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:41:35.309] [file-log] [info] Database connection established
+[2026-03-14 13:41:35.320] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:41:35.322] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:41:46.911] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:41:46.914] [file-log] [info] Fetching password from the database
+[2026-03-14 13:41:46.914] [file-log] [info] Login success User: 1
+[2026-03-14 13:41:46.916] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:41:46.918] [file-log] [info] Account is Admin
+[2026-03-14 13:41:47.975] [file-log] [debug] User 4 is selected
+[2026-03-14 13:41:50.874] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 13:41:52.630] [file-log] [debug] User 5 is selected
+[2026-03-14 13:41:54.721] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 13:47:21.926] [file-log] [info] Database connection established
+[2026-03-14 13:47:21.935] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:47:21.937] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:47:31.333] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:47:31.336] [file-log] [info] Fetching password from the database
+[2026-03-14 13:47:31.337] [file-log] [info] Login success User: 1
+[2026-03-14 13:47:31.341] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:47:31.343] [file-log] [info] Account is Admin
+[2026-03-14 13:47:34.853] [file-log] [debug] User 4 is selected
+[2026-03-14 13:47:39.935] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 13:47:47.228] [file-log] [debug] User 2 is selected
+[2026-03-14 13:47:49.713] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:48:02.356] [file-log] [info] Database connection established
+[2026-03-14 13:48:02.371] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:48:02.374] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:48:11.997] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:48:11.999] [file-log] [info] Fetching password from the database
+[2026-03-14 13:48:11.999] [file-log] [info] Login success User: 1
+[2026-03-14 13:48:12.002] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:48:12.169] [file-log] [info] Account is Admin
+[2026-03-14 13:48:27.269] [file-log] [debug] User 5 is selected
+[2026-03-14 13:49:39.674] [file-log] [info] Database connection established
+[2026-03-14 13:49:39.689] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:49:39.691] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:49:49.492] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:49:49.936] [file-log] [info] Fetching password from the database
+[2026-03-14 13:49:49.937] [file-log] [info] Login success User: 1
+[2026-03-14 13:49:50.346] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:49:50.348] [file-log] [info] Account is Admin
+[2026-03-14 13:49:55.101] [file-log] [debug] User 2 is selected
+[2026-03-14 13:50:00.961] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:50:06.535] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:52:48.405] [file-log] [info] Database connection established
+[2026-03-14 13:52:48.415] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:52:48.417] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:53:01.036] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:53:01.186] [file-log] [info] Fetching password from the database
+[2026-03-14 13:53:01.186] [file-log] [info] Login success User: 1
+[2026-03-14 13:53:01.234] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:53:01.293] [file-log] [info] Account is Admin
+[2026-03-14 13:53:05.068] [file-log] [debug] User 1 is selected
+[2026-03-14 13:53:06.208] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:09.570] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:09.806] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:15.830] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:16.354] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:16.478] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:16.497] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:16.649] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:17.469] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:17.777] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:18.014] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:20.745] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:21.882] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:25.660] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:26.728] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:30.404] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:30.929] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:31.449] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:31.952] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:32.265] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:32.699] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:32.979] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:33.265] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:33.945] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:33.948] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:33.955] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:34.784] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:35.267] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:35.850] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:35.861] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:35.869] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:36.087] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:36.464] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:36.478] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:36.822] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:36.925] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:37.480] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:37.639] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:37.674] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:37.692] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:38.125] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:43.069] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:53:43.281] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 13:59:37.931] [file-log] [info] Database connection established
+[2026-03-14 13:59:37.940] [file-log] [info] Login: Initializing logo image
+[2026-03-14 13:59:37.942] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 13:59:48.195] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 13:59:48.198] [file-log] [info] Fetching password from the database
+[2026-03-14 13:59:48.198] [file-log] [info] Login success User: 1
+[2026-03-14 13:59:48.200] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 13:59:48.202] [file-log] [info] Account is Admin
+[2026-03-14 13:59:50.011] [file-log] [debug] User 2 is selected
+[2026-03-14 13:59:50.861] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:59:55.572] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 13:59:58.923] [file-log] [debug] User 4 is selected
+[2026-03-14 14:00:09.195] [file-log] [debug] User 2 is selected
+[2026-03-14 14:00:10.177] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:00:12.199] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:00:22.467] [file-log] [debug] User 4 is selected
+[2026-03-14 14:00:25.913] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:00:27.299] [file-log] [debug] User 5 is selected
+[2026-03-14 14:00:34.043] [file-log] [debug] User 5 is selected
+[2026-03-14 14:00:37.065] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 14:00:38.169] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 14:00:40.059] [file-log] [debug] User 4 is selected
+[2026-03-14 14:00:42.922] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:00:44.803] [file-log] [debug] User 3 is selected
+[2026-03-14 14:00:46.254] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:00:47.283] [file-log] [debug] User 2 is selected
+[2026-03-14 14:00:49.704] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:00:49.893] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:04:05.050] [file-log] [info] Database connection established
+[2026-03-14 14:04:05.059] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:04:05.061] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:04:09.247] [file-log] [info] Database connection established
+[2026-03-14 14:04:09.256] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:04:09.261] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:04:17.906] [file-log] [critical] Database connection not established
+[2026-03-14 14:04:20.460] [file-log] [critical] Database connection not established
+[2026-03-14 14:04:27.274] [file-log] [critical] Database connection not established
+[2026-03-14 14:04:30.365] [file-log] [critical] Database connection not established
+[2026-03-14 14:04:33.383] [file-log] [critical] Database connection not established
+[2026-03-14 14:04:53.757] [file-log] [info] Database connection established
+[2026-03-14 14:04:53.766] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:04:53.768] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:05:04.946] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:05:04.948] [file-log] [info] Fetching password from the database
+[2026-03-14 14:05:04.948] [file-log] [info] Login success User: 1
+[2026-03-14 14:05:04.951] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:05:04.952] [file-log] [info] Account is Admin
+[2026-03-14 14:05:11.394] [file-log] [debug] User 4 is selected
+[2026-03-14 14:05:33.340] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
