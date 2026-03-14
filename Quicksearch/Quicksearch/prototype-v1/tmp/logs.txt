@@ -2164,3 +2164,553 @@
 [2026-03-14 14:05:04.952] [file-log] [info] Account is Admin
 [2026-03-14 14:05:11.394] [file-log] [debug] User 4 is selected
 [2026-03-14 14:05:33.340] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:12:29.070] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:12:29.085] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:12:29.091] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:12:45.717] [file-log] [critical] Database connection established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Can't connect to server on '192.168.1.16' (101)
+[2026-03-14 14:13:35.357] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Can't connect to server on '192.168.1.16' (101)
+[2026-03-14 14:14:17.788] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:14:17.797] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:14:17.799] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:14:31.074] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:14:31.077] [file-log] [info] Fetching password from the database
+[2026-03-14 14:14:31.077] [file-log] [info] Login success User: 1
+[2026-03-14 14:14:31.079] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:14:31.081] [file-log] [info] Account is Admin
+[2026-03-14 14:14:40.862] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:14:40.873] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:14:40.875] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:14:50.098] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:14:50.130] [file-log] [info] Fetching password from the database
+[2026-03-14 14:14:50.130] [file-log] [info] Login success User: 4
+[2026-03-14 14:14:50.132] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:14:50.133] [file-log] [info] Account is Admin
+[2026-03-14 14:14:53.610] [file-log] [debug] User 4 is selected
+[2026-03-14 14:14:54.605] [file-log] [info] User: 4 sucessfully updated User:4 Configuration
+[2026-03-14 14:14:57.633] [file-log] [info] User: 4 sucessfully updated User:4 Configuration
+[2026-03-14 14:15:02.259] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:15:02.274] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:15:02.276] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:15:18.042] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:15:18.052] [file-log] [info] Fetching password from the database
+[2026-03-14 14:15:18.052] [file-log] [info] Login success User: 1
+[2026-03-14 14:15:18.133] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:15:18.343] [file-log] [info] Account is Admin
+[2026-03-14 14:15:26.898] [file-log] [debug] User 4 is selected
+[2026-03-14 14:29:20.353] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:29:20.369] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:29:20.371] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:29:32.121] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:29:32.134] [file-log] [info] Fetching password from the database
+[2026-03-14 14:29:32.134] [file-log] [info] Login success User: 1
+[2026-03-14 14:29:32.146] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:29:32.149] [file-log] [info] Account is Admin
+[2026-03-14 14:29:35.546] [file-log] [debug] User 3 is selected
+[2026-03-14 14:29:38.503] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:29:43.602] [file-log] [debug] User 3 is selected
+[2026-03-14 14:29:46.285] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:30:23.361] [file-log] [debug] User 4 is selected
+[2026-03-14 14:30:24.068] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:30:26.104] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:30:26.788] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:31:08.362] [file-log] [debug] User 2 is selected
+[2026-03-14 14:31:09.124] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:31:11.712] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:31:26.233] [file-log] [debug] User 1 is selected
+[2026-03-14 14:32:53.542] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:32:53.551] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:32:53.553] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:33:12.329] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:33:12.335] [file-log] [info] Fetching password from the database
+[2026-03-14 14:33:12.335] [file-log] [info] Login success User: 1
+[2026-03-14 14:33:12.338] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:33:12.341] [file-log] [info] Account is Admin
+[2026-03-14 14:34:55.458] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:34:55.467] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:34:55.469] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:35:09.849] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:35:09.873] [file-log] [info] Fetching password from the database
+[2026-03-14 14:35:19.729] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:35:19.732] [file-log] [info] Fetching password from the database
+[2026-03-14 14:35:19.732] [file-log] [info] Login success User: 1
+[2026-03-14 14:35:19.734] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:35:19.742] [file-log] [info] Account is Admin
+[2026-03-14 14:35:24.057] [file-log] [debug] User 4 is selected
+[2026-03-14 14:35:26.950] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:37:27.677] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:37:27.691] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:37:27.694] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:37:40.137] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:37:40.184] [file-log] [info] Fetching password from the database
+[2026-03-14 14:37:40.185] [file-log] [info] Login success User: 1
+[2026-03-14 14:37:40.197] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:37:40.208] [file-log] [info] Account is Admin
+[2026-03-14 14:38:09.210] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:38:09.227] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:38:09.230] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:38:19.984] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:38:20.030] [file-log] [info] Fetching password from the database
+[2026-03-14 14:38:20.030] [file-log] [info] Login success User: 1
+[2026-03-14 14:38:20.170] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:38:20.250] [file-log] [info] Account is Admin
+[2026-03-14 14:39:11.039] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:39:11.055] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:39:11.058] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:39:22.905] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:39:22.908] [file-log] [info] Fetching password from the database
+[2026-03-14 14:39:22.908] [file-log] [info] Login success User: 1
+[2026-03-14 14:39:22.910] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:39:22.912] [file-log] [info] Account is Admin
+[2026-03-14 14:39:26.577] [file-log] [debug] User 4 is selected
+[2026-03-14 14:39:29.155] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:39:39.007] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:39:42.887] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:39:47.055] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 14:39:55.505] [file-log] [debug] User 2 is selected
+[2026-03-14 14:39:58.815] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:41:08.811] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:41:08.829] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:41:08.832] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:41:20.065] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:41:20.067] [file-log] [info] Fetching password from the database
+[2026-03-14 14:41:20.067] [file-log] [info] Login success User: 1
+[2026-03-14 14:41:20.069] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:41:20.071] [file-log] [info] Account is Admin
+[2026-03-14 14:41:21.593] [file-log] [debug] User 2 is selected
+[2026-03-14 14:41:22.395] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:41:25.922] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:42:08.691] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:42:08.702] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:42:08.704] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:42:21.001] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:42:21.007] [file-log] [info] Fetching password from the database
+[2026-03-14 14:42:21.007] [file-log] [info] Login success User: 1
+[2026-03-14 14:42:21.010] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:42:21.014] [file-log] [info] Account is Admin
+[2026-03-14 14:42:25.161] [file-log] [debug] User 2 is selected
+[2026-03-14 14:42:27.615] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:42:31.978] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:42:38.323] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:42:45.249] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:42:45.261] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:42:45.263] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:42:56.105] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:42:56.246] [file-log] [info] Fetching password from the database
+[2026-03-14 14:42:56.246] [file-log] [info] Login success User: 2
+[2026-03-14 14:42:56.250] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:42:56.252] [file-log] [info] Account is Admin
+[2026-03-14 14:43:13.666] [file-log] [debug] User 2 is selected
+[2026-03-14 14:43:16.913] [file-log] [info] User: 2 sucessfully updated User:2 Configuration
+[2026-03-14 14:43:23.938] [file-log] [debug] User 2 is selected
+[2026-03-14 14:43:26.546] [file-log] [info] User: 2 sucessfully updated User:2 Configuration
+[2026-03-14 14:45:18.283] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:45:18.292] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:45:18.294] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:45:27.265] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:45:27.269] [file-log] [info] Fetching password from the database
+[2026-03-14 14:45:37.929] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:45:37.933] [file-log] [info] Fetching password from the database
+[2026-03-14 14:45:37.933] [file-log] [info] Login success User: 2
+[2026-03-14 14:45:37.945] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:45:37.949] [file-log] [info] Account is not Admin
+[2026-03-14 14:45:40.955] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:45:40.964] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:45:40.966] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:45:49.785] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:45:49.788] [file-log] [info] Fetching password from the database
+[2026-03-14 14:45:49.789] [file-log] [info] Login success User: 1
+[2026-03-14 14:45:49.791] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:45:49.793] [file-log] [info] Account is Admin
+[2026-03-14 14:46:13.701] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:46:13.710] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:46:13.712] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:46:23.953] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:46:23.956] [file-log] [info] Fetching password from the database
+[2026-03-14 14:46:23.956] [file-log] [info] Login success User: 1
+[2026-03-14 14:46:23.958] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:46:23.958] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:46:57.505] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:46:57.508] [file-log] [info] Fetching password from the database
+[2026-03-14 14:46:57.508] [file-log] [info] Login success User: 1
+[2026-03-14 14:46:57.510] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:46:57.512] [file-log] [info] Account is Admin
+[2026-03-14 14:46:59.330] [file-log] [debug] User 2 is selected
+[2026-03-14 14:47:40.024] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:47:40.164] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:48:14.730] [file-log] [debug] User 3 is selected
+[2026-03-14 14:48:28.784] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:48:37.474] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:48:43.824] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 14:48:48.368] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:48:53.977] [file-log] [debug] User 2 is selected
+[2026-03-14 14:48:56.732] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 14:49:06.423] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:49:06.432] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:49:06.434] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:49:22.721] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:49:22.728] [file-log] [info] Fetching password from the database
+[2026-03-14 14:49:23.578] [file-log] [warning] User was not found in the database
+[2026-03-14 14:49:23.578] [file-log] [error] SQL failure from account authentication
+[2026-03-14 14:49:28.673] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:49:28.679] [file-log] [info] Fetching password from the database
+[2026-03-14 14:49:30.483] [file-log] [warning] User was not found in the database
+[2026-03-14 14:49:30.483] [file-log] [error] SQL failure from account authentication
+[2026-03-14 14:49:34.537] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:49:34.544] [file-log] [info] Fetching password from the database
+[2026-03-14 14:49:34.544] [file-log] [info] Login success User: 2
+[2026-03-14 14:49:34.548] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:49:34.564] [file-log] [info] Account is Admin
+[2026-03-14 14:49:40.634] [file-log] [debug] User 4 is selected
+[2026-03-14 14:54:21.600] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:54:21.609] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:54:21.611] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:54:57.042] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:54:57.044] [file-log] [info] Fetching password from the database
+[2026-03-14 14:54:57.045] [file-log] [info] Login success User: 1
+[2026-03-14 14:54:57.048] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:54:57.055] [file-log] [info] Account is Admin
+[2026-03-14 14:55:12.977] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:55:12.995] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:55:12.999] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:55:25.993] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:55:25.996] [file-log] [info] Fetching password from the database
+[2026-03-14 14:55:25.996] [file-log] [info] Login success User: 1
+[2026-03-14 14:55:25.998] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:55:25.999] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:57:44.428] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:57:44.440] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:57:44.441] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:57:59.058] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:57:59.178] [file-log] [info] Fetching password from the database
+[2026-03-14 14:57:59.178] [file-log] [info] Login success User: 1
+[2026-03-14 14:57:59.189] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 14:57:59.196] [file-log] [info] Account is Admin
+[2026-03-14 14:58:36.813] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 14:58:36.826] [file-log] [info] Login: Initializing logo image
+[2026-03-14 14:58:36.830] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 14:58:48.441] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:58:48.455] [file-log] [info] Fetching password from the database
+[2026-03-14 14:58:48.455] [file-log] [info] Login success User: 1
+[2026-03-14 14:58:48.457] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:58:48.457] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:58:53.729] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:58:53.749] [file-log] [info] Fetching password from the database
+[2026-03-14 14:58:53.750] [file-log] [info] Login success User: 1
+[2026-03-14 14:58:53.753] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:58:53.753] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:58:54.921] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:58:54.986] [file-log] [info] Fetching password from the database
+[2026-03-14 14:58:54.986] [file-log] [info] Login success User: 1
+[2026-03-14 14:58:54.989] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:58:54.989] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:58:56.569] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:58:56.576] [file-log] [info] Fetching password from the database
+[2026-03-14 14:58:56.576] [file-log] [info] Login success User: 1
+[2026-03-14 14:58:56.863] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:58:56.863] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:58:57.945] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:58:58.193] [file-log] [info] Fetching password from the database
+[2026-03-14 14:58:58.193] [file-log] [info] Login success User: 1
+[2026-03-14 14:58:58.196] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:58:58.196] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:06.298] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:06.304] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:06.304] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:06.306] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:06.306] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:08.217] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:08.240] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:08.241] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:08.250] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:08.250] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:09.298] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:09.366] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:09.367] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:09.371] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:09.371] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:10.578] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:10.605] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:10.605] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:10.609] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:10.609] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:12.938] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:12.951] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:12.951] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:12.961] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:12.961] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:14.393] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:14.402] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:14.402] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:14.415] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:14.415] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:16.697] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:16.764] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:16.765] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:16.907] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:16.907] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:17.642] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:17.753] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:17.753] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:17.779] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:17.779] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:19.098] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:19.100] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:19.101] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:19.103] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:19.103] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:21.337] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:21.428] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:21.428] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:21.430] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:21.430] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:23.137] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:23.148] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:23.148] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:23.385] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:23.385] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:24.178] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:24.240] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:24.240] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:24.273] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:24.273] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:25.217] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:25.433] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:25.433] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:25.604] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:25.604] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:26.569] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:26.712] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:26.713] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:26.835] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:26.835] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:28.953] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:28.979] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:28.979] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:28.983] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:28.983] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:30.778] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:30.930] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:30.930] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:31.133] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:31.133] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:31.841] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:31.852] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:31.852] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:32.055] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:32.055] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:33.609] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:33.796] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:33.796] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:33.803] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:33.803] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:35.905] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:35.915] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:35.915] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:35.947] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:35.947] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:37.105] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:37.282] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:37.282] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:37.285] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:37.285] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:38.753] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:38.756] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:38.756] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:38.759] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:38.759] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:39.681] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:39.859] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:39.859] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:39.873] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:39.873] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:41.017] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:41.020] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:41.020] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:41.070] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:41.070] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:50.945] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:50.969] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:50.969] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:50.972] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:50.972] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:52.193] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:52.330] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:52.331] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:52.432] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:52.432] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:56.569] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:56.629] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:56.629] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:56.634] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:56.634] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 14:59:58.881] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 14:59:58.884] [file-log] [info] Fetching password from the database
+[2026-03-14 14:59:58.884] [file-log] [info] Login success User: 1
+[2026-03-14 14:59:58.886] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 14:59:58.886] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:00:13.993] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:00:13.999] [file-log] [info] Fetching password from the database
+[2026-03-14 15:00:13.999] [file-log] [info] Login success User: 1
+[2026-03-14 15:00:14.083] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 15:00:14.164] [file-log] [info] Account is Admin
+[2026-03-14 15:01:13.996] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 15:01:14.005] [file-log] [info] Login: Initializing logo image
+[2026-03-14 15:01:14.007] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 15:01:20.638] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 15:01:20.646] [file-log] [info] Login: Initializing logo image
+[2026-03-14 15:01:20.648] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 15:01:36.041] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:01:36.090] [file-log] [info] Fetching password from the database
+[2026-03-14 15:01:36.091] [file-log] [info] Login success User: 1
+[2026-03-14 15:01:36.295] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 15:01:36.304] [file-log] [info] Account is Admin
+[2026-03-14 15:04:48.769] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:04:48.773] [file-log] [info] Fetching password from the database
+[2026-03-14 15:04:54.241] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:04:54.403] [file-log] [info] Fetching password from the database
+[2026-03-14 15:04:54.403] [file-log] [info] Login success User: 1
+[2026-03-14 15:04:54.405] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:04:54.405] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:04:56.321] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:04:56.324] [file-log] [info] Fetching password from the database
+[2026-03-14 15:04:56.324] [file-log] [info] Login success User: 1
+[2026-03-14 15:04:56.327] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:04:56.327] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:04:59.713] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:04:59.717] [file-log] [info] Fetching password from the database
+[2026-03-14 15:04:59.717] [file-log] [info] Login success User: 1
+[2026-03-14 15:04:59.721] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:04:59.721] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:01.306] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:01.480] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:01.480] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:01.482] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:01.482] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:05.346] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:05.348] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:05.348] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:05.356] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:05.356] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:06.554] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:06.557] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:06.557] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:06.559] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:06.559] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:08.145] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:08.148] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:08.148] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:08.339] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:08.339] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:09.225] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:09.375] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:09.375] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:09.465] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:09.465] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:10.401] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:10.490] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:10.490] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:10.592] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:10.592] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:12.217] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:12.220] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:12.221] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:12.224] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:12.224] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:13.713] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:13.716] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:13.716] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:13.719] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:13.719] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:14.994] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:14.997] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:14.997] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:14.999] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:14.999] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:05:16.297] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:05:16.303] [file-log] [info] Fetching password from the database
+[2026-03-14 15:05:16.303] [file-log] [info] Login success User: 1
+[2026-03-14 15:05:16.305] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:05:16.306] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:16:07.753] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:16:07.757] [file-log] [info] Fetching password from the database
+[2026-03-14 15:16:07.757] [file-log] [info] Login success User: 1
+[2026-03-14 15:16:07.760] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-14 15:16:07.760] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-14 15:16:18.234] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 15:16:18.250] [file-log] [info] Login: Initializing logo image
+[2026-03-14 15:16:18.255] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 15:16:32.473] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:16:32.480] [file-log] [info] Fetching password from the database
+[2026-03-14 15:16:32.481] [file-log] [info] Login success User: 1
+[2026-03-14 15:16:32.486] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 15:16:32.495] [file-log] [info] Account is Admin
+[2026-03-14 15:16:33.473] [file-log] [debug] User 3 is selected
+[2026-03-14 15:16:34.319] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 15:16:38.347] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 15:16:45.761] [file-log] [debug] User 3 is selected
+[2026-03-14 15:16:48.944] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 15:16:50.361] [file-log] [debug] User 2 is selected
+[2026-03-14 15:16:54.345] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 15:17:10.554] [file-log] [debug] User 1 is selected
+[2026-03-14 15:17:38.213] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 15:17:41.892] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 15:17:49.457] [file-log] [debug] User 4 is selected
+[2026-03-14 15:17:52.427] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 15:17:55.745] [file-log] [debug] User 3 is selected
+[2026-03-14 15:17:58.324] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 15:18:01.609] [file-log] [debug] User 5 is selected
+[2026-03-14 15:18:07.396] [file-log] [info] User: 1 sucessfully updated User:3 Configuration
+[2026-03-14 15:18:15.202] [file-log] [debug] User 1 is selected
+[2026-03-14 15:18:17.689] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 15:18:21.233] [file-log] [debug] User 4 is selected
+[2026-03-14 15:18:23.436] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 15:18:49.937] [file-log] [debug] User 1 is selected
+[2026-03-14 15:18:52.688] [file-log] [info] User: 1 sucessfully updated User:1 Configuration

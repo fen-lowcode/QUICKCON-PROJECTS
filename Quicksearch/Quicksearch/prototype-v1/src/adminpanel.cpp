@@ -2,6 +2,10 @@
 #include "logs.hpp"
 #include "user.hpp"
 #include "userconfigwindow.hpp"
+#include "wx/button.h"
+#include "wx/event.h"
+#include "wx/gtk/button.h"
+#include "wx/layout.h"
 #include "wx/variant.h"
 #include "wx/wx.h"
 
@@ -24,8 +28,7 @@ AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog
     wxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     wxSizer* contentSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    panel -> SetBackgroundColour(wxColour(240,240,240)); // light modern gray
-
+    panel -> SetBackgroundColour(wxColour(255, 255, 255)); 
     this -> userTable = new wxDataViewListCtrl(panel, wxID_ANY);
     this -> userTable -> AppendTextColumn("ID");
     this -> userTable -> AppendTextColumn("Firstname");
@@ -33,14 +36,24 @@ AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog
     this -> userTable -> AppendTextColumn("Admin");
     this -> userTable -> AppendTextColumn("Last Seen");
     this -> userTable -> SetFont(uiFont);
+    wxButton* refreshBtn = new wxButton(panel, wxID_ANY, "Refresh List");
 
-    mainSizer -> AddSpacer(100);
+    mainSizer -> AddSpacer(40);
+    mainSizer -> Add(refreshBtn, 0, wxALIGN_RIGHT | wxRIGHT, 20);
+    mainSizer -> AddSpacer(20);
     mainSizer -> Add(userTable, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 20);
     panel -> SetSizer(mainSizer);
 
-    // Bind the event to your handler
-    userTable->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &AdminPanelWindow::onUserClick, this);
+
     this -> showUserMasterlist();
+
+    // to refresh the list
+    refreshBtn -> Bind(wxEVT_BUTTON, [this](wxCommandEvent& e){
+        this -> showUserMasterlist();
+    });
+
+    // triggers to open user configuration window of the selected user in the list
+    userTable->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &AdminPanelWindow::onUserClick, this);
 }
 
 void AdminPanelWindow::showUserMasterlist() {

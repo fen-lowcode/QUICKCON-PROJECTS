@@ -101,7 +101,7 @@ void Account::updateActiveStatus() {
     while(true) {
         try {
             stmt -> executeUpdate();
-            std::this_thread::sleep_for(std::chrono::seconds(30));
+            std::this_thread::sleep_for(std::chrono::seconds(20));
         }
 
         catch(sql::SQLException& e){
@@ -117,7 +117,7 @@ void Account::updateActiveStatus() {
 
 // check if a user is active or not
 bool Account::checkActiveStatus(std::string firstname, std::string lastname, std::string password) {
-    std::string statement = "SELECT LASTSEEN FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ? AND PASSWORD = ? AND (LASTSEEN IS NULL OR LASTSEEN < NOW() - INTERVAL 35 SECOND)";
+    std::string statement = "SELECT LASTSEEN FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ? AND PASSWORD = ? AND (LASTSEEN IS NULL OR LASTSEEN < NOW() - INTERVAL 22 SECOND)";
     auto stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
     stmt -> setString(1, firstname);
     stmt -> setString(2, lastname);
