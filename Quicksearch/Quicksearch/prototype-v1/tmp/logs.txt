@@ -2714,3 +2714,22 @@
 [2026-03-14 15:18:23.436] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
 [2026-03-14 15:18:49.937] [file-log] [debug] User 1 is selected
 [2026-03-14 15:18:52.688] [file-log] [info] User: 1 sucessfully updated User:1 Configuration
+[2026-03-14 15:30:16.588] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 15:30:16.598] [file-log] [info] Login: Initializing logo image
+[2026-03-14 15:30:16.600] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 15:30:32.600] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 15:30:32.606] [file-log] [info] Fetching password from the database
+[2026-03-14 15:30:32.606] [file-log] [info] Login success User: 1
+[2026-03-14 15:30:32.610] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 15:30:32.614] [file-log] [info] Account is Admin
+[2026-03-14 15:30:33.585] [file-log] [debug] User 2 is selected
+[2026-03-14 15:30:34.454] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 15:30:38.648] [file-log] [debug] User 5 is selected
+[2026-03-14 15:30:43.511] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 15:30:47.864] [file-log] [debug] User 5 is selected
+[2026-03-14 15:30:49.711] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 15:30:52.864] [file-log] [debug] User 2 is selected
+[2026-03-14 15:30:55.798] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 15:30:59.259] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 15:31:03.062] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
+[2026-03-14 17:12:36.192] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Can't connect to server on '192.168.1.16' (115)

@@ -29,35 +29,37 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     // Make the second column (the text boxes) growable
     gridSizer->AddGrowableCol(1);
 
-    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "User ID:"), 0, wxALIGN_CENTER_VERTICAL);
-    this->userIDTab = new wxTextCtrl(panel, wxID_ANY, std::to_string(this->userID), wxDefaultPosition, wxDefaultSize, 
-        wxTE_READONLY | wxBORDER_NONE);
-
-    gridSizer->Add(this->userIDTab, 0, wxEXPAND);
-
-    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "First Name:"), 0, wxALIGN_CENTER_VERTICAL);
+    this->userIDTab = new wxTextCtrl(panel, wxID_ANY, std::to_string(this->userID), wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
     this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,wxBORDER_NONE);
-    gridSizer->Add(this->firstnameTab, 0, wxEXPAND);
-
-    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Last Name:"), 0, wxALIGN_CENTER_VERTICAL);
     this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
-    gridSizer->Add(this->lastnameTab, 0, wxEXPAND);
 
-    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Admin Status:"), 0, wxALIGN_CENTER_VERTICAL);
-    wxArrayString choices;
-    choices.Add("Yes");
-    choices.Add("No");
+    wxArrayString choices; choices.Add("Yes"); choices.Add("No");
     this -> adminStatusTab = new wxChoice(panel,wxID_ANY, wxDefaultPosition, wxDefaultSize, choices, wxBORDER_NONE);
-    this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
 
-    gridSizer -> Add(this->adminStatusTab, 0, wxEXPAND);
+    // automatically sets the right default status
+    this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
 
     wxButton * saveButton = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxDefaultSize);
 
+
+
+    // set up grid information layout
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "User ID:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->userIDTab, 0, wxEXPAND);
+
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "First Name:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->firstnameTab, 0, wxEXPAND);
+
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Last Name:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->lastnameTab, 0, wxEXPAND);
+
+    gridSizer -> Add(new wxStaticText(panel, wxID_ANY, "Admin Status:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer -> Add(this->adminStatusTab, 0, wxEXPAND);
+
     // 4. Wrap the grid in the main sizer with a 20px margin for a "breathing" look
-    mainSizer -> AddSpacer(50);
-    mainSizer->Add(saveButton, 0, wxCENTER, 20);
-    mainSizer -> AddSpacer(50);
+    mainSizer -> AddSpacer(20);
+    mainSizer -> Add(saveButton, 0, wxCENTER, 20);
+    mainSizer -> AddSpacer(10);
     mainSizer->Add(gridSizer, 1, wxALL | wxEXPAND, 20);
     mainSizer -> AddStretchSpacer(1);
     panel->SetSizer(mainSizer);
