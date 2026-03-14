@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <memory>
 #include <wx/wx.h>
 #include <wx/dataview.h>
 #include <wx/srchctrl.h>
@@ -17,9 +18,6 @@ public:
     DataDashboard(const wxString& title, std::shared_ptr<User> user);
 
 private:
-    wxSearchCtrl* nameSearchBox;
-    wxSearchCtrl* contactSearchBar;
-    wxDataViewListCtrl* customerList;
-
-    void loadCustomers(std::shared_ptr<sql::Connection> conn);
+    std::shared_ptr<User> user;
+    wxPanel* panel;
 };

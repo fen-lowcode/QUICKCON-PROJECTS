@@ -1,6 +1,7 @@
 
 #include "account.hpp"
 #include "logs.hpp"
+#include <mariadb/conncpp/Exception.hpp>
 
 
 // check if the credentials matches from the database
@@ -139,4 +140,29 @@ bool Account::checkActiveStatus(std::string firstname, std::string lastname, std
     }
 
     return true;
+}
+
+void Account::updateUserConfiguration(int userID, std::string firstname, std::string lastname, bool isAdmin) {
+
+    std::stringstream logmessage;
+
+    std::string statement = "UPDATE USERS SET FIRSTNAME = ?, LASTNAME = ?, ISADMIN = ? WHERE USERID = ?";
+    auto stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
+    stmt -> setString(1, firstname);
+    stmt -> setString(2, lastname);
+    stmt -> setBoolean(3, isAdmin);
+    stmt -> setInt(4, userID);
+
+    try {
+
+        int res = stmt -> executeUpdate();
+        logmessage << "User: " << accountinfo.userID << " sucessfully updated User:" << userID << " Configuration";
+        LOGINFO(FILE_LOG, logmessage.str());
+
+    } catch(sql::SQLException& e) {
+
+        logmessage << "SQL error: " << e.what() << std::endl;
+        LOGERROR(FILE_LOG, logmessage.str());
+
+    }
 }

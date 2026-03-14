@@ -1,6 +1,9 @@
 #include "adminpanel.hpp"
 #include "logs.hpp"
 #include "user.hpp"
+#include "userconfigwindow.hpp"
+#include "wx/variant.h"
+#include "wx/wx.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
@@ -16,18 +19,20 @@ AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog
     FILE_LOG{FILE_LOG}
 {
 
-    wxFont uiFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_LIGHT);
+    wxFont uiFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL);
     wxPanel* panel = new wxPanel(this);
     wxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
     wxSizer* contentSizer = new wxBoxSizer(wxHORIZONTAL);
 
-    userTable = new wxDataViewListCtrl(panel, wxID_ANY);
-    userTable -> AppendTextColumn("ID");
-    userTable -> AppendTextColumn("Firstname");
-    userTable -> AppendTextColumn("Lastname");
-    userTable -> AppendTextColumn("Admin");
-    userTable -> AppendTextColumn("Last Seen");
-    userTable -> SetFont(uiFont);
+    panel -> SetBackgroundColour(wxColour(240,240,240)); // light modern gray
+
+    this -> userTable = new wxDataViewListCtrl(panel, wxID_ANY);
+    this -> userTable -> AppendTextColumn("ID");
+    this -> userTable -> AppendTextColumn("Firstname");
+    this -> userTable -> AppendTextColumn("Lastname");
+    this -> userTable -> AppendTextColumn("Admin");
+    this -> userTable -> AppendTextColumn("Last Seen");
+    this -> userTable -> SetFont(uiFont);
 
     mainSizer -> AddSpacer(100);
     mainSizer -> Add(userTable, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 20);
@@ -52,7 +57,7 @@ void AdminPanelWindow::showUserMasterlist() {
             row.push_back(wxVariant(std::string(res -> getString("USERID"))));
             row.push_back(wxVariant(std::string(res -> getString("FIRSTNAME"))));
             row.push_back(wxVariant(std::string(res -> getString("LASTNAME"))));
-            row.push_back(wxVariant(std::string(res -> getInt("ISADMIN") == 1 ? "Yes" : "No")));
+            row.push_back(wxVariant(res -> getBoolean("ISADMIN") == true ? "Yes" : "No"));
             row.push_back(wxVariant(std::string(res -> getString("LASTSEEN"))));
             userTable->AppendItem(row);
         }
@@ -64,7 +69,8 @@ void AdminPanelWindow::showUserMasterlist() {
 
 
 //!! IMPROVE THIS
-//? EVENT HANDLER THAT SHOWS USERID OF THE SELECTED COLUMN
+//? EVENT HANDLER THAT PASSES ALL DATA PER COLUMN OF THE SELECTED ROW TO THE CONFIG WINDOW
+
 void AdminPanelWindow::onUserClick(wxDataViewEvent &event) {
     unsigned int col = event.GetColumn();
     wxDataViewItem item = event.GetItem();
@@ -86,13 +92,16 @@ void AdminPanelWindow::onUserClick(wxDataViewEvent &event) {
     logmessage << "User " << userId.GetInteger() << " is selected";
     LOGDEBUG(FILE_LOG, logmessage.str());
 
-    UserConfigWindow* field = new UserConfigWindow("Configure User",  
-        std::string(userId.GetString()),
-        std::string(userFirstname.GetString()),
-        std::string(userLastname.GetString()), 
-        std::string(userAdminStatus.GetString())
-    );
 
+    (
+        new UserConfigWindow(
+            "Configure User",
+            this -> user, 
+            userId.GetInteger(), 
+            userFirstname.GetString(), 
+            userLastname.GetString(), 
+            userAdminStatus.GetString()
+        )
 
-    field -> Show();
+    )->Show();
 }
