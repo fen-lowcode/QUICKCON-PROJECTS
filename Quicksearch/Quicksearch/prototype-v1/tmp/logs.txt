@@ -2749,3 +2749,50 @@
 [2026-03-14 17:14:13.551] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
 [2026-03-14 17:14:17.407] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
 [2026-03-14 17:14:17.574] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-14 17:14:55.134] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 17:14:55.143] [file-log] [info] Login: Initializing logo image
+[2026-03-14 17:14:55.145] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 17:15:04.320] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 17:15:04.325] [file-log] [info] Fetching password from the database
+[2026-03-14 17:15:04.326] [file-log] [info] Login success User: 1
+[2026-03-14 17:15:04.332] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 17:15:04.343] [file-log] [info] Account is Admin
+[2026-03-14 17:15:12.016] [file-log] [debug] User 1 is selected
+[2026-03-14 17:15:14.008] [file-log] [debug] User 5 is selected
+[2026-03-14 17:15:17.553] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 17:15:37.608] [file-log] [debug] User 5 is selected
+[2026-03-14 17:15:42.835] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 17:15:50.895] [file-log] [info] User: 1 sucessfully updated User:5 Configuration
+[2026-03-14 17:16:00.819] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-14 17:16:00.827] [file-log] [info] Login: Initializing logo image
+[2026-03-14 17:16:00.829] [file-log] [info] Login: Initialized Logo image
+[2026-03-14 17:16:11.816] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-14 17:16:11.819] [file-log] [info] Fetching password from the database
+[2026-03-14 17:16:11.819] [file-log] [info] Login success User: 1
+[2026-03-14 17:16:11.824] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-14 17:16:11.862] [file-log] [info] Account is Admin
+[2026-03-14 17:16:26.568] [file-log] [debug] User 4 is selected
+[2026-03-14 17:16:40.579] [file-log] [error] SQL error: (conn=189) Lost connection to server during query
+
+[2026-03-15 21:09:08.544] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-15 21:09:08.555] [file-log] [info] Login: Initializing logo image
+[2026-03-15 21:09:08.557] [file-log] [info] Login: Initialized Logo image
+[2026-03-15 21:09:29.370] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-15 21:09:29.373] [file-log] [info] Fetching password from the database
+[2026-03-15 21:09:29.373] [file-log] [info] Login success User: 1
+[2026-03-15 21:09:29.375] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-15 21:09:29.377] [file-log] [info] Account is Admin
+[2026-03-15 21:09:47.034] [file-log] [debug] User 4 is selected
+[2026-03-15 21:09:51.269] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:09:56.130] [file-log] [debug] User 4 is selected
+[2026-03-15 21:10:00.878] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:10:05.981] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:10:15.754] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:10:23.561] [file-log] [debug] User 4 is selected
+[2026-03-15 21:10:24.466] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:10:27.237] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-15 21:11:22.435] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-15 21:11:22.442] [file-log] [info] Login: Initializing logo image
+[2026-03-15 21:11:22.444] [file-log] [info] Login: Initialized Logo image
+[2026-03-15 21:20:49.430] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Access denied for user 'quicksearch'@'192.168.1.16' (using password: YES)
+[2026-03-15 21:23:03.096] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Access denied for user 'quicksearch'@'192.168.1.16' (using password: YES)

@@ -5,6 +5,7 @@
 #include <mariadb/conncpp.hpp>
 #include "logs.hpp"
 #include <sstream>
+#include <nlohmann/json.hpp>
 
 class DatabaseConnect {
 
