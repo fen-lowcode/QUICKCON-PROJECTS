@@ -1,11 +1,7 @@
 
 #include "databaseconnect.hpp"
+#include <fstream>
 
-#define HOST "192.168.1.16"
-#define USER "quicksearch"
-#define UPASSWORD "G=]&I[v;k!gbegi(PLQh"
-#define DATABASE "quickcon_data"
-#define PORT 3306
 
 DatabaseConnect::DatabaseConnect(std::shared_ptr<spdlog::logger> FILE_LOG) {
     this -> FILE_LOG = FILE_LOG;
@@ -15,11 +11,14 @@ std::shared_ptr<sql::Connection> DatabaseConnect::connToDB() {
 
     std::stringstream logMessage;
 
-    dbcredentials.host = HOST;
-    dbcredentials.user = USER;
-    dbcredentials.userpassword = UPASSWORD;
-    dbcredentials.database = DATABASE;
-    dbcredentials.port = PORT;
+    std::ifstream  dbConfigFile{"configdb.json"};
+    nlohmann::json dbConfig; dbConfigFile >> dbConfig;
+
+    dbcredentials.host = dbConfig["host"];
+    dbcredentials.user = dbConfig["user"];
+    dbcredentials.userpassword = dbConfig["password"];
+    dbcredentials.database = dbConfig["database"];
+    dbcredentials.port = dbConfig["port"];
 
     try {
         // Instantiate Driver
