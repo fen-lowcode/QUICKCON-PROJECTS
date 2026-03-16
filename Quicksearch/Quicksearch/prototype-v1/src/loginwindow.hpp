@@ -19,15 +19,15 @@ private:
     std::shared_ptr<User> user;
     std::shared_ptr<spdlog::logger> FILE_LOG;
 
-    wxPanel* panel;
-    wxBoxSizer* mainSizer;
-    wxBoxSizer* userNameSizer;
-    wxStaticBitmap* logo;
+    wxPanel* panel {nullptr};
+    wxBoxSizer* mainSizer {nullptr};
+    wxBoxSizer* userNameSizer {nullptr};
+    wxStaticBitmap* logo {nullptr};
 
-    wxTextCtrl* firstnameBox;
-    wxTextCtrl* lastnameBox;
-    wxTextCtrl* passwordBox;
-    wxButton* btnEnter;
+    wxTextCtrl* firstnameBox {nullptr};
+    wxTextCtrl* lastnameBox {nullptr};
+    wxTextCtrl* passwordBox {nullptr};
+    wxButton* btnEnter {nullptr};
 
     bool isClosing {false};
     

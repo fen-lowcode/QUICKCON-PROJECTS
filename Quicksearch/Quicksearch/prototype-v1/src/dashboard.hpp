@@ -19,5 +19,5 @@ public:
 
 private:
     std::shared_ptr<User> user;
-    wxPanel* panel;
+    wxPanel* panel {nullptr};
 };
