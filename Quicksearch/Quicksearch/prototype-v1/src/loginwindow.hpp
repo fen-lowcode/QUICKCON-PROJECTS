@@ -30,8 +30,6 @@ private:
     wxButton* btnEnter {nullptr};
 
     bool isClosing {false};
-    
-    std::string hashPassword(std::string passBuffer);
 
     void setUpLogo();
     void setUpInputBoxes();

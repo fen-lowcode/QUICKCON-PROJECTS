@@ -6,6 +6,8 @@
 #include <chrono>
 #include "logs.hpp"
 #include "sstream"
+#include <iomanip>
+#include <sodium.h>
 
 class Account {
 
@@ -40,7 +42,7 @@ public:
     void updateActiveStatus();
 
     // check the active status of a user
-    bool checkActiveStatus(std::string firstname, std::string lastname, std::string password);
+    bool checkActiveStatus(std::string firstname, std::string lastname);
 
 
     void updateUserConfiguration(int userID, std::string firstname, std::string lastname, bool isAdmin);

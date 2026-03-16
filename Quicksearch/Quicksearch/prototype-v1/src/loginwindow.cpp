@@ -1,4 +1,5 @@
 #include "loginwindow.hpp"
+#include "logs.hpp"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
@@ -92,25 +93,6 @@ void LoginWindow::setUpLogo() {
     }
 }
 
-// hashes the password into sha256 and converts the hash into a 64 byte long string 
-std::string LoginWindow::hashPassword(std::string passBuffer) {
-
-    unsigned char hash[crypto_hash_sha256_BYTES];
-
-    // hashes the password in the buffer into sha256 and place it in a temporary sha256 buffer
-    crypto_hash_sha256(hash, (const unsigned char *)passBuffer.c_str(), passBuffer.size());
-
-    std::stringstream ss;
-
-    // Converts each bytes of the sha256 hash into an integer and then into it's hex character set to two bytes
-    for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
-        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
-    }
-
-    // after the loop converrsion above it then stores it as a string object
-    return ss.str();
-};
-
 void LoginWindow::btnEvents() {
 
     // handle login button upon click
@@ -148,17 +130,15 @@ void LoginWindow::initializeLogin(wxCommandEvent& event) {
         firstnameBox->GetValue().ToStdString(), 
         lastnameBox->GetValue().ToStdString()
     );
-
-    this -> user -> setPassword(
-        hashPassword(passwordBox->GetValue().ToStdString())
-    );
+    this -> user -> setPassword(passwordBox->GetValue().ToStdString());
 
     // Checks user credentials
     if (user -> login() == true) {
 
         // checks if the user have already an open session
         // must return FALSE to let the user proceed 
-        if (!this -> user -> checkActiveStatus(user->getFirstName(), user->getLastName(), user -> getPassword())) {
+        LOGDEBUG(FILE_LOG, user -> getPassword());
+        if (!this -> user -> checkActiveStatus(user->getFirstName(), user->getLastName())) {
             
             std::thread t = std::thread(&User::updateActiveStatus, user);
             t.detach();
