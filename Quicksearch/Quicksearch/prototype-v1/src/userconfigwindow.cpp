@@ -35,7 +35,7 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     this->userIDTab = new wxTextCtrl(panel, wxID_ANY, std::to_string(this->userID), wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
     this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,wxBORDER_NONE);
     this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
-    this->changepassTab = new wxTextCtrl(panel, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+    this->changepassTab = new wxTextCtrl(panel, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD| wxBORDER_NONE);
 
     wxArrayString choices; choices.Add("Yes"); choices.Add("No");
     this -> adminStatusTab = new wxChoice(panel,wxID_ANY, wxDefaultPosition, wxDefaultSize, choices, wxBORDER_NONE);
