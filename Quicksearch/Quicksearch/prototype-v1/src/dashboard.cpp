@@ -5,6 +5,7 @@ DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
     nullptr,
     wxID_ANY,
     title,
+
     wxDefaultPosition,
     wxSize(WIDTH, HEIGHT),
     wxDEFAULT_FRAME_STYLE),

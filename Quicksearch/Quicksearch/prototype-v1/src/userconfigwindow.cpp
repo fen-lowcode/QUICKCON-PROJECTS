@@ -3,7 +3,10 @@
 #include "wx/event.h"
 #include "wx/gdicmn.h"
 #include "wx/gtk/button.h"
+#include "wx/gtk/stattext.h"
+#include "wx/gtk/textctrl.h"
 #include "wx/wx.h"
+#include <cstddef>
 #include <string>
 
 //!! WORK ON THIS
@@ -32,6 +35,7 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     this->userIDTab = new wxTextCtrl(panel, wxID_ANY, std::to_string(this->userID), wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
     this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,wxBORDER_NONE);
     this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+    this->changepassTab = new wxTextCtrl(panel, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
 
     wxArrayString choices; choices.Add("Yes"); choices.Add("No");
     this -> adminStatusTab = new wxChoice(panel,wxID_ANY, wxDefaultPosition, wxDefaultSize, choices, wxBORDER_NONE);
@@ -40,8 +44,6 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
 
     wxButton * saveButton = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxDefaultSize);
-
-
 
     // set up grid information layout
     gridSizer->Add(new wxStaticText(panel, wxID_ANY, "User ID:"), 0, wxALIGN_CENTER_VERTICAL);
@@ -53,8 +55,12 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Last Name:"), 0, wxALIGN_CENTER_VERTICAL);
     gridSizer->Add(this->lastnameTab, 0, wxEXPAND);
 
+    gridSizer -> Add(new wxStaticText(panel, wxID_ANY, "Change Password"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer -> Add(changepassTab, 0, wxEXPAND);
+
     gridSizer -> Add(new wxStaticText(panel, wxID_ANY, "Admin Status:"), 0, wxALIGN_CENTER_VERTICAL);
     gridSizer -> Add(this->adminStatusTab, 0, wxEXPAND);
+
 
     // 4. Wrap the grid in the main sizer with a 20px margin for a "breathing" look
     mainSizer -> AddSpacer(20);

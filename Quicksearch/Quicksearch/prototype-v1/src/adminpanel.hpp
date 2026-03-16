@@ -18,7 +18,7 @@ public:
 private:
     std::shared_ptr<spdlog::logger> FILE_LOG;
     std::shared_ptr<User> user;
-    wxDataViewListCtrl* userTable;
+    wxDataViewListCtrl* userTable {nullptr};
 
     //!! Temporary var for debugging to get user adminstatus
     bool isAdmin;
