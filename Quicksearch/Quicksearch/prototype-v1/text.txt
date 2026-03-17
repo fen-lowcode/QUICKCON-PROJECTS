@@ -1,0 +1,1000 @@
+
+#include "account.hpp"
+#include "logs.hpp"
+#include <mariadb/conncpp/Exception.hpp>
+#include <mariadb/conncpp/PreparedStatement.hpp>
+#include <memory>
+
+
+auto hashPass = [](std::string pass) {
+    unsigned char hash[crypto_hash_sha256_BYTES];
+    crypto_hash_sha256(hash, (const unsigned char *)pass.c_str(), pass.size());
+    std::stringstream ss;
+
+    // Converts each bytes of the sha256 hash into an integer and then into it's hex character set to two bytes
+    for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
+        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+    }
+    // after the loop converrsion above it then stores it as a string object
+    return ss.str();
+};
+
+// check if the credentials matches from the database
+bool Account::autheticateLogin( 
+    const std::string& firstname,
+    const std::string& lastname,
+    const std::string& password
+) {
+
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(
+        conn->prepareStatement(
+            "SELECT USERID, PASSWORD FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ?"
+        )
+    );
+
+    stmt -> setString(1, firstname);
+    stmt -> setString(2, lastname);
+
+
+    try{
+
+        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
+        LOGINFO(this-> FILE_LOG, "Fetching password from the database");
+
+        if (!res->next()) {  wxMessageBox(
+            "User not found", "Login failure", wxOK | wxICON_ERROR);
+            LOGWARNING(FILE_LOG, "User was not found in the database");
+        } 
+
+        // place the password hash from the database and put it in a temporary variable for comparison
+        std::string passwordFromDB = std::string(res->getString("PASSWORD"));
+        if( hashPass(password) != passwordFromDB) {   
+            wxMessageBox("Wrong password please try again", "Login failure", wxOK | wxICON_ERROR);
+            return false;
+        }
+
+        // assign userID from the database
+        accountinfo.userID = res->getInt("userID"); 
+        std::stringstream logMessage; logMessage << "Login success " << "User: " << accountinfo.userID;
+        LOGINFO(FILE_LOG, logMessage.str());
+
+    } catch (sql::SQLException& e) {
+        LOGERROR(FILE_LOG, "SQL failure from account authentication");
+        std::cout << "SQL error: " << e.what() << std::endl;
+        return false;
+    }
+    return true;
+}
+
+std::shared_ptr<sql::Connection> Account::getConnection() {
+    return this -> conn;
+}
+
+
+bool Account::checkIsAdmin() {
+
+    LOGDEBUG(FILE_LOG, "CHECKING ADMIN STATUS");
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(
+            conn -> prepareStatement("select isAdmin from USERS where userid = ?")
+    ); stmt -> setInt(1, accountinfo.userID);
+
+    try {
+        auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
+
+        if(res -> next()) {
+
+            // message 
+            bool result =  res -> getBoolean("isAdmin");
+
+            if (result == true) {
+                LOGINFO(FILE_LOG, "Account is Admin");
+                return true;
+            } else {
+                LOGINFO(FILE_LOG, "Account is not Admin");
+                return false;
+            }
+        }
+
+        
+    } catch(sql::SQLException& e) {
+        std::cout << "SQL error: " << e.what() << std::endl;
+    }
+
+    return false;                                                   
+}
+
+ // updates "lastseen column" to the most recent time
+void Account::updateActiveStatus() {
+    sql::SQLString statement {
+        "UPDATE USERS "
+            "SET lastseen = NOW() "
+            "where userID = ?"
+    };
+    auto stmt = std::shared_ptr<sql::PreparedStatement> (conn -> prepareStatement(statement));
+    stmt -> setInt(1, accountinfo.userID);
+
+    while(true) {
+        try {
+            stmt -> executeUpdate();
+            std::this_thread::sleep_for(std::chrono::seconds(20));
+        }
+
+        catch(sql::SQLException& e){
+            std::cout << "SQL: Error" << e.what() << std::endl;
+            break;
+        }
+    }
+
+    // Kills th program when this thread fails needs to be refactored
+    std::cout << "Account::updateActiveStatus(): failed" << std::endl;
+    exit(1);
+}
+
+
+// check if a user is active or not
+bool Account::checkActiveStatus( std::string firstname, std::string lastname) {
+    std::string statement = "SELECT LASTSEEN FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ? AND (LASTSEEN IS NULL OR LASTSEEN < NOW() - INTERVAL 22 SECOND)";
+    auto stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
+    stmt -> setString(1, firstname);
+    stmt -> setString(2, lastname);
+
+    try {
+        auto res = std::shared_ptr<sql::ResultSet>(stmt -> executeQuery());
+
+        if (res -> next()) {
+            return false;
+        } else {
+            std::stringstream logMessage;
+            logMessage << "Attempted Multiple loggin session on User: " << accountinfo.userID << "\n";
+            LOGWARNING(FILE_LOG, logMessage.str());
+        }
+
+    } catch (sql::SQLException& e) {
+
+        std::cout << "SQL error: " << e.what() << std::endl;
+    }
+
+    return true;
+}
+
+// !! FOR ADMIN ACCOUNT ONLY
+// updates u
+bool Account::updateUserConfiguration(int userID, std::string firstname, std::string lastname, std::string newPass, bool isAdmin) {
+
+    std::stringstream logmessage;
+    std::shared_ptr<sql::PreparedStatement> stmt;
+    std::shared_ptr<sql::PreparedStatement> stmt2;
+
+    std::string statement = "UPDATE USERS SET FIRSTNAME = ?, LASTNAME = ?, ISADMIN = ? WHERE USERID = ?";
+    std::string changePassStatement = "UPDATE USERS SET PASSWORD = ? WHERE USERID = ?";
+
+
+    stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
+    stmt -> setString(1, firstname);
+    stmt -> setString(2, lastname);
+    stmt -> setBoolean(3, isAdmin);
+    stmt -> setInt(4, userID);
+
+    // detects ifthere's a new password from the input tab and then if there is it will hash it and set up the query
+    if (!newPass.empty()) {
+            stmt2 = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(changePassStatement));
+            stmt2 -> setString(1, hashPass(newPass));
+            stmt2 -> setInt(2, userID);
+            LOGDEBUG(FILE_LOG, hashPass(newPass));
+    }
+
+    try {
+
+        stmt -> executeUpdate();
+
+        if(!newPass.empty()) {
+            stmt2 -> executeUpdate();
+            logmessage << "User: " << accountinfo.userID << " updates user " << userID << " password";
+            LOGDEBUG(FILE_LOG, logmessage.str());
+        }
+
+        logmessage.str(""); logmessage.clear();
+        logmessage << "User: " << accountinfo.userID << " sucessfully updated user " << userID << " Configuration";
+        LOGINFO(FILE_LOG, logmessage.str());
+    
+        return true;
+
+    } catch(sql::SQLException& e) {
+
+        logmessage << "SQL error: " << e.what() << std::endl;
+        LOGERROR(FILE_LOG, logmessage.str());
+    }
+
+    return false;
+}
+#include "adminpanel.hpp"
+#include "logs.hpp"
+#include "user.hpp"
+#include "userconfigwindow.hpp"
+#include "wx/button.h"
+#include "wx/event.h"
+#include "wx/gtk/button.h"
+#include "wx/layout.h"
+#include "wx/variant.h"
+#include "wx/wx.h"
+
+#define WINDOW_WIDTH 600
+#define WINDOW_HEIGHT 400
+
+AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog::logger> FILE_LOG,  std::shared_ptr<User> user) :  wxFrame (
+    nullptr,
+    wxID_ANY,
+    title,
+    wxDefaultPosition, wxSize(WINDOW_WIDTH, WINDOW_HEIGHT), 
+    wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX),
+
+    user{user},
+    FILE_LOG{FILE_LOG}
+{
+
+    wxFont uiFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL);
+    wxPanel* panel = new wxPanel(this);
+    wxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+    wxSizer* contentSizer = new wxBoxSizer(wxHORIZONTAL);
+
+    panel -> SetBackgroundColour(wxColour(255, 255, 255)); 
+    this -> userTable = new wxDataViewListCtrl(panel, wxID_ANY);
+    this -> userTable -> AppendTextColumn("ID");
+    this -> userTable -> AppendTextColumn("Firstname");
+    this -> userTable -> AppendTextColumn("Lastname");
+    this -> userTable -> AppendTextColumn("Admin");
+    this -> userTable -> AppendTextColumn("Last Seen");
+    this -> userTable -> SetFont(uiFont);
+    wxButton* refreshBtn = new wxButton(panel, wxID_ANY, "Refresh List");
+
+    mainSizer -> AddSpacer(40);
+    mainSizer -> Add(refreshBtn, 0, wxALIGN_RIGHT | wxRIGHT, 20);
+    mainSizer -> AddSpacer(20);
+    mainSizer -> Add(userTable, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 20);
+    panel -> SetSizer(mainSizer);
+
+
+    this -> showUserMasterlist();
+
+    // to refresh the list
+    refreshBtn -> Bind(wxEVT_BUTTON, [this](wxCommandEvent& e){
+        this -> showUserMasterlist();
+    });
+
+    // triggers to open user configuration window of the selected user in the list
+    userTable->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &AdminPanelWindow::onUserClick, this);
+}
+
+void AdminPanelWindow::showUserMasterlist() {
+
+    auto stmt = std::unique_ptr<sql::PreparedStatement>(
+        user->getConnection() -> prepareStatement("SELECT USERID, FIRSTNAME, LASTNAME, ISADMIN, LASTSEEN FROM USERS"));
+
+    try {
+        auto res = stmt -> executeQuery();
+        userTable ->DeleteAllItems();
+
+        while(res->next()) {
+            wxVector<wxVariant> row;
+            row.push_back(wxVariant(std::string(res -> getString("USERID"))));
+            row.push_back(wxVariant(std::string(res -> getString("FIRSTNAME"))));
+            row.push_back(wxVariant(std::string(res -> getString("LASTNAME"))));
+            row.push_back(wxVariant(res -> getBoolean("ISADMIN") == true ? "Yes" : "No"));
+            row.push_back(wxVariant(std::string(res -> getString("LASTSEEN"))));
+            userTable->AppendItem(row);
+        }
+
+    } catch(sql::SQLException& e) {
+        std::cout << "SQL error" << e.what() << std::endl;
+    }
+}
+
+
+//!! IMPROVE THIS
+//? EVENT HANDLER THAT PASSES ALL DATA PER COLUMN OF THE SELECTED ROW TO THE CONFIG WINDOW
+
+void AdminPanelWindow::onUserClick(wxDataViewEvent &event) {
+    unsigned int col = event.GetColumn();
+    wxDataViewItem item = event.GetItem();
+    
+    // Get the ID from the first column (index 0) of that same row
+    wxVariant userId;
+    userTable->GetValue(userId, userTable->ItemToRow(item), 0);
+
+    wxVariant userFirstname;
+    userTable->GetValue(userFirstname, userTable->ItemToRow(item), 1);
+
+    wxVariant userLastname;
+    userTable->GetValue(userLastname, userTable->ItemToRow(item), 2);
+
+    wxVariant userAdminStatus;
+    userTable->GetValue(userAdminStatus, userTable->ItemToRow(item), 3);
+
+    std::stringstream logmessage;
+    logmessage << "User " << userId.GetInteger() << " is selected";
+    LOGDEBUG(FILE_LOG, logmessage.str());
+
+
+    (
+        new UserConfigWindow(
+            "Configure User",
+            this -> user, 
+            userId.GetInteger(), 
+            userFirstname.GetString(), 
+            userLastname.GetString(), 
+            userAdminStatus.GetString()
+        )
+
+    )->Show();
+}#include "dashboard.hpp"
+
+DataDashboard::DataDashboard(const wxString& title, std::shared_ptr<User> user)
+: wxFrame(
+    nullptr,
+    wxID_ANY,
+    title,
+
+    wxDefaultPosition,
+    wxSize(WIDTH, HEIGHT),
+    wxDEFAULT_FRAME_STYLE),
+    user(user)
+{
+    this -> Center();
+    this -> SetFont(wxFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL));
+
+    this -> panel = new wxPanel(this);
+    this -> panel -> SetBackgroundColour(wxColour(240,240,240)); // light modern gray
+
+}
+
+#include "databaseconnect.hpp"
+#include <fstream>
+
+
+DatabaseConnect::DatabaseConnect(std::shared_ptr<spdlog::logger> FILE_LOG) {
+    this -> FILE_LOG = FILE_LOG;
+}
+
+std::shared_ptr<sql::Connection> DatabaseConnect::connToDB() {
+
+    std::stringstream logMessage;
+
+    std::ifstream  dbConfigFile{"configdb.json"};
+    nlohmann::json dbConfig; dbConfigFile >> dbConfig;
+
+    dbcredentials.host = dbConfig["host"];
+    dbcredentials.user = dbConfig["user"];
+    dbcredentials.userpassword = dbConfig["password"];
+    dbcredentials.database = dbConfig["database"];
+    dbcredentials.port = dbConfig["port"];
+
+    try {
+        // Instantiate Driver
+        sql::Driver* driver = sql::mariadb::get_driver_instance(); 
+        std::string url = 
+        "jdbc:mariadb://" + dbcredentials.host + ":" + std::to_string(dbcredentials.port) + "/" + dbcredentials.database;
+
+        std::shared_ptr<sql::Connection> conn (driver->connect(url, dbcredentials.user, dbcredentials.userpassword));
+        logMessage << "Database connection established on HOST: " << dbcredentials.host << " on PORT: " << dbcredentials.port;
+        LOGINFO(FILE_LOG, logMessage.str());
+        return conn;
+    }
+
+    catch(sql::SQLException& e) {
+        logMessage << "Database connection NOT established on HOST: " << dbcredentials.host << " on PORT: " << dbcredentials.port << "SQL error: " << e.what();
+        LOGFATAL(FILE_LOG, logMessage.str());
+        exit(1);
+    };
+}
+
+#include "loginwindow.hpp"
+#include "logs.hpp"
+
+#define WINDOW_WIDTH 600
+#define WINDOW_HEIGHT 400
+
+#define LOGO "./assets/quicksearch_logo.png"
+
+LoginWindow::LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG, const std::string& title, std::shared_ptr<User> user)
+    : wxFrame(nullptr, wxID_ANY, title,
+            wxDefaultPosition, wxSize(WINDOW_WIDTH, WINDOW_HEIGHT),
+            wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX), FILE_LOG(FILE_LOG),  user(user)
+{
+    this->Center();
+    this -> SetFont(wxFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL));
+
+    // setting up panel,  every widget goes in this panel 
+    panel = new wxPanel(this); panel -> SetMinSize({300, 400});
+    panel -> SetMaxSize({300, 400}); panel->SetBackgroundColour( wxColour(*wxWHITE));
+    panel -> SetBackgroundColour(wxColour(240,240,240)); // light modern gray
+
+    mainSizer = new wxBoxSizer(wxVERTICAL); 
+    userNameSizer = new wxBoxSizer(wxHORIZONTAL);
+
+    this -> setUpLogo(); // Render QuickSearch Logo
+    this -> setUpInputBoxes(); // render input boxes
+    this -> setupLayout();
+    this -> btnEvents();
+}
+
+
+void LoginWindow::setupLayout() {
+    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
+    mainSizer->Add(logo, 0, wxALIGN_CENTER | wxBOTTOM, 15);
+    mainSizer-> AddStretchSpacer(2);  // push everything to vertical center
+    userNameSizer->Add(firstnameBox, 0, wxALIGN_CENTER, 50);
+    userNameSizer-> AddSpacer(10);
+    userNameSizer->Add(lastnameBox, 0, wxALIGN_CENTER, 50);
+    mainSizer -> Add(userNameSizer, 0, wxALIGN_CENTER);
+    mainSizer-> AddStretchSpacer(1);
+    mainSizer->Add(passwordBox, 0, wxALIGN_CENTER | wxBOTTOM);
+    mainSizer-> AddSpacer(30);  // push everything to vertical center
+    mainSizer->Add(btnEnter, 0, wxALIGN_CENTER);
+    mainSizer-> AddStretchSpacer(1);  // push everything to vertical center
+    panel->SetSizer(mainSizer);
+
+}
+
+
+void LoginWindow::setUpInputBoxes() {
+    // --- Firstname text box ---
+    firstnameBox = new wxTextCtrl (
+            panel, wxID_ANY, "", wxDefaultPosition, 
+            wxSize(200,30),  wxTE_CENTER 
+    ); firstnameBox -> SetHint("Firstname"); 
+
+      // --- Lastname text box ---
+    lastnameBox = new wxTextCtrl (
+        panel, wxID_ANY, "", wxDefaultPosition, 
+        wxSize(200,30),  wxTE_CENTER  
+    ); lastnameBox -> SetHint("Lastname"); 
+
+     // -- Password text box
+    passwordBox =  new wxTextCtrl (
+        panel, wxID_ANY, "", wxDefaultPosition, 
+        wxSize(412,30),  wxTE_CENTER | wxTE_PASSWORD
+    ); passwordBox -> SetHint("Password"); 
+    
+    btnEnter = new wxButton (
+        panel, wxID_ANY, "LOGIN", wxDefaultPosition,
+        wxSize(200,30), wxBORDER_NONE
+    ); btnEnter->SetBackgroundColour(*wxWHITE);
+}
+
+
+// loads the image and define it's properpties
+void LoginWindow::setUpLogo() {
+
+    LOGINFO(FILE_LOG, "Login: Initializing logo image");
+    wxImage::AddHandler(new wxPNGHandler());        // to handle png file
+    wxImage logoImg(LOGO, wxBITMAP_TYPE_PNG);    // load png image
+
+    // check if logo is loaded properly
+    if (logoImg.IsOk()) {
+        LOGINFO(FILE_LOG, "Login: Initialized Logo image");
+        logoImg = logoImg.Scale(270, 110, wxIMAGE_QUALITY_HIGH);
+        wxBitmap bitmap(logoImg);
+        logo = new wxStaticBitmap(panel, wxID_ANY, bitmap);
+
+    } else {
+        LOGERROR(FILE_LOG, "Login: Failed to initialize logo");
+        exit(-1);
+    }
+}
+
+void LoginWindow::btnEvents() {
+
+    // handle login button upon click
+    btnEnter -> Bind(wxEVT_BUTTON, &LoginWindow::initializeLogin, this);
+    // “Only run placeholder logic if we are NOT closing.”
+    this->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event)
+    {
+        isClosing = true;
+        event.Skip();
+    });    
+
+    // Capture the raw pointer and name it 'btnEnter' inside the lambda
+    this -> btnEnter->Bind(wxEVT_ENTER_WINDOW, [this](wxMouseEvent& event) {
+            this -> btnEnter->SetBackgroundColour(wxColour(141, 242, 242)); 
+            this -> btnEnter->Refresh(); 
+            event.Skip();
+        }
+    ); // Added the missing };
+
+        // 3. Handle Mouse Leave (Exit)
+    this -> btnEnter->Bind(wxEVT_LEAVE_WINDOW, [this](wxMouseEvent& event) {
+            this -> btnEnter->SetBackgroundColour(*wxWHITE); // Back to Original
+            this -> btnEnter->Refresh();
+            event.Skip();
+        }   
+    );
+}
+
+
+void LoginWindow::initializeLogin(wxCommandEvent& event) {
+
+    LOGDEBUG(FILE_LOG, "LOGIN BUTTON IS CLICKED");
+
+    this -> user -> setUsername(
+        firstnameBox->GetValue().ToStdString(), 
+        lastnameBox->GetValue().ToStdString()
+    );
+    this -> user -> setPassword(passwordBox->GetValue().ToStdString());
+
+    // Checks user credentials
+    if (user -> login() == true) {
+
+        // checks if the user have already an open session
+        // must return FALSE to let the user proceed 
+        LOGDEBUG(FILE_LOG, user -> getPassword());
+        if (!this -> user -> checkActiveStatus(user->getFirstName(), user->getLastName())) {
+            
+            std::thread t = std::thread(&User::updateActiveStatus, user);
+            t.detach();
+
+            //!! spawn dashboard window
+            (new DataDashboard("Quicksearch Data Management", user)) -> Show();
+
+            // spawn admin panel window
+            if(this -> user -> checkIsAdmin()) {
+                (new AdminPanelWindow("Quicksearch Admin Panel", FILE_LOG, user)) -> Show();
+            }
+
+
+            this -> Destroy();
+    
+        } else  {
+
+            LOGWARNING(FILE_LOG, "Login: Attempted Multiple Session");
+            wxMessageBox(
+                "This user is already active, or just recently log out if you are the owner of this account just wait for 15 seconds then try in again", 
+                "Login failure"
+            );
+        }
+    }
+}#include <memory>
+#include <wx/wx.h>
+#include "user.hpp"
+#include "databaseconnect.hpp"
+#include "loginwindow.hpp"
+#include "logs.hpp"
+#include <iostream>
+
+auto FILE_LOG = initLog();
+
+class MyApp : public wxApp {
+public:
+    virtual bool OnInit() override {
+        
+        std::shared_ptr<DatabaseConnect> db = std::make_shared<DatabaseConnect>(FILE_LOG);
+        auto conn = db -> connToDB();
+    
+        auto user = std::make_shared<User>(FILE_LOG, conn);
+        LoginWindow* loginWindow = new LoginWindow(FILE_LOG, "Welcome to Quicksearch", user);
+        loginWindow -> Show();
+
+        return true;
+    }
+};
+
+wxIMPLEMENT_APP(MyApp);#include "userconfigwindow.hpp"
+#include "wx/choice.h"
+#include "wx/event.h"
+#include "wx/gdicmn.h"
+#include "wx/gtk/button.h"
+#include "wx/gtk/stattext.h"
+#include "wx/gtk/textctrl.h"
+#include "wx/msgdlg.h"
+#include "wx/wx.h"
+#include <cstddef>
+#include <string>
+
+//!! WORK ON THIS
+
+UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User> user, int userID, wxString firstname, wxString lastname, wxString adminStatus) :  wxFrame (
+    nullptr,
+    wxID_ANY,
+    title,
+    wxDefaultPosition, wxSize(400, 400), 
+    wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX),
+    user(user), userID(userID), firstname(firstname), lastname(lastname), adminStatus(adminStatus)
+{
+    this->Center();
+    this -> SetFont(wxFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL));
+    this -> panel = new wxPanel(this);
+
+    // 1. The Main Sizer adds padding around the edges of the window
+    wxBoxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
+
+    // 2. The Grid Sizer: 2 columns, vertical gap of 10px, horizontal gap of 10px
+    wxFlexGridSizer* gridSizer = new wxFlexGridSizer(2, 10, 20);
+
+    // Make the second column (the text boxes) growable
+    gridSizer->AddGrowableCol(1);
+
+    this->userIDTab = new wxTextCtrl(panel, wxID_ANY, std::to_string(this->userID), wxDefaultPosition, wxDefaultSize, wxTE_READONLY | wxBORDER_NONE);
+    this->firstnameTab = new wxTextCtrl(panel, wxID_ANY, this->firstname,wxDefaultPosition, wxDefaultSize,wxBORDER_NONE);
+    this->lastnameTab = new wxTextCtrl(panel, wxID_ANY, this->lastname, wxDefaultPosition, wxDefaultSize, wxBORDER_NONE);
+    this->changepassTab = new wxTextCtrl(panel, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD| wxBORDER_NONE);
+
+    wxArrayString choices; choices.Add("Yes"); choices.Add("No");
+    this -> adminStatusTab = new wxChoice(panel,wxID_ANY, wxDefaultPosition, wxDefaultSize, choices, wxBORDER_NONE);
+
+    // automatically sets the right default status
+    this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
+
+    wxButton * saveButton = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxDefaultSize);
+
+    // set up grid information layout
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "User ID:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->userIDTab, 0, wxEXPAND);
+
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "First Name:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->firstnameTab, 0, wxEXPAND);
+
+    gridSizer->Add(new wxStaticText(panel, wxID_ANY, "Last Name:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer->Add(this->lastnameTab, 0, wxEXPAND);
+
+    gridSizer -> Add(new wxStaticText(panel, wxID_ANY, "Change Password"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer -> Add(changepassTab, 0, wxEXPAND);
+
+    gridSizer -> Add(new wxStaticText(panel, wxID_ANY, "Admin Status:"), 0, wxALIGN_CENTER_VERTICAL);
+    gridSizer -> Add(this->adminStatusTab, 0, wxEXPAND);
+
+
+    // 4. Wrap the grid in the main sizer with a 20px margin for a "breathing" look
+    mainSizer -> AddSpacer(20);
+    mainSizer -> Add(saveButton, 0, wxCENTER, 20);
+    mainSizer -> AddSpacer(10);
+    mainSizer->Add(gridSizer, 1, wxALL | wxEXPAND, 20);
+    mainSizer -> AddStretchSpacer(1);
+    panel->SetSizer(mainSizer);
+    
+    saveButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
+        if (this->user->updateUserConfiguration(
+            this->userID,
+            std::string(this->firstnameTab->GetValue()),
+            std::string(this->lastnameTab->GetValue()),
+            std::string(this -> changepassTab->GetValue()),
+            (this->adminStatusTab->GetSelection() == 0 ? true : false)
+        )) {
+            wxMessageBox("User Configuration updated Successfully");
+        } else {
+            wxMessageBox("User Configuration update failed");
+        }
+    });
+}
+
+#include "user.hpp"
+
+User::User(std::shared_ptr<spdlog::logger> FILE_LOG, std::shared_ptr<sql::Connection> conn) : Account(FILE_LOG, conn){}
+
+void User::setUsername(std::string firstname, std::string lastname) {
+    this -> firstname = firstname;
+    this -> lastname = lastname;
+}
+
+
+void User::setPassword(std::string password) {
+    this -> password = password;
+}
+
+
+bool User::login() {
+    return autheticateLogin(
+        this -> firstname, 
+        this -> lastname, 
+        this -> password
+    );
+}
+
+// Getters
+
+std::string User::fetchUsername() {
+    auto convertToUpper = [](std::string username) -> std::string {
+        for(char& c: username) {
+            c = static_cast<char>(std::toupper(static_cast<unsigned char>(c)));
+        }
+        return username;
+    };
+
+    std::string username = convertToUpper(this -> getFirstName() + " " + getLastName());
+    return username;
+}
+
+std::string User::getFirstName() {
+    return this -> firstname;
+}
+
+
+std::string User::getLastName() {
+    return this -> lastname;
+}
+
+std::string User::getPassword() {
+    return this -> password;
+}
+
+
+#include <wx/wx.h>
+#include <memory>
+#include <mariadb/conncpp.hpp>
+#include <sodium.h>
+#include <thread>
+#include <chrono>
+#include "logs.hpp"
+#include "sstream"
+#include <iomanip>
+#include <sodium.h>
+
+class Account {
+
+protected:
+
+    std::shared_ptr<spdlog::logger> FILE_LOG;
+    std::shared_ptr<sql::Connection> conn;
+
+    struct accountInfo {
+
+        int userID;
+        bool isAdmin;
+
+    }; struct accountInfo accountinfo;
+
+public:
+
+    Account(std::shared_ptr<spdlog::logger>  FILE_LOG, std::shared_ptr<sql::Connection> conn) {
+        this -> FILE_LOG = FILE_LOG;
+        this -> conn = conn;
+    };
+
+    std::shared_ptr<sql::Connection> getConnection();
+
+    // verify user crendentials
+    bool autheticateLogin( const std::string& firstname,const std::string& lastname,const std::string& password);  
+
+    // this checks if the verified user is an admin 
+    bool checkIsAdmin();   
+
+    // this updates the account status lastsen to rcent tim 30 sc interval  purpose: for preventing an account to have multiple sessions
+    void updateActiveStatus();
+
+    // check the active status of a user
+    bool checkActiveStatus(std::string firstname, std::string lastname);
+
+
+    bool updateUserConfiguration(int userID, std::string firstname, std::string lastname, std::string newPass, bool isAdmin);
+};
+
+#pragma once
+
+#include "user.hpp"
+#include "logs.hpp"
+#include "wx/gtk/frame.h"
+#include <memory>
+#include <spdlog/logger.h>
+#include <wx/listctrl.h>
+#include <wx/wx.h>
+#include <mariadb/conncpp.hpp>
+#include <wx/dataview.h>
+#include "userconfigwindow.hpp"
+
+class AdminPanelWindow : public wxFrame {
+public: 
+    AdminPanelWindow( const wxString& title, std::shared_ptr<spdlog::logger> FILE_LOG, std::shared_ptr<User> user);
+
+private:
+    std::shared_ptr<spdlog::logger> FILE_LOG;
+    std::shared_ptr<User> user;
+    wxDataViewListCtrl* userTable {nullptr};
+
+    //!! Temporary var for debugging to get user adminstatus
+    bool isAdmin;
+
+    void showUserMasterlist();
+    void onUserClick(wxDataViewEvent &event);
+};
+#pragma once
+
+#include <iostream>
+#include <memory>
+#include <wx/wx.h>
+#include <wx/dataview.h>
+#include <wx/srchctrl.h>
+#include "user.hpp"
+#include "adminpanel.hpp"
+
+
+
+#define WIDTH 1300
+#define HEIGHT 800
+
+class DataDashboard : public wxFrame {
+public:
+    DataDashboard(const wxString& title, std::shared_ptr<User> user);
+
+private:
+    std::shared_ptr<User> user;
+    wxPanel* panel {nullptr};
+};#pragma once
+
+#include <iostream>
+#include <memory>
+#include <mariadb/conncpp.hpp>
+#include "logs.hpp"
+#include <sstream>
+#include <nlohmann/json.hpp>
+
+class DatabaseConnect {
+
+private:
+    std::shared_ptr<spdlog::logger> FILE_LOG;
+
+public:
+ // mov this out
+    struct DBCredentials {
+        std::string host;
+        std::string user;
+        std::string userpassword;
+        std::string database;
+        unsigned int port;
+    }; struct DBCredentials dbcredentials;
+
+    DatabaseConnect(std::shared_ptr<spdlog::logger> FILE_LOG);
+    std::shared_ptr<sql::Connection>connToDB();
+};
+#pragma once
+
+#include <mariadb/conncpp/Connection.hpp>
+#include <memory>
+#include <wx/wx.h>
+#include <wx/image.h>
+#include "user.hpp"
+#include <iomanip>
+#include <memory>
+#include "dashboard.hpp"
+#include "logs.hpp"
+#include "adminpanel.hpp"
+
+class LoginWindow : public wxFrame {
+public:
+    LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG ,const std::string& title, std::shared_ptr<User> user);
+
+private:
+    std::shared_ptr<User> user;
+    std::shared_ptr<spdlog::logger> FILE_LOG;
+
+    wxPanel* panel {nullptr};
+    wxBoxSizer* mainSizer {nullptr};
+    wxBoxSizer* userNameSizer {nullptr};
+    wxStaticBitmap* logo {nullptr};
+
+    wxTextCtrl* firstnameBox {nullptr};
+    wxTextCtrl* lastnameBox {nullptr};
+    wxTextCtrl* passwordBox {nullptr};
+    wxButton* btnEnter {nullptr};
+
+    bool isClosing {false};
+
+    void setUpLogo();
+    void setUpInputBoxes();
+    void setupLayout();
+    void btnEvents();
+    void initializeLogin(wxCommandEvent& event);
+};
+#pragma once
+
+#include <cstdlib>
+#include <memory>
+#include <spdlog/common.h>
+#include <spdlog/logger.h>
+#include <spdlog/spdlog.h>
+#include <spdlog/sinks/basic_file_sink.h>
+
+// std::shared_ptr<spdlog::logger> initLog();
+// void LOGINFO(std::shared_ptr<spdlog::logger> FILE_LOGS, std::string msg);
+// void LOGERROR(std::shared_ptr<spdlog::logger> FILE_LOGS, std::string msg);
+// void LOGWARNING(std::shared_ptr<spdlog::logger> FILE_LOGS, std::string msg);
+// void LOGFATAL(std::shared_ptr<spdlog::logger> FILE_LOGS, std::string msg);
+
+
+inline std::shared_ptr<spdlog::logger> initLog() {
+    try {
+        spdlog::set_level(spdlog::level::debug);
+        auto FILE_LOGS = spdlog::basic_logger_mt("file-log", "./tmp/logs.txt");
+        FILE_LOGS->flush_on(spdlog::level::info);
+        return FILE_LOGS;
+
+    } catch (spdlog::spdlog_ex &error) {
+        spdlog::error("Failed to initialize logger file(logs.txt)");
+        exit (EXIT_FAILURE);
+    }
+}
+
+
+inline void LOGDEBUG(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> debug(msg);
+    spdlog::debug(msg);
+}
+
+inline void LOGINFO(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> info(msg);
+    spdlog::info(msg);
+}
+
+
+inline void LOGERROR(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> error(msg);
+    spdlog::error(msg);
+}
+
+
+inline void LOGWARNING(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> warn(msg);
+    spdlog::warn(msg);
+}
+
+
+inline void LOGFATAL(std::shared_ptr<spdlog::logger>& FILE_LOGS, std::string msg) {
+    FILE_LOGS -> critical(msg);
+    spdlog::critical(msg);
+}#pragma once
+#include "wx/choice.h"
+#include "wx/gtk/choice.h"
+#include <memory>
+#include <wx/wx.h>
+#include "user.hpp"
+#include "wx/gtk/textctrl.h"
+
+
+
+class UserConfigWindow : public wxFrame {
+
+        
+private:
+    std::shared_ptr<User> user;
+
+    wxPanel* panel               {nullptr};
+
+    int userID;
+    wxString firstname;
+    wxString lastname;
+    wxString adminStatus;
+
+    wxTextCtrl* userIDTab       {nullptr};
+    wxTextCtrl* firstnameTab     {nullptr};
+    wxTextCtrl* lastnameTab     {nullptr};
+    wxTextCtrl* changepassTab   {nullptr};
+    wxChoice* adminStatusTab    {nullptr};
+
+public:
+    UserConfigWindow(const wxString& title, std::shared_ptr<User> user, int userID, wxString  firstname,wxString lastname,wxString adminStatus);
+};#pragma once
+
+#include <memory>
+#include "account.hpp"
+
+
+
+
+class User : public Account{
+
+private:
+    std::string firstname;
+    std::string lastname;
+    std::string password;
+
+public:
+
+    User(std::shared_ptr<spdlog::logger> FILE_LOG, std::shared_ptr<sql::Connection> conn);
+
+
+    void setUsername(std::string firstname, std::string lastname);
+    void setPassword(std::string password);
+    std::string getFirstName();
+    std::string getLastName();
+    std::string getPassword();
+
+    std::string fetchUsername();
+    bool login();
+};

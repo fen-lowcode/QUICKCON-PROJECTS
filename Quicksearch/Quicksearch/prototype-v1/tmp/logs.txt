@@ -3440,3 +3440,209 @@
 [2026-03-16 16:38:43.746] [file-log] [debug] User 2 is selected
 [2026-03-16 16:38:46.631] [file-log] [info] User: 1 sucessfully updated User:2 Configuration
 [2026-03-16 16:38:53.890] [file-log] [debug] User 3 is selected
+[2026-03-17 09:48:15.198] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 09:48:15.208] [file-log] [info] Login: Initializing logo image
+[2026-03-17 09:48:15.213] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 09:48:24.944] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 09:48:24.954] [file-log] [info] Fetching password from the database
+[2026-03-17 09:48:24.954] [file-log] [info] Login success User: 1
+[2026-03-17 09:48:24.954] [file-log] [debug] Qwerty!2026
+[2026-03-17 09:48:24.958] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 09:48:24.962] [file-log] [info] Account is Admin
+[2026-03-17 09:48:30.296] [file-log] [debug] User 3 is selected
+[2026-03-17 09:48:39.313] [file-log] [debug] hello
+[2026-03-17 09:48:39.313] [file-log] [error] SQL error: (conn=31) Parameter at position 5 is not set
+
+[2026-03-17 09:49:38.260] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 09:49:38.269] [file-log] [info] Login: Initializing logo image
+[2026-03-17 09:49:38.271] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 09:49:51.660] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 09:49:51.666] [file-log] [info] Fetching password from the database
+[2026-03-17 09:49:51.666] [file-log] [info] Login success User: 1
+[2026-03-17 09:49:51.666] [file-log] [debug] Qwerty!2026
+[2026-03-17 09:49:51.670] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 09:49:51.676] [file-log] [info] Account is Admin
+[2026-03-17 09:49:56.211] [file-log] [debug] User 4 is selected
+[2026-03-17 09:50:09.363] [file-log] [debug] Qwerty!2026
+[2026-03-17 09:50:09.363] [file-log] [debug] 00fb85e1bff3097eb71635df7eb3e6aabba41317a439d78fed55f7c0c6c9dd26
+[2026-03-17 09:50:09.372] [file-log] [info] User: 1 sucessfully updated User:4 Configuration
+[2026-03-17 10:04:53.903] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:04:53.913] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:04:53.915] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:05:14.306] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:05:14.310] [file-log] [info] Fetching password from the database
+[2026-03-17 10:05:14.310] [file-log] [info] Login success User: 1
+[2026-03-17 10:05:14.310] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:05:14.315] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:05:14.329] [file-log] [info] Account is Admin
+[2026-03-17 10:05:18.329] [file-log] [debug] User 2 is selected
+[2026-03-17 10:05:20.585] [file-log] [debug] e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2026-03-17 10:05:20.603] [file-log] [info] User: 1 sucessfully updated user2 Configuration
+[2026-03-17 10:10:46.863] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:10:46.872] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:10:46.874] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:10:57.180] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:10:57.185] [file-log] [info] Fetching password from the database
+[2026-03-17 10:11:01.116] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:11:01.118] [file-log] [info] Fetching password from the database
+[2026-03-17 10:11:01.119] [file-log] [info] Login success User: 2
+[2026-03-17 10:11:01.119] [file-log] [debug] 
+[2026-03-17 10:11:01.122] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:11:01.128] [file-log] [info] Account is not Admin
+[2026-03-17 10:19:29.601] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:19:29.610] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:19:29.614] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:19:38.319] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:19:38.381] [file-log] [info] Fetching password from the database
+[2026-03-17 10:19:38.381] [file-log] [info] Login success User: 1
+[2026-03-17 10:19:38.381] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:19:38.385] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:19:38.391] [file-log] [info] Account is Admin
+[2026-03-17 10:19:47.271] [file-log] [debug] User 4 is selected
+[2026-03-17 10:19:52.567] [file-log] [debug] e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+[2026-03-17 10:19:52.579] [file-log] [info] User: 1 updates user 4 passwordUser: 1 sucessfully updated user 4 Configuration
+[2026-03-17 10:22:00.087] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:22:00.096] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:22:00.098] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:22:08.188] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:22:08.191] [file-log] [info] Fetching password from the database
+[2026-03-17 10:22:08.191] [file-log] [info] Login success User: 1
+[2026-03-17 10:22:08.191] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:22:08.194] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:22:08.202] [file-log] [info] Account is Admin
+[2026-03-17 10:22:14.212] [file-log] [debug] User 2 is selected
+[2026-03-17 10:22:19.124] [file-log] [debug] User 4 is selected
+[2026-03-17 10:22:20.392] [file-log] [info] User: 1 sucessfully updated user 4 Configuration
+[2026-03-17 10:22:28.219] [file-log] [debug] dcc12132e0cbf750cdd0c688f2786395f356fa5c7c49f44be936f279b387aea9
+[2026-03-17 10:22:28.219] [file-log] [debug] User: 1 updates user 4 password
+[2026-03-17 10:22:28.284] [file-log] [info] User: 1 updates user 4 passwordUser: 1 sucessfully updated user 4 Configuration
+[2026-03-17 10:24:08.067] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:24:08.078] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:24:08.081] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:24:16.921] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:24:16.928] [file-log] [info] Fetching password from the database
+[2026-03-17 10:24:16.928] [file-log] [info] Login success User: 1
+[2026-03-17 10:24:16.928] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:24:16.931] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:24:16.937] [file-log] [info] Account is Admin
+[2026-03-17 10:25:52.022] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:25:52.032] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:25:52.034] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:25:59.944] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:25:59.949] [file-log] [info] Fetching password from the database
+[2026-03-17 10:25:59.949] [file-log] [info] Login success User: 1
+[2026-03-17 10:25:59.949] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:25:59.953] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:25:59.960] [file-log] [info] Account is Admin
+[2026-03-17 10:26:03.800] [file-log] [debug] User 3 is selected
+[2026-03-17 10:26:05.429] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 10:26:20.975] [file-log] [debug] d45e6d0e0bc4b555f35a800f4a3ddeb15a796f7033bdcecd88501a99830d468d
+[2026-03-17 10:26:20.990] [file-log] [debug] User: 1 updates user 3 password
+[2026-03-17 10:26:20.990] [file-log] [info] User: 1 updates user 3 passwordUser: 1 sucessfully updated user 3 Configuration
+[2026-03-17 10:26:26.663] [file-log] [debug] User 4 is selected
+[2026-03-17 10:26:35.032] [file-log] [debug] dcc12132e0cbf750cdd0c688f2786395f356fa5c7c49f44be936f279b387aea9
+[2026-03-17 10:26:35.039] [file-log] [debug] User: 1 updates user 4 password
+[2026-03-17 10:26:35.039] [file-log] [info] User: 1 updates user 4 passwordUser: 1 sucessfully updated user 4 Configuration
+[2026-03-17 10:26:44.820] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:26:44.830] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:26:44.832] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:26:51.807] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:26:51.810] [file-log] [info] Fetching password from the database
+[2026-03-17 10:26:56.991] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:26:56.993] [file-log] [info] Fetching password from the database
+[2026-03-17 10:26:56.993] [file-log] [info] Login success User: 3
+[2026-03-17 10:26:56.993] [file-log] [debug] Jesus20.
+[2026-03-17 10:26:56.996] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:26:57.002] [file-log] [info] Account is not Admin
+[2026-03-17 10:27:00.372] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:27:00.381] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:27:00.383] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:27:09.671] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:27:09.681] [file-log] [info] Fetching password from the database
+[2026-03-17 10:27:09.681] [file-log] [info] Login success User: 4
+[2026-03-17 10:27:09.681] [file-log] [debug] mayaticong
+[2026-03-17 10:27:09.692] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:27:09.780] [file-log] [info] Account is not Admin
+[2026-03-17 10:27:12.958] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:27:12.967] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:27:12.970] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:27:18.470] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:27:18.483] [file-log] [info] Fetching password from the database
+[2026-03-17 10:27:18.483] [file-log] [info] Login success User: 2
+[2026-03-17 10:27:18.483] [file-log] [debug] 
+[2026-03-17 10:27:18.486] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:27:18.492] [file-log] [info] Account is not Admin
+[2026-03-17 10:27:21.266] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:27:21.277] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:27:21.279] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:27:29.590] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:27:29.597] [file-log] [info] Fetching password from the database
+[2026-03-17 10:27:29.597] [file-log] [info] Login success User: 1
+[2026-03-17 10:27:29.597] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:27:29.600] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:27:29.614] [file-log] [info] Account is Admin
+[2026-03-17 10:27:34.382] [file-log] [debug] User 2 is selected
+[2026-03-17 10:27:39.982] [file-log] [debug] 18c0bcbf3648480f558e088739cc905b36e5c7599bd54aea222b06bfa83dbdda
+[2026-03-17 10:27:40.001] [file-log] [debug] User: 1 updates user 2 password
+[2026-03-17 10:27:40.001] [file-log] [info] User: 1 updates user 2 passwordUser: 1 sucessfully updated user 2 Configuration
+[2026-03-17 10:27:48.318] [file-log] [debug] User 5 is selected
+[2026-03-17 10:27:52.214] [file-log] [debug] 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+[2026-03-17 10:27:52.225] [file-log] [debug] User: 1 updates user 5 password
+[2026-03-17 10:27:52.225] [file-log] [info] User: 1 updates user 5 passwordUser: 1 sucessfully updated user 5 Configuration
+[2026-03-17 10:32:55.831] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:32:55.840] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:32:55.843] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:44:48.701] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:44:48.710] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:44:48.712] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:44:58.175] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:44:58.182] [file-log] [info] Fetching password from the database
+[2026-03-17 10:44:58.182] [file-log] [info] Login success User: 1
+[2026-03-17 10:44:58.182] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:44:58.185] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:44:58.191] [file-log] [info] Account is Admin
+[2026-03-17 10:45:01.456] [file-log] [debug] User 3 is selected
+[2026-03-17 10:45:06.073] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 10:45:28.000] [file-log] [debug] 16f211cb9910f359d3f3c078b26ff63a660f76a56b9d34268c0b0d97d3b6e7c3
+[2026-03-17 10:45:28.017] [file-log] [debug] User: 1 updates user 3 password
+[2026-03-17 10:45:28.017] [file-log] [info] User: 1 updates user 3 passwordUser: 1 sucessfully updated user 3 Configuration
+[2026-03-17 10:46:42.971] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:46:42.980] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:46:42.982] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:46:52.838] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:46:52.841] [file-log] [info] Fetching password from the database
+[2026-03-17 10:46:52.841] [file-log] [info] Login success User: 1
+[2026-03-17 10:46:52.841] [file-log] [debug] Qwerty!2026
+[2026-03-17 10:46:52.845] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:46:52.853] [file-log] [info] Account is Admin
+[2026-03-17 10:46:55.318] [file-log] [debug] User 2 is selected
+[2026-03-17 10:47:00.192] [file-log] [info] User: 1 sucessfully updated user 2 Configuration
+[2026-03-17 10:47:12.397] [file-log] [debug] af6aad3fb75f798b78f727c29e77e86a56f73a7e585fe7d60db74cbddb9d8853
+[2026-03-17 10:47:12.412] [file-log] [debug] User: 1 updates user 2 password
+[2026-03-17 10:47:12.412] [file-log] [info] User: 1 sucessfully updated user 2 Configuration
+[2026-03-17 10:47:31.174] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 10:47:31.182] [file-log] [info] Login: Initializing logo image
+[2026-03-17 10:47:31.185] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 10:47:41.318] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 10:47:41.324] [file-log] [info] Fetching password from the database
+[2026-03-17 10:47:41.324] [file-log] [info] Login success User: 2
+[2026-03-17 10:47:41.324] [file-log] [debug] pogiako123
+[2026-03-17 10:47:41.327] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 10:47:41.333] [file-log] [info] Account is Admin
+[2026-03-17 10:48:01.309] [file-log] [debug] User 3 is selected
+[2026-03-17 10:48:07.295] [file-log] [info] User: 2 sucessfully updated user 3 Configuration
+[2026-03-17 10:51:30.379] [file-log] [debug] User 2 is selected
+[2026-03-17 10:51:33.059] [file-log] [info] User: 2 sucessfully updated user 2 Configuration
+[2026-03-17 10:51:41.146] [file-log] [debug] User 2 is selected
+[2026-03-17 10:51:43.185] [file-log] [info] User: 2 sucessfully updated user 2 Configuration
+[2026-03-17 13:38:18.387] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 13:38:18.403] [file-log] [info] Login: Initializing logo image
+[2026-03-17 13:38:18.408] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 13:38:28.349] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 13:38:28.506] [file-log] [info] Fetching password from the database
+[2026-03-17 13:38:28.506] [file-log] [info] Login success User: 1
+[2026-03-17 13:38:28.506] [file-log] [debug] Qwerty!2026
+[2026-03-17 13:38:28.510] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 13:38:28.518] [file-log] [info] Account is Admin
+[2026-03-17 13:38:32.211] [file-log] [debug] User 2 is selected
+[2026-03-17 13:38:37.719] [file-log] [info] User: 1 sucessfully updated user 2 Configuration

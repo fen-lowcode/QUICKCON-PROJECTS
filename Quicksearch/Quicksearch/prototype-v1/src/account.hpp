@@ -45,6 +45,6 @@ public:
     bool checkActiveStatus(std::string firstname, std::string lastname);
 
 
-    void updateUserConfiguration(int userID, std::string firstname, std::string lastname, bool isAdmin);
+    bool updateUserConfiguration(int userID, std::string firstname, std::string lastname, std::string newPass, bool isAdmin);
 };
 
