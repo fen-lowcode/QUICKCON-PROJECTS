@@ -2,6 +2,8 @@
 #include "account.hpp"
 #include "logs.hpp"
 #include <mariadb/conncpp/Exception.hpp>
+#include <mariadb/conncpp/PreparedStatement.hpp>
+#include <memory>
 
 
 auto hashPass = [](std::string pass) {
@@ -155,27 +157,53 @@ bool Account::checkActiveStatus( std::string firstname, std::string lastname) {
     return true;
 }
 
-void Account::updateUserConfiguration(int userID, std::string firstname, std::string lastname, bool isAdmin) {
+// !! FOR ADMIN ACCOUNT ONLY
+// updates u
+bool Account::updateUserConfiguration(int userID, std::string firstname, std::string lastname, std::string newPass, bool isAdmin) {
 
     std::stringstream logmessage;
+    std::shared_ptr<sql::PreparedStatement> stmt;
+    std::shared_ptr<sql::PreparedStatement> stmt2;
 
     std::string statement = "UPDATE USERS SET FIRSTNAME = ?, LASTNAME = ?, ISADMIN = ? WHERE USERID = ?";
-    auto stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
+    std::string changePassStatement = "UPDATE USERS SET PASSWORD = ? WHERE USERID = ?";
+
+
+    stmt = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(statement));
     stmt -> setString(1, firstname);
     stmt -> setString(2, lastname);
     stmt -> setBoolean(3, isAdmin);
     stmt -> setInt(4, userID);
 
+    // detects ifthere's a new password from the input tab and then if there is it will hash it and set up the query
+    if (!newPass.empty()) {
+            stmt2 = std::shared_ptr<sql::PreparedStatement>(conn -> prepareStatement(changePassStatement));
+            stmt2 -> setString(1, hashPass(newPass));
+            stmt2 -> setInt(2, userID);
+            LOGDEBUG(FILE_LOG, hashPass(newPass));
+    }
+
     try {
 
-        int res = stmt -> executeUpdate();
-        logmessage << "User: " << accountinfo.userID << " sucessfully updated User:" << userID << " Configuration";
+        stmt -> executeUpdate();
+
+        if(!newPass.empty()) {
+            stmt2 -> executeUpdate();
+            logmessage << "User: " << accountinfo.userID << " updates user " << userID << " password";
+            LOGDEBUG(FILE_LOG, logmessage.str());
+        }
+
+        logmessage.str(""); logmessage.clear();
+        logmessage << "User: " << accountinfo.userID << " sucessfully updated user " << userID << " Configuration";
         LOGINFO(FILE_LOG, logmessage.str());
+    
+        return true;
 
     } catch(sql::SQLException& e) {
 
         logmessage << "SQL error: " << e.what() << std::endl;
         LOGERROR(FILE_LOG, logmessage.str());
-
     }
+
+    return false;
 }

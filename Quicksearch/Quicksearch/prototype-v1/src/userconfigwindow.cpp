@@ -5,6 +5,7 @@
 #include "wx/gtk/button.h"
 #include "wx/gtk/stattext.h"
 #include "wx/gtk/textctrl.h"
+#include "wx/msgdlg.h"
 #include "wx/wx.h"
 #include <cstddef>
 #include <string>
@@ -43,6 +44,7 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     // automatically sets the right default status
     this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
 
+    wxButton * addUser = new wxButton(panel, wxID_ANY, "Add New User", wxDefaultPosition, wxDefaultSize);
     wxButton * saveButton = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxDefaultSize);
 
     // set up grid information layout
@@ -71,11 +73,16 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     panel->SetSizer(mainSizer);
     
     saveButton->Bind(wxEVT_BUTTON, [this](wxCommandEvent& event) {
-    this->user->updateUserConfiguration(
-        this->userID,
-        std::string(this->firstnameTab->GetValue()),
-        std::string(this->lastnameTab->GetValue()),
-        (this->adminStatusTab->GetSelection() == 0 ? true : false)
-    );
-});
+        if (this->user->updateUserConfiguration(
+            this->userID,
+            std::string(this->firstnameTab->GetValue()),
+            std::string(this->lastnameTab->GetValue()),
+            std::string(this -> changepassTab->GetValue()),
+            (this->adminStatusTab->GetSelection() == 0 ? true : false)
+        )) {
+            wxMessageBox("User Configuration updated Successfully");
+        } else {
+            wxMessageBox("User Configuration update failed");
+        }
+    });
 }
