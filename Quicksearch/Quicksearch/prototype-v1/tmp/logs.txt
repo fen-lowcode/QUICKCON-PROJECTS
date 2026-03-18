@@ -3646,3 +3646,357 @@
 [2026-03-17 13:38:28.518] [file-log] [info] Account is Admin
 [2026-03-17 13:38:32.211] [file-log] [debug] User 2 is selected
 [2026-03-17 13:38:37.719] [file-log] [info] User: 1 sucessfully updated user 2 Configuration
+[2026-03-17 13:48:16.250] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 13:48:16.259] [file-log] [info] Login: Initializing logo image
+[2026-03-17 13:48:16.261] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 13:48:27.201] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 13:48:27.211] [file-log] [info] Fetching password from the database
+[2026-03-17 13:48:27.211] [file-log] [info] Login success User: 1
+[2026-03-17 13:48:27.211] [file-log] [debug] Qwerty!2026
+[2026-03-17 13:48:27.221] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 13:48:27.437] [file-log] [info] Account is Admin
+[2026-03-17 13:49:11.116] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 13:49:11.125] [file-log] [info] Login: Initializing logo image
+[2026-03-17 13:49:11.127] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 13:49:24.880] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 13:49:25.003] [file-log] [info] Fetching password from the database
+[2026-03-17 13:49:32.232] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 13:49:32.238] [file-log] [info] Fetching password from the database
+[2026-03-17 13:49:32.238] [file-log] [info] Login success User: 1
+[2026-03-17 13:49:32.238] [file-log] [debug] Qwerty!2026
+[2026-03-17 13:49:32.242] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 13:49:32.251] [file-log] [info] Account is Admin
+[2026-03-17 14:13:41.214] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:13:41.223] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:13:41.225] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:13:50.646] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:13:50.649] [file-log] [info] Fetching password from the database
+[2026-03-17 14:14:08.942] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:14:08.957] [file-log] [info] Fetching password from the database
+[2026-03-17 14:14:08.958] [file-log] [info] Login success User: 1
+[2026-03-17 14:14:08.958] [file-log] [debug] Qwerty!2026
+[2026-03-17 14:14:08.961] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:14:09.067] [file-log] [info] Account is Admin
+[2026-03-17 14:14:28.269] [file-log] [debug] User 1 is selected
+[2026-03-17 14:14:31.974] [file-log] [debug] 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+[2026-03-17 14:14:31.993] [file-log] [debug] User: 1 updates user 1 password
+[2026-03-17 14:14:31.993] [file-log] [info] User: 1 sucessfully updated user 1 Configuration
+[2026-03-17 14:16:08.998] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:16:09.006] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:16:09.009] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:16:19.378] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:16:19.420] [file-log] [info] Fetching password from the database
+[2026-03-17 14:16:19.421] [file-log] [info] Login success User: 1
+[2026-03-17 14:16:19.421] [file-log] [debug] 1234
+[2026-03-17 14:16:19.425] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:16:19.431] [file-log] [info] Account is Admin
+[2026-03-17 14:16:22.497] [file-log] [debug] User 1 is selected
+[2026-03-17 14:16:27.507] [file-log] [info] User: 1 sucessfully updated user 1 Configuration
+[2026-03-17 14:27:27.357] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:27:27.371] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:27:27.376] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:27:38.147] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:27:38.163] [file-log] [info] Fetching password from the database
+[2026-03-17 14:27:38.163] [file-log] [info] Login success User: 1
+[2026-03-17 14:27:38.163] [file-log] [debug] 1234
+[2026-03-17 14:27:38.168] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:27:38.388] [file-log] [info] Account is Admin
+[2026-03-17 14:28:24.291] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:28:24.306] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:28:24.310] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:28:32.754] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:28:32.758] [file-log] [info] Fetching password from the database
+[2026-03-17 14:28:33.716] [file-log] [warning] User was not found in the database
+[2026-03-17 14:28:33.716] [file-log] [error] SQL failure from account authentication
+[2026-03-17 14:28:38.147] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:28:38.149] [file-log] [info] Fetching password from the database
+[2026-03-17 14:28:38.150] [file-log] [info] Login success User: 1
+[2026-03-17 14:28:38.150] [file-log] [debug] 1234
+[2026-03-17 14:28:38.154] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:28:38.163] [file-log] [info] Account is Admin
+[2026-03-17 14:29:24.496] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:29:24.514] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:29:24.518] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:29:36.794] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:29:37.001] [file-log] [info] Fetching password from the database
+[2026-03-17 14:29:37.002] [file-log] [info] Login success User: 1
+[2026-03-17 14:29:37.002] [file-log] [debug] 1234
+[2026-03-17 14:29:37.006] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:29:37.014] [file-log] [info] Account is Admin
+[2026-03-17 14:34:04.153] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:34:04.162] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:34:04.164] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:34:18.289] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:34:18.293] [file-log] [info] Fetching password from the database
+[2026-03-17 14:34:18.293] [file-log] [info] Login success User: 1
+[2026-03-17 14:34:18.293] [file-log] [debug] 1234
+[2026-03-17 14:34:18.298] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:34:18.305] [file-log] [info] Account is Admin
+[2026-03-17 14:34:57.124] [file-log] [debug] User 1 is selected
+[2026-03-17 14:36:16.856] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:36:16.864] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:36:16.867] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:36:36.607] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:36:36.616] [file-log] [info] Fetching password from the database
+[2026-03-17 14:36:36.616] [file-log] [info] Login success User: 1
+[2026-03-17 14:36:36.616] [file-log] [debug] 1234
+[2026-03-17 14:36:36.620] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:36:36.625] [file-log] [info] Account is Admin
+[2026-03-17 14:38:56.993] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:38:57.002] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:38:57.004] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:39:07.660] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:39:07.665] [file-log] [info] Fetching password from the database
+[2026-03-17 14:39:07.665] [file-log] [info] Login success User: 1
+[2026-03-17 14:39:07.665] [file-log] [debug] 1234
+[2026-03-17 14:39:07.671] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:39:07.784] [file-log] [info] Account is Admin
+[2026-03-17 14:40:00.948] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:40:00.962] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:40:00.964] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 14:40:07.566] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 14:40:07.643] [file-log] [info] Fetching password from the database
+[2026-03-17 14:40:07.643] [file-log] [info] Login success User: 1
+[2026-03-17 14:40:07.643] [file-log] [debug] 1234
+[2026-03-17 14:40:07.647] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 14:40:07.654] [file-log] [info] Account is Admin
+[2026-03-17 14:43:41.825] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 14:43:41.835] [file-log] [info] Login: Initializing logo image
+[2026-03-17 14:43:41.837] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:01:45.445] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:01:45.454] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:01:45.456] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:01:57.349] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:01:57.415] [file-log] [info] Fetching password from the database
+[2026-03-17 15:01:58.383] [file-log] [warning] User was not found in the database
+[2026-03-17 15:01:58.383] [file-log] [error] SQL failure from account authentication
+[2026-03-17 15:02:03.846] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:02:03.984] [file-log] [info] Fetching password from the database
+[2026-03-17 15:02:03.984] [file-log] [info] Login success User: 1
+[2026-03-17 15:02:03.985] [file-log] [debug] 1234
+[2026-03-17 15:02:03.988] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:02:04.004] [file-log] [info] Account is Admin
+[2026-03-17 15:02:38.799] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:02:38.808] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:02:38.810] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:02:50.654] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:02:50.661] [file-log] [info] Fetching password from the database
+[2026-03-17 15:02:51.646] [file-log] [warning] User was not found in the database
+[2026-03-17 15:02:51.647] [file-log] [error] SQL failure from account authentication
+[2026-03-17 15:02:56.526] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:02:56.604] [file-log] [info] Fetching password from the database
+[2026-03-17 15:02:56.604] [file-log] [info] Login success User: 1
+[2026-03-17 15:02:56.604] [file-log] [debug] 1234
+[2026-03-17 15:02:56.608] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:02:56.619] [file-log] [info] Account is Admin
+[2026-03-17 15:03:56.409] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:03:56.427] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:03:56.431] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:04:05.806] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:04:05.816] [file-log] [info] Fetching password from the database
+[2026-03-17 15:04:05.816] [file-log] [info] Login success User: 1
+[2026-03-17 15:04:05.816] [file-log] [debug] 1234
+[2026-03-17 15:04:05.824] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:04:05.933] [file-log] [info] Account is Admin
+[2026-03-17 15:05:19.452] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:05:19.461] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:05:19.463] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:05:26.303] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:05:26.415] [file-log] [info] Fetching password from the database
+[2026-03-17 15:05:26.416] [file-log] [info] Login success User: 1
+[2026-03-17 15:05:26.416] [file-log] [debug] 1234
+[2026-03-17 15:05:26.420] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:05:26.426] [file-log] [info] Account is Admin
+[2026-03-17 15:05:51.495] [file-log] [debug] User 3 is selected
+[2026-03-17 15:08:54.297] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:08:54.307] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:08:54.309] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:09:05.716] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:09:05.719] [file-log] [info] Fetching password from the database
+[2026-03-17 15:09:05.719] [file-log] [info] Login success User: 1
+[2026-03-17 15:09:05.719] [file-log] [debug] 1234
+[2026-03-17 15:09:05.723] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:09:05.967] [file-log] [info] Account is Admin
+[2026-03-17 15:10:49.700] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:10:49.716] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:10:49.722] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:11:01.138] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:11:01.156] [file-log] [info] Fetching password from the database
+[2026-03-17 15:11:01.156] [file-log] [info] Login success User: 1
+[2026-03-17 15:11:01.157] [file-log] [debug] 1234
+[2026-03-17 15:11:01.159] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-17 15:11:01.159] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-17 15:11:11.642] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:11:11.810] [file-log] [info] Fetching password from the database
+[2026-03-17 15:11:11.810] [file-log] [info] Login success User: 1
+[2026-03-17 15:11:11.810] [file-log] [debug] 1234
+[2026-03-17 15:11:11.814] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:11:12.014] [file-log] [info] Account is Admin
+[2026-03-17 15:11:18.786] [file-log] [debug] User 2 is selected
+[2026-03-17 15:11:21.697] [file-log] [debug] User 3 is selected
+[2026-03-17 15:11:40.810] [file-log] [debug] User 3 is selected
+[2026-03-17 15:12:01.790] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 15:12:10.149] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 15:12:19.730] [file-log] [debug] 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+[2026-03-17 15:12:19.809] [file-log] [debug] User: 1 updates user 3 password
+[2026-03-17 15:12:19.809] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 15:12:32.892] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 15:12:32.901] [file-log] [info] Login: Initializing logo image
+[2026-03-17 15:12:32.904] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 15:12:48.289] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 15:12:48.478] [file-log] [info] Fetching password from the database
+[2026-03-17 15:12:48.478] [file-log] [info] Login success User: 3
+[2026-03-17 15:12:48.478] [file-log] [debug] 1234
+[2026-03-17 15:12:48.484] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 15:12:48.580] [file-log] [info] Account is Admin
+[2026-03-17 15:18:24.327] [file-log] [debug] User 3 is selected
+[2026-03-17 15:18:27.495] [file-log] [info] User: 3 sucessfully updated user 3 Configuration
+[2026-03-17 16:52:19.035] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 16:52:19.048] [file-log] [info] Login: Initializing logo image
+[2026-03-17 16:52:19.052] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 16:52:39.087] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 16:52:39.091] [file-log] [info] Fetching password from the database
+[2026-03-17 16:52:39.091] [file-log] [info] Login success User: 1
+[2026-03-17 16:52:39.091] [file-log] [debug] 1234
+[2026-03-17 16:52:39.095] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-17 16:52:39.100] [file-log] [info] Account is Admin
+[2026-03-17 16:52:46.085] [file-log] [debug] User 3 is selected
+[2026-03-17 16:52:55.441] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 16:53:04.310] [file-log] [info] User: 1 sucessfully updated user 3 Configuration
+[2026-03-17 16:53:20.109] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-17 16:53:20.124] [file-log] [info] Login: Initializing logo image
+[2026-03-17 16:53:20.127] [file-log] [info] Login: Initialized Logo image
+[2026-03-17 16:53:28.771] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 16:53:28.783] [file-log] [info] Fetching password from the database
+[2026-03-17 16:53:30.552] [file-log] [warning] User was not found in the database
+[2026-03-17 16:53:30.552] [file-log] [error] SQL failure from account authentication
+[2026-03-17 16:53:36.304] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 16:53:36.314] [file-log] [info] Fetching password from the database
+[2026-03-17 16:53:36.314] [file-log] [info] Login success User: 1
+[2026-03-17 16:53:36.314] [file-log] [debug] 1234
+[2026-03-17 16:53:36.328] [file-log] [warning] Attempted Multiple loggin session on User: 1
+
+[2026-03-17 16:53:36.328] [file-log] [warning] Login: Attempted Multiple Session
+[2026-03-17 20:27:33.956] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:43.966] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:43.969] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:43.969] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:43.969] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:43.969] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:43.970] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:43.970] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:43.970] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:43.970] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:50.267] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:50.267] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:51.007] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:51.007] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:51.187] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:51.188] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:57.317] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:57.317] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:57.469] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:57.469] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:57.612] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:57.613] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:57.764] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:57.764] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:57.908] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:57.908] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:58.088] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:58.089] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:58.814] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:58.814] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:59.281] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:59.281] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:59.418] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:59.418] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:59.576] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:59.576] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:59.713] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:59.713] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:27:59.995] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:27:59.995] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:00.167] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:00.167] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:00.347] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:00.347] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:00.791] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:00.792] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:01.314] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:01.314] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:01.679] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:01.679] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:02.050] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:02.050] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:04.734] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:04.734] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:04.885] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:04.885] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:06.472] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:06.472] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:06.629] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:06.630] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:06.794] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:06.795] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:06.958] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:06.959] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:07.090] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:07.090] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:07.247] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:07.248] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:07.591] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:07.591] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:07.771] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:07.771] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:08.229] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:08.229] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:08.401] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:08.401] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:08.573] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:08.573] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:08.738] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:08.738] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:08.902] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:08.902] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:09.067] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:09.067] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:09.266] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:09.266] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:09.417] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:09.418] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:09.652] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:09.652] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:09.980] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:09.980] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.173] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.173] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.324] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.324] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.496] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.496] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.654] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.654] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.825] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.825] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:10.997] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:10.997] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:11.182] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:11.183] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:11.347] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:11.347] [file-log] [error] SQL failure from account authentication
+[2026-03-17 20:28:11.560] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-17 20:28:11.560] [file-log] [error] SQL failure from account authentication
+[2026-03-18 08:39:04.523] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-18 08:41:03.842] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-18 08:41:03.851] [file-log] [info] Login: Initializing logo image
+[2026-03-18 08:41:03.853] [file-log] [info] Login: Initialized Logo image
+[2026-03-18 08:41:22.329] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-18 08:41:22.335] [file-log] [info] Fetching password from the database
+[2026-03-18 08:41:22.335] [file-log] [info] Login success User: 1
+[2026-03-18 08:41:22.335] [file-log] [debug] 1234
+[2026-03-18 08:41:22.338] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-18 08:41:22.344] [file-log] [info] Account is Admin
+[2026-03-18 08:41:23.641] [file-log] [debug] User 1 is selected
+[2026-03-18 08:41:30.099] [file-log] [info] User: 1 sucessfully updated user 1 Configuration

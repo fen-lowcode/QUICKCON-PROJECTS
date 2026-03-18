@@ -6,6 +6,7 @@
 #include "wx/gtk/stattext.h"
 #include "wx/gtk/textctrl.h"
 #include "wx/msgdlg.h"
+#include "wx/sizer.h"
 #include "wx/wx.h"
 #include <cstddef>
 #include <string>
@@ -44,7 +45,6 @@ UserConfigWindow::UserConfigWindow (const wxString& title, std::shared_ptr<User>
     // automatically sets the right default status
     this -> adminStatusTab -> SetSelection(adminStatus == "Yes" ? 0 : 1);
 
-    wxButton * addUser = new wxButton(panel, wxID_ANY, "Add New User", wxDefaultPosition, wxDefaultSize);
     wxButton * saveButton = new wxButton(panel, wxID_ANY, "Save", wxDefaultPosition, wxDefaultSize);
 
     // set up grid information layout

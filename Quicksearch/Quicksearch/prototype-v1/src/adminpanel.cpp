@@ -23,26 +23,30 @@ AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog
     FILE_LOG{FILE_LOG}
 {
 
-    wxFont uiFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL);
+    this -> SetFont(wxFont(10, wxFONTFAMILY_DEFAULT,wxFONTSTYLE_NORMAL,wxFONTWEIGHT_NORMAL));
     wxPanel* panel = new wxPanel(this);
     wxSizer* mainSizer = new wxBoxSizer(wxVERTICAL);
-    wxSizer* contentSizer = new wxBoxSizer(wxHORIZONTAL);
+    wxSizer* buttonSizer = new wxBoxSizer(wxHORIZONTAL);
 
     panel -> SetBackgroundColour(wxColour(255, 255, 255)); 
+
     this -> userTable = new wxDataViewListCtrl(panel, wxID_ANY);
     this -> userTable -> AppendTextColumn("ID");
     this -> userTable -> AppendTextColumn("Firstname");
     this -> userTable -> AppendTextColumn("Lastname");
     this -> userTable -> AppendTextColumn("Admin");
     this -> userTable -> AppendTextColumn("Last Seen");
-    this -> userTable -> SetFont(uiFont);
-    wxButton* refreshBtn = new wxButton(panel, wxID_ANY, "Refresh List");
 
-    mainSizer -> AddSpacer(40);
-    mainSizer -> Add(refreshBtn, 0, wxALIGN_RIGHT | wxRIGHT, 20);
-    mainSizer -> AddSpacer(20);
-    mainSizer -> Add(userTable, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 20);
-    panel -> SetSizer(mainSizer);
+    wxButton* refreshBtn = new wxButton(panel, wxID_ANY, "Refresh List");
+    wxButton* addUserBtn = new wxButton(panel, wxID_ANY, "Add User");
+
+        
+    buttonSizer->Add(refreshBtn, 0, wxALL, 10);
+    buttonSizer->Add(addUserBtn, 0, wxALL, 10);
+    mainSizer->Add(buttonSizer, 0, wxALIGN_CENTER);
+    mainSizer->Add(userTable, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 20);
+
+    panel->SetSizer(mainSizer);
 
 
     this -> showUserMasterlist();
@@ -53,7 +57,7 @@ AdminPanelWindow::AdminPanelWindow(const wxString& title, std::shared_ptr<spdlog
     });
 
     // triggers to open user configuration window of the selected user in the list
-    userTable->Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &AdminPanelWindow::onUserClick, this);
+    userTable -> Bind(wxEVT_DATAVIEW_ITEM_ACTIVATED, &AdminPanelWindow::onUserClick, this);
 }
 
 void AdminPanelWindow::showUserMasterlist() {
