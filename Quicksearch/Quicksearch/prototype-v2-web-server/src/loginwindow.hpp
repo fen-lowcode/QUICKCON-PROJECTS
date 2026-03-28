@@ -1,19 +1,20 @@
 #pragma once
 
-#include <mariadb/conncpp/Connection.hpp>
 #include <memory>
 #include <wx/wx.h>
 #include <wx/image.h>
+#include <iostream>
+#include <string>
+
+#include <httplib.h>
+#include <nlohmann/json.hpp>
+
 #include "user.hpp"
-#include <iomanip>
-#include <memory>
-#include "dashboard.hpp"
 #include "logs.hpp"
-#include "adminpanel.hpp"
 
 class LoginWindow : public wxFrame {
 public:
-    LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG ,const std::string& title, std::shared_ptr<User> user);
+    LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG ,const std::string& title);
 
 private:
     std::shared_ptr<User> user;

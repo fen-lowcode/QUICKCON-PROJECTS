@@ -4643,3 +4643,22 @@
 [2026-03-28 09:17:09.779] [file-log] [debug] 1234
 [2026-03-28 09:17:09.783] [file-log] [debug] CHECKING ADMIN STATUS
 [2026-03-28 09:17:09.789] [file-log] [info] Account is Admin
+[2026-03-28 12:13:58.753] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-28 12:14:53.529] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-28 12:23:11.806] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-28 12:24:16.573] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-28 12:24:26.493] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (115)
+[2026-03-28 12:25:07.357] [file-log] [info] Database connection established on HOST: 192.168.1.16 on PORT: 3306
+[2026-03-28 12:25:07.367] [file-log] [info] Login: Initializing logo image
+[2026-03-28 12:25:07.369] [file-log] [info] Login: Initialized Logo image
+[2026-03-28 12:25:23.933] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-03-28 12:25:23.945] [file-log] [info] Fetching password from the database
+[2026-03-28 12:25:23.945] [file-log] [info] Login success User: 1
+[2026-03-28 12:25:23.946] [file-log] [debug] 1234
+[2026-03-28 12:25:23.962] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-03-28 12:25:24.075] [file-log] [info] Account is Admin
+[2026-03-28 12:25:29.461] [file-log] [debug] User 2 is selected
+[2026-03-28 12:25:31.375] [file-log] [info] User: 1 sucessfully updated user 2 Configuration
+[2026-03-28 12:25:36.188] [file-log] [debug] User 1 is selected
+[2026-03-28 12:25:38.372] [file-log] [debug] User 2 is selected
+[2026-03-28 12:25:40.550] [file-log] [info] User: 1 sucessfully updated user 2 Configuration

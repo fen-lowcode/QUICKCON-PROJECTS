@@ -1,12 +1,12 @@
 #include "loginwindow.hpp"
-#include "logs.hpp"
+#include <exception>
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 400
 
 #define LOGO "./assets/quicksearch_logo.png"
 
-LoginWindow::LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG, const std::string& title, std::shared_ptr<User> user)
+LoginWindow::LoginWindow(std::shared_ptr<spdlog::logger> FILE_LOG, const std::string& title)
     : wxFrame(nullptr, wxID_ANY, title,
             wxDefaultPosition, wxSize(WINDOW_WIDTH, WINDOW_HEIGHT),
             wxCAPTION | wxSYSTEM_MENU | wxCLOSE_BOX | wxMINIMIZE_BOX), FILE_LOG(FILE_LOG),  user(user)
@@ -95,27 +95,26 @@ void LoginWindow::setUpLogo() {
 
 void LoginWindow::btnEvents() {
 
-    // “Only run placeholder logic if we are NOT closing.”
-    this->Bind(wxEVT_CLOSE_WINDOW, [this](wxCloseEvent& event)
-    {
-        isClosing = true;
-        event.Skip();
-    });    
+    this -> btnEnter -> Bind(wxEVT_BUTTON, [this](wxCommandEvent&event) {
+        httplib::Client cli("127.0.0.1", 8080);
+        nlohmann::json data;
+        data = {
+            {"username",  firstnameBox->GetValue().ToStdString()}, 
+            {"password", passwordBox->GetValue().ToStdString()}};
 
-    // Capture the raw pointer and name it 'btnEnter' inside the lambda
-    this -> btnEnter->Bind(wxEVT_ENTER_WINDOW, [this](wxMouseEvent& event) {
-            this -> btnEnter->SetBackgroundColour(wxColour(141, 242, 242)); 
-            this -> btnEnter->Refresh(); 
-            event.Skip();
+        if (auto res = cli.Post("/auth/session", data.dump(), "application/json")) {;
+            if(res->status == 200 ) {
+                auto data = nlohmann::json::parse(res->body);
+                std::string token = data.at("token");
+                std::cout << res->status << " " << res->reason << " " << token << std::endl;
+            } else {
+
+                auto data = nlohmann::json::parse(res->body);
+                std::string log = data.at("error");
+                std::cout << res->status << " " << res->reason << " " << log << std::endl;
+            }
         }
-    ); // Added the missing };
-
-        // 3. Handle Mouse Leave (Exit)
-    this -> btnEnter->Bind(wxEVT_LEAVE_WINDOW, [this](wxMouseEvent& event) {
-            this -> btnEnter->SetBackgroundColour(*wxWHITE); // Back to Original
-            this -> btnEnter->Refresh();
-            event.Skip();
-        }   
-    );
+        
+    });
 }
 

@@ -3,14 +3,10 @@ CXXFLAGS = -O3 -std=c++17 -fPIE -pipe `wx-config --cxxflags` -I/usr/local/includ
 LDFLAGS = `wx-config --libs` -L/usr/local/lib/mariadb
 LIBS = -lmariadbcpp -lsodium -lspdlog -lfmt
 
-SRC = src/main.cpp \
-    src/user.cpp \
-    src/account.cpp \
-    src/loginwindow.cpp \
-    src/databaseconnect.cpp \
+SRC = src/loginwindow.cpp \
     src/dashboard.cpp \
-    src/adminpanel.cpp \
-    src/userconfigwindow.cpp
+    src/user.cpp \
+    src/main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

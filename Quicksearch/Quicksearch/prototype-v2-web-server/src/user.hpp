@@ -4,7 +4,6 @@
 #include "logs.hpp"
 
 
-
 class User {
 
 private:
@@ -13,9 +12,6 @@ private:
     std::string password;
 
 public:
-
-    User(std::shared_ptr<spdlog::logger> FILE_LOG);
-
 
     void setUsername(std::string firstname, std::string lastname);
     void setPassword(std::string password);
