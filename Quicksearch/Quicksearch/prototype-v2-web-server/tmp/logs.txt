@@ -4643,3 +4643,10 @@
 [2026-03-28 09:17:09.779] [file-log] [debug] 1234
 [2026-03-28 09:17:09.783] [file-log] [debug] CHECKING ADMIN STATUS
 [2026-03-28 09:17:09.789] [file-log] [info] Account is Admin
+[2026-03-28 09:18:21.853] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-28 09:18:21.868] [file-log] [info] Login: Initializing logo image
+[2026-03-28 09:18:21.871] [file-log] [info] Login: Initialized Logo image
+[2026-03-28 09:18:31.432] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.29 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.29)(port=3306)(type=master) : Can't connect to server on '192.168.1.29' (101)
+[2026-03-28 09:19:07.633] [file-log] [info] Database connection established on HOST: 192.168.1.29 on PORT: 3306
+[2026-03-28 09:19:07.647] [file-log] [info] Login: Initializing logo image
+[2026-03-28 09:19:07.650] [file-log] [info] Login: Initialized Logo image

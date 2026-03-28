@@ -1,12 +1,11 @@
 #pragma once
 
 #include <memory>
-#include "account.hpp"
+#include "logs.hpp"
 
 
 
-
-class User : public Account{
+class User {
 
 private:
     std::string firstname;
@@ -15,7 +14,7 @@ private:
 
 public:
 
-    User(std::shared_ptr<spdlog::logger> FILE_LOG, std::shared_ptr<sql::Connection> conn);
+    User(std::shared_ptr<spdlog::logger> FILE_LOG);
 
 
     void setUsername(std::string firstname, std::string lastname);
