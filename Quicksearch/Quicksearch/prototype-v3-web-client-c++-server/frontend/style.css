@@ -1,0 +1,155 @@
+/* GLOBAL STYLES */
+:root {
+    --primary-color: #14646e;
+    --dark-bg: #000000;
+    --shadow: 0 20px 20px rgba(0, 0, 0, 0.7);
+    --border-radius: 12px;
+}
+
+html {
+    font-family: "Quicksand", sans-serif; /* Fallback to sans-serif */
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "custom";
+    src: url('fonts/Quicksand/Quicksand-VariableFont_wght.ttf') format("truetype");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Softer white for less eye strain */
+    background-image: url('../assets/home-page-bg.png');
+    background-size: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* HEADER */
+#top-header {
+    background-color: rgb(67, 0, 100);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); 
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+/* MAIN WRAPPER 
+   Using a wrapper helps align the welcome section and login side-by-side */
+.main-container {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+/* WELCOME SECTION */
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 500px;
+}
+
+#logo img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    transition: transform 0.4s ease;
+}
+
+#logo img:hover {
+    transform: scale(1.05);
+}
+
+#message {
+    color: var(--primary-color);
+    font-size: 28px;
+    font-weight: 600;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 1s forwards ease-out;
+}
+
+/* LOGIN FORM */
+#login-form {
+    background: rgb(229, 232, 249);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    width: 250px;
+    max-width: 350px;
+    margin-top: 200px;
+}
+
+#login-form .container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form input {
+    height: 30px;
+    border-radius: 8px;
+    border: 1px solid #42a1f4;
+    font-size: 16px;
+    padding: 0 15px;
+    transition: border-color 0.3s;
+}
+
+#login-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+#login-form button {
+    height: 35px;
+    border-radius: 8px;
+    background-color: rgb(67, 0, 100);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background 0.3s;
+}
+
+#login-form button:hover {
+    background-color: #333;
+}
+
+/* ANIMATIONS */
+@keyframes slideIn {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 800px) {
+    .main-container {
+        flex-direction: column;
+        margin-top: 80px;
+    }
+
+    #message {
+        font-size: 20px;
+    }
+
+    #logo img {
+        max-width: 250px;
+    }
+}

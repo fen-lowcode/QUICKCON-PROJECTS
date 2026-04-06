@@ -72,7 +72,6 @@ void LoginWindow::setUpInputBoxes() {
     ); btnEnter->SetBackgroundColour(*wxWHITE);
 }
 
-
 // loads the image and define it's properpties
 void LoginWindow::setUpLogo() {
 
@@ -114,7 +113,6 @@ void LoginWindow::btnEvents() {
                 std::cout << res->status << " " << res->reason << " " << log << std::endl;
             }
         }
-        
     });
 }
 
