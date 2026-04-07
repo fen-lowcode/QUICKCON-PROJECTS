@@ -1,2 +1,2 @@
 make:
-	g++ src/server.cpp -o quicksearch_server -lssl -lcrypto
+	g++ src/main.cpp -o quicksearch_server -lssl -lcrypto
