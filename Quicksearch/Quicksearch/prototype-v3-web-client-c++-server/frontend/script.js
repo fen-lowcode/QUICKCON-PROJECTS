@@ -7,12 +7,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById("psw").value;
 
     try {
-        const response = await fetch('http://127.0.0.1:9000/auth/session', {
+        const response = await fetch('http://127.0.0.1:2222/auth/session', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json' 
             },
-            // Match the keys that your nlohmann::json logic expects in C++
+            
             body: JSON.stringify({ 
                 fname: firstName, 
                 lname: lastName, 
@@ -20,14 +20,12 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             })
         });
 
-        if (!response.ok) {
-            throw new Error(`Server responded with status: ${response.status}`);
-        }
+    
+        if(response.ok){ var data = await response.json(); console.log(data)}
+        
 
-        const data = await response.json();
-        alert("Response from C++: " + (data.status || "Success!"));
     } catch (error) {
-        console.error("Failed to connect to C++ backend:", error);
-        alert("Error: Could not reach the backend.");
+        console.error("Failed to connect to backend:", error);
+        alert("Error: Could not reach the backend server.");
     }
 });
