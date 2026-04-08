@@ -25,7 +25,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         const response = await fetch('http://127.0.0.1:2222/auth/session', {
             method: 'POST',
             headers: { 
-                'Content-Type': 'application/json' 
+                'Content-Type': 'application/json',
             },
             
             body: JSON.stringify({ 

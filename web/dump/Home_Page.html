@@ -1,0 +1,455 @@
+<html>
+<head> 
+    <link rel = "shortcut icon" href = "QuickIcon.ico" type = "image/x-icon">
+    <title> Home - QuickCon Internet </title>
+</head>
+<body>
+    <div class = "bg"></div>
+    <div class = "webRibbon">
+        <img id = "QCLogo" src = "QuickCon Logo.png">
+        <button type = "button" id = "BLogin"> Login </button>
+        <div class = "loginWindow">
+            <div class = "loginLabel"> Customer Login </div>
+            <div class = "TBUsername">
+                <label for = "username"> Username: </label>
+                <input type = "text" id = "username"/>
+            </div>
+            <div class = "TBPassword">
+                <label for = "password"> Password : </label>
+                <input type = "password" id = "password"/>
+            </div>
+            <button type = "button" class = "loginSubmit"> Login </button>
+        </div>
+
+        <div id = "BLogout"> Logout </div>
+        <div id = "BHome"> Home </div>
+    </div>
+    <div class = "Design">
+        <img id = "QuickCon_Logo" src = "QuickCon Logo.png">
+        <div id = "QuickCon_Text">
+            <div id = "Top"> uickCon Internet </div>
+            <div id = "Bottom"> Installation Services </div>
+        </div>
+        <div id = "TRaTB"> The Real and The Best </div>
+        <img id = "FiberInternet" src = "FiberInternet.png">
+    </div>
+    <div class = "priceSelection">
+        <div id = "B65mbps">
+            <div id = "base"> Apply Now 
+                <div id = "face">
+                    <div id = "mbps"> 65 Mbps </div>
+                    <div id = "price"> ₱ 1000.00 </div>
+                    <div id = "monthly"> MONTHLY </div>
+                </div>
+            </div>
+        </div>
+        <div id = "B95mbps">
+            <div id = "base"> Apply Now 
+                <div id = "face">
+                    <div id = "mbps"> 95 Mbps </div>
+                    <div id = "price"> ₱ 1300.00 </div>
+                    <div id = "monthly"> MONTHLY </div>
+                </div>
+            </div>
+        </div>
+        <div id = "B125mbps">
+            <div id = "base"> Apply Now 
+                <div id = "face">
+                    <div id = "mbps"> 125 Mbps </div>
+                    <div id = "price"> ₱ 1500.00 </div>
+                    <div id = "monthly"> MONTHLY </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "contactRibbon">
+        <div id = "Note"> Note: Need to apply a plan to have an account. </div>
+        <img id = "BContact" src = "ContactUs.png">
+    </div>
+
+    <img id = "RWFrame" src = "RetroWireframe.png">
+</body>
+<style>
+    
+    html {
+        font-family: "quicksand";
+        font-weight: light;
+    }
+    body{
+        
+        display: grid; overflow: auto;
+        background: linear-gradient(to bottom,#9FD2FF, #f5e893 110%);
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+    }
+    .bg {     
+        height: 100%; position:fixed
+    }
+    #RWFrame {
+        position: fixed; z-index: -1;
+        height: 100%; width: 100vh;
+        right: -100; bottom: -100;
+        filter: brightness(0) invert(1) opacity(70%);
+    }
+    /* Login Window _______________________________________________ */
+    .loginWindow{
+        z-index: 0; 
+        position: absolute; right: 0; top: 100%; 
+        translate: 100% 0%;
+        background-color: white;
+        height: 160px; width: 100%;
+        max-width: 350;
+        border: #353a4d60 1px solid;
+        animation: colorLoop 4s infinite;
+
+        display: flex; flex-direction: column;
+        justify-content: center; 
+        gap: 15px;
+        visibility: hidden;
+    }
+    @keyframes colorLoop{
+        0% { border-top: #f3f700 5px solid; }
+        50% { border-top: #0080f7 5px solid;}
+        100% { border-top: #f3f700 5px solid; }
+    }
+
+    .loginWindow .loginLabel{
+        background: none; 
+        position: static; align-self: center;
+    }
+    .loginWindow .TBUsername{
+        background: none; 
+
+        position: static; margin-left: 7%;
+
+        label[for = "username"]{
+            font-size: 13px; font-weight: 600;
+        }
+        #username{
+            border-radius: 7px; border: #353a4d 1px solid;
+            font-family: "quicksand"; 
+            font-weight: 500;
+        }
+        #username[type = "text"]{
+            text-align: center; letter-spacing: 1px;
+        }
+    }
+    .loginWindow .TBPassword{
+        background: none; font-weight: 600; 
+
+        position: static; margin-left: 7%;
+
+        label[for = "password"]{
+            font-size: 13px;
+        }
+        #password{
+            border-radius: 7px; border: #353a4d 1px solid;
+            font-family: "quicksand";
+            font-weight: 500;
+        }
+        #password[type = "password"]{
+            text-align: center; letter-spacing: 3px;
+        }
+    }
+    .loginWindow .loginSubmit{
+        background: white; 
+        border-radius: 10px; border: none;
+        font-family: "quicksand";
+        height: 30px; width: 70px;
+
+        position: relative; align-self: center;
+
+        display: flex;
+        justify-content: center; align-items: center;
+    }
+    .loginSubmit::after{
+        content: '';
+        position: absolute; z-index: -1;
+        height: 112%; width: 106%; 
+        background-image: linear-gradient(to top right,#00adf7, #ffde00 70%);
+        border-radius: 10px;
+    }
+
+    /* CONTACT RIBBON _______________________________________________ */
+    .contactRibbon{
+        display: grid; bottom: 3%;
+        position: fixed; justify-items: center;
+        width: 100%;
+        
+        grid-template-rows: auto auto;
+    }
+    .contactRibbon #Note {
+        color: #353a4d;
+        font-weight: 600; opacity: 60%;
+
+        padding-bottom: 5px;
+    }
+    .contactRibbon #BContact{
+        height: auto; width: 5vw;
+        min-width: 150px; cursor: pointer;
+    }
+
+    /* DESIGN _______________________________________________ */
+    .Design{
+        height: 50vw;
+        
+        display: grid; align-items: center;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 1fr 2fr;
+        padding-top: 10vh; padding-left: 3vw;
+    }
+    .Design #QuickCon_Logo{
+        margin-left: auto;
+        transform: rotate(6deg); transform: translateY(5%);
+        height: 12vw; width: auto; 
+        filter: drop-shadow(0 0 1px white);
+
+        grid-row-start: 1; grid-row-end: 2;
+        grid-column-start: 1; grid-column-end: 2;
+    }
+    .Design #QuickCon_Text{
+        display: grid; 
+        grid-template-rows: auto auto;
+        height: auto; width: 150%; }
+    .Design #QuickCon_Text #Top{
+        font-weight: bold; font-size: 5vw;
+
+        background: linear-gradient(to right,#00adf7, #ffde00 70%);
+        -webkit-background-clip: text; -webkit-text-stroke: 1px white; 
+        color: transparent; }
+    .Design #QuickCon_Text #Bottom{
+        position: relative;
+
+        font-weight: bold; font-size: 2.9vw;
+
+        background: linear-gradient(to right,#00adf7, #ffde00 50%);
+        -webkit-background-clip: text; -webkit-text-stroke: 0.05vw white;
+        color: transparent; }
+
+    .Design #TRaTB{
+        width: 100%;
+        color: #353a4d; text-align: center;
+        font-family: "theseasons"; font-size: min(45px, 5vw);
+        padding-top: 5%;
+
+        grid-row-start: 2; grid-row-end: 3;
+        grid-column-start: 1; grid-column-end: 3;
+    }
+    .Design #FiberInternet{
+        place-self: start center;
+        height: 18vw; width: 65vw; 
+        max-height: 160px; max-width: 570px;
+
+        grid-row-start: 3; grid-row-end: 4;
+        grid-column-start: 1; grid-column-end: 3;
+    }
+
+    /* MAIN RIBBON _______________________________________________ */
+    .webRibbon { 
+        position: fixed; top:0; left: 0;
+        width: 100%; height: 5%; min-height: 50px;
+        background-color: #cee7ff;
+        z-index: 100;
+    }
+    .webRibbon #QCLogo{
+        visibility: visible; 
+        
+        position: absolute; top: 10%; left: 20px; height: 80%;
+        filter: drop-shadow(0 0 0.1px black);
+        border-right: 2px solid #95A9BA; 
+        padding-right: 15px;
+    }
+    .webRibbon #BLogin{
+        background: none; border: none;
+
+        position: absolute; top: 10%; right: 34px;
+        height: 80%; width: 80; 
+        font-size: calc(1 * 100%); font-family: "quicksand";
+
+        display: flex; justify-content: center; align-items: center;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1; 
+        cursor: pointer;
+    }
+    .webRibbon #BLogout{
+        visibility: hidden;
+
+        position: absolute; top: 10%; right: 30;
+        height: 80%; width: 80; font-size: calc(1 * 100%);
+        display: flex; justify-content: center; align-items: center;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1;
+    }
+    .webRibbon #BHome{
+        position: absolute; top: 10%; right: 112;
+        height: 80%; width: 80; 
+        font-size: calc(1 * 100%);
+        
+        display: flex; justify-content: center; align-items: center;
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        letter-spacing: 1;
+        cursor: pointer;
+    }
+    /* Price Selection _______________________________________________ */
+    .priceSelection{
+        display: flex;
+        place-self: center; padding-top: 20%;
+        grid-column-start: 2;
+
+        gap: 20px;
+    }
+    .priceSelection * #base{
+        bottom: 0;
+        background-color: #353a4d;
+        border-radius: 15px;
+        height: 220; width: 170;
+
+        color: white; text-align: center; 
+        font-weight: bold; font-size: calc(0.9 * 100%);
+        line-height: 25px; 
+        border: 4px solid;
+        cursor: pointer;
+    }
+    .priceSelection * #face{
+        bottom: 0;
+        text-align: center; color: #353a4d;
+        letter-spacing: 3px;
+        background: linear-gradient(to bottom,#74bdfd, #ffed7e 100%);
+        border-radius: 10px;
+        height: 88.8%; width: 100%;
+    }
+    .priceSelection * #face #mbps{
+        text-align: center; 
+        font-family: anton; font-size: calc(2.1 * 100%);
+        padding-top: 20%; padding-bottom: 18%;
+    }
+    .priceSelection * #face #price{
+        display: inline-block;
+        
+        font-family: anton; font-size: calc(2.1 * 100%);
+        padding-top: 18%; border-top: #353a4d60 2px solid;
+    }
+    .priceSelection * #face #monthly{
+        
+        font-size: calc(1 * 100%); font-weight: 600;
+    }
+
+    @font-face {
+        font-family: "anton";
+        src: url('Anton/Anton-Regular.ttf') format("truetype");
+    }
+    @font-face {
+        font-family: "quicksand";
+        src: url('Quicksand/Quicksand-VariableFont_wght.ttf') format("truetype");
+    }
+    @font-face {
+        font-family: "theseasons";
+        src: url('The-Seasons/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf') format("truetype");
+    }
+    @media (max-width: 1000px){
+        .body{
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        #RWFrame {
+            height: 80%; width: auto;
+            top: 50%; left: 50%; transform: translate(-49.5%, -60%);
+        }
+        .priceSelection{
+            grid-column-start: 1;
+            grid-row-start: 2;
+            padding-top: 0%;
+            align-self: start;
+        }
+        .Design{
+            padding-left: 0;
+        }
+        .Design #QuickCon_Text{
+            width: 100%;
+        }
+        .Design #QuickCon_Text #Top{
+            background: linear-gradient(to right,#00adf7, #ffde00 60%);
+            -webkit-background-clip: text;
+        }
+        .Design #QuickCon_Text #Bottom{
+            background: linear-gradient(to right,#00adf7, #ffde00 40%);
+            -webkit-background-clip: text;
+        }
+    }
+
+    /* EVENTSs _______________________________________________ */
+
+    /* --------------------------Hovers-------------------------- */
+    #BLogin:hover, #BLogout:hover, #BHome:hover{
+        background-color: #9FD2FF;
+        transition: background-color 0.2s;
+    }
+    #BLogin:hover:active, #BLogout:hover:active, #BHome:hover:active{
+        background-color: #f0f8ff;
+        transition: 0.1s;
+    }
+
+    #QCLogo:active{
+        rotate: 36000deg; 
+        transition: 15s;
+        animation: jump 20s forwards;
+    }
+    @keyframes jump {
+        10% {
+            position: absolute; left: 50%;
+            filter: brightness(50%);
+        }
+        30% {
+            position: fixed; top: 50%; left: -50%; filter: 
+            brightness(1000%);
+        }
+        35% {
+            position: fixed; top: 50%; right: -50%; filter: 
+        }
+        75% {
+            position: fixed; top: -50%; left: 50%; 
+            rotate: -36000deg; filter: brightness(50%);
+        }
+        98% {
+            position: fixed; top: -25%; right: 130%; filter: 
+            brightness(1000%);
+        }
+        100% {
+            position: relative; top: 10%; left: 20px; 
+        }
+    }
+
+    .loginWindow .loginSubmit:hover{
+        background: none; color: white; transform: scale(1.2);
+        font-weight: bold;
+        transition: 0.1s;
+    }
+
+    #B65mbps:hover #base, #B95mbps:hover #base, #B125mbps:hover #base{
+        color: #353a4d; transform: scale(1.1);
+        border-color: white;
+        background-color: white;
+        transition: 0.4s;
+    }
+    #B65mbps:hover #face, #B95mbps:hover #face, #B125mbps:hover #face{
+        color: white;
+        background: linear-gradient(to bottom,#45a8ff, #ffe231 90%);
+        transition: 0.4s;
+    }
+    #B65mbps:hover:active #base, #B95mbps:hover:active #base, #B125mbps:hover:active #base{
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
+
+    /* --------------------------Focus-------------------------- */
+    #BLogin:focus + .loginWindow, .loginWindow:hover, .loginWindow:focus-within{
+        top: 100%; translate: 0 0;
+        transition: 0.5s;
+        visibility:visible;
+    }
+    #username:focus, #password:focus{
+        width: 95%; 
+        transition: 0.5s ease-in-out;
+    }
+    
+</style>

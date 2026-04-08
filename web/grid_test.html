@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title> gridTest </title>
+</head>
+<body>
+    <div class = "main">
+        <div class = "box" id = "d1">
+            <div class = "box2" id = "d2s1"></div>
+            <div class = "box2" id = "d2s2"></div>
+            <div class = "box2" id = "d2s3"></div>
+        </div>
+        <div class = "box" id = "d2"></div>
+        <div class = "box" id = "d3"></div>
+        <div class = "box" id = "d4"></div>
+    </div>
+
+</body>
+<style>
+    body{
+        
+    }
+    .main{
+        position: absolute; top: 0; left: 0;
+        height: 100%; width: 100%;
+
+        display: grid; 
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 5% 1fr 5%;
+    }
+    .box{
+        background-color: rgba(254, 157, 212, 1);
+        border: #cf53d1 4px solid;
+    }
+    .box2{
+        background-color: rgb(157, 209, 254);
+        border: #4247d7 4px solid;
+    }
+    #d1{
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+
+        display: grid; 
+        grid-template-columns: 10% auto 15%;
+    }   
+    #d2{
+        grid-column: ;
+        grid-row: ;
+    }
+    #d3{
+        grid-column: ;
+        grid-row: ;
+    }
+    #d4{
+        grid-column: 1 / -1;
+        grid-row: 3 / 4;
+    }
+</style>
+</html>

@@ -1,0 +1,475 @@
+<html>
+<head>
+    <link rel = "shortcut icon" href = "QuickIcon.ico" type = "image/x-icon">
+    <title> Home - QuickCon Internet </title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class = "main">
+        <img id = "RWFrame" src = "RetroWireframe.png">
+
+        <div class = "webRibbon">
+            <img id = "QCLogo" src = "QuickCon Logo.png">
+            
+            <div class = "ribbonButtons">
+                <button type = "button" class = "ribbonButton-style" id = "BHome">
+                    Home
+                </button>
+                <button type = "button" class = "ribbonButton-style" id = "BLogin" onclick="(() => {  window.location.href = './Application_Form.html' })()">
+                    Login
+                </button>
+
+                <div class = "loginWindow">
+                    <div class = "loginLabel"> Customer Login </div>
+                    <div class = "TBUsername">
+                        <label for = "username"> Username: </label>
+                        <input type = "text" id = "username"/>
+                    </div>
+                    <div class = "TBPassword">
+                        <label for = "password"> Password : </label>
+                        <input type = "password" id = "password"/>
+                    </div>
+                    <button type = "submit" class = "loginSubmit"> Login </button>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class = "midArea">
+            <div class = "designArea">
+
+                <div class = "QuickCon">
+                    <img id = "QuickCon_Logo" src = "QuickCon Logo.png">
+                    <div class = "QuickCon_Text">
+                        <div id = "topText"> uickCon Internet </div>
+                        <div id = "bottomText"> Installation Services </div>
+                    </div>
+                </div>
+                <div id = "TRaTB"> The Real and The Best </div>
+                <img id = "FiberInternet" src = "FiberInternet.png">
+
+            </div>
+            <div class = "planArea">
+
+                <div class = "planCard" id = "p65"> Apply Now
+                    <div class = "planCardFace"> 
+                        <div id = "mbps"> 65 Mbps </div>
+                        <div id = "price"> ₱ 1000.00 </div>
+                        <div id = "monthly"> MONTHLY </div>
+                    </div>
+                </div>
+
+                <div class = "planCard" id = "p95"> Apply Now
+                    <div class = "planCardFace"> 
+                        <div id = "mbps"> 95 Mbps </div>
+                        <div id = "price"> ₱ 1300.00 </div>
+                        <div id = "monthly"> MONTHLY </div>
+                    </div>
+                </div>
+
+                <div class = "planCard" id = "p125"> Apply Now
+                    <div class = "planCardFace"> 
+                        <div id = "mbps"> 125 Mbps </div>
+                        <div id = "price"> ₱ 1500.00 </div>
+                        <div id = "monthly"> MONTHLY </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class = "footer">
+            
+        </div>
+    </div>
+    
+</body>
+<style>
+    html {
+        font-family: "quicksand";
+        font-weight: normal;
+    }
+    body{
+        overflow-x: hidden;
+        .main{
+            position: absolute; top: 0; left: 0;
+            height: 100%; width: 100%;
+
+            z-index: -1;
+
+            display: grid; 
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 1fr 5%;
+
+            background: linear-gradient(to bottom,#9FD2FF, #f5e893 110%);
+        }
+    }
+    #RWFrame {
+        position: fixed; z-index: -1;
+        height: 100%; width: 100vh;
+        right: -100; bottom: -100;
+        filter: brightness(0) invert(1) opacity(70%);
+    }
+
+    /* WEB RIBBON _______________________________________________ */
+    .webRibbon{
+        position: relative;
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+
+        height: 100%; width: 100%; min-height: 50px;
+        background-color: #cee7ff;
+        z-index: 100;
+
+        display: flex; justify-content: flex-end;
+
+        #QCLogo{
+            visibility: visible; position: absolute; 
+
+            top: 10%; left: 20px; height: 80%;
+            filter: drop-shadow(0 0 0.1px black) brightness(120%);
+            border-right: 2px solid #95A9BA; 
+            padding-right: 15px;
+        }
+
+        .ribbonButtons{
+            height: 100%;
+            display: flex;
+            padding-right: 3%;
+        }
+        .ribbonButton-style{
+            background: none; border: none; position: relative; 
+
+            top: 10%;
+            height: 80%; width: 80; 
+            font-size: calc(1 * 100%); 
+            font-family: "quicksand";
+            letter-spacing: 1;
+
+            display: flex; 
+            justify-content: center; align-items: center;
+
+            border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+        }
+        #BHome{
+            position: relative;
+            left: 1;
+        }
+        #BLogin{
+            position: relative;
+            right: 1;
+        }
+    }
+
+    /* DESIGN AREA _______________________________________________ */
+    .midArea{
+        position: relative;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+
+        height: 100%; width: 100%;
+        display: flex; flex-direction: row;
+        justify-content: center;
+
+        .designArea{
+            position: relative; 
+            left: 3%;
+            width: 100%;
+
+            display: flex; flex-direction: column;
+            place-items: center;
+            gap: 2vw;
+
+            margin-top: 4vw;
+
+            .QuickCon{
+                position: relative; 
+
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+
+                #QuickCon_Logo{
+                    position: relative;
+                    left: 2vw;
+
+                    height: 11vw; width: auto;
+
+                    transform: rotate(6deg); 
+                    filter: drop-shadow(0 0 1px white);
+                }
+                .QuickCon_Text{
+                    position: relative;
+                    top: 1vw;
+
+                    background: linear-gradient(to right,#00adf7, #ffde00);
+                    -webkit-background-clip: text; 
+                    -webkit-text-stroke: 1px white; 
+                    color: transparent;
+
+                    white-space: nowrap;
+
+                    #topText{
+                        font-weight: bold; font-size: 5vw;
+                    }
+                    #bottomText{
+                        position: relative;
+                        left: 10px; bottom: 10px;
+                        font-weight: bold; font-size: 2.9vw;
+                    }
+                }
+            }
+            #TRaTB{
+                width: 100%;
+                color: #353a4d; text-align: center;
+                font-family: "theseasons"; font-size: 3vw;
+                 padding-top: 5%;
+            }
+            #FiberInternet{
+                height: 13vw; width: auto;
+            }
+        }
+
+        .planArea{
+            margin-top: 18%;
+            height: auto; width: 100%;
+
+            display: flex; justify-content: space-evenly;
+
+            .planCard{
+                height: 30.5vh; width: 23vh;
+                
+                color: white; text-align: center; 
+                letter-spacing: 1px;
+                font-weight: bold; font-size: calc(1 * 100%);
+                line-height: 30px; 
+
+                background-color: #353a4d;
+
+                border-radius: 2.6vh;
+
+                position: relative;
+                display: flex; justify-content: center;
+
+                border: white 4px solid;
+                
+                cursor: pointer;
+            }
+            .planCardFace{
+                height: 87%; width: 100%; 
+                background: linear-gradient(to bottom,#74bdfd, #ffed7e);
+
+                color: #353a4d;
+
+                position: absolute; 
+                display: flex; justify-content: center;
+
+                bottom: 0vh;
+
+                border-radius: 2vh;
+
+                #mbps{
+                    position: absolute; top: 3.8vh;
+                    font-family: anton; font-size: 4.3vh;
+                }
+                #price{
+                    position: absolute; top: 11.2vh;
+                    font-family: anton; font-size: 4.3vh;
+                    padding-top: 4vh; border-top: #353a4d60 2px solid;
+                }
+                #monthly{
+                    font-size: 2vh; font-weight: 600;
+                    position: absolute; top: 21vh;
+                }
+            }
+        }
+    }  
+
+    /* Login Window _______________________________________________ */
+    .loginWindow{
+        position: absolute; right: 0; top: 100%; 
+        translate: 100% 0%;
+        background-color: white;
+        height: 160px; width: 100%;
+        max-width: 350;
+        border: #353a4d60 1px solid;
+        animation: colorLoop 4s infinite;
+
+        display: flex; flex-direction: column;
+        justify-content: center; 
+        gap: 15px;
+        visibility: hidden;
+    }
+    @keyframes colorLoop{
+        0% { border-top: #f3f700 5px solid; }
+        50% { border-top: #0080f7 5px solid;}
+        100% { border-top: #f3f700 5px solid; }
+    }
+
+    .loginWindow .loginLabel{
+        background: none; 
+        position: static; align-self: center;
+    }
+    .loginWindow .TBUsername{
+        background: none; font-weight: 600;
+
+        position: static; margin-left: 7%;
+
+        label[for = "username"]{
+            font-size: 13px; 
+        }
+        #username{
+            border-radius: 7px; border: #353a4d 1px solid;
+            font-family: "quicksand"; 
+            font-weight: 500;
+        }
+        #username[type = "text"]{
+            text-align: center; letter-spacing: 1px;
+        }
+    }
+    .loginWindow .TBPassword{
+        background: none; font-weight: 600; 
+
+        position: static; margin-left: 7%;
+
+        label[for = "password"]{
+            font-size: 13px; 
+        }
+        #password{
+            border-radius: 7px; border: #353a4d 1px solid;
+            font-family: "quicksand";
+            font-weight: 500;
+        }
+        #password[type = "password"]{
+            text-align: center; letter-spacing: 1px;
+        }
+    }
+    .loginWindow .loginSubmit{
+        background: white; 
+        border-radius: 10px; border: none;
+        font-family: "quicksand";
+        height: 30px; width: 70px;
+
+        position: relative; align-self: center;
+
+        display: flex;
+        justify-content: center; align-items: center;
+    }
+    .loginSubmit::after{
+        content: '';
+        position: absolute; z-index: -1;
+        height: 112%; width: 106%; 
+        background-image: linear-gradient(to top right,#00adf7, #ffde00 70%);
+        border-radius: 10px;
+    }
+    
+    /* Price Selection _______________________________________________ */
+
+    @font-face {
+        font-family: "anton";
+        src: url('Anton/Anton-Regular.ttf') format("truetype");
+    }
+    @font-face {
+        font-family: "quicksand";
+        src: url('Quicksand/Quicksand-VariableFont_wght.ttf') format("truetype");
+    }
+    @font-face {
+        font-family: "theseasons";
+        src: url('The-Seasons/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf') format("truetype");
+    }
+    @media (max-width: 1000px){
+        #RWFrame {
+            height: 100%; width: auto;
+            top: 80%; left: 50%; transform: translate(-49.5%, -60%);
+        }
+
+        .midArea{
+            flex-direction: column;
+
+            .designArea{
+                left: 0;
+            }
+            .planArea{
+                margin: 3vw;
+                margin: 0;
+                margin-top: 10%;
+            }
+        }
+    }
+
+    /* EVENTS _______________________________________________ */
+
+    /* --------------------------Hovers-------------------------- */
+    #QCLogo:active{
+        rotate: 36000deg; 
+        transition: 15s linear;
+        animation: jump 20s forwards;
+    }
+    @keyframes jump {
+        10% {
+            position: absolute; left: 50%;
+            filter: brightness(50%);
+        }
+        30% {
+            position: fixed; top: 50%; right: 50%; filter: 
+            brightness(1000%);
+        }
+        55% {
+            position: fixed; top: -50%; left: 50%; 
+            rotate: -36000deg; filter: brightness(0%);
+        }
+        98% {
+            position: fixed; top: -25%; right: 130%; filter: 
+            brightness(1000%);
+        }
+        100% {
+            position: relative; top: 0; left: 0; 
+        }
+    }
+
+    .ribbonButton-style:hover{
+        background-color: #9FD2FF;
+        transition: background-color 0.2s;
+    }
+    .ribbonButton-style:hover:active{
+        background-color: #f0f8ff;
+        transition: 0.1s;
+    }
+
+    #p65:hover, #p95:hover, #p125:hover{
+        color: #353a4d; transform: scale(1.1);
+        background-color: white;
+        transition: 0.4s;
+    }
+    #p65:hover .planCardFace, #p95:hover .planCardFace, #p125:hover .planCardFace{
+        color: white;
+        background: linear-gradient(to bottom,#45a8ff, #ffe231 90%);
+        transition: 0.4s;
+    }
+    #p65:hover:active, #p95:hover:active, #p125:hover:active{
+        transform: scale(1.05);
+        transition: 0.2s;
+    }
+    
+    .loginWindow .loginSubmit:hover{
+        background: none; color: white;
+        font-weight: bold;
+        transition: 0.1s;
+    }
+    .loginWindow .loginSubmit:hover:active{
+        background: white; color: rgb(60, 60, 60);
+        transition: 0.1s;
+    }
+
+    /* --------------------------Clicks-------------------------- */
+    #BLogin:focus + .loginWindow, .loginWindow:hover, .loginWindow:focus-within{
+        visibility: visible;
+        top: 100%; translate: 0 0;
+        transition: 0.5s;
+    }
+    #username:focus, #password:focus{
+        width: 95%; 
+        transition: 0.5s ease-in-out;
+    }
+    
+</style>

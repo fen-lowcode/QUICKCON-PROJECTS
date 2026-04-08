@@ -1,0 +1,225 @@
+<html>
+<head>
+    <link rel = "shortcut icon" href = "QuickIcon.ico" type = "image/x-icon">
+    <title> Profile - QuickCon Internet </title>
+</head>
+<body>
+    
+<div class = "main"> 
+
+    <div class = "webRibbon">
+        <img id = "QCLogo" src = "QuickCon Logo.png">
+        <button type = "button" id = "BLogin"> Login </button>
+        <div id = "BLogout"> Logout </div>
+        <button type = "button" id = "BHome"> Home </button>
+    </div>
+
+    <div class = "titleArea">
+
+    </div>
+
+    <div class = "accountDetails_Area">
+        <div class = "a1"> 
+            <div class = "a1-1">1-1</div>
+            <div class = "a1-2">1-2</div>
+        </div>
+        <div class = "a2"> 
+            <div class = "a2-1"> 
+                <div class = "a2-1-1"> 2-1-1 </div>
+                <div class = "a2-1-1"> 2-1-2 </div>
+            </div>
+            <div class = "a2-2"> 
+                <div class = "a2-1-1"> 2-2-1 </div>
+                <div class = "a2-1-1"> 2-2-2 </div>
+                <div class = "a2-1-1"> 2-2-3 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="transactionHistory_Area">
+
+    </div>
+
+</div>
+
+</body>
+</html>
+<style> 
+
+html {
+    font-family: "quicksand";
+    font-weight: normal;
+}
+body .main{
+    position: absolute; top: 0; left: 0;
+    height: 100%; width: 100%;
+
+    display: grid; 
+    grid-template-columns: 1fr min(90%, 930px) 1fr;
+    grid-template-rows: auto 1fr 4fr 4fr;
+}
+.titleArea * , .accountDetails_Area * , .transactionHistory_Area * {
+    margin: 3px;
+}
+
+/* MAIN RIBBON _______________________________________________ */
+.webRibbon { 
+    position: relative; top:0; left: 0;
+    width: 100%; height: 100%; min-height: 50px;
+    background-color: #cee7ff;
+
+    grid-area: 1 / 1 / 2 / 4;
+
+    #QCLogo{
+        visibility: visible; position: absolute; 
+
+        top: 10%; left: 20px; height: 80%;
+        filter: drop-shadow(0 0 0.1px black) brightness(120%);
+        border-right: 2px solid #95A9BA; 
+        padding-right: 15px;
+    }
+    #BLogin{
+        background: none; border: none; position: absolute; 
+        opacity: 30%;
+
+        top: 10%; right: 34px;
+        height: 80%; width: 80; 
+        font-size: calc(1 * 100%); 
+        font-family: "quicksand";
+        letter-spacing: 1;
+
+        display: flex; 
+        justify-content: center; align-items: center;
+
+        border-right: 2px solid #95A9BA; border-left: 2px solid #95A9BA;
+    }
+    #BLogout{
+        visibility: hidden; position: absolute; 
+
+        top: 10%; right: 30;
+        height: 80%; width: 80; 
+        font-size: calc(1 * 100%);
+        letter-spacing: 1;
+
+        display: flex; 
+        justify-content: center; align-items: center;
+        border-right: 2px solid #95A9BA; 
+        border-left: 2px solid #95A9BA;
+    }
+    #BHome{
+        background: none; border: none; position: absolute;
+
+        top: 10%; right: 112;
+        height: 80%; width: 80; 
+        font-size: calc(1 * 100%);
+        font-family: "quicksand";
+        letter-spacing: 1;
+
+        display: flex; 
+        justify-content: center; align-items: center;
+        border-right: 2px solid #95A9BA; 
+        border-left: 2px solid #95A9BA;
+
+        cursor: pointer;
+    }
+}
+
+/* ACCOUNT DETAILS _______________________________________________ */
+.titleArea{
+    border: black 0.5px solid;
+    grid-area: 2 / 2 / 3 / 3;
+}
+
+/* ACCOUNT DETAILS _______________________________________________ */
+.accountDetails_Area{
+    border: black 0.5px solid;
+    grid-area: 3 / 2 / 4 / 3;
+
+    display: grid;
+    grid-template-columns: 45% 55%;
+}
+.a1{
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    .a1-1{
+        background-color: #cee7ff;
+        flex-basis: 30%;
+    }
+    .a1-2{
+        background-color: #cee7ff;
+        flex-basis: 70%;
+    }
+}
+.a2{
+    background-color: cyan;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+
+    .a2-1{
+        background-color: #95A9BA;
+        flex-basis: 30%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+
+        .a2-1-1{
+            background-color: azure;
+            flex-basis: 100%;
+        }
+        .a2-1-2{
+            background-color: azure;
+            flex-basis: 100%;
+        }
+    }
+    .a2-2{
+        background-color: #95A9BA;
+        flex-basis: 70%;
+
+        display: flex;
+        justify-content: start;
+
+        .a2-2-1{
+            background-color: azure;
+        }
+        .a2-2-2{
+            background-color: azure;
+            
+        }
+        .a2-2-3{
+            background-color: azure;
+            
+        }
+    }
+}
+
+/* TRANSACTION HISTORY _______________________________________________ */
+.transactionHistory_Area{
+    border: black 0.5px solid;
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+@font-face {
+    font-family: "anton";
+    src: url('Anton/Anton-Regular.ttf') format("truetype");
+}
+@font-face {
+    font-family: "quicksand";
+    src: url('Quicksand/Quicksand-VariableFont_wght.ttf') format("truetype");
+}
+@font-face {
+    font-family: "theseasons";
+    src: url('The-Seasons/Demo_Fonts/Fontspring-DEMO-theseasons-bd.otf') format("truetype");
+}
+@media (max-width: 1200px){
+    .accountDetails_Area{
+        grid-template-columns: auto;
+        grid-template-rows: 40% 60%;
+    }
+}
+
+</style>
