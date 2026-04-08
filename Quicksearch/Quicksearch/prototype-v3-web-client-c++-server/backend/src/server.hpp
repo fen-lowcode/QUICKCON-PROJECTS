@@ -10,13 +10,16 @@ class Server {
 public:
 
 
-    void requestHandlers() {
+    void optionReqHandler() {
         serverHandler.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
             res.set_header("Access-Control-Allow-Origin", "*");
             res.set_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
             res.set_header("Access-Control-Allow-Headers", "Content-Type");
             res.status = 204; // "No Content" - tells the browser it's okay to proceed
         });
+    }
+
+    void loginReqHandler(bool(*checkUserFromDB)(const std::string username,const  std::string password)) {
 
         serverHandler.Post("/auth/session", [=](const httplib::Request& req, httplib::Response& res){
 
@@ -25,17 +28,17 @@ public:
 
             try {
                 nlohmann::json dataHandler = nlohmann::json::parse(req.body);
-                std::string firstname = dataHandler.at("fname");
-                std::string lastname = dataHandler.at("lname");
+                std::string username = dataHandler.at("uname");
                 std::string password = dataHandler.at("psw");
 
-                std::cout << firstname << lastname << password << std::endl;
-        
-                res.status = 200;
-                res.set_content("{\"status\":\"success\"}", "application/json");
-
-                
-
+                std::cout << " User: " << username << " has logged in with password " << password << std::endl;
+                if (checkUserFromDB(username, password) == true) {
+                    res.status = 200;
+                    res.set_content("{\"status\":\"success\"}", "application/json");
+                } else {
+                    res.status = 401;
+                    res.set_content("{\"status\":\"failed\"}", "application/json");
+                }
             } catch(nlohmann::json::parse_error& ex) {
                 res.status = 415;
                 res.reason = "Unsupported Media type";
