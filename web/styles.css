@@ -49,7 +49,7 @@ body {
     position: fixed;
     inset: 0;
     background: url("./assets/homepage_background.png") center/cover no-repeat;
-    filter: brightness(0.7);
+    filter: brightness(0.8);
     z-index: -2;
 }
 
@@ -60,7 +60,7 @@ body {
     background: linear-gradient(
         to bottom,
         rgba(0,0,0,0.2),
-        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.5),
         rgba(0,0,0,0.9)
     );
 }
@@ -75,6 +75,9 @@ body {
     padding: 20px 60px;
     backdrop-filter: blur(12px);
     background: rgba(0,0,0,0.3);
+    flex-wrap: wrap;
+    width: 100%;
+    height: 90px;
 }
 
 .logo {
@@ -82,15 +85,19 @@ body {
     font-weight: 600;
 }
 
+
 .nav-links button {
     background: none;
+    height: 100%;
     border: none;
     color: white;
     margin-left: 20px;
     cursor: pointer;
-    font-size: 0.95rem;
+    font-size: 16px;
     opacity: 0.8;
 }
+
+
 
 .nav-links button:hover {
     opacity: 1;
@@ -164,12 +171,13 @@ body {
     PLANS
 ========================= */
 .plans {
+    margin-top: 200px;
     display: flex;
     gap: 10px;
 }
 
 .card {
-    margin-top: 170px;
+    margin-top: 10px;
     width: 300px;
     padding: 35px;
     border-radius: 16px;
@@ -211,6 +219,16 @@ body {
     RESPONSIVE
 ========================= */
 @media (max-width: 1200px) {
+
+        
+    .quickcon-logo img {
+        height: 200px;
+        width: auto;
+        filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
+        /* transform: rotate(-3deg); */
+        transition: 0.3s ease;
+    }
+
     .hero {
         flex-direction: column;
         gap: 40px;

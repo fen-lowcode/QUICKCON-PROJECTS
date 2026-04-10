@@ -17,7 +17,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevents page reload
 
     // Get the values from the inputs
-    const userName = document.getElementById("uname").value;
+    const firstName = document.getElementById("fname").value;
+    const lastName = document.getElementById("lname").value;
     const passBuf = document.getElementById("psw").value;
     const password = await hashString(passBuf);
 
@@ -29,7 +30,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             },
             
             body: JSON.stringify({ 
-                uname: userName, 
+                fname: firstName,
+                lname: lastName,
                 psw: password 
             })
         });

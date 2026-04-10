@@ -39,12 +39,14 @@ public:
 
     }
 
-    static bool checkUserFromDB(const std::string username, const std::string password) {
+    static bool checkUserFromDB(const std::string firstName, const std::string lastName,  const std::string password) {
 
         try {
             // prepare statement
-            auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement("SELECT PASSWORD FROM USERS WHERE FIRSTNAME=?"));
-            stmt -> setString(1, username);
+            auto stmt = std::unique_ptr<sql::PreparedStatement>
+                (conn -> prepareStatement("SELECT PASSWORD FROM USERS WHERE FIRSTNAME = ? AND LASTNAME = ?"));
+            stmt -> setString(1, firstName);
+            stmt -> setString(2, lastName);
 
             // executre and 
             auto res = std::unique_ptr<sql::ResultSet>(stmt -> executeQuery());
