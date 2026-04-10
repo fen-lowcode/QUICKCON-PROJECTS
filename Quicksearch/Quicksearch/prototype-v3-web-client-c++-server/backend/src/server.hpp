@@ -4,13 +4,26 @@
 
 #include <iostream>
 #include <nlohmann/json.hpp>
+#include <sodium.h>
 #include <httplib.h>
 
+
+auto hashPass = [](std::string pass) {
+    unsigned char hash[crypto_hash_sha256_BYTES];
+    crypto_hash_sha256(hash, (const unsigned char *)pass.c_str(), pass.size());
+    std::stringstream ss;
+
+    // Converts each bytes of the sha256 hash into an integer and then into it's hex character set to two bytes
+    for (int i = 0; i < crypto_hash_sha256_BYTES; i++) {
+        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+    }
+    // after the loop converrsion above it then stores it as a string object
+    return ss.str();
+};
 
 class Server {
 
 public:
-
 
     void optionReqHandler() {
         serverHandler.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
@@ -44,7 +57,7 @@ public:
                             << password << std::endl;
 
                     // check if login is valid or not
-                    if (checkUserFromDB(firstName, lastName, password) == true) {
+                    if (checkUserFromDB(firstName, lastName, hashPass(password)) == true) {
                         res.status = 200;
                         res.set_content("{\"status\":\"success\"}", "application/json");
                     } else {
