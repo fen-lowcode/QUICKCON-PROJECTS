@@ -86,7 +86,7 @@ body {
 
 /* LOGIN FORM */
 #login-form {
-    background: rgb(229, 232, 249);
+    background: rgb(229, 232, 249, 0.4);
     padding: 40px;
     border-radius: 10px;
     box-shadow: var(--shadow);
