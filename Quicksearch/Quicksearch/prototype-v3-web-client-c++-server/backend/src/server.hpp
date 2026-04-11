@@ -6,6 +6,7 @@
 #include <nlohmann/json.hpp>
 #include <sodium.h>
 #include <httplib.h>
+#include "tokenManager.hpp"
 
 
 auto hashPass = [](std::string pass) {
@@ -59,7 +60,8 @@ public:
                     // check if login is valid or not
                     if (checkUserFromDB(firstName, lastName, hashPass(password)) == true) {
                         res.status = 200;
-                        res.set_content("{\"status\":\"success\"}", "application/json");
+                        std::string token = createToken("5", "Admin", "123456789");
+                        res.set_content("{\"token\":\"" + token + "\"}", "application/json");
                     } else {
                         res.status = 401;
                         res.set_content("{\"status\":\"failed\"}", "application/json");
