@@ -1,18 +1,18 @@
 #include "server.hpp"
-#include "databaseHandler.hpp"
+#include "databaseService.hpp"
+#include "tokenService.hpp"
 
-// THIS IS THE MISSING PIECE:
-std::unique_ptr<sql::Connection> DatabaseHandler::conn = nullptr;
 
 int main() {
 
-    DatabaseHandler dbHandler;
-    dbHandler.connectToDB();
+    DatabaseService databaseService;
+    TokenService tokenService;
+    databaseService.connectToDB();
 
-    Server server;
+    Server server(databaseService, tokenService);
 
     server.optionReqHandler();
-    server.loginReqHandler(dbHandler.checkUserFromDB);
+    server.loginReqHandler();
 
     server.listen("0.0.0.0", 2222);
 }

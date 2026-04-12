@@ -59,9 +59,9 @@ body {
     inset: 0;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,0.2),
-        rgba(0,0,0,0.5),
-        rgba(0,0,0,0.9)
+        rgba(0,0,0,0.3),
+        rgba(0, 0, 0, 0.7),
+        rgb(0,0,0)
     );
 }
 
@@ -152,6 +152,11 @@ body {
     Get Connected Logo
 ========================= */
 .get-connected-button {
+    width: 300px;
+    height: 70px;
+
+    font-size: 24px;
+
     margin-top: 25px;
     padding: 12px 24px;
     border: none;
@@ -187,6 +192,7 @@ body {
     border: 1px solid rgba(255,255,255,0.15);
     text-align: center;
     transition: 0.3s;
+
 }
 
 .card:hover {
@@ -229,6 +235,12 @@ body {
         transition: 0.3s ease;
     }
 
+    .get-connected-button {
+        width: 250px;
+        height: 55px;
+        font-size: 22px;
+    }
+
     .hero {
         flex-direction: column;
         gap: 40px;
@@ -237,5 +249,82 @@ body {
 
     .plans {
         flex-direction: column;
+    }
+}
+
+/* =========================
+    ABOUT SECTION
+========================= */
+.about-section {
+    margin-top: 90px;
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.about-section > p {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    font-size: 1.05rem;
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+/* GRID */
+.about-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* CARDS */
+.about-card {
+    width: 300px;
+    padding: 30px;
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+
+    transition: 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+}
+
+.about-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.about-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    line-height: 1.5;
+}
+
+/* =========================
+    ABOUT RESPONSIVE
+========================= */
+@media (max-width: 1200px) {
+    .about-section {
+        padding: 40px 20px;
+    }
+
+    .about-card {
+        width: 100%;
+        max-width: 400px;
     }
 }
