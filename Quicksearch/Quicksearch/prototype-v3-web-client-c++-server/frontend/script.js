@@ -22,8 +22,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         });
 
     
-        if(response.ok){ var data = await response.json(); alert(JSON.stringify(data))}
         if(!response.ok) { var data = await response.json(); alert(JSON.stringify(data))}
+        if(response.ok){ 
+            var data = await response.json();
+            alert(JSON.stringify(data.token))
+            document.cookie = "token=" + data.token + "; path=/; SameSite=Lax; Secure";
+            // redirect client to data management window
+            window.location.href = "./data_lookup/index.html"
+        }
         
 
     } catch (error) {

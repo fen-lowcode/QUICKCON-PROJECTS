@@ -15,7 +15,7 @@ auto hashPass = [](std::string pass) {
     return ss.str();
 };
 
-void Server::optionReqHandler() {
+void Server::optionReqHandler() {                                             
     serverHandler.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
         res.set_header("Access-Control-Allow-Origin", "*");
         res.set_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
@@ -49,7 +49,7 @@ void Server::loginReqHandler() {
                 if (databaseService.checkCredentials(firstName, lastName, hashPass(password)) == true) {
                     res.status = 200;
                     std::string token = tokenService.createToken("5", "Admin", "123456789");
-                    res.set_content("{\"cookie\":\"" + token + "\"}", "application/json");
+                    res.set_content("{\"token\":\"" + token + "\"}", "application/json");
                 } else {
                     res.status = 401;
                     res.set_content("{\"status\":\"failed\"}", "application/json");

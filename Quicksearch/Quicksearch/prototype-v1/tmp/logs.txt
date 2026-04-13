@@ -4662,3 +4662,26 @@
 [2026-03-28 12:25:36.188] [file-log] [debug] User 1 is selected
 [2026-03-28 12:25:38.372] [file-log] [debug] User 2 is selected
 [2026-03-28 12:25:40.550] [file-log] [info] User: 1 sucessfully updated user 2 Configuration
+[2026-04-13 08:35:26.319] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.16 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.16)(port=3306)(type=master) : Can't connect to server on '192.168.1.16' (115)
+[2026-04-13 08:35:55.918] [file-log] [info] Database connection established on HOST: 192.168.1.4 on PORT: 3306
+[2026-04-13 08:35:55.933] [file-log] [info] Login: Initializing logo image
+[2026-04-13 08:35:55.940] [file-log] [info] Login: Initialized Logo image
+[2026-04-13 08:36:09.743] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-13 08:36:09.838] [file-log] [info] Fetching password from the database
+[2026-04-13 08:36:09.838] [file-log] [info] Login success User: 1
+[2026-04-13 08:36:09.838] [file-log] [debug] 1234
+[2026-04-13 08:36:09.843] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-04-13 08:36:09.849] [file-log] [info] Account is Admin
+[2026-04-13 08:37:51.787] [file-log] [info] Database connection established on HOST: 192.168.1.4 on PORT: 3306
+[2026-04-13 08:37:51.799] [file-log] [info] Login: Initializing logo image
+[2026-04-13 08:37:51.803] [file-log] [info] Login: Initialized Logo image
+[2026-04-13 08:38:00.338] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-13 08:38:00.353] [file-log] [info] Fetching password from the database
+[2026-04-13 08:38:01.306] [file-log] [warning] User was not found in the database
+[2026-04-13 08:38:01.306] [file-log] [error] SQL failure from account authentication
+[2026-04-13 08:38:25.363] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-13 08:38:25.368] [file-log] [info] Fetching password from the database
+[2026-04-13 08:38:25.368] [file-log] [info] Login success User: 1
+[2026-04-13 08:38:25.368] [file-log] [debug] 1234
+[2026-04-13 08:38:25.371] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-04-13 08:38:25.377] [file-log] [info] Account is Admin

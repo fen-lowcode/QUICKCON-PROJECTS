@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Network Portal</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="app-container">
+    <header class="glass-header">
+
+        <div class="controls">
+            <input type="text" id="tableSearch" placeholder="Search records..." onkeyup="filterTable()">
+            <button class="add-btn" onclick="">+ Add Customer</button>
+        </div>
+
+        <div class="header-right">
+            <img id="logo" src="../../assets/quicksearch-logo.png">
+            <h1>Quickcon's Customer Data Records</h1>
+            <span class="count-badge" id="rowCount">0 Records Loaded</span>
+        </div>
+
+    </header>
+
+    <div class="data-card">
+        <div class="scroll-area">
+            <table id="customerTable">
+                <thead>
+                    <tr>
+                        <th>status</th>
+                        <th>customerID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>age</th>
+                        <th>sex</th>
+                        <th>contact</th>
+                        <th>date of birth</th>
+                        <th>place of birth</th>
+                        <th>mbps</th>
+                        <th>date of application</th>
+                        <th>LP</th>
+                        <th>NP</th>
+                        <th>port</th>
+                        <th>optical</th>
+                        <th>sc connector</th>
+                        <th>fbr drop</th>
+                        <th>tapping</th>
+                        <th>cable tie</th>
+                        <th>F clamp</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
