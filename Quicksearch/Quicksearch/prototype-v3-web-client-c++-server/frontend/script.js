@@ -8,7 +8,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById("psw").value;
 
     try {
-        const response = await fetch('http://127.0.0.1:2222/auth/session', {
+        const response = await fetch('http://192.168.1.14:2222/auth/session', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',

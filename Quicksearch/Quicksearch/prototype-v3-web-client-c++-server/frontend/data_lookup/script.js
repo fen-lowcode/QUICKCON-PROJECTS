@@ -54,4 +54,4 @@ function filterTable() {
 }
 
 // Initial Load
-window.onload = () => generateRows(2000);
+window.onload = () => generateRows(1500);
