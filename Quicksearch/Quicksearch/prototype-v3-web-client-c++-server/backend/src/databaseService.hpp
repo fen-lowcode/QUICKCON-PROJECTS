@@ -22,6 +22,9 @@ private:
 public:
     void connectToDB();
     std::string fetchPasswordHash(const std::string& firstName, const std::string& lastName);
-    bool fetchAdminStatus(const std::string& firstName, const std::string& lastName);
     std::string fetchUserID(const std::string& firstName, const std::string& lastName);
+
+    bool fetchAdminStatus(const std::string& firstName, const std::string& lastName);
+    nlohmann::json fetchCustomerData();
 };
+

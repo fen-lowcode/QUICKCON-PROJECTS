@@ -31,3 +31,7 @@ std::string AccountHandler::accountAuth(
 
     return "";
 }
+
+nlohmann::json AccountHandler::getCustomerData() {
+    return databaseServ.fetchCustomerData();
+}

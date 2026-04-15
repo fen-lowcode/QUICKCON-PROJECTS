@@ -1,48 +1,66 @@
-const firstNames = ["Juan", "Maria", "Ricardo", "Elena", "Antonio", "Sonia", "Paolo", "Joshua", "Mateo", "Liza", "Stephen", "Renaldo", "Rose"];
-const lastNames = ["Dela Cruz", "Santos", "Reyes", "Garcia", "Bautista", "Mendoza", "Pascual", "Aquino", "Villanueva", "Lim", "Blanco", "Bocol"];
-const locations = ["Quezon City", "Makati", "Caloocan", "Pasig", "Taguig", "Manila", "Davao", "Cebu"];
-
-function generateRows(count) {
+// 1. Modified generateRows to accept real data from the database
+function generateRows(dataList) {
     const tableBody = document.getElementById('tableBody');
     let html = "";
 
-    for (let i = 1; i <= count; i++) {
-        const id = 1000 + i;
-        const fname = firstNames[Math.floor(Math.random() * firstNames.length)];
-        const lname = lastNames[Math.floor(Math.random() * lastNames.length)];
-        const city = locations[Math.floor(Math.random() * locations.length)];
-        const status = Math.random() > 0.2 ? "ACTIVE" : "INACTIVE";
+    // dataList is now the array of objects returned from your C++ backend
+    dataList.forEach((customer, index) => {
+        // Map your C++ JSON keys to the table columns
+        const status = customer.status || "ACTIVE"; // Default if status isn't in DB yet
         
         html += `
             <tr>
                 <td><span class="status-badge ${status.toLowerCase()}">${status}</span></td>
-                <td>${id}</td>
-                <td>${fname} ${lname}</td>
-                <td>RVM-LP${Math.floor(Math.random() * 50)}-NP${Math.floor(Math.random() * 5)}</td>
-                <td>Building ${i}, ${city} St.</td>
-                <td>${[35, 50, 75][Math.floor(Math.random() * 3)]}mb-1000</td>
-                <td>2026-0${Math.floor(Math.random() * 3) + 1}-15</td>
-                <td>0917-${Math.floor(1000000 + Math.random() * 9000000)}</td>
-                <td>${Math.floor(Math.random() * 40) + 18}</td>
-                <td>${Math.random() > 0.5 ? 'M' : 'F'}</td>
-                <td>${fname.toLowerCase()}_fb</td>
-                <td>N/A</td>
-                <td>19${Math.floor(70 + Math.random() * 28)}-05-12</td>
-                <td>${city}</td>
-                <td>${Math.floor(Math.random() * 20)}</td>
-                <td>${Math.floor(Math.random() * 10)}</td>
-                <td>${Math.floor(Math.random() * 200)}m</td>
-                <td>${Math.floor(Math.random() * 10)}</td>
-                <td>${Math.floor(Math.random() * 20)}</td>
-                <td>${Math.floor(Math.random() * 5)}</td>
-                <td>N/A</td>
-                <td>Installer Name</td>
+                <td>${customer.id}</td>
+                <td>${customer.name}</td>
+                <td>${customer.credentials || 'N/A'}</td>
+                <td>${customer.address}</td>
+                <td>${customer.plan}</td>
+                <td>${customer.date_applied}</td>
+                <td>${customer.contact_no}</td>
+                <td>${customer.age}</td>
+                <td>${customer.sex}</td>
+                <td>${customer.social_media}</td>
+                <td>${customer.occupation}</td>
+                <td>${customer.dob}</td>
+                <td>${customer.pob}</td>
+                <td>${customer.optical_info}</td>
+                <td>${customer.sc_connector}</td>
+                <td>${customer.fiber_drop}</td>
+                <td>${customer.tapping_clip}</td>
+                <td>${customer.cable_tie}</td>
+                <td>${customer.f_clamp}</td>
+                <td>${customer.remarks}</td>
+                <td>${customer.installed_by}</td>
             </tr>
         `;
-    }
+    });
+
     tableBody.innerHTML = html;
-    document.getElementById('rowCount').innerText = `${count} Records Loaded`;
+    document.getElementById('rowCount').innerText = `${dataList.length} Records Loaded`;
 }
+
+// 2. Updated Event Listener to bridge the Fetch with the UI
+window.addEventListener('load', async () => {
+    try {
+        const res = await fetch('http://127.0.0.1:2222/getData', {
+            method: 'POST',
+        });
+
+        if (!res.ok) throw new Error("Server responded with error");
+
+        const data = await res.json(); 
+        console.log("Received Data:", data);
+        
+        // Pass the REAL data to the generator
+        generateRows(data);
+        
+    } catch (error) {
+        console.warn("Failed to fetch customer data:", error);
+        // Fallback or error message in UI
+        document.getElementById('rowCount').innerText = "Error loading records";
+    }
+});
 
 function filterTable() {
     let input = document.getElementById("tableSearch");
@@ -54,5 +72,12 @@ function filterTable() {
     }
 }
 
-// Initial Load
-window.onload = () => generateRows(2000);
+// This is the professional way to do it
+window.addEventListener('load', () => {
+    console.log("Hello");
+});
+
+window.addEventListener('load', () => {
+    generateRows(2000);
+});
+

@@ -16,6 +16,7 @@ int main() {
 
     server.optionReqHandler();
     server.loginReqHandler();
+    server.customerDataHandler();
 
     server.listen("0.0.0.0", 2222);
 }

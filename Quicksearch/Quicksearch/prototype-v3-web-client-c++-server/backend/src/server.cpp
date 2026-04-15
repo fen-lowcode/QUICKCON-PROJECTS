@@ -55,6 +55,15 @@ void Server::loginReqHandler() {
     );
 }
 
+void Server::customerDataHandler() {
+    serverHandler.Post("/getData", [this](const httplib::Request& req, httplib::Response& res) {
+         // signal the browser to take input
+        res.set_header("Access-Control-Allow-Origin", "*");
+        res.set_content(accounthandler.getCustomerData().dump(), "application/json");
+
+    });
+}
+
 void Server::listen(const std::string host, int port) {
     serverHandler.listen(host , port);
 }

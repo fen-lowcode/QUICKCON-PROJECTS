@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 1. Load the Excel (no headers)
-df = pd.read_excel("CLIENT_Masterlist.xlsx", sheet_name="Phase 4A", header=None)
+df = pd.read_excel("CLIENT_Masterlist.xlsx", sheet_name="Phase 4B", header=None)
 
 # 2. Alignment Fix: Capture exactly 20 columns (Index 0 to 19)
 df = df.iloc[:, 0:20] 
@@ -14,7 +14,7 @@ table_name = "CUSTOMER_RECORDS"
 # Define the columns in your table (excluding ID) to allow AUTO_INCREMENT to work
 columns = (
     "CLIENTS_NAME, CREDENTIALS, ADDRESS, PLAN, DATE_APPLIED, CONTACT_NO, "
-    "AGE, SEX, FB_MESSENGER, OCCUPATION, DATE_OF_BIRTH, PLACE_OF_BIRTH, "
+    "AGE, SEX, SOCIAL_MEDIA, OCCUPATION, DATE_OF_BIRTH, PLACE_OF_BIRTH, "
     "OPTICAL_INFO, SC_CONNECTOR, FIBER_DROP, TAPPING_CLIP, CABLE_TIE, "
     "F_CLAMP, REMARKS, INSTALLED_BY"
 )

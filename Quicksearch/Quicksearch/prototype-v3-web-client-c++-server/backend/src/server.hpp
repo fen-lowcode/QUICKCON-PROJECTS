@@ -19,6 +19,7 @@ public:
 
     void optionReqHandler();
     void loginReqHandler();
+    void customerDataHandler();
     void listen(const std::string host, int port);
 
 private:
