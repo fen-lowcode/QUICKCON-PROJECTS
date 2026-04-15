@@ -26,16 +26,8 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if(response.ok){ 
             var data = await response.json();
             alert(JSON.stringify(data.token))
-
             document.cookie = "token=" + data.token + "; path=/; SameSite=Lax; Secure";
             // redirect client to data management window
-
-            const response2 = await fetch('http://192.168.1.14:2222/customerList', {
-                method: 'GET',
-                headers: { 
-                    'Content-Type': 'text/plain',
-                },
-            });
             window.location.href = "./data_lookup/index.html"
         }
         
