@@ -1,3 +1,4 @@
+#include "accountHandler.hpp"
 #include "server.hpp"
 #include "databaseService.hpp"
 #include "tokenService.hpp"
@@ -7,9 +8,11 @@ int main() {
 
     DatabaseService databaseService;
     TokenService tokenService;
+
     databaseService.connectToDB();
 
-    Server server(databaseService, tokenService);
+    AccountHandler accountHandler(databaseService, tokenService);
+    Server server(accountHandler);
 
     server.optionReqHandler();
     server.loginReqHandler();

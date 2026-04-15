@@ -4685,3 +4685,53 @@
 [2026-04-13 08:38:25.368] [file-log] [debug] 1234
 [2026-04-13 08:38:25.371] [file-log] [debug] CHECKING ADMIN STATUS
 [2026-04-13 08:38:25.377] [file-log] [info] Account is Admin
+[2026-04-14 11:35:19.462] [file-log] [critical] Database connection NOT established on HOST: 192.168.1.4 on PORT: 3306SQL error: Could not connect to address=(host=192.168.1.4)(port=3306)(type=master) : Can't connect to server on '192.168.1.4' (115)
+[2026-04-14 11:36:11.737] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-04-14 11:36:11.744] [file-log] [info] Login: Initializing logo image
+[2026-04-14 11:36:11.745] [file-log] [info] Login: Initialized Logo image
+[2026-04-14 11:36:24.717] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:36:24.718] [file-log] [info] Fetching password from the database
+[2026-04-14 11:36:35.285] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:36:35.286] [file-log] [info] Fetching password from the database
+[2026-04-14 11:37:10.900] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:37:10.901] [file-log] [info] Fetching password from the database
+[2026-04-14 11:37:17.684] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:37:17.685] [file-log] [info] Fetching password from the database
+[2026-04-14 11:37:25.276] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:37:25.277] [file-log] [info] Fetching password from the database
+[2026-04-14 11:37:54.230] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-04-14 11:37:54.238] [file-log] [info] Login: Initializing logo image
+[2026-04-14 11:37:54.240] [file-log] [info] Login: Initialized Logo image
+[2026-04-14 11:43:05.259] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-04-14 11:43:05.266] [file-log] [info] Login: Initializing logo image
+[2026-04-14 11:43:05.268] [file-log] [info] Login: Initialized Logo image
+[2026-04-14 11:43:15.040] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:43:15.040] [file-log] [info] Fetching password from the database
+[2026-04-14 11:43:16.112] [file-log] [debug] 1234
+[2026-04-14 11:43:16.114] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-04-14 11:43:33.224] [file-log] [debug] User 1 is selected
+[2026-04-14 11:43:39.871] [file-log] [debug] 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+[2026-04-14 11:43:39.877] [file-log] [debug] User: 32 updates user 1 password
+[2026-04-14 11:43:39.877] [file-log] [info] User: 32 sucessfully updated user 1 Configuration
+[2026-04-14 11:43:42.472] [file-log] [debug] User 2 is selected
+[2026-04-14 11:43:46.743] [file-log] [debug] 03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4
+[2026-04-14 11:43:46.760] [file-log] [debug] User: 32 updates user 2 password
+[2026-04-14 11:43:46.760] [file-log] [info] User: 32 sucessfully updated user 2 Configuration
+[2026-04-14 11:43:49.815] [file-log] [debug] User 4 is selected
+[2026-04-14 11:43:55.807] [file-log] [debug] dcc12132e0cbf750cdd0c688f2786395f356fa5c7c49f44be936f279b387aea9
+[2026-04-14 11:43:55.811] [file-log] [debug] User: 32 updates user 4 password
+[2026-04-14 11:43:55.811] [file-log] [info] User: 32 sucessfully updated user 4 Configuration
+[2026-04-14 11:44:02.692] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-04-14 11:44:02.699] [file-log] [info] Login: Initializing logo image
+[2026-04-14 11:44:02.701] [file-log] [info] Login: Initialized Logo image
+[2026-04-14 11:44:12.399] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:44:12.400] [file-log] [info] Fetching password from the database
+[2026-04-14 11:44:13.455] [file-log] [debug] 
+[2026-04-14 11:44:13.457] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-04-14 11:44:40.016] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-04-14 11:44:40.025] [file-log] [info] Login: Initializing logo image
+[2026-04-14 11:44:40.027] [file-log] [info] Login: Initialized Logo image
+[2026-04-14 11:44:52.823] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-04-14 11:44:52.824] [file-log] [info] Fetching password from the database
+[2026-04-14 11:44:53.432] [file-log] [debug] 
+[2026-04-14 11:44:53.433] [file-log] [debug] CHECKING ADMIN STATUS

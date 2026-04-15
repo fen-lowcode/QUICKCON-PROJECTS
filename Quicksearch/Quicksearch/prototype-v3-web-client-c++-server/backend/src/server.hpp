@@ -1,11 +1,10 @@
-#include "databaseService.hpp"
-#include <exception>
-#include <string>
-#define CPPHTTPLIB_OPENSSL_SUPPORT
+#pragma once
 
-#include <iostream>
+#include "accountHandler.hpp"
+#define CPPHTTPLIB_OPENSSL_SUPPORT
 #include <nlohmann/json.hpp>
-#include <sodium.h>
+
+#include <string>
 #include <httplib.h>
 #include "tokenService.hpp"
 
@@ -13,7 +12,7 @@ class Server {
 
 public:
 
-    Server(DatabaseService& databaseService, TokenService& tokenService): databaseService(databaseService), tokenService{tokenService} 
+    Server(AccountHandler& ah_) : accounthandler(ah_)
     {
         this -> serverHandler.new_task_queue = [] {return new httplib::ThreadPool(8); };
     }
@@ -24,8 +23,7 @@ public:
 
 private:
 
-    DatabaseService& databaseService;
-    TokenService& tokenService;
+    AccountHandler& accounthandler;
 
     // httplib::SSLServer server("ssl/cert.pem", "ssl/key.pem");
     httplib::Server serverHandler;

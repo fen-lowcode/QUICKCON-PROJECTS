@@ -16,26 +16,27 @@ function generateRows(count) {
         html += `
             <tr>
                 <td><span class="status-badge ${status.toLowerCase()}">${status}</span></td>
-                <td><strong>${id}</strong></td>
-                <td>${fname}</td>
-                <td>${lname}</td>
+                <td>${id}</td>
+                <td>${fname} ${lname}</td>
+                <td>RVM-LP${Math.floor(Math.random() * 50)}-NP${Math.floor(Math.random() * 5)}</td>
                 <td>Building ${i}, ${city} St.</td>
-                <td>${Math.floor(Math.random() * 40) + 18}</td>
-                <td>${Math.random() > 0.5 ? 'Male' : 'Female'}</td>
+                <td>${[35, 50, 75][Math.floor(Math.random() * 3)]}mb-1000</td>
+                <td>2026-0${Math.floor(Math.random() * 3) + 1}-15</td>
                 <td>0917-${Math.floor(1000000 + Math.random() * 9000000)}</td>
+                <td>${Math.floor(Math.random() * 40) + 18}</td>
+                <td>${Math.random() > 0.5 ? 'M' : 'F'}</td>
+                <td>${fname.toLowerCase()}_fb</td>
+                <td>N/A</td>
                 <td>19${Math.floor(70 + Math.random() * 28)}-05-12</td>
                 <td>${city}</td>
-                <td><span class="tag">${[65, 95, 125][Math.floor(Math.random() * 3)]}</span></td>
-                <td>2026-0${Math.floor(Math.random() * 3) + 1}-15</td>
                 <td>${Math.floor(Math.random() * 20)}</td>
                 <td>${Math.floor(Math.random() * 10)}</td>
-                <td>${Math.floor(Math.random() * 16)}</td>
-                <td>-${(15 + Math.random() * 10).toFixed(1)}</td>
-                <td>${Math.floor(Math.random() * 4)}</td>
                 <td>${Math.floor(Math.random() * 200)}m</td>
-                <td>${Math.floor(Math.random() * 2)}</td>
+                <td>${Math.floor(Math.random() * 10)}</td>
                 <td>${Math.floor(Math.random() * 20)}</td>
                 <td>${Math.floor(Math.random() * 5)}</td>
+                <td>N/A</td>
+                <td>Installer Name</td>
             </tr>
         `;
     }
@@ -54,4 +55,4 @@ function filterTable() {
 }
 
 // Initial Load
-window.onload = () => generateRows(1500);
+window.onload = () => generateRows(2000);
