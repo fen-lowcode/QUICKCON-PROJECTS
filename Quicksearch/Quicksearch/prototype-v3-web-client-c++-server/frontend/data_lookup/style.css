@@ -53,7 +53,7 @@ body::before {
 #logo{width: 370px; height: 100px;}
 
 .header-right h1 { font-size: 1.5rem; font-weight: 700; color: #1e293b; margin-right: 100px;}
-.count-badge { font-size: 0.8rem; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: var(--text-muted); }
+.count-badge { font-size: 1rem;font-weight: bold; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: var(--text-muted); }
 
 /* Soft Search Bar */
 .search-wrapper { width: 100%; max-width: 400px; }
@@ -136,6 +136,11 @@ td {
 }
 
 tr:hover { background-color: #5589cd; color: white}
+/* The 'Active' state after clicking */
+tr.selected {
+    background-color: #5589cd;
+    color: white;
+}
 
 /* UI Accents */
 .tag {

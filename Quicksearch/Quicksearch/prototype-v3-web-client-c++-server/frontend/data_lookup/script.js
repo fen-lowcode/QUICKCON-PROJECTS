@@ -43,7 +43,7 @@ function generateRows(dataList) {
 // 2. Updated Event Listener to bridge the Fetch with the UI
 window.addEventListener('load', async () => {
     try {
-        const res = await fetch('http://127.0.0.1:2222/getData', {
+        const res = await fetch('http://192.168.1.14:2222/getData', {
             method: 'POST',
         });
 
@@ -63,21 +63,21 @@ window.addEventListener('load', async () => {
 });
 
 function filterTable() {
+    var set = 0;
     let input = document.getElementById("tableSearch");
     let filter = input.value.toUpperCase();
     let tr = document.getElementById("tableBody").getElementsByTagName("tr");
 
     for (let i = 0; i < tr.length; i++) {
-        tr[i].style.display = (tr[i].textContent || tr[i].innerText).toUpperCase().indexOf(filter) > -1 ? "" : "none";
+        if ((tr[i].textContent || tr[i].innerText).toUpperCase().indexOf(filter) > -1 ) {
+            tr[i].style.display = ""
+            set = set + 1
+        } else {
+            tr[i].style.display = "none"
+        }
     }
+    document.getElementById('rowCount').innerText = `${set} Records Loaded`;
+    console.log(set)
 }
 
-// This is the professional way to do it
-window.addEventListener('load', () => {
-    console.log("Hello");
-});
-
-window.addEventListener('load', () => {
-    generateRows(2000);
-});
 

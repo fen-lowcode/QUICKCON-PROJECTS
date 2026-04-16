@@ -1,5 +1,12 @@
+FROM CLIENT MASTER LIST
+
 Malabon
 Benjamin
 Phase 5
 Phase 4A
 Phase 4B
+CITRUS
+Tialo Newtown
+QUARRY
+AREA B  Rancho, assumption,samp
+Road Minuyan 1,2,3,4  Fresh Air
