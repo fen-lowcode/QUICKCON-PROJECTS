@@ -3,64 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Network Portal</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Quickcon Network Portal</title>
+    <link rel="stylesheet" href="client_list_style.css">
+    <link rel="stylesheet" href="client_profile_style.css">
+    <link rel="stylesheet" href="profile_history_style.css">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"> -->
 </head>
 <body>
 
-<div class="app-container">
-    <header class="glass-header">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/quicksearch-logo.png" alt="Quickcon Logo">
+        </div>
+        <nav>
+            <a href="#" class="nav-item active" onclick="loadTemplates('view-client-list'); fetchClientmasterList();">Client List</a>
+            <a href="#" class="nav-item" onclick="loadTemplates('view-profile')" > Client Profile</a>
+            <a href="#" class="nav-item" onclick="loadTemplates('view-payment-history')" >Payment History</a>
+            <a href="#" class="nav-item">Change Logs</a>
+        </nav>
+    </aside>
 
-        <div class="controls">
-            <input type="text" id="tableSearch" placeholder="Search records..." onkeyup="filterTable()">
-            <button class="add-btn" onclick="">+ Add Customer</button>
-            <span class="count-badge" id="rowCount">0 Records Loaded</span>
+    <main id="app-container" style="margin-left: 320px; padding: 20px;">
+        </main>
+
+    <template id="view-client-list">
+        <header class="glass-header">
+            <div class="controls">
+                <input type="text" id="tableSearch" placeholder="Search records..." onkeyup="filterTable()">
+                <button class="add-btn">+ Add Customer</button>
+                <span class="count-badge" id="rowCount">0 Records Loaded</span>
+            </div>
+        </header>
+        <div class="data-card">
+            <div class="scroll-area">
+                <table id="customerTable">
+                    <thead>
+                        <tr id="table">
+                            <th>DELETE</th>
+                            <th>STATUS</th>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>CREDENTIALS</th>
+                            <th>ADDRESS</th>
+                            <th>PLAN</th>
+                            <th>APPLIED</th>
+                            <th>CONTACT</th>
+                            <th>AGE</th>
+                            <th>SEX</th>
+                            <th>SOCIAL</th>
+                            <th>JOB</th>
+                            <th>BIRTH DATE</th>
+                            <th>BIRTH PLACE</th>
+                            <th>OPTICAL INFO</th>
+                            <th>SC</th>
+                            <th>FIBER DROP</th>
+                            <th>TAPPING CLIP</th>
+                            <th>CABLE TIE</th>
+                            <th>FCLAMP</th>
+                            <th>REMARKS</th>
+                            <th>INSTALLER</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </template>
+
+    <template id="view-profile">
+        <div class="profile-header">
+            <div class="profile-title-group">
+                <h2 id="prof-name-display" contenteditable="">---</h2>
+                <span id="prof-status-badge" class="status-badge">---</span>
+            </div>
+            <div class="header-actions">
+                <button class="update-btn">Update Record</button>
+            </div>
         </div>
 
-        <div class="header-right">
-            <img id="logo" src="../../assets/quicksearch-logo.png">
-            <h1>Quickcon's Customer Data Records</h1>
+        <div class="info-grid">
+            <section class="info-card">
+                <h3>Account & Plan</h3>
+                <div class="field-group"><label>Client ID</label><div id="view-id" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Date Applied</label><div id="view-applied" contenteditable="true" class="editable-field"></div></div>
+            </section>
+
+            <section class="info-card">
+                <h3>Client Identity</h3>
+                <div class="row-flex">
+                    <div class="field-group"><label>Age</label><div id="view-age" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Sex</label><div id="view-sex" contenteditable="true" class="editable-field"></div></div>
+                </div>
+                <div class="field-group"><label>Occupation</label><div id="view-job" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Birth Date</label><div id="view-dob" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Birth Place</label><div id="view-pob" contenteditable="true" class="editable-field"></div></div>
+            </section>
+
+            <section class="info-card">
+                <h3>Contact & Localization</h3>
+                <div class="field-group"><label>Full Address</label><div id="view-address" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Contact No</label><div id="view-contact" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Social Media</label><div id="view-social" contenteditable="true" class="editable-field"></div></div>
+            </section>
+
+            <section class="info-card">
+                <h3>Technical Details</h3>
+                <div class="field-group"><label>Optical Info (dBm)</label><div id="view-optical" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Installed By</label><div id="view-tech" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Remarks</label><div id="view-remarks" contenteditable="true" class="editable-field"></div></div>
+            </section>
+
+            
+            <section class="info-card full-width">
+                <h3><i class="icon"></i> Installation Materials & hardware</h3>
+                <div class="materials-grid">
+                    <div class="material-item">
+                        <label>Optical Info (dBm)</label>
+                        <div id="view-optical" class="editable-field" contenteditable="true">-18.00</div>
+                    </div>
+
+                    <div class="material-item">
+                        <label>Fiber Drop (Meters)</label>
+                        <div id="view-fiber" class="editable-field" contenteditable="true">150m</div>
+                    </div>
+
+                    <div class="material-item">
+                        <label>Tapping Clips (Qty)</label>
+                        <div id="view-clip" class="editable-field" contenteditable="true">12</div>
+                    </div>
+
+                    <div class="material-item">
+                        <label>Cable Ties</label>
+                        <div id="view-tie" class="editable-field" contenteditable="true">5</div>
+                    </div>
+
+                    <div class="material-item">
+                        <label>F-Clamp</label>
+                        <div id="view-fclamp" class="editable-field" contenteditable="true">2</div>
+                    </div>
+
+                    <div class="material-item">
+                        <label>SC Connector</label>
+                        <div id="view-sc" class="editable-field" contenteditable="true">2</div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </template>
+
+    <template id="view-payment-history">
+        <div class="view-header">
+            <div class="title-group">
+                <h2 id="prof-name-display-history">Client Payment Logs</h2>
+                <span class="badge">Account: <span id="view-id-history">---</span></span>
+            </div>
+            <div class="payment-actions">
+                <button class="btn-primary">+ Add Payment History</button>
+            </div>
         </div>
 
-    </header>
-
-    <div class="data-card">
-        <div class="scroll-area">
-            <table id="customerTable">
-                <thead>
-                    <tr>
-                        <th>STATUS</th>
-                        <th>ID</th>
-                        <th>CLIENTS NAME</th>
-                        <th>CREDENTIALS</th>
-                        <th>ADDRESS</th>
-                        <th>PLAN</th>
-                        <th>DATE APPLIED</th>
-                        <th>CONTACT NO</th>
-                        <th>AGE</th>
-                        <th>SEX</th>
-                        <th>SOCIAL MEDIA</th>
-                        <th>OCCUPATION</th>
-                        <th>DATE OF BIRTH</th>
-                        <th>PLACE OF BIRTH</th>
-                        <th>OPTICAL INFO</th>
-                        <th>SC CONNECTOR</th>
-                        <th>FIBER DROP</th>
-                        <th>TAPPING CLIP</th>
-                        <th>CABLE TIE</th>
-                        <th>F CLAMP</th>
-                        <th>REMARKS</th>
-                        <th>INSTALLED_BY</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
+        <div class="data-card">
+            <div class="scroll-area">
+                <table id="paymentTable">
+                    <thead>
+                        <tr>
+                            <th>Date & Time</th>
+                            <th>Reference No.</th>
+                            <th>Amount (PHP)</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentBody">
+                        <tr>
+                            <td><input type="datetime-local" class="edit-input"></td>
+                            <td><div contenteditable="true" class="editable-field">REF-001</div></td>
+                            <td><div contenteditable="true" class="editable-field">0.00</div></td>
+                            <td>
+                                <select class="status-dropdown">
+                                    <option value="full">Full Paid</option>
+                                    <option value="partial">Partial Paid</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                            </td>
+                            <td><button class="btn-icon-del">×</button></td>
+                        </tr>
                     </tbody>
-            </table>
+                </table>
+            </div>
         </div>
-    </div>
-</div>
+    </template>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <script src="api.js"></script>
 </body>
 </html>

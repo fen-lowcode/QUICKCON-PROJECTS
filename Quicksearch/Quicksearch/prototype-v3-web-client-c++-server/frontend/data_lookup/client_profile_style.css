@@ -1,0 +1,173 @@
+:root {
+    --accent: #6366f1;    
+}
+
+/* =========================================
+    1. THE MASTER GRID (The Container)
+   ========================================= */
+.info-grid {
+    display: grid;
+    /* 12-column foundation for maximum flexibility */
+    grid-template-columns: repeat(12, 1fr); 
+    background: #ffffff; /* This color becomes the 1px border */
+    gap: 2px;            /* The gap creates the thin dividing lines */
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;    /* Clips internal cards to the rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================
+    2. UNIFIED CARDS
+   ========================================= */
+.info-card {
+    grid-column: span 4; /* Standard cards: 3 per row */
+    background: #ffffff;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    /* Overriding previous "messy" styles */
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    font-weight: 400;
+}
+
+/* Full Width override for Materials */
+.info-card.full-width {
+    grid-column: span 12;
+    background: #fafafa; /* Subtle tint to distinguish hardware section */
+}
+
+/* =========================================
+    3. FIELD & FLEX ALIGNMENT
+   ========================================= */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.field-group label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.05em;
+}
+
+/* For the Age/Sex row in your HTML */
+.row-flex {
+    display: flex;
+    gap: 16px;
+}
+
+.row-flex .field-group {
+    flex: 1;
+}
+
+/* =========================================
+    4. EDITABLE FIELDS (Modern Data UI)
+   ========================================= */
+.editable-field {
+    font-family: 'JetBrains Mono', 'Consolas', monospace;
+    font-size: 14px;
+    color: #0f172a;
+    padding: 6px 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    min-height: 1.5em;
+}
+
+.editable-field:hover {
+    border-bottom-color: #000000;
+    background-color: rgba(165, 183, 188, 0.518);
+}
+
+.editable-field:focus {
+    outline: none;
+    border-bottom-color: #0565fe;
+    border-width: 5px;
+    background: rgba(59, 130, 246, 0.03);
+}
+
+/* =========================================
+    5. INSTALLATION MATERIALS GRID
+   ========================================= */
+.materials-grid {
+    display: grid;
+    /* High density spec-sheet layout */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.material-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.material-item label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #3b82f6; /* Accent color for hardware labels */
+    margin-bottom: 2px;
+}
+
+.material-item .editable-field {
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: none;
+}
+
+/* =========================================
+    6. HEADER & UPDATE BUTTON
+   ========================================= */
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+}
+
+.profile-title-group h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: -0.03em;
+}
+
+.update-btn {
+    all: unset;
+    cursor: pointer;
+    background: var(--accent);
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-right: 50px;
+}
+
+.update-btn:hover {
+    background: #000;
+    box-shadow: 0 0px 10px blue;
+}
+
+/* target the elements, but use valid CSS properties */
+[contenteditable] {
+    text-decoration: none !important;
+    /* This stops some browsers from showing the error styling */
+    -webkit-spellcheck: false; 
+    /* Ensures the red line doesn't appear as a bottom border error */
+    text-emphasis: none; 
+}
+
+/* Ensure focus doesn't trigger the browser's default error style */
+.editable-field:focus {
+    outline: none;
+    text-decoration: none !important;
+}
