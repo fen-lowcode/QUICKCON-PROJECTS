@@ -1,4 +1,5 @@
 #include "accountHandler.hpp"
+#include <exception>
 #include <fstream>
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
@@ -39,15 +40,21 @@ nlohmann::json AccountHandler::getCustomerData() {
     return databaseServ.fetchCustomerData();
 }
 
-// bool AccountHandler::vrfyJwtToken(std::string token) {
+bool AccountHandler::vrfyJwtToken(std::string token) {
 
-//     std::lock_guard<std::mutex> lock(this -> mutexGuard);
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
 
-//     jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken = jwt::decode(token);
-//     auto verifier = jwt::verify().allow_algorithm(jwt::algorithm::hs256("")).with_issuer("quickcon")
+    try {
+        jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken = jwt::decode(token);
+        auto verifier = jwt::verify().allow_algorithm(jwt::algorithm::hs256(this->secretKey)).with_issuer(this->issuer);
+        verifier.verify(decodedToken);
+        return true;
+    } catch(std::exception& e) {
+        std::cout << "Token: " << token << " is invalid";
+    }
 
-
-// }
+    return false;
+}
 
 void AccountHandler::extractSecrets() {
     try {

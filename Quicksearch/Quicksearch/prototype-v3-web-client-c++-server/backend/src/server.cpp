@@ -21,16 +21,17 @@ void Server::loginReqHandler() {
         if(!nlohmann::json::accept(std::string(req.body))) {
             res.status = 400;
             res.set_content("{\"status\":\"Invalid Request\"}", "application/json");
+            return;
         }
 
             // parses the body from request and takes data in the json body,
             // throws an exception and catches it if a json field is missing
 
             try {
-                nlohmann::json dataHandler = nlohmann::json::parse(req.body);
-                std::string firstName = dataHandler.at("fname");
-                std::string lastName = dataHandler.at("lname");
-                std::string password = dataHandler.at("psw");
+                nlohmann::json reqToJson = nlohmann::json::parse(req.body);
+                std::string firstName = reqToJson.at("fname");
+                std::string lastName = reqToJson.at("lname");
+                std::string password = reqToJson.at("psw");
 
                 std::cout << " User: " << firstName << " " << lastName << " attepmted to log in" << std::endl;
 
@@ -57,9 +58,25 @@ void Server::loginReqHandler() {
 
 void Server::customerDataHandler() {
     serverHandler.Post("/getData", [this](const httplib::Request& req, httplib::Response& res) {
-         // signal the browser to take input
-        res.set_header("Access-Control-Allow-Origin", "*");
-        res.set_content(accounthandler.getCustomerData().dump(), "application/json");
+
+        // checks if the body payload is a valid json format
+        if(!nlohmann::json::accept(std::string(req.body))) {
+            res.status = 400;
+            res.set_content("{\"status\":\"Invalid Request\"}", "application/json");
+            return;
+        }
+
+        nlohmann::json reqToJson = nlohmann::json::parse(req.body);
+        nlohmann::json token = reqToJson.at("token");
+
+        if (accounthandler.vrfyJwtToken(token)) {
+            res.set_header("Access-Control-Allow-Origin", "*");
+            res.set_content(accounthandler.getCustomerData().dump(), "application/json");
+
+        } else {
+            res.status = 401;
+            res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
+        }
 
     });
 }
@@ -67,3 +84,4 @@ void Server::customerDataHandler() {
 void Server::listen(const std::string host, int port) {
     serverHandler.listen(host , port);
 }
+
