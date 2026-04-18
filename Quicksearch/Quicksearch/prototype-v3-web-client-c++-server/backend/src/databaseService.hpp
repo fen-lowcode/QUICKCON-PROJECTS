@@ -19,6 +19,8 @@ private:
     std::unique_ptr<sql::Connection> conn;
     std::mutex dbMutex; // The "Gatekeeper" for your database connection
 
+    std::string secretKey;
+
 public:
     void connectToDB();
     std::string fetchPasswordHash(const std::string& firstName, const std::string& lastName);

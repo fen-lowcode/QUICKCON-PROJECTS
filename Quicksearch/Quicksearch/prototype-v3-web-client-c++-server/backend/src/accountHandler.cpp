@@ -1,10 +1,12 @@
 #include "accountHandler.hpp"
+#include <fstream>
+#include <jwt-cpp/jwt.h>
+#include <jwt-cpp/traits/kazuho-picojson/traits.h>
 #include <mutex>
 #include <string>
 
+inline auto hashPass = [](std::string pass) {
 
-
-auto hashPass = [](std::string pass) {
     unsigned char hash[crypto_hash_sha256_BYTES];
     crypto_hash_sha256(hash, (const unsigned char *)pass.c_str(), pass.size());
     std::stringstream ss;
@@ -21,12 +23,13 @@ std::string AccountHandler::accountAuth(
     const std::string& firstName, const std::string& lastName, const std::string& password
 ) {
 
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
     if(hashPass(password) == databaseServ.fetchPasswordHash(firstName, lastName)) {
 
         std::string userID = databaseServ.fetchUserID(firstName, lastName);
         bool isAdmin = databaseServ.fetchAdminStatus(firstName, lastName);
 
-        return tokenServ.createToken(userID, isAdmin == true? "admin": "user" , "123456789");
+        return tokenServ.createToken(userID, isAdmin == true? "admin": "user" , this -> issuer, this -> secretKey);
     } 
 
     return "";
@@ -34,4 +37,27 @@ std::string AccountHandler::accountAuth(
 
 nlohmann::json AccountHandler::getCustomerData() {
     return databaseServ.fetchCustomerData();
+}
+
+// bool AccountHandler::vrfyJwtToken(std::string token) {
+
+//     std::lock_guard<std::mutex> lock(this -> mutexGuard);
+
+//     jwt::decoded_jwt<jwt::traits::kazuho_picojson> decodedToken = jwt::decode(token);
+//     auto verifier = jwt::verify().allow_algorithm(jwt::algorithm::hs256("")).with_issuer("quickcon")
+
+
+// }
+
+void AccountHandler::extractSecrets() {
+    try {
+        std::ifstream fileWithSecrets("secretkey.json");
+        nlohmann::json varWithSecrets; fileWithSecrets >> varWithSecrets;
+
+        this -> secretKey = varWithSecrets.at("secretKey");
+        this -> issuer = varWithSecrets.at("issuer");
+
+    } catch (nlohmann::json::exception& e) {
+        std::cout << "ERROR: " << e.what() << std::endl;
+    };
 }

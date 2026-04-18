@@ -11,14 +11,25 @@ void DatabaseService::connectToDB(){
     // Lock the mutex for the duration of this function
     std::lock_guard<std::mutex> lock(dbMutex);
 
-    std::ifstream configFile("config copy.json");
-    nlohmann::json config; configFile >> config;
+    std::string host;
+    std::string port;
+    std::string user;
+    std::string password;
+    std::string database;
 
-    std::string host = config.at("host");
-    std::string port = config.at("port");
-    std::string user = config.at("user");
-    std::string password = config.at("password");
-    std::string database = config.at("database");
+    try {
+        std::ifstream configFile("dbconfig_local.json");
+        nlohmann::json config; configFile >> config;
+
+        host = config.at("host");
+        port = config.at("port");
+        user = config.at("user");
+        password = config.at("password");
+        database = config.at("database");
+
+    } catch (nlohmann::json::exception& e) {
+        std::cout << "ERROR: " << e.what() << std::endl;
+    };
     
     try {
         sql::Driver* driver = sql::mariadb::get_driver_instance();

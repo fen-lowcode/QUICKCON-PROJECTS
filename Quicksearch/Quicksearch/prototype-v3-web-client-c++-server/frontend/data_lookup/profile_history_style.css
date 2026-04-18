@@ -1,5 +1,5 @@
 /* =========================================
-   PAYMENT HISTORY - REFINED INDUSTRIAL
+    PAYMENT HISTORY - REFINED INDUSTRIAL
    ========================================= */
 
 
@@ -73,7 +73,7 @@
 }
 
 .btn-primary:hover {
-    background: rgb(0, 0, 0);
+    background: blue;
     box-shadow: 0px 0px 10px blue;
     transform: translateY(-1px);
 }

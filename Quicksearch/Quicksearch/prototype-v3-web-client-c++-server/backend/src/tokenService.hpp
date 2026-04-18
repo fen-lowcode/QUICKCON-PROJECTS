@@ -8,10 +8,10 @@
 class TokenService {
 
 public:
-    std::string createToken(const std::string& userId, const std::string userRole, const std::string secretKey) {
+    std::string createToken(const std::string& userId, const std::string userRole, const std::string& issuer, const std::string secretKey) {
 
         auto token = jwt::create()
-        .set_issuer("quicksearch")
+        .set_issuer(issuer)
         .set_type("JWS")
         .set_payload_claim("user_id", jwt::claim(userId))
         .set_payload_claim("role", jwt::claim(userRole))

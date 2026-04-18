@@ -100,8 +100,8 @@ body {
 }
 
 .nav-item.active {
-    background: black;
-    transform: scale(1.1);
+    background: blue;
+    /* transform: scale(1.1); */
     box-shadow: 0px 0px 10px rgb(3, 3, 248);
     color: white;
     font-weight: 700;
@@ -159,7 +159,7 @@ body {
     transition: transform 0.1s ease, filter 0.2s ease;
 }
 
-.add-btn:hover { background-color: black; box-shadow: 0px 0px 10px blue; transition: 0.2s;}
+.add-btn:hover { background-color: blue; box-shadow: 0px 0px 10px blue; transition: 0.2s;}
 .add-btn:active { transform: translateY(1px); }
 
 /* Table Action Column */
@@ -277,7 +277,7 @@ td {
     margin-left: -70px;
     margin-right: 50px;
     margin-top: 20px;
-    border-radius: 12px;
+    border-radius: 0px;
     border: 1px solid var(--border);
     box-shadow: 0 1px 3px rgba(80, 148, 213, 0.05);
     overflow: hidden;
