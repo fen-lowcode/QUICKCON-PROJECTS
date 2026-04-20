@@ -8,7 +8,7 @@
     --text-muted: #64748b;
     --accent: #6366f1;       
     --border: #e2e8f0;
-    --table-header:  #1e209b;
+    --table-header:  #0003cc;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -147,7 +147,7 @@ body {
 
 #tableSearch:focus { border-color: blue; box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
 
-.add-btn {
+#add-customer-btn {
     padding: 10px 24px;
     border: none;
     border-radius: 8px;
@@ -159,8 +159,8 @@ body {
     transition: transform 0.1s ease, filter 0.2s ease;
 }
 
-.add-btn:hover { background-color: blue; box-shadow: 0px 0px 10px blue; transition: 0.2s;}
-.add-btn:active { transform: translateY(1px); }
+#add-customer-btn:hover { background-color: blue; box-shadow: 0px 0px 10px blue; transition: 0.2s;}
+#add-customer-btn:active { transform: translateY(1px); }
 
 /* Table Action Column */
 .action-cell {
@@ -231,7 +231,7 @@ th {
 
 td {
     padding: 7px 14px;
-    border-bottom: 1px solid #bec2c5;
+    border-bottom: 1px solid #e7e7e7;
     /* font-weight: 600; */
 }
 
@@ -274,18 +274,20 @@ td {
 
 .data-card {
     background: var(--surface);
+
     margin-left: -70px;
-    margin-right: 50px;
+    margin-right: 20px;
     margin-top: 20px;
     border-radius: 0px;
-    border: 1px solid var(--border);
+
+    /* border: 1px solid var(--border); */
     box-shadow: 0 1px 3px rgba(80, 148, 213, 0.05);
     overflow: hidden;
 }
 
 .scroll-area { 
     overflow-x: auto; 
-    max-height: 80vh;
+    max-height: 83vh;
 }
 
 
@@ -294,7 +296,7 @@ td {
     padding: 4px 12px;
     border-radius: 99px;
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: bolder;
     display: inline-block;
 }
 

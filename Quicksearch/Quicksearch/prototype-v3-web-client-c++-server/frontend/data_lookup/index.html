@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="client_list_style.css">
     <link rel="stylesheet" href="client_profile_style.css">
     <link rel="stylesheet" href="profile_history_style.css">
+    <link rel="stylesheet" href="add_client.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"> -->
 </head>
 <body>
@@ -30,7 +31,7 @@
         <header class="glass-header">
             <div class="controls">
                 <input type="text" id="tableSearch" placeholder="Search records..." onkeyup="filterTable()">
-                <button class="add-btn">+ Add Customer</button>
+                <button id="add-customer-btn" onclick="showAddCustomerForm()"">+ Add Customer</button>
                 <span class="count-badge" id="rowCount">0 Records Loaded</span>
             </div>
         </header>
@@ -197,7 +198,113 @@
         </div>
     </template>
 
+    <!-- POP OUT BOX -->
+
+    <div id="customModal" class="modal-overlay">
+        <div class="modal-box large">
+            <div class="modal-header">
+                <h2 id="modalTitle"> New Customer Registration</h2>
+                <span class="close-modal" onclick="hideAddCustomerForm()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="customerForm">
+                    <h3 class="section-divider">Client Identity</h3>
+                    <div class="input-row">
+                        <div class="input-group flex-2">
+                            <label>Client Name</label>
+                            <input type="text" id="m-name" placeholder="Full Name">
+                        </div>
+                        <div class="input-group flex-1">
+                            <label>Sex</label>
+                            <select id="m-sex">
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group flex-1">
+                            <label>Age</label>
+                            <input type="number" id="m-age">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Date of Birth</label>
+                            <input type="date" id="m-dob">
+                        </div>
+                        <div class="input-group">
+                            <label>Place of Birth</label>
+                            <input type="text" id="m-pob">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Occupation</label>
+                            <input type="text" id="m-job">
+                        </div>
+                        <div class="input-group">
+                            <label>Social Media</label>
+                            <input type="text" id="m-social" placeholder="@username/link">
+                        </div>
+                    </div>
+
+                    <h3 class="section-divider">Service Details</h3>
+                    <div class="input-group">
+                        <label>Address</label>
+                        <input type="text" id="m-address">
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Contact No.</label>
+                            <input type="text" id="m-contact">
+                        </div>
+                        <div class="input-group">
+                            <label>Credentials</label>
+                            <input type="text" id="m-creds" placeholder="RVM-LP?-NP?-P?">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Service Plan</label>
+                            <input type="text" id="m-plan">
+                        </div>
+                        <div class="input-group">
+                            <label>Date Applied</label>
+                            <input type="date" id="m-applied">
+                        </div>
+                    </div>
+
+                    <h3 class="section-divider">Technical & Materials</h3>
+                    <div class="input-row grid-4">
+                        <div class="input-group"><label>Optical Info</label><input type="text" id="m-optical"></div>
+                        <div class="input-group"><label>SC Connector</label><input type="text" id="m-sc"></div>
+                        <div class="input-group"><label>Fiber Drop</label><input type="text" id="m-fiber"></div>
+                        <div class="input-group"><label>Tapping Clip</label><input type="text" id="m-clip"></div>
+                    </div>
+
+                    <div class="input-row grid-4">
+                        <div class="input-group"><label>Cable Tie</label><input type="text" id="m-tie"></div>
+                        <div class="input-group"><label>F-Clamp</label><input type="text" id="m-fclamp"></div>
+                        <div class="input-group flex-2"><label>Installed By</label><input type="text" id="m-tech"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Remarks</label>
+                        <textarea id="m-remarks" rows="2"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="saveModalData">Save Record</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="add_client.js"></script>
     <script src="api.js"></script>
 </body>
 </html>
