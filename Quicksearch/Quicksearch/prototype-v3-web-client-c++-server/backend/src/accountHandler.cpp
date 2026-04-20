@@ -49,8 +49,9 @@ bool AccountHandler::vrfyJwtToken(std::string token) {
         auto verifier = jwt::verify().allow_algorithm(jwt::algorithm::hs256(this->secretKey)).with_issuer(this->issuer);
         verifier.verify(decodedToken);
         return true;
+
     } catch(std::exception& e) {
-        std::cout << "Token: " << token << " is invalid";
+        std::cout << "Token: " << token << "INVALID TOKEN\n";
     }
 
     return false;

@@ -174,24 +174,33 @@ function openHistory(data) {
     5. SEARCH LOGIC (Imperative Logic)
 ============================================================ */
 function filterTable() {
-    let input = document.getElementById("tableSearch").value.toUpperCase();
+    let input = document.getElementById("tableSearch").value
+        .toUpperCase()
+        .trim()
+        .split(" "); // split into words
+
     let rows = document.querySelectorAll("#tableBody tr");
     let count = 0;
 
-    for (let i = 0; i < rows.length; i++) {
-        let text = rows[i].textContent.toUpperCase();
-        if (text.indexOf(input) > -1) {
-            rows[i].style.display = "";
+    rows.forEach(row => {
+        let text = row.textContent.toUpperCase();
+
+        let match = input.every(word => text.includes(word));
+
+        if (match) {
+            row.style.display = "";
             count++;
         } else {
-            rows[i].style.display = "none";
+            row.style.display = "none";
         }
-    }
-    document.getElementById('rowCount').innerText = count + " Records Found";
+    });
+
+    document.getElementById('rowCount').innerText =
+        count + " Records Found";
 }
 
 // Entry Point
 window.onload = function() {
-    loadTemplates('view-client-list');
+    loadTemplates('view-client-list');   
     fetchClientmasterList();
 };

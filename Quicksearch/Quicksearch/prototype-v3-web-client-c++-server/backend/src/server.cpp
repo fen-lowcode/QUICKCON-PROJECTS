@@ -1,5 +1,5 @@
 #include "server.hpp"
-
+#define DATA_PROTECTION
 
 void Server::optionReqHandler() {                                             
     serverHandler.Options(R"(.*)", [](const httplib::Request& req, httplib::Response& res) {
@@ -59,6 +59,10 @@ void Server::loginReqHandler() {
 void Server::customerDataHandler() {
     serverHandler.Post("/getData", [this](const httplib::Request& req, httplib::Response& res) {
 
+          // signal the browser to take input
+        res.set_header("Access-Control-Allow-Origin", "*");
+
+
         // checks if the body payload is a valid json format
         if(!nlohmann::json::accept(std::string(req.body))) {
             res.status = 400;
@@ -69,14 +73,20 @@ void Server::customerDataHandler() {
         nlohmann::json reqToJson = nlohmann::json::parse(req.body);
         nlohmann::json token = reqToJson.at("token");
 
-        if (accounthandler.vrfyJwtToken(token)) {
-            res.set_header("Access-Control-Allow-Origin", "*");
-            res.set_content(accounthandler.getCustomerData().dump(), "application/json");
 
-        } else {
+        #ifdef DATA_PROTECTION
+        if (!accounthandler.vrfyJwtToken(token)) {
             res.status = 401;
             res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
+            std::cout << " REQUEST REFUSED " << std::endl; 
+            return;
         }
+        #endif
+
+
+        std::cout << " REQUEST ACCEPTED " << std::endl; 
+        res.set_content(accounthandler.getCustomerData().dump(), "application/json");
+
 
     });
 }
