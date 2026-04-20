@@ -36,7 +36,8 @@ for _, row in df.iterrows():
     formatted_values = []
     for val in row_values:
         if val == "" or val.lower() == "nan" or val.lower() == "n/a":
-            formatted_values.append("'N/A'")
+            formatted_values.append("'N/A'") 
+            
         else:
             formatted_values.append(f"'{val}'")
 
