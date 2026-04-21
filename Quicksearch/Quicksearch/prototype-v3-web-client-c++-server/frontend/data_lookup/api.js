@@ -4,7 +4,7 @@ async function fetchClientmasterList() {
         // // CRITICAL: You must await getToken() here
         // const tokenValue = await getToken();
 
-        let response = await fetch('http://127.0.0.1:2222/getData', { 
+        let response = await fetch('http://192.168.1.21:2222/getData', { 
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -30,15 +30,5 @@ async function fetchClientmasterList() {
 
 // get's the right token from document token
 async function getToken() {
-    try {
-        const cookie = await cookieStore.get('token_quicksearch');
-        if (cookie) {
-            return cookie.value;
-        }
-        console.warn("Token cookie not found");
-        return null;
-    } catch (err) {
-        console.error("CookieStore error:", err);
-        return null;
-    }
+    return await localStorage.getItem('JWT');
 }

@@ -78,7 +78,7 @@ function renderTableRows(dataList) {
                 <td>${c.occupation}</td>
                 <td>${c.dob}</td>
                 <td>${c.pob}</td>
-                <td>${c.optical_info}</td>
+                <td>${c.optical}</td>
                 <td>${c.sc_connector}</td>
                 <td>${c.fiber_drop}</td>
                 <td>${c.tapping_clip}</td>
@@ -134,9 +134,12 @@ document.addEventListener('click', function(e) {
 
 function openProfile(data) {
     loadTemplates('view-profile');
+    
+    let profileCard = document.getElementById("profile-modal-background");
+    profileCard.style.display = "flex";
 
     // Header logic
-    writeToUI('prof-name-display', data.name);
+    writeToUI('view-name', data.name);
     let badge = document.getElementById('prof-status-badge');
     if (badge) {
         badge.innerText = data.status;
@@ -144,6 +147,7 @@ function openProfile(data) {
     }
 
     // Direct Mapping to the Template IDs we created
+    writeToUI('customer-name',data.name);
     writeToUI('view-id',      data.id);
     writeToUI('view-plan',    data.plan);
     writeToUI('view-creds',   data.creds);
@@ -164,6 +168,13 @@ function openProfile(data) {
     writeToUI('view-clip',    data.clip);
     writeToUI('view-tie',     data.tie);
     writeToUI('view-fclamp',  data.fclamp);
+
+    console.log(data.optical);
+}
+
+function closeProfile() {
+    let profileCard = document.getElementById("profile-modal-background");
+    profileCard.style.display = "none";
 }
 
 function openHistory(data) {
@@ -207,14 +218,3 @@ window.onload = function() {
 
 //  TEMPORARY FIELD
 // ==============================================================
-
-function showAddCustomerForm() {
-    const customerForm = document.querySelector(".modal-overlay");
-    customerForm.style.display = "block";
-}
-
-
-function hideAddCustomerForm() {
-    const customerForm = document.querySelector(".modal-overlay");
-    customerForm.style.display = "none";
-}

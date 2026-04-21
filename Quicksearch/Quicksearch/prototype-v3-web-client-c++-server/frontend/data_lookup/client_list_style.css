@@ -87,7 +87,6 @@ body {
     color: var(--text-dark);
     border-radius: 8px;
     font-size: 11px;
-    font-weight: bold;
     margin-bottom: 4px;
     transition: all 0.2s ease-out;
     position: relative;
@@ -104,7 +103,7 @@ body {
     /* transform: scale(1.1); */
     box-shadow: 0px 0px 10px rgb(3, 3, 248);
     color: white;
-    font-weight: 700;
+    font-weight: 900;
 }
 
 
@@ -225,7 +224,6 @@ th {
     z-index: 20;
     background-color: var(--table-header);
     color: white;
-    font-variant-caps: all-petite-caps;
     font-size: small;
 }
 

@@ -18,9 +18,6 @@
         </div>
         <nav>
             <a href="#" class="nav-item active" onclick="loadTemplates('view-client-list'); fetchClientmasterList();">Client List</a>
-            <a href="#" class="nav-item" onclick="loadTemplates('view-profile')" > Client Profile</a>
-            <a href="#" class="nav-item" onclick="loadTemplates('view-payment-history')" >Payment History</a>
-            <a href="#" class="nav-item">Change Logs</a>
         </nav>
     </aside>
 
@@ -71,21 +68,38 @@
         </div>
     </template>
 
-    <template id="view-profile">
-        <div class="profile-header">
-            <div class="profile-title-group">
-                <h2 id="prof-name-display" contenteditable="">---</h2>
-                <span id="prof-status-badge" class="status-badge">---</span>
-            </div>
-            <div class="header-actions">
+
+
+
+
+
+
+
+
+
+    <div id="profile-modal-background">
+
+        <div class="modal-wrapper">
+        <aside class="modal-sidebar">
+                <a href="#" id="profile-sidebar-padding"></a>
+                <a href="#" class="nav-item active">Profile Info</a>
+                <a href="#" class="nav-item">Billing History</a>
+            </nav>
+            <div class="sidebar-footer">
                 <button class="update-btn">Update Record</button>
             </div>
-        </div>
-
+        </aside>
+    
         <div class="info-grid">
+            <div id="profile-modal-header">
+                <span id="customer-name"></span>
+                <span class="close-modal" onclick="closeProfile()">&times;</span>
+            </div>
+
             <section class="info-card">
                 <h3>Account & Plan</h3>
                 <div class="field-group"><label>Client ID</label><div id="view-id" contenteditable="true" class="editable-field"></div></div>
+                <div class="field-group"><label>Client Name</label><div id="view-name" contenteditable="true" class="editable-field"></div></div>
                 <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
                 <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
                 <div class="field-group"><label>Date Applied</label><div id="view-applied" contenteditable="true" class="editable-field"></div></div>
@@ -111,7 +125,6 @@
 
             <section class="info-card">
                 <h3>Technical Details</h3>
-                <div class="field-group"><label>Optical Info (dBm)</label><div id="view-optical" contenteditable="true" class="editable-field"></div></div>
                 <div class="field-group"><label>Installed By</label><div id="view-tech" contenteditable="true" class="editable-field"></div></div>
                 <div class="field-group"><label>Remarks</label><div id="view-remarks" contenteditable="true" class="editable-field"></div></div>
             </section>
@@ -121,39 +134,53 @@
                 <h3><i class="icon"></i> Installation Materials & hardware</h3>
                 <div class="materials-grid">
                     <div class="material-item">
-                        <label>Optical Info (dBm)</label>
-                        <div id="view-optical" class="editable-field" contenteditable="true">-18.00</div>
+                        <label>Optical Info </label>
+                        <div id="view-optical" class="editable-field" contenteditable="true"></div>
                     </div>
 
                     <div class="material-item">
                         <label>Fiber Drop (Meters)</label>
-                        <div id="view-fiber" class="editable-field" contenteditable="true">150m</div>
+                        <div id="view-fiber" class="editable-field" contenteditable="true"></div>
                     </div>
 
                     <div class="material-item">
                         <label>Tapping Clips (Qty)</label>
-                        <div id="view-clip" class="editable-field" contenteditable="true">12</div>
+                        <div id="view-clip" class="editable-field" contenteditable="true"></div>
                     </div>
 
                     <div class="material-item">
                         <label>Cable Ties</label>
-                        <div id="view-tie" class="editable-field" contenteditable="true">5</div>
+                        <div id="view-tie" class="editable-field" contenteditable="true"></div>
                     </div>
 
                     <div class="material-item">
                         <label>F-Clamp</label>
-                        <div id="view-fclamp" class="editable-field" contenteditable="true">2</div>
+                        <div id="view-fclamp" class="editable-field" contenteditable="true"></div>
                     </div>
 
                     <div class="material-item">
                         <label>SC Connector</label>
-                        <div id="view-sc" class="editable-field" contenteditable="true">2</div>
+                        <div id="view-sc" class="editable-field" contenteditable="true"></div>
                     </div>
                 </div>
             </section>
-
         </div>
-    </template>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <template id="view-payment-history">
         <div class="view-header">
@@ -197,6 +224,28 @@
             </div>
         </div>
     </template>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- POP OUT BOX -->
 

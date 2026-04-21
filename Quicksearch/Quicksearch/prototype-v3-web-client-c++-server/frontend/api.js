@@ -7,7 +7,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
     const password = document.getElementById("psw").value;
 
     try {
-        const response = await fetch('http://127.0.0.1:2222/auth/session', {
+        const response = await fetch('http://192.168.1.21:2222/auth/session', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ 
@@ -21,8 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         if (response.ok) {
 
-            const cookie = `token_quicksearch=${encodeURIComponent(data.token)}; path=/; SameSite=Lax`;
-            document.cookie = cookie;
+            localStorage.setItem('JWT', data.token);
 
             // Redirect
             window.location.href = "./data_lookup/index.html";

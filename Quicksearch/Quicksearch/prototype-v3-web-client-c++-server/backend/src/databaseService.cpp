@@ -144,7 +144,7 @@ nlohmann::json DatabaseService::fetchCustomerData() {
             customer["occupation"]      = std::string(res->getString("OCCUPATION"));
             customer["dob"]             = std::string(res->getString("DATE_OF_BIRTH"));
             customer["pob"]             = std::string(res->getString("PLACE_OF_BIRTH"));
-            customer["optical_info"]    = std::string(res->getString("OPTICAL_INFO"));
+            customer["optical"]    = std::string(res->getString("OPTICAL_INFO"));
             customer["sc_connector"]    = std::string(res->getString("SC_CONNECTOR"));
             customer["fiber_drop"]      = std::string(res->getString("FIBER_DROP"));
             customer["tapping_clip"]    = std::string(res->getString("TAPPING_CLIP"));

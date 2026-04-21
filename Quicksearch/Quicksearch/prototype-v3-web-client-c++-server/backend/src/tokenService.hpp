@@ -3,12 +3,19 @@
 #include <chrono>
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/defaults.h>
+#include <mutex>
+
 
 
 class TokenService {
 
+private:
+    std::mutex mutexGuard;
+
 public:
     std::string createToken(const std::string& userId, const std::string userRole, const std::string& issuer, const std::string secretKey) {
+
+        std::lock_guard<std::mutex> g(mutexGuard);
 
         auto token = jwt::create()
         .set_issuer(issuer)
