@@ -52,13 +52,13 @@
     border-radius: 16px; /* Softer corners */
     overflow: hidden;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
 }
 
 /* 3. SIDEBAR - Refined */
 .modal-sidebar {
     width: 220px;
-    background: var(--bg-card);
+    background: var(--header-indigo);
     border-right: 1px solid var(--border);
     display: flex;
     flex-direction: column;
@@ -74,19 +74,20 @@
 .nav-item {
     margin: 4px 12px;
     padding: 10px 16px;
-    color: var(--text-main);
+    color: white;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 900;
     border-radius: 8px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     transition: var(--transition);
+    background-color: transparent;
 }
 
 .nav-item:hover {
-    background: var(--accent-soft);
-    color: var(--accent);
+    background: var(--bg-card);
+    color: black;
     transform: translateX(4px);
 }
 
@@ -99,12 +100,12 @@
 /* 4. HEADER - Short & Sleek */
 #profile-modal-header {
     grid-column: span 12;
-    background: var(--header-indigo);
+    background: rgb(255, 255, 255);
     padding: 10px 24px; /* Thin but wide */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 26px; /* Professional size */
     font-weight: 700;
     letter-spacing: 1px;
@@ -212,8 +213,9 @@
 .update-btn {
     width: calc(100% - 20px);
     margin: 10px;
+    position: relative;
     padding: 12px;
-    background: var(--accent);
+    background: black;
     color: white;
     border: none;
     border-radius: 8px;
@@ -224,6 +226,6 @@
 }
 
 .update-btn:hover {
-    filter: brightness(1.1);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgb(0, 204, 255);
 }
