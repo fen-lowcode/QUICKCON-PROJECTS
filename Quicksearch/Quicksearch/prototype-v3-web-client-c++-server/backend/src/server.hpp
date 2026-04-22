@@ -19,7 +19,8 @@ public:
 
     void optionReqHandler();
     void loginReqHandler();
-    void customerDataHandler();
+    void customerListReqHandler();
+    void deleteCustomerReq();
     void listen(const std::string host, int port);
 
 private:

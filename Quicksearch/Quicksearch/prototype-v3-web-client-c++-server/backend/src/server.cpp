@@ -10,19 +10,23 @@ void Server::optionReqHandler() {
     });
 }
 
+// checks if http request body is a valid json file
+auto reqIsJson = [](const httplib::Request& req, httplib::Response& res) {
+    if(!nlohmann::json::accept(std::string(req.body))) {
+        res.status = 400;
+        res.set_content("{\"status\":\"Invalid Request\"}", "application/json");
+        return false;
+    }
+    return true;
+};
+
 void Server::loginReqHandler() {
 
     serverHandler.Post("/auth/session", [this](const httplib::Request& req, httplib::Response& res){
 
         // signal the browser to take input
         res.set_header("Access-Control-Allow-Origin", "*");
-
-        // checks if the body payload is a valid json format
-        if(!nlohmann::json::accept(std::string(req.body))) {
-            res.status = 400;
-            res.set_content("{\"status\":\"Invalid Request\"}", "application/json");
-            return;
-        }
+        if(!reqIsJson(req, res)) {return;}
 
             // parses the body from request and takes data in the json body,
             // throws an exception and catches it if a json field is missing
@@ -56,26 +60,17 @@ void Server::loginReqHandler() {
     );
 }
 
-void Server::customerDataHandler() {
-    serverHandler.Post("/getData", [this](const httplib::Request& req, httplib::Response& res) {
+void Server::customerListReqHandler() {
+    serverHandler.Post("/get/customerlist", [this](const httplib::Request& req, httplib::Response& res) {
 
           // signal the browser to take input
         res.set_header("Access-Control-Allow-Origin", "*");
+        if(!reqIsJson(req, res)) {return;}
 
-
-        // checks if the body payload is a valid json format
-        if(!nlohmann::json::accept(std::string(req.body))) {
-            res.status = 400;
-            res.set_content("{\"status\":\"Invalid Request\"}", "application/json");
-            return;
-        }
-
-        nlohmann::json reqToJson = nlohmann::json::parse(req.body);
-        nlohmann::json token = reqToJson.at("token");
-
+        nlohmann::json JSONreq = nlohmann::json::parse(req.body);
 
         #ifdef DATA_PROTECTION
-        if (!accounthandler.vrfyJwtToken(token)) {
+        if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
             res.status = 401;
             res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
             std::cout << " REQUEST REFUSED " << std::endl; 
@@ -86,6 +81,29 @@ void Server::customerDataHandler() {
 
         std::cout << " REQUEST ACCEPTED " << std::endl; 
         res.set_content(accounthandler.getCustomerData().dump(), "application/json");
+
+
+    });
+}
+
+void Server::deleteCustomerReq() {
+    serverHandler.Post("/delete/customerinfo", [this](const httplib::Request& req, httplib::Response& res){
+
+        res.set_header("Access-Control-Allow-Origin", "*");
+        if(!reqIsJson(req, res)) {return;}
+
+        nlohmann::json JSONreq = nlohmann::json::parse(req.body);
+    
+        #ifdef DATA_PROTECTION
+        if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
+            res.status = 401;
+            res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
+            std::cout << " REQUEST REFUSED " << std::endl; 
+            return;
+        }
+        #endif
+
+        std::cout << JSONreq.at("customerToDel").at("name") << std::endl;
 
 
     });
