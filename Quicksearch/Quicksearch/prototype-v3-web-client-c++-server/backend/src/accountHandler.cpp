@@ -4,6 +4,8 @@
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
 #include <mutex>
+#include <nlohmann/json_fwd.hpp>
+#include <resolv.h>
 #include <string>
 
 inline auto hashPass = [](std::string pass) {
@@ -19,6 +21,7 @@ inline auto hashPass = [](std::string pass) {
     // after the loop converrsion above it then stores it as a string object
     return ss.str();
 };
+
 
 std::string AccountHandler::accountAuth(
     const std::string& firstName, const std::string& lastName, const std::string& password
@@ -39,6 +42,33 @@ std::string AccountHandler::accountAuth(
 nlohmann::json AccountHandler::getCustomerData() {
     return databaseServ.fetchCustomerData();
 }
+
+bool AccountHandler::deleteCustomerData(const nlohmann::json& JSONreq) {
+
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
+
+    try {
+         // checks if every key in the JSONreq that are curcial is existing before sending to database handler to delete the data
+
+        nlohmann::json ({
+            {"status",  JSONreq.at("status")},
+            {"id",      JSONreq.at("id")},
+            {"name",    JSONreq.at("name")},
+            {"creds",   JSONreq.at("creds")},
+        }
+    );  
+    
+    std::cout << JSONreq.at("name") << " Data Will be Deleted" << std::endl;
+    return databaseServ.RemoveCustomerData(JSONreq.at("id"));
+
+
+    } catch (nlohmann::json::exception& e) {
+        std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
+        std::cout << JSONreq.at("name") << " Data Info NOT Deleted" << std::endl;
+        return false;
+    }
+}
+
 
 bool AccountHandler::vrfyJwtToken(std::string token) {
 

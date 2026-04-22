@@ -1,4 +1,5 @@
 #include "server.hpp"
+#include <iterator>
 #define DATA_PROTECTION
 
 void Server::optionReqHandler() {                                             
@@ -48,7 +49,7 @@ void Server::loginReqHandler() {
     
                 } else {
                     res.status = 401;
-                    res.set_content("{\"status\":\"failed\"}", "application/json");
+                    res.set_content("{\"reply\":\"login failure\"}", "application/json");
                 }
     
             } catch(std::exception& e) {
@@ -72,7 +73,7 @@ void Server::customerListReqHandler() {
         #ifdef DATA_PROTECTION
         if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
             res.status = 401;
-            res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
+            res.set_content("{\"reply\":\"You Are Not Allowed To Do That\"}", "application/json");
             std::cout << " REQUEST REFUSED " << std::endl; 
             return;
         }
@@ -97,14 +98,21 @@ void Server::deleteCustomerReq() {
         #ifdef DATA_PROTECTION
         if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
             res.status = 401;
-            res.set_content("{\"message\":\"FUCK YOU NIGGER \"}", "application/json");
+            res.set_content("{\"reply\":\"You Are Not Allowed To Do That\"}", "application/json");
             std::cout << " REQUEST REFUSED " << std::endl; 
             return;
         }
-        #endif
+        #endif 
 
-        std::cout << JSONreq.at("customerToDel").at("name") << std::endl;
+        if (accounthandler.deleteCustomerData(JSONreq.at("customerToDel"))){
 
+            res.set_content("{\"reply\": \"Customer Data Deleted\"}", "application/json");
+
+        } else {
+    
+            res.status = 500;
+            res.set_content("{\"reply\": \"Customer Data Not Deleted\"}", "application/json");
+        }
 
     });
 }

@@ -14,9 +14,11 @@ public:
         this -> extractSecrets();
     }
 
-    std::string accountAuth(  const std::string& firstName, const std::string& lastName, const std::string& password );
-    bool vrfyJwtToken(std::string token);
-    nlohmann::json getCustomerData();
+    std::string         accountAuth(  const std::string& firstName, const std::string& lastName, const std::string& password );
+    bool                vrfyJwtToken(std::string token);
+    nlohmann::json      getCustomerData();
+    bool                deleteCustomerData(const nlohmann::json& JSONreq);
+
 
 private:
 
@@ -28,6 +30,7 @@ private:
     DatabaseService& databaseServ;
     TokenService& tokenServ;
 
+    // Gets the secret key for calculating hash from the external json file (secretkey.json)
     void extractSecrets();
 
 

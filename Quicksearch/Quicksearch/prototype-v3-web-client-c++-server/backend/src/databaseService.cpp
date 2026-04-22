@@ -1,5 +1,7 @@
 #include "databaseService.hpp"
 #include <cstddef>
+#include <iostream>
+#include <mariadb/conncpp/Connection.hpp>
 #include <mariadb/conncpp/Exception.hpp>
 #include <mariadb/conncpp/PreparedStatement.hpp>
 #include <mariadb/conncpp/SQLString.hpp>
@@ -157,9 +159,29 @@ nlohmann::json DatabaseService::fetchCustomerData() {
         }
 
     } catch (sql::SQLException &e) {
-        std::cerr << "Database Error: " << e.what() << std::endl;
+        std::cerr << "Database Fetching Data List Error: " << e.what() << std::endl;
         return nlohmann::json::object({{"error", e.what()}});
     }
 
     return customerList;
+}
+
+bool DatabaseService::RemoveCustomerData(const std::string& userID) {
+    std::lock_guard<std::mutex> lock(dbMutex);
+    try {
+        auto stmt = std::unique_ptr<sql::PreparedStatement> (this -> conn->prepareStatement("DELETE FROM CUSTOMER_RECORDS WHERE ID = ?"));
+        stmt -> setInt(1, std::stoi(userID));
+
+        int rowsAffected = stmt->executeUpdate();
+
+        if(rowsAffected > 0) {
+            return true;        // customer data with the unique ID is successfully deleted
+        } else {
+            return false;       // customer data with the unique ID is NOT FOUND
+        }
+
+    } catch(sql::SQLException& e) {
+        std::cerr << "Database Customer Deletion Error: " << e.what() << std::endl;
+        return false;
+    }
 }

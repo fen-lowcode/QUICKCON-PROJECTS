@@ -19,14 +19,13 @@ private:
     std::unique_ptr<sql::Connection> conn;
     std::mutex dbMutex; // The "Gatekeeper" for your database connection
 
-    std::string secretKey;
-
 public:
     void connectToDB();
-    std::string fetchPasswordHash(const std::string& firstName, const std::string& lastName);
-    std::string fetchUserID(const std::string& firstName, const std::string& lastName);
+    std::string     fetchPasswordHash(const std::string& firstName, const std::string& lastName);
+    std::string     fetchUserID(const std::string& firstName, const std::string& lastName);
 
-    bool fetchAdminStatus(const std::string& firstName, const std::string& lastName);
-    nlohmann::json fetchCustomerData();
+    bool            fetchAdminStatus(const std::string& firstName, const std::string& lastName);
+    nlohmann::json  fetchCustomerData();
+    bool            RemoveCustomerData(const std::string& userID);
 };
 

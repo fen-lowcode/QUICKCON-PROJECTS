@@ -64,7 +64,7 @@ function renderTableRows(dataList) {
         // Build raw HTML string for performance
         htmlBuilder += `
             <tr>
-                <td><button class="delete-btn" onclick="deleteRow(event)"><img src="../../assets/trasbhin.png"></button></td>
+                <td><button class="delete-btn" onclick="deleteCustomer(event)"><img src="../../assets/trasbhin.png"></button></td>
                 <td><span class="status-badge ${stat.toLowerCase()}">${stat}</span></td>
                 <td>${c.id}</td><td>${c.name}</td>
                 <td>${c.credentials || 'N/A'}</td>
