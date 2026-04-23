@@ -61,7 +61,9 @@ async function deleteCustomer(e) {
             })
         })
 
-        fetchClientmasterList();
+        // Refreshes the list after deleting
+        await fetchClientmasterList();
+        filterTable();
 
     } catch(err) {
         console.error("Fetch failed: ", err);

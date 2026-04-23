@@ -11,7 +11,7 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-
+<!-- 
     <aside class="sidebar">
         <div class="sidebar-header">
             <img src="../../assets/quicksearch-logo.png" alt="Quickcon Logo">
@@ -19,7 +19,8 @@
         <nav>
             <a href="#" class="nav-item active" onclick="loadTemplates('view-client-list'); fetchClientmasterList();">Refresh List</a>
         </nav>
-    </aside>
+    </aside> 
+-->
 
     <main id="app-container" style="margin-left: 320px; padding: 20px;">
         </main>
@@ -27,9 +28,14 @@
     <template id="view-client-list">
         <header class="glass-header">
             <div class="controls">
+                <img src="../../assets/quicksearch-logo.png">
+                <span class="count-badge" id="rowCount">0 Records Loaded</span>
                 <input type="text" id="tableSearch" placeholder="Search records..." onkeyup="filterTable()">
                 <button id="add-customer-btn" onclick="showAddCustomerForm()"">+ Add Customer</button>
-                <span class="count-badge" id="rowCount">0 Records Loaded</span>
+
+                <!-- This is the refresh button but i left the id name ssame to add customer button so 
+                the css style is not repetitive -->
+                <button id="add-customer-btn" onclick="fetchClientmasterList()""> Refresh </button>
             </div>
         </header>
         <div class="data-card">

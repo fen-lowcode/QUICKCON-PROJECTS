@@ -47,7 +47,7 @@
     display: flex;
     width: 100%;
     max-width: 1400px;
-    height: 95vh;
+    height: 85vh;
     background: #f1f5f9;
     border-radius: 16px; /* Softer corners */
     overflow: hidden;

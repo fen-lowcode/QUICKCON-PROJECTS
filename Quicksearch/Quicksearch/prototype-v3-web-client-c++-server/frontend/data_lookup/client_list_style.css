@@ -1,308 +1,252 @@
 /* =========================
-    VARIABLES & BASE
+    VARIABLES & MODERN RESET
 ========================= */
 :root {
-    --bg: #f1f5f9;           
+    --bg: #f8fafc;           /* Light, gentle background */
     --surface: #ffffff;
-    --text-main: #334155;    
+    --text-main: #1e293b;    
     --text-muted: #64748b;
-    --accent: #6366f1;       
+    --accent: #6366f1;       /* Indigo Accent */
+    --brand-blue: #0003cc;   /* Your Brand Blue */
     --border: #e2e8f0;
-    --table-header:  #0003cc;
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+@font-face {
+    font-family: 'Quicksand';
+    font-weight: bold;
+    src: url('../../assets/Quicksand/Quicksand-VariableFont_wght.ttf');
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Quicksand';
+    -webkit-font-smoothing: antialiased;
+}
 
 body {
-
-    font-family: 'Segoe UI', 'SF Pro Display', system-ui, sans-serif;
-    background: rgb(255, 255, 255);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
     color: var(--text-main);
-    line-height: 1.5;
+    line-height: 1.6;
     min-height: 100vh;
-    display: block; /* Removed display flex from body to allow fixed sidebar layout */
+    display: flex;
+    justify-content: center; /* Centers the entire app container */
 }
 
 /* =========================
-    SIDEBAR (PREMIUM DESIGN REPLICATED)
+    MAIN CONTAINER (FIXED LEFT PUSH)
 ========================= */
-.sidebar {
-    width: 230px;
-    height: 100vh;
-    position: fixed; /* Context for absolute overlays */
-    background-image: url('../../assets/home-page-bg.png');
-    box-shadow: 10px 0px 10px rgb(198, 198, 198);
-    background-size: cover;
-    background-position: left;
-    padding: 30px 15px;
-    border-right: 1px solid var(--border);
+#app-container { 
+    width: 95%;
+    max-width: 1750px;
+    margin: 40px auto !important; /* Forces centering and removes sidebar gap */
+    padding: 0 !important;
+}
+
+/* =========================
+    HEADER & CONTROLS
+========================= */
+.glass-header {
+    margin-bottom: 24px;
+}
+
+/* =========================
+    HEADER (LOGO LEFT / SEARCH RIGHT)
+========================= */
+.controls {
     display: flex;
-    flex-direction: column;
-    z-index: 10;
-    overflow: hidden;
-
-    text-transform: uppercase;
-    font-weight: 100;
+    align-items: center;
+    width: 100%;
+    padding: 12px 24px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    gap: 20px;
 }
 
-/* Premium Sidebar Overlays - Keeps gradients inside the 300px width */
-.sidebar::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
-}
-
-.sidebar::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    background: rgba(255, 255, 255, 0.1);
-}
-
-.sidebar-header {
-    margin-bottom: 40px;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-}
-
-.sidebar-header img {
-    max-width: 100%;
-    height: auto;
+.controls img {
+    height: 60px;
+    width: auto;
+    /* DYNAMIC POSITIONING */
+    order: -1;           /* Forces logo to the far left regardless of HTML order */
+    margin-right: auto;  /* Pushes all other elements to the far right edge */
+    margin-left: 0;      /* Clears your previous 100px margin */
     object-fit: contain;
 }
-
-.sidebar .nav-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 16px;
-    text-decoration: none;
-    color: var(--text-dark);
-    border-radius: 8px;
-    font-size: 11px;
-    margin-bottom: 4px;
-    transition: all 0.2s ease-out;
-    position: relative;
-    z-index: 2;
-}
-
-.nav-item:hover { 
-    background: var(--table-header);
-    color: white;
-}
-
-.nav-item.active {
-    background: blue;
-    /* transform: scale(1.1); */
-    box-shadow: 0px 0px 10px rgb(3, 3, 248);
-    color: white;
-    font-weight: 900;
-}
-
-
-/* =========================
-    MAIN CONTENT AREA
-========================= */
-.app-container { 
-    max-width: 1600px; 
-    margin-left: 320px; /* Sidebar width (300px) + 20px gap */
-    padding: 2rem;
-    position: relative;
-}
-
-.glass-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-}
-
-.header-right { display: flex; align-items: center; gap: 20px; }
-#logo { width: 370px; height: 100px; object-fit: contain; }
-.header-right h1 { font-size: 1.5rem; font-weight: 700; color: #1e293b; }
-
-/* =========================
-    TABLE & UI ELEMENTS
-========================= */
-.controls { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.count-badge { font-size: 1rem; font-weight: bold; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: var(--text-muted); }
 
 #tableSearch {
-    width: 400px;
-    padding: 10px 16px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 12px 18px;
     border-radius: 8px;
-    border: 1px solid rgb(184, 184, 238);
-    background: var(--surface);
-    color: var(--text-main);
-    outline: none;
-}
-
-#tableSearch:focus { border-color: blue; box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
-
-#add-customer-btn {
-    padding: 10px 24px;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--accent);
-    color: white;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: transform 0.1s ease, filter 0.2s ease;
-}
-
-#add-customer-btn:hover { background-color: blue; box-shadow: 0px 0px 10px blue; transition: 0.2s;}
-#add-customer-btn:active { transform: translateY(1px); }
-
-/* Table Action Column */
-.action-cell {
-    width: 45px; /* Fixed narrow width */
-    text-align: center;
-    vertical-align: middle;
-}
-
-/* Header Icon Styling */
-th.action-cell img {
-    width: 14px;
-    height: 14px;
-    opacity: 0.5;
-    filter: grayscale(1); /* Makes the header icon neutral */
-}
-
-/* The Delete Button Container */
-.delete-btn {
-    background: transparent;
-    background-color: rgb(249, 212, 212);
-    border: none;
-    cursor: pointer;
-    padding: 6px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    margin: 0 auto; /* Centers in the cell */
-}
-
-/* The Icon itself */
-.delete-btn img {
-    width: 30px;
-    height: 20px;
-    object-fit: contain;
-    opacity: 0.6; /* Soft appearance by default */
+    border: 1px solid var(--border);
+    background: #f1f5f9;
+    font-size: 0.95rem;
     transition: all 0.2s ease;
 }
 
-/* Modern Hover Effect */
-.delete-btn:hover {
-    background-color: #fbbabe; /* Softest rose/red background */
-    box-shadow: 0px 0px 10px red;
-    transform: scale(1.2); /* Subtle "pop" effect */
+#tableSearch:focus { 
+    background: white;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    outline: none;
 }
 
-
-table {
-    width: 100;
-    border-collapse: collapse;
-    white-space: nowrap;
-    font-size: 0.872rem;
-}
-
-th {
-    padding: 12px 20px;
-    text-align: left;
-    border-bottom: 5px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background-color: var(--table-header);
+#add-customer-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    background: var(--brand-blue);
     color: white;
-    font-size: small;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-td {
-    padding: 7px 14px;
-    border-bottom: 1px solid #e7e7e7;
-    /* font-weight: 600; */
+#add-customer-btn:hover { 
+    filter: brightness(1.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 3, 204, 0.2);
 }
 
-#tableBody tr:hover { background-color: #aacfff; cursor: pointer; }
-/* 1. Highlight the ENTIRE ROW when the delete button is hovered */
-
-#tableBody tr:has(.delete-btn:hover) {
-    background-color: #ffb4b9 !important; /* Very soft rose tint */
-    transition: background-color 0.2s ease;
+.count-badge { 
+    font-size: 0.85rem; 
+    font-weight: 700; 
+    background: #e0e7ff; 
+    padding: 8px 16px; 
+    border-radius: 8px; 
+    color: var(--brand-blue); 
 }
 
-/* 2. Style the specific cell text to turn red when the row is highlighted */
-
-#tableBody tr:has(.delete-btn:hover) td {
-    color: #ff0037; /* Soft red text to match the theme */
-}
-
-/* 3. The Delete Button Hover State */
-.delete-btn:hover {
-    background-color: #fbafbb; /* Vibrant rose/red */
-    box-shadow: 0px 4px 15px rgba(244, 63, 94, 0.4); /* Modern glow */
-    transform: scale(1.15);
-}
-
-/* 4. Make the icon white when the button background turns red */
-.delete-btn:hover img {
-    opacity: 1;
-    filter: brightness(0) invert(1);
-}
-
-.delete-btn:hover img {
-    opacity: 1;
-    /* Optional: If your icon is black, this makes it a soft red on hover */
-    filter: brightness(0) saturate(100%) invert(37%) sepia(87%) saturate(1917%) hue-rotate(334deg) brightness(91%) contrast(97%);
-}
-
-.delete-btn:active {
-    transform: scale(0.9); /* Tactile click feedback */
-}
-
+/* =========================
+    TABLE & DATA CARD
+========================= */
 .data-card {
     background: var(--surface);
-
-    margin-left: -70px;
-    margin-right: 20px;
-    margin-top: 20px;
-    border-radius: 0px;
-
-    /* border: 1px solid var(--border); */
-    box-shadow: 0 1px 3px rgba(80, 148, 213, 0.05);
-    overflow: hidden;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden; /* Clips table corners */
 }
 
 .scroll-area { 
     overflow-x: auto; 
-    max-height: 83vh;
+    max-height: 75vh;
 }
 
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.88rem;
+    white-space: nowrap;
+}
 
-/* Badges */
-.status-badge {
-    padding: 4px 12px;
-    border-radius: 99px;
-    font-size: 0.7rem;
+/* Sticky Header - Gentle Light Theme */
+th {
+    padding: 16px 24px;
+    text-align: left;
+    background: var(--brand-blue); 
+    color: white;
+    font-size: 0.8rem;
     font-weight: bolder;
-    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
 
-.status-badge.active { background-color: #dcfce7; color: #166534; }
-.status-badge.inactive { background-color: #ffe4e4; color: #991b1b; }
+td {
+    padding: 0.1px 30px;
+    border-bottom: 1px solid #f1f5f9;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.2s;
+    vertical-align: middle;
+}
 
-/* Custom Scrollbar */
-.scroll-area::-webkit-scrollbar { height: 8px; width: 8px; }
+#tableBody tr:hover td { 
+    background-color: #f8fafc; 
+}
+
+/* =========================
+    ACTION ELEMENTS (DELETE & STATUS)
+========================= */
+
+/* The Row highlight logic */
+#tableBody tr:has(.delete-btn:hover) td {
+    background-color: #fff1f2 !important;
+    color: #e11d48;
+}
+
+.delete-btn {
+    background: #f1f5f9;
+    border: none;
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin: 0 auto;
+}
+
+.delete-btn img {
+    width: 18px;
+    height: 18px;
+    opacity: 0.5;
+}
+
+.delete-btn:hover {
+    background: #e11d48;
+    transform: scale(1.1);
+}
+
+.delete-btn:hover img {
+    filter: brightness(0) invert(1);
+    opacity: 1;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.status-badge.active { 
+    background-color: #dcfce7; 
+    color: #166534; 
+    border: 1px solid #bbf7d0;
+}
+
+.status-badge.inactive { 
+    background-color: #fee2e2; 
+    color: #991b1b; 
+    border: 1px solid #fecdd3;
+}
+
+/* =========================
+    CUSTOM SCROLLBAR
+========================= */
+.scroll-area::-webkit-scrollbar { height: 10px; width: 8px; }
 .scroll-area::-webkit-scrollbar-track { background: #f1f5f9; }
-.scroll-area::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-
+.scroll-area::-webkit-scrollbar-thumb { 
+    background: #cbd5e1; 
+    border-radius: 10px; 
+    border: 2px solid #f1f5f9;
+}
+.scroll-area::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
