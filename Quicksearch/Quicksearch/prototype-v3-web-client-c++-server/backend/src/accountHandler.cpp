@@ -51,7 +51,7 @@ bool AccountHandler::deleteCustomerData(const nlohmann::json& JSONreq) {
          // checks if every key in the JSONreq that are curcial is existing before sending to database handler to delete the data
 
         nlohmann::json ({
-            {"status",  JSONreq.at("status")},
+
             {"id",      JSONreq.at("id")},
             {"name",    JSONreq.at("name")},
             {"creds",   JSONreq.at("creds")},
@@ -59,7 +59,7 @@ bool AccountHandler::deleteCustomerData(const nlohmann::json& JSONreq) {
     );  
     
     std::cout << JSONreq.at("name") << " Data Will be Deleted" << std::endl;
-    return databaseServ.RemoveCustomerData(JSONreq.at("id"));
+    return databaseServ.RemoveCustomer(JSONreq.at("id"));
 
 
     } catch (nlohmann::json::exception& e) {

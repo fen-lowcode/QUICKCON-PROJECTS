@@ -1,8 +1,6 @@
 
 async function fetchClientmasterList() {
     try {
-        // // CRITICAL: You must await getToken() here
-        // const tokenValue = await getToken();
 
         let response = await fetch('http://127.0.0.1:2222/get/customerlist', { 
             method: 'POST', 
@@ -21,10 +19,20 @@ async function fetchClientmasterList() {
 
         let dataArray = await response.json();
         renderTableRows(dataArray);
+
+        let countDisp = document.getElementById('rowCount');
+        if (countDisp) {
+            countDisp.style.background = "lightblue";
+            countDisp.style.color = "black";
+        }
     } catch (err) {
         console.error("Fetch failed: ", err);
         let countDisp = document.getElementById('rowCount');
-        if (countDisp) countDisp.innerText = "Server Offline / Refused";
+        if (countDisp) {
+            countDisp.innerText = "Server Offline / Refused";
+            countDisp.style.background = "darkred";
+            countDisp.style.color = "white";
+        }
     }
 }
 
@@ -39,16 +47,14 @@ async function deleteCustomer(e) {
     // Extracting data from table columns (Indices match <thead>)
     let cells = row.cells;
     let customerToDelete = {
-        status:    cells[1].innerText.trim(),
-        id:        cells[2].innerText,
-        name:      cells[3].innerText,
-        creds:     cells[4].innerText,
+        id:        cells[1].innerText,
+        name:      cells[2].innerText,
+        creds:     cells[3].innerText,
     };
 
     console.log(customerToDelete);
 
     try {
-
         let res = await fetch("http://127.0.0.1:2222/delete/customerinfo", {
             method: "POST",
             headers: {
@@ -57,11 +63,9 @@ async function deleteCustomer(e) {
             body: JSON.stringify({
                 token: await getToken(),
                 customerToDel: customerToDelete
-
             })
         })
-
-        // Refreshes the list after deleting
+                    // Refreshes the list after deleting
         await fetchClientmasterList();
         filterTable();
 
@@ -69,6 +73,19 @@ async function deleteCustomer(e) {
         console.error("Fetch failed: ", err);
     }
 };
+
+
+async function addCustomer(data) {
+    const res = await fetch('http://127.0.0.1:2222/add/customer', {
+        method: "POST",
+        headers: {
+            "Content-Type" : "application/json",
+        },
+        body: JSON.stringify({
+            newCustomer: data
+        })
+    })
+}
 
 
 

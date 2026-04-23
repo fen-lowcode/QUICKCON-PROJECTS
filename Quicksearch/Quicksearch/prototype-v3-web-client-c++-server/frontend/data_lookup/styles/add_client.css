@@ -165,3 +165,34 @@
 }
 
 .btn-primary:hover { background: #2563eb; }
+
+
+@keyframes requiredField {
+    0% { 
+        transform: translateX(0) scale(1); 
+    }
+    20% { 
+        transform: translateX(-8px) scale(1.02); 
+    }
+    40% { 
+        transform: translateX(8px) scale(1.05); 
+    }
+    50% { 
+        transform: scale(1.1); /* Peak of the pop */
+    }
+    60% { 
+        transform: translateX(-5px) scale(1.05); 
+    }
+    80% { 
+        transform: translateX(5px) scale(1.02); 
+    }
+    100% { 
+        transform: translateX(0) scale(1); 
+    }
+}
+
+.shake-error {
+    animation: requiredField 0.4s;
+    border: 2px solid #ef4444 !important;
+    outline: none;
+}

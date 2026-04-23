@@ -117,6 +117,28 @@ void Server::deleteCustomerReq() {
     });
 }
 
+
+void Server::addCustomerReq() {
+
+    serverHandler.Post("/add/customer", [this](const httplib::Request& req, httplib::Response& res) {
+
+        res.set_header("Access-Control-Allow-Origin", "*");
+        if(!reqIsJson(req, res)) {return;}
+
+        nlohmann::json JSONreq = nlohmann::json::parse(req.body);
+        
+        #ifdef DATA_PROTECTION
+        if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
+            res.status = 401;
+            res.set_content("{\"reply\":\"You Are Not Allowed To Do That\"}", "application/json");
+            std::cout << " REQUEST REFUSED " << std::endl; 
+            return;
+        }
+        #endif 
+    });
+}
+
+
 void Server::listen(const std::string host, int port) {
     serverHandler.listen(host , port);
 }

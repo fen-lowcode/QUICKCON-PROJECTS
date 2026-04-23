@@ -119,10 +119,10 @@ body {
 .count-badge { 
     font-size: 0.85rem; 
     font-weight: 700; 
-    background: #e0e7ff; 
+    background: lightblue; 
     padding: 8px 16px; 
     border-radius: 8px; 
-    color: var(--brand-blue); 
+    color: black; 
 }
 
 /* =========================
@@ -189,7 +189,7 @@ td {
 }
 
 .delete-btn {
-    background: #f1f5f9;
+    background: transparent;
     border: none;
     width: 38px;
     height: 38px;
@@ -203,8 +203,8 @@ td {
 }
 
 .delete-btn img {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     opacity: 0.5;
 }
 
@@ -218,26 +218,7 @@ td {
     opacity: 1;
 }
 
-/* Status Badges */
-.status-badge {
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    text-transform: uppercase;
-}
 
-.status-badge.active { 
-    background-color: #dcfce7; 
-    color: #166534; 
-    border: 1px solid #bbf7d0;
-}
-
-.status-badge.inactive { 
-    background-color: #fee2e2; 
-    color: #991b1b; 
-    border: 1px solid #fecdd3;
-}
 
 /* =========================
     CUSTOM SCROLLBAR

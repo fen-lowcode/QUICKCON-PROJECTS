@@ -18,9 +18,14 @@ public:
     }
 
     void optionReqHandler();
+
     void loginReqHandler();
+
     void customerListReqHandler();
     void deleteCustomerReq();
+    void addCustomerReq();
+
+
     void listen(const std::string host, int port);
 
 private:

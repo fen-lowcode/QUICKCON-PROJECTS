@@ -18,6 +18,7 @@ int main() {
     server.loginReqHandler();
     server.customerListReqHandler();
     server.deleteCustomerReq();
+    server.addCustomerReq();
 
     server.listen("0.0.0.0", 2222);
 }

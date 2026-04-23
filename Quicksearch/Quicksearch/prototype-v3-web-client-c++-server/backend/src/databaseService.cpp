@@ -1,12 +1,12 @@
 #include "databaseService.hpp"
-#include <cstddef>
+// #include <cstddef>
 #include <iostream>
 #include <mariadb/conncpp/Connection.hpp>
 #include <mariadb/conncpp/Exception.hpp>
 #include <mariadb/conncpp/PreparedStatement.hpp>
 #include <mariadb/conncpp/SQLString.hpp>
 #include <memory>
-#include <stdexcept>
+// #include <stdexcept>
 #include <string>
 
 void DatabaseService::connectToDB(){
@@ -131,29 +131,29 @@ nlohmann::json DatabaseService::fetchCustomerData() {
         
         while (res->next()) {
             nlohmann::json customer;
-            
+
             // Mapping SQL columns to JSON keys
-            customer["id"]              = res->getInt("ID");
-            customer["name"]            = std::string(res->getString("CLIENTS_NAME"));
-            customer["credentials"]     = std::string(res->getString("CREDENTIALS"));
-            customer["address"]         = std::string(res->getString("ADDRESS"));
-            customer["plan"]            = std::string(res->getString("PLAN"));
-            customer["date_applied"]    = std::string(res->getString("DATE_APPLIED"));
-            customer["contact_no"]      = std::string(res->getString("CONTACT_NO"));
-            customer["age"]             = std::string(res->getString("AGE"));
-            customer["sex"]             = std::string(res->getString("SEX"));
-            customer["social_media"]    = std::string(res->getString("SOCIAL_MEDIA"));
-            customer["occupation"]      = std::string(res->getString("OCCUPATION"));
-            customer["dob"]             = std::string(res->getString("DATE_OF_BIRTH"));
-            customer["pob"]             = std::string(res->getString("PLACE_OF_BIRTH"));
-            customer["optical"]    = std::string(res->getString("OPTICAL_INFO"));
-            customer["sc_connector"]    = std::string(res->getString("SC_CONNECTOR"));
-            customer["fiber_drop"]      = std::string(res->getString("FIBER_DROP"));
-            customer["tapping_clip"]    = std::string(res->getString("TAPPING_CLIP"));
-            customer["cable_tie"]       = std::string(res->getString("CABLE_TIE"));
-            customer["f_clamp"]         = std::string(res->getString("F_CLAMP"));
-            customer["remarks"]         = std::string(res->getString("REMARKS"));
-            customer["installed_by"]    = std::string(res->getString("INSTALLED_BY"));
+            customer["ID"]              = res->getInt("ID");
+            customer["CLIENTS_NAME"]    = std::string(res->getString("CLIENTS_NAME"));
+            customer["CREDENTIALS"]     = std::string(res->getString("CREDENTIALS"));
+            customer["ADDRESS"]         = std::string(res->getString("ADDRESS"));
+            customer["PLAN"]            = std::string(res->getString("PLAN"));
+            customer["DATE_APPLIED"]    = std::string(res->getString("DATE_APPLIED"));
+            customer["CONTACT_NO"]      = std::string(res->getString("CONTACT_NO"));
+            customer["AGE"]             = std::string(res->getString("AGE"));
+            customer["SEX"]             = std::string(res->getString("SEX"));
+            customer["SOCIAL_MEDIA"]    = std::string(res->getString("SOCIAL_MEDIA"));
+            customer["OCCUPATION"]      = std::string(res->getString("OCCUPATION"));
+            customer["DATE_OF_BIRTH"]   = std::string(res->getString("DATE_OF_BIRTH"));
+            customer["PLACE_OF_BIRTH"]  = std::string(res->getString("PLACE_OF_BIRTH"));
+            customer["OPTICAL_INFO"]    = std::string(res->getString("OPTICAL_INFO"));
+            customer["SC_CONNECTOR"]    = std::string(res->getString("SC_CONNECTOR"));
+            customer["FIBER_DROP"]      = std::string(res->getString("FIBER_DROP"));
+            customer["TAPPING_CLIP"]    = std::string(res->getString("TAPPING_CLIP"));
+            customer["CABLE_TIE"]       = std::string(res->getString("CABLE_TIE"));
+            customer["F_CLAMP"]         = std::string(res->getString("F_CLAMP"));
+            customer["REMARKS"]         = std::string(res->getString("REMARKS"));
+            customer["INSTALLED_BY"]    = std::string(res->getString("INSTALLED_BY"));
 
             customerList.push_back(customer);
         }
@@ -166,7 +166,7 @@ nlohmann::json DatabaseService::fetchCustomerData() {
     return customerList;
 }
 
-bool DatabaseService::RemoveCustomerData(const std::string& userID) {
+bool DatabaseService::RemoveCustomer(const std::string& userID) {
     std::lock_guard<std::mutex> lock(dbMutex);
     try {
         auto stmt = std::unique_ptr<sql::PreparedStatement> (this -> conn->prepareStatement("DELETE FROM CUSTOMER_RECORDS WHERE ID = ?"));

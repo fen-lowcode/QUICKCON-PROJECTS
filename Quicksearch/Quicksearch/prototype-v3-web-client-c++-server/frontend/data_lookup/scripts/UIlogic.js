@@ -59,33 +59,31 @@ function renderTableRows(dataList) {
 
     for (let i = 0; i < dataList.length; i++) {
         let c = dataList[i];
-        let stat = c.status || "ACTIVE";
         
-        // Build raw HTML string for performance
         htmlBuilder += `
             <tr>
-                <td><button class="delete-btn" onclick="deleteCustomer(event)"><img src="../../assets/trasbhin.png"></button></td>
-                <td><span class="status-badge ${stat.toLowerCase()}">${stat}</span></td>
-                <td>${c.id}</td><td>${c.name}</td>
-                <td>${c.credentials || 'N/A'}</td>
-                <td>${c.address}</td>
-                <td>${c.plan}</td>
-                <td>${c.date_applied}</td>
-                <td>${c.contact_no}</td>
-                <td>${c.age}</td>
-                <td>${c.sex}</td>
-                <td>${c.social_media}</td>
-                <td>${c.occupation}</td>
-                <td>${c.dob}</td>
-                <td>${c.pob}</td>
-                <td>${c.optical}</td>
-                <td>${c.sc_connector}</td>
-                <td>${c.fiber_drop}</td>
-                <td>${c.tapping_clip}</td>
-                <td>${c.cable_tie}</td>
-                <td>${c.f_clamp}</td>
-                <td>${c.remarks}</td>
-                <td>${c.installed_by}</td>
+                <td><button class="delete-btn" onclick="deleteCustomer(event)"><img src="../assets/trasbhin.png"></button></td>
+                <td>${c.ID}</td>
+                <td>${c.CLIENTS_NAME}</td>
+                <td>${c.CREDENTIALS}</td>
+                <td>${c.ADDRESS}</td>
+                <td>${c.PLAN}</td>
+                <td>${c.DATE_APPLIED}</td>
+                <td>${c.CONTACT_NO}</td>
+                <td>${c.AGE}</td>
+                <td>${c.SEX}</td>
+                <td>${c.SOCIAL_MEDIA}</td>
+                <td>${c.OCCUPATION}</td>
+                <td>${c.DATE_OF_BIRTH}</td>
+                <td>${c.PLACE_OF_BIRTH}</td>
+                <td>${c.OPTICAL_INFO}</td>
+                <td>${c.SC_CONNECTOR}</td>
+                <td>${c.FIBER_DROP}</td>
+                <td>${c.TAPPING_CLIP}</td>
+                <td>${c.CABLE_TIE}</td>
+                <td>${c.F_CLAMP}</td>
+                <td>${c.REMARKS}</td>
+                <td>${c.INSTALLED_BY}</td>
             </tr>`;
     }
     tableBody.innerHTML = htmlBuilder;
@@ -103,32 +101,33 @@ document.addEventListener('click', function(e) {
 
     // Extracting data from table columns (Indices match <thead>)
     let cells = row.cells;
-    let packet = {
-        status:    cells[1].innerText.trim(),
-        id:        cells[2].innerText,
-        name:      cells[3].innerText,
-        creds:     cells[4].innerText,
-        address:   cells[5].innerText,
-        plan:      cells[6].innerText,
-        applied:   cells[7].innerText,
-        contact:   cells[8].innerText,
-        age:       cells[9].innerText,
-        sex:       cells[10].innerText,
-        social:    cells[11].innerText,
-        job:       cells[12].innerText,
-        dob:       cells[13].innerText,
-        pob:       cells[14].innerText,
-        optical:   cells[15].innerText,
-        sc:        cells[16].innerText,
-        fiber:     cells[17].innerText,
-        clip:      cells[18].innerText,
-        tie:       cells[19].innerText,
-        fclamp:    cells[20].innerText,
-        remarks:   cells[21].innerText,
-        tech:      cells[22].innerText
+    let data = {
+
+        ID:             cells[1].innerText,  
+        CLIENTS_NAME:   cells[2].innerText,
+        CREDENTIALS:    cells[3].innerText,
+        ADDRESS:        cells[4].innerText,
+        PLAN:           cells[5].innerText,
+        DATE_APPLIED:   cells[6].innerText,
+        CONTACT_NO:     cells[7].innerText,
+        AGE:            cells[8].innerText,
+        SEX:            cells[9].innerText,
+        SOCIAL_MEDIA:   cells[10].innerText,
+        OCCUPATION:     cells[11].innerText,
+        DATE_OF_BIRTH:  cells[12].innerText,
+        PLACE_OF_BIRTH: cells[13].innerText,
+        OPTICAL_INFO:   cells[14].innerText,
+        SC_CONNECTOR:   cells[15].innerText,
+        FIBER_DROP:     cells[16].innerText,
+        TAPPING_CLIP:   cells[17].innerText,
+        CABLE_TIE:      cells[18].innerText,
+        F_CLAMP:        cells[19].innerText,
+        REMARKS:        cells[20].innerText,
+        INSTALLED_BY:   cells[21].innerText,
+
     };
 
-    openProfile(packet);
+    openProfile(data);
 });
 
 
@@ -139,35 +138,31 @@ function openProfile(data) {
     profileCard.style.display = "flex";
 
     // Header logic
-    writeToUI('view-name', data.name);
-    let badge = document.getElementById('prof-status-badge');
-    if (badge) {
-        badge.innerText = data.status;
-        badge.className = "status-badge " + data.status.toLowerCase();
-    }
 
-    // Direct Mapping to the Template IDs we created
-    writeToUI('customer-name',data.name);
-    writeToUI('view-id',      data.id);
-    writeToUI('view-plan',    data.plan);
-    writeToUI('view-creds',   data.creds);
-    writeToUI('view-applied', data.applied);
-    writeToUI('view-age',     data.age);
-    writeToUI('view-sex',     data.sex);
-    writeToUI('view-job',     data.job);
-    writeToUI('view-dob',     data.dob);
-    writeToUI('view-pob',     data.pob);
-    writeToUI('view-address', data.address);
-    writeToUI('view-contact', data.contact);
-    writeToUI('view-social',  data.social);
-    writeToUI('view-optical', data.optical);
-    writeToUI('view-tech',    data.tech);
-    writeToUI('view-remarks', data.remarks);
-    writeToUI('view-sc',      data.sc);
-    writeToUI('view-fiber',   data.fiber);
-    writeToUI('view-clip',    data.clip);
-    writeToUI('view-tie',     data.tie);
-    writeToUI('view-fclamp',  data.fclamp);
+     // Direct Mapping to the Template IDs we created
+
+    writeToUI('view-name',    data.CLIENTS_NAME);
+    writeToUI('customer-name',data.CLIENTS_NAME);
+    writeToUI('view-id',      data.ID);
+    writeToUI('view-plan',    data.PLAN);
+    writeToUI('view-creds',   data.CREDENTIALS);
+    writeToUI('view-applied', data.DATE_APPLIED);
+    writeToUI('view-age',     data.AGE);
+    writeToUI('view-sex',     data.SEX);
+    writeToUI('view-job',     data.OCCUPATION);
+    writeToUI('view-dob',     data.DATE_OF_BIRTH);
+    writeToUI('view-pob',     data.PLACE_OF_BIRTH);
+    writeToUI('view-address', data.ADDRESS);
+    writeToUI('view-contact', data.CONTACT_NO);
+    writeToUI('view-social',  data.SOCIAL_MEDIA);
+    writeToUI('view-optical', data.OPTICAL_INFO);
+    writeToUI('view-tech',    data.INSTALLED_BY);
+    writeToUI('view-remarks', data.REMARKS);
+    writeToUI('view-sc',      data.SC_CONNECTOR);
+    writeToUI('view-fiber',   data.FIBER_DROP);
+    writeToUI('view-clip',    data.TAPPING_CLIP);
+    writeToUI('view-tie',     data.CABLE_TIE);
+    writeToUI('view-fclamp',  data.F_CLAMP);
 }
 
 function closeProfile() {
@@ -183,29 +178,20 @@ function openHistory(data) {
     5. SEARCH LOGIC (Imperative Logic)
 ============================================================ */
 function filterTable() {
-    let input = document.getElementById("tableSearch").value
-        .toUpperCase()
-        .trim()
-        .split(" "); // split into words
-
+    let input = document.getElementById("tableSearch").value.toUpperCase().trim().split(" "); // split into words
     let rows = document.querySelectorAll("#tableBody tr");
     let count = 0;
 
     rows.forEach(row => {
-        let text = row.textContent.toUpperCase();
 
+        let text = row.textContent.toUpperCase();
         let match = input.every(word => text.includes(word));
 
-        if (match) {
-            row.style.display = "";
-            count++;
-        } else {
-            row.style.display = "none";
-        }
+        if (match) { row.style.display = ""; count++;
+        } else { row.style.display = "none"; }
     });
 
-    document.getElementById('rowCount').innerText =
-        count + " Records Found";
+    document.getElementById('rowCount').innerText = count + " Records Found";
 }
 
 // Entry Point

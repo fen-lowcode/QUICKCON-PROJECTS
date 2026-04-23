@@ -26,6 +26,8 @@ public:
 
     bool            fetchAdminStatus(const std::string& firstName, const std::string& lastName);
     nlohmann::json  fetchCustomerData();
-    bool            RemoveCustomerData(const std::string& userID);
+
+    bool            AddCustomer();
+    bool            RemoveCustomer(const std::string& userID);
 };
 
