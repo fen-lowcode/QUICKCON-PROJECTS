@@ -78,16 +78,11 @@
 
 
 
-
-
-
-
-
-    <div id="profile-modal-background">
-
-        <div class="modal-wrapper">
+<div id="profile-modal-background">
+    <div class="modal-wrapper">
         <aside class="modal-sidebar">
-                <a href="#" id="profile-sidebar-padding"></a>
+            <div id="profile-sidebar-padding"></div>
+            <nav>
                 <a href="#" class="nav-item active">Profile Info</a>
                 <a href="#" class="nav-item">Billing History</a>
             </nav>
@@ -95,90 +90,77 @@
                 <button class="update-btn">Update Record</button>
             </div>
         </aside>
-    
-        <div class="info-grid">
-            <div id="profile-modal-header">
-                <span id="customer-name"></span>
+
+        <main class="content-main">
+            <header id="profile-modal-header">
+                <span id="customer-name">Customer Name</span>
                 <span class="close-modal" onclick="closeProfile()">&times;</span>
+            </header>
+
+            <div class="info-grid">
+                <section class="info-card">
+                    <h3>Account & Plan</h3>
+                    <div class="field-group"><label>Client ID</label><div id="view-id" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Client Name</label><div id="view-name" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Date Applied</label><div id="view-applied" contenteditable="true" class="editable-field"></div></div>
+                </section>
+
+                <section class="info-card">
+                    <h3>Client Identity</h3>
+                    <div class="field-group"><label>Age / Sex</label>
+                        <div style="display: flex; gap: 10px;">
+                            <div id="view-age" contenteditable="true" class="editable-field" style="width: 50%;"></div>
+                            <div id="view-sex" contenteditable="true" class="editable-field" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="field-group"><label>Occupation</label><div id="view-job" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Birth Date</label><div id="view-dob" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Birth Place</label><div id="view-pob" contenteditable="true" class="editable-field"></div></div>
+                </section>
+
+                <section class="info-card">
+                    <h3>Contact & Localization</h3>
+                    <div class="field-group"><label>Full Address</label><div id="view-address" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Contact No</label><div id="view-contact" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Social Media</label><div id="view-social" contenteditable="true" class="editable-field"></div></div>
+                    <div class="field-group"><label>Installed By</label><div id="view-tech" contenteditable="true" class="editable-field"></div></div>
+                </section>
+
+                <section class="info-card full-width">
+                    <h3>Installation Materials & Hardware</h3>
+                    <div class="materials-grid">
+                        <div class="material-item">
+                            <label>Optical Info</label>
+                            <div id="view-optical" class="editable-field" contenteditable="true"></div>
+                        </div>
+                        <div class="material-item">
+                            <label>Fiber Drop (M)</label>
+                            <div id="view-fiber" class="editable-field" contenteditable="true"></div>
+                        </div>
+                        <div class="material-item">
+                            <label>Tapping Clips</label>
+                            <div id="view-clip" class="editable-field" contenteditable="true"></div>
+                        </div>
+                        <div class="material-item">
+                            <label>Cable Ties</label>
+                            <div id="view-tie" class="editable-field" contenteditable="true"></div>
+                        </div>
+                        <div class="material-item">
+                            <label>F-Clamp</label>
+                            <div id="view-fclamp" class="editable-field" contenteditable="true"></div>
+                        </div>
+                        <div class="material-item">
+                            <label>SC Connector</label>
+                            <div id="view-sc" class="editable-field" contenteditable="true"></div>
+                        </div>
+                    </div>
+                </section>
             </div>
-
-            <section class="info-card">
-                <h3>Account & Plan</h3>
-                <div class="field-group"><label>Client ID</label><div id="view-id" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Client Name</label><div id="view-name" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Date Applied</label><div id="view-applied" contenteditable="true" class="editable-field"></div></div>
-            </section>
-
-            <section class="info-card">
-                <h3>Client Identity</h3>
-                <div class="row-flex">
-                    <div class="field-group"><label>Age</label><div id="view-age" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Sex</label><div id="view-sex" contenteditable="true" class="editable-field"></div></div>
-                </div>
-                <div class="field-group"><label>Occupation</label><div id="view-job" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Birth Date</label><div id="view-dob" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Birth Place</label><div id="view-pob" contenteditable="true" class="editable-field"></div></div>
-            </section>
-
-            <section class="info-card">
-                <h3>Contact & Localization</h3>
-                <div class="field-group"><label>Full Address</label><div id="view-address" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Contact No</label><div id="view-contact" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Social Media</label><div id="view-social" contenteditable="true" class="editable-field"></div></div>
-            </section>
-
-            <section class="info-card">
-                <h3>Technical Details</h3>
-                <div class="field-group"><label>Installed By</label><div id="view-tech" contenteditable="true" class="editable-field"></div></div>
-                <div class="field-group"><label>Remarks</label><div id="view-remarks" contenteditable="true" class="editable-field"></div></div>
-            </section>
-
-            
-            <section class="info-card full-width">
-                <h3><i class="icon"></i> Installation Materials & hardware</h3>
-                <div class="materials-grid">
-                    <div class="material-item">
-                        <label>Optical Info </label>
-                        <div id="view-optical" class="editable-field" contenteditable="true"></div>
-                    </div>
-
-                    <div class="material-item">
-                        <label>Fiber Drop (Meters)</label>
-                        <div id="view-fiber" class="editable-field" contenteditable="true"></div>
-                    </div>
-
-                    <div class="material-item">
-                        <label>Tapping Clips (Qty)</label>
-                        <div id="view-clip" class="editable-field" contenteditable="true"></div>
-                    </div>
-
-                    <div class="material-item">
-                        <label>Cable Ties</label>
-                        <div id="view-tie" class="editable-field" contenteditable="true"></div>
-                    </div>
-
-                    <div class="material-item">
-                        <label>F-Clamp</label>
-                        <div id="view-fclamp" class="editable-field" contenteditable="true"></div>
-                    </div>
-
-                    <div class="material-item">
-                        <label>SC Connector</label>
-                        <div id="view-sc" class="editable-field" contenteditable="true"></div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        </div>
+        </main>
     </div>
-
-
-
-
-
-
+</div>
 
 
 

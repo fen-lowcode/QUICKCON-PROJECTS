@@ -14,37 +14,63 @@
     --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
 }
 
-@font-face {
-    font-family: 'Quicksand';
-    font-weight: bold;
-    src: url('../../assets/Quicksand/Quicksand-VariableFont_wght.ttf');
-}
+/* Import Inter: Research-backed for high legibility in data dashboards */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 * { 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    font-family: 'Quicksand';
+    /* Inter provides better character spacing than Quicksand for data */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: url('../../assets/home-page-bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--text-main);
-    line-height: 1.6;
+    line-height: 1.5; /* Slightly tighter for professional UI */
     min-height: 100vh;
     display: flex;
-    justify-content: center; /* Centers the entire app container */
+    justify-content: center;
 }
 
 /* =========================
-    MAIN CONTAINER (FIXED LEFT PUSH)
+    BACKGROUND OVERLAY (PREMIUM LOOK)
+========================= */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 10%, rgba(74, 234, 255, 0.367), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgb(255, 255, 255), transparent 45%),
+        linear-gradient(to bottom, rgba(165, 162, 162, 0.55), rgba(110, 110, 110, 0.25));
+    backdrop-filter: blur(2px);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================
+    MAIN CONTAINER
 ========================= */
 #app-container { 
     width: 95%;
     max-width: 1750px;
-    margin: 40px auto !important; /* Forces centering and removes sidebar gap */
+    margin: 40px auto !important; 
     padding: 0 !important;
 }
 
@@ -55,12 +81,10 @@ body {
     margin-bottom: 24px;
 }
 
-/* =========================
-    HEADER (LOGO LEFT / SEARCH RIGHT)
-========================= */
 .controls {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on mobile */
     width: 100%;
     padding: 12px 24px;
     background: white;
@@ -73,16 +97,15 @@ body {
 .controls img {
     height: 60px;
     width: auto;
-    /* DYNAMIC POSITIONING */
-    order: -1;           /* Forces logo to the far left regardless of HTML order */
-    margin-right: auto;  /* Pushes all other elements to the far right edge */
-    margin-left: 0;      /* Clears your previous 100px margin */
+    order: -1;           
+    margin-right: auto;  
+    margin-left: 0;      
     object-fit: contain;
 }
 
 #tableSearch {
     flex: 1;
-    min-width: 300px;
+    min-width: 250px;
     max-width: 500px;
     padding: 12px 18px;
     border-radius: 8px;
@@ -108,6 +131,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 #add-customer-btn:hover { 
@@ -133,12 +157,13 @@ body {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow);
     border: 1px solid var(--border);
-    overflow: hidden; /* Clips table corners */
+    overflow: hidden; 
 }
 
 .scroll-area { 
     overflow-x: auto; 
     max-height: 75vh;
+    -webkit-overflow-scrolling: touch; /* Smooth mobile scroll */
 }
 
 table {
@@ -149,14 +174,13 @@ table {
     white-space: nowrap;
 }
 
-/* Sticky Header - Gentle Light Theme */
 th {
     padding: 16px 24px;
     text-align: left;
     background: var(--brand-blue); 
-    color: white;
-    font-size: 0.8rem;
-    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    font-size: 11px; /* Optimized size */
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid var(--border);
@@ -166,7 +190,7 @@ th {
 }
 
 td {
-    padding: 0.1px 30px;
+    padding: 5px 30px; /* Increased vertical padding for better readability */
     border-bottom: 1px solid #f1f5f9;
     color: var(--text-main);
     cursor: pointer;
@@ -179,10 +203,8 @@ td {
 }
 
 /* =========================
-    ACTION ELEMENTS (DELETE & STATUS)
+    ACTION ELEMENTS
 ========================= */
-
-/* The Row highlight logic */
 #tableBody tr:has(.delete-btn:hover) td {
     background-color: #fff1f2 !important;
     color: #e11d48;
@@ -210,7 +232,7 @@ td {
 
 .delete-btn:hover {
     background: #e11d48;
-    transform: scale(1.1);
+    transform: scale(1.01);
 }
 
 .delete-btn:hover img {
@@ -218,16 +240,62 @@ td {
     opacity: 1;
 }
 
-
-
 /* =========================
     CUSTOM SCROLLBAR
 ========================= */
-.scroll-area::-webkit-scrollbar { height: 10px; width: 8px; }
+.scroll-area::-webkit-scrollbar { height: 8px; width: 6px; }
 .scroll-area::-webkit-scrollbar-track { background: #f1f5f9; }
 .scroll-area::-webkit-scrollbar-thumb { 
     background: #cbd5e1; 
     border-radius: 10px; 
-    border: 2px solid #f1f5f9;
 }
-.scroll-area::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* =========================
+    RESPONSIVE MEDIA QUERIES
+========================= */
+
+/* Laptops & Small Monitors */
+@media (max-width: 1440px) {
+    #app-container {
+        width: 98%;
+        margin: 20px auto !important;
+    }
+    td, th {
+        padding: 12px 20px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    .controls {
+        gap: 15px;
+    }
+    #tableSearch {
+        max-width: 300px;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+    .controls img {
+        margin: 0 auto;
+        height: 50px;
+    }
+    #tableSearch {
+        max-width: 100%;
+        min-width: 100%;
+    }
+    #add-customer-btn {
+        width: 100%;
+        text-align: center;
+    }
+    td, th {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+}

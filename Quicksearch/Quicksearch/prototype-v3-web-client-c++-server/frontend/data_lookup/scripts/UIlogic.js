@@ -197,7 +197,7 @@ function filterTable() {
 // Entry Point
 window.onload = function() {
     loadTemplates('view-client-list');   
-    fetchClientmasterList();
+    // fetchClientmasterList();
 };
 
 //  TEMPORARY FIELD
