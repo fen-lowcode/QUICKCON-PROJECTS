@@ -76,16 +76,23 @@ async function deleteCustomer(e) {
 
 
 async function addCustomer(data) {
-    const res = await fetch('http://127.0.0.1:2222/add/customer', {
-        method: "POST",
-        headers: {
-            "Content-Type" : "application/json",
-        },
-        body: JSON.stringify({
-            token: await getToken(),
-            newCustomer: data
+
+    try {
+        const res = await fetch('http://127.0.0.1:2222/add/customer', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify({
+                token: await getToken(),
+                newCustomer: data
+            })
         })
-    })
+
+        await fetchClientmasterList();
+    } catch(err) {
+         console.error("Fetch failed: ", err);
+    }
 }
 
 
