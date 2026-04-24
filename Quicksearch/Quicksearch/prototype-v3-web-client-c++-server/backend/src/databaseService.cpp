@@ -185,3 +185,85 @@ bool DatabaseService::RemoveCustomer(const std::string& userID) {
         return false;
     }
 }
+
+bool DatabaseService::AddCustomer(
+
+    const std::string& CLIENTS_NAME,
+    const std::string& CREDENTIALS,
+    const std::string& ADDRESS,
+    const std::string& PLAN,
+    const std::string& DATE_APPLIED,
+    const std::string& CONTACT_NO,
+    const std::string& AGE,
+    const std::string& SEX,
+    const std::string& SOCIAL_MEDIA,
+    const std::string& OCCUPATION,
+    const std::string& DATE_OF_BIRTH,
+    const std::string& PLACE_OF_BIRTH,
+    const std::string& OPTICAL_INFO,
+    const std::string& SC_CONNECTOR,
+    const std::string& FIBER_DROP,
+    const std::string& TAPPING_CLIP,
+    const std::string& CABLE_TIE,
+    const std::string& F_CLAMP,
+    const std::string& REMARKS,
+    const std::string& INSTALLED_BY
+
+) {
+
+    std::lock_guard<std::mutex> lock(dbMutex);
+    sql::SQLString query = 
+        R"(INSERT INTO CUSTOMER_RECORDS(
+            CLIENTS_NAME, CREDENTIALS, ADDRESS, PLAN, 
+            DATE_APPLIED, CONTACT_NO, AGE, SEX, 
+            SOCIAL_MEDIA, OCCUPATION, 
+            DATE_OF_BIRTH, PLACE_OF_BIRTH,
+            OPTICAL_INFO, 
+            SC_CONNECTOR, 
+            FIBER_DROP, 
+            TAPPING_CLIP, 
+            CABLE_TIE,
+            F_CLAMP, 
+            REMARKS, 
+            INSTALLED_BY
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?))";
+    try {
+
+        auto stmt = std::unique_ptr<sql::PreparedStatement>(conn -> prepareStatement(query));
+        stmt->setString(1,  CLIENTS_NAME);
+        stmt->setString(2,  CREDENTIALS);
+        stmt->setString(3,  ADDRESS);
+        stmt->setString(4,  PLAN);
+        stmt->setString(5,  DATE_APPLIED);
+        stmt->setString(6,  CONTACT_NO);
+        stmt->setString(7,  AGE);
+        stmt->setString(8,  SEX);
+        stmt->setString(9,  SOCIAL_MEDIA);
+        stmt->setString(10, OCCUPATION);
+        stmt->setString(11, DATE_OF_BIRTH);
+        stmt->setString(12, PLACE_OF_BIRTH);
+        stmt->setString(13, OPTICAL_INFO);
+        stmt->setString(14, SC_CONNECTOR);
+        stmt->setString(15, FIBER_DROP);
+        stmt->setString(16, TAPPING_CLIP);
+        stmt->setString(17, CABLE_TIE);
+        stmt->setString(18, F_CLAMP);
+        stmt->setString(19, REMARKS);
+        stmt->setString(20, INSTALLED_BY);
+
+        auto rowAffected = stmt->executeUpdate();
+
+        if(rowAffected > 0) {
+            std::cout << "User: " << CLIENTS_NAME << " is successfully added" << std::endl;
+            return true;
+        } else {
+            std::cout << "User: " << CLIENTS_NAME << " is not added" << std::endl;
+            return false;
+        }
+
+    } catch(sql::SQLException& e) {
+        std::cout << "SQL error at adding customer " << e.what() << std::endl;
+    }
+
+    return false;
+}

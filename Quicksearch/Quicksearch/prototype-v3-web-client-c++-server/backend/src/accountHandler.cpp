@@ -43,28 +43,73 @@ nlohmann::json AccountHandler::getCustomerData() {
     return databaseServ.fetchCustomerData();
 }
 
-bool AccountHandler::deleteCustomerData(const nlohmann::json& JSONreq) {
+bool AccountHandler::addCustomer(const nlohmann::json& JSONreq) {
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
+
+    try {
+
+            bool success = databaseServ.AddCustomer(
+                JSONreq.at("CLIENTS_NAME"),
+                JSONreq.at("CREDENTIALS"),
+                JSONreq.at("ADDRESS"),
+                JSONreq.at("PLAN"),
+                JSONreq.at("DATE_APPLIED"),
+                JSONreq.at("CONTACT_NO"),
+                JSONreq.at("AGE"),
+                JSONreq.at("SEX"),
+                JSONreq.at("SOCIAL_MEDIA"),
+                JSONreq.at("OCCUPATION"),
+                JSONreq.at("DATE_OF_BIRTH"),
+                JSONreq.at("PLACE_OF_BIRTH"),
+                JSONreq.at("OPTICAL_INFO"),
+                JSONreq.at("SC_CONNECTOR"),
+                JSONreq.at("FIBER_DROP"),
+                JSONreq.at("TAPPING_CLIP"),
+                JSONreq.at("CABLE_TIE"),
+                JSONreq.at("F_CLAMP"),
+                JSONreq.at("REMARKS"),
+                JSONreq.at("INSTALLED_BY")
+            );
+
+            std::cout << "yehey new customer  " << std::endl;
+            std::cout << "        " << std::endl;
+            std::cout << "  (\\ /)" << std::endl;
+            std::cout << "  ( . .)" << std::endl;
+            std::cout << "  c(\")(\")" << std::endl;
+            std::cout << "      " << std::endl;
+
+            if(success) {return true;};
+
+    }  catch (nlohmann::json::exception& e) {
+        std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
+        std::cout << JSONreq.at("CLIENTS_NAME") << " Customer is not deleted" << std::endl;
+        return false;
+    }
+
+    std::cout << JSONreq.at("CLIENTS_NAME") << " Customer is not deleted" << std::endl;
+    return false;
+}
+
+bool AccountHandler::deleteCustomer(const nlohmann::json& JSONreq) {
 
     std::lock_guard<std::mutex> lock(this -> mutexGuard);
 
     try {
          // checks if every key in the JSONreq that are curcial is existing before sending to database handler to delete the data
 
-        nlohmann::json ({
-
-            {"id",      JSONreq.at("id")},
-            {"name",    JSONreq.at("name")},
-            {"creds",   JSONreq.at("creds")},
-        }
-    );  
+        [[maybe_unused]] nlohmann::json checker = {
+            {"ID",      JSONreq.at("ID")},
+            {"CLIENTS_NAME",    JSONreq.at("CLIENTS_NAME")},
+            {"CREDENTIALS",   JSONreq.at("CREDENTIALS")},
+        };  
     
-    std::cout << JSONreq.at("name") << " Data Will be Deleted" << std::endl;
-    return databaseServ.RemoveCustomer(JSONreq.at("id"));
+    std::cout << JSONreq.at("CLIENTS_NAME") << " Data Will be Deleted" << std::endl;
+    return databaseServ.RemoveCustomer(JSONreq.at("ID"));
 
 
     } catch (nlohmann::json::exception& e) {
         std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
-        std::cout << JSONreq.at("name") << " Data Info NOT Deleted" << std::endl;
+        std::cout << JSONreq.at("CLIENTS_NAME") << " Data Info NOT Deleted" << std::endl;
         return false;
     }
 }

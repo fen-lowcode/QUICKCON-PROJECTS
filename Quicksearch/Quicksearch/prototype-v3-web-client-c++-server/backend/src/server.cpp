@@ -104,7 +104,7 @@ void Server::deleteCustomerReq() {
         }
         #endif 
 
-        if (accounthandler.deleteCustomerData(JSONreq.at("customerToDel"))){
+        if (accounthandler.deleteCustomer(JSONreq.at("customerToDel"))){
 
             res.set_content("{\"reply\": \"Customer Data Deleted\"}", "application/json");
 
@@ -135,6 +135,14 @@ void Server::addCustomerReq() {
             return;
         }
         #endif 
+
+        if(accounthandler.addCustomer(JSONreq.at("newCustomer"))) {
+            res.status = 200;
+            res.set_content("\"reply\": \"Things are good, you got a new customer nice\"", "application/json");
+        } else {
+            res.status = 200;
+            res.set_content("\"reply\": \"oh shitty fuck that long encoding and the customer is failed to be added in the backend\"", "application/json");
+        }
     });
 }
 

@@ -17,7 +17,8 @@ public:
     std::string         accountAuth(  const std::string& firstName, const std::string& lastName, const std::string& password );
     bool                vrfyJwtToken(std::string token);
     nlohmann::json      getCustomerData();
-    bool                deleteCustomerData(const nlohmann::json& JSONreq);
+    bool                deleteCustomer(const nlohmann::json& JSONreq);
+    bool                addCustomer(const nlohmann::json& JSONreq);
 
 
 private:

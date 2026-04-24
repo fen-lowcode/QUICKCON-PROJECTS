@@ -47,9 +47,9 @@ async function deleteCustomer(e) {
     // Extracting data from table columns (Indices match <thead>)
     let cells = row.cells;
     let customerToDelete = {
-        id:        cells[1].innerText,
-        name:      cells[2].innerText,
-        creds:     cells[3].innerText,
+        ID:                 cells[1].innerText,
+        CLIENTS_NAME:       cells[2].innerText,
+        CREDENTIALS:        cells[3].innerText,
     };
 
     console.log(customerToDelete);
@@ -82,6 +82,7 @@ async function addCustomer(data) {
             "Content-Type" : "application/json",
         },
         body: JSON.stringify({
+            token: await getToken(),
             newCustomer: data
         })
     })
