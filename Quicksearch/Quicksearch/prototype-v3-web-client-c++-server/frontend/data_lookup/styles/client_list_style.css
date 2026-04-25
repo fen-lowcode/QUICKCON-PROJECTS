@@ -70,7 +70,7 @@ body::after {
 #app-container { 
     width: 95%;
     max-width: 1750px;
-    margin: 40px auto !important; 
+    margin: 30px auto !important; 
     padding: 0 !important;
 }
 
@@ -78,7 +78,7 @@ body::after {
     HEADER & CONTROLS
 ========================= */
 .glass-header {
-    margin-bottom: 24px;
+    margin-bottom: 0px;
 }
 
 .controls {
@@ -88,9 +88,9 @@ body::after {
     width: 100%;
     padding: 12px 24px;
     background: white;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); */
     gap: 20px;
 }
 
@@ -154,15 +154,12 @@ body::after {
 ========================= */
 .data-card {
     background: var(--surface);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
     overflow: hidden; 
 }
 
 .scroll-area { 
     overflow-x: auto; 
-    max-height: 75vh;
+    max-height: 85vh;
     -webkit-overflow-scrolling: touch; /* Smooth mobile scroll */
 }
 
@@ -177,9 +174,9 @@ table {
 th {
     padding: 16px 24px;
     text-align: left;
-    background: var(--brand-blue); 
-    color: rgb(255, 255, 255);
-    font-size: 11px; /* Optimized size */
+    background: rgba(255, 255, 255, 0.7); 
+    color: rgb(10, 10, 10);
+    font-size: 12px; /* Optimized size */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;

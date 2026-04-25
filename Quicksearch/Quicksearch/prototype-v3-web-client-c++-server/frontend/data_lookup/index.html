@@ -11,16 +11,7 @@
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-<!-- 
-    <aside class="sidebar">
-        <div class="sidebar-header">
-            <img src="../../assets/quicksearch-logo.png" alt="Quickcon Logo">
-        </div>
-        <nav>
-            <a href="#" class="nav-item active" onclick="loadTemplates('view-client-list'); fetchClientmasterList();">Refresh List</a>
-        </nav>
-    </aside> 
--->
+
 
     <main id="app-container" style="margin-left: 320px; padding: 20px;">
         </main>
@@ -85,6 +76,7 @@
             <nav>
                 <a href="#" class="nav-item active">Profile Info</a>
                 <a href="#" class="nav-item">Billing History</a>
+                 <a href="#" class="nav-item">Change Logs</a>
             </nav>
             <div class="sidebar-footer">
                 <button class="update-btn">Update Record</button>
@@ -136,7 +128,7 @@
                             <div id="view-optical" class="editable-field" contenteditable="true"></div>
                         </div>
                         <div class="material-item">
-                            <label>Fiber Drop (M)</label>
+                            <label>Fiber Drop</label>
                             <div id="view-fiber" class="editable-field" contenteditable="true"></div>
                         </div>
                         <div class="material-item">
@@ -161,76 +153,6 @@
         </main>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-    <template id="view-payment-history">
-        <div class="view-header">
-            <div class="title-group">
-                <h2 id="prof-name-display-history">Client Payment Logs</h2>
-                <span class="badge">Account: <span id="view-id-history">---</span></span>
-            </div>
-            <div class="payment-actions">
-                <button class="btn-primary">+ Add Payment History</button>
-            </div>
-        </div>
-
-        <div class="data-card">
-            <div class="scroll-area">
-                <table id="paymentTable">
-                    <thead>
-                        <tr>
-                            <th>Date & Time</th>
-                            <th>Reference No.</th>
-                            <th>Amount (PHP)</th>
-                            <th>Payment Status</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="paymentBody">
-                        <tr>
-                            <td><input type="datetime-local" class="edit-input"></td>
-                            <td><div contenteditable="true" class="editable-field">REF-001</div></td>
-                            <td><div contenteditable="true" class="editable-field">0.00</div></td>
-                            <td>
-                                <select class="status-dropdown">
-                                    <option value="full">Full Paid</option>
-                                    <option value="partial">Partial Paid</option>
-                                    <option value="pending">Pending</option>
-                                </select>
-                            </td>
-                            <td><button class="btn-icon-del">×</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </template>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -340,8 +262,9 @@
         </div>
     </div>
 
+    <script src="scripts/viewProfileLogic.js"></script>
     <script src="scripts/add_client.js"></script>
-    <script src="scripts/UIlogic.js"></script>
+    <script src="scripts/tableListLogic.js"></script>
     <script src="scripts/api.js"></script>
 </body>
 </html>
