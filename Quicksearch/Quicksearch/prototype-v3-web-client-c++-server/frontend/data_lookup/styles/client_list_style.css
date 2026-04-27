@@ -29,8 +29,8 @@
 
 body {
     background-color: var(--bg);
-    background-image: url('../../assets/home-page-bg.png');
-    background-size: cover;
+    background-image: url('../../assets/login_background.jpg');
+    /* background-size: cover; */
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -154,7 +154,7 @@ body::after {
     TABLE & DATA CARD
 ========================= */
 .data-card {
-    background: var(--surface);
+    background: transparent;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     overflow: hidden; 
