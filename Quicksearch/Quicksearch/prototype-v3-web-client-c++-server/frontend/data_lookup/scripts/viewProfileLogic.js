@@ -1,16 +1,21 @@
 
 /* ============================================================
-    4. EVENT HANDLING (The Bridge)
+    detects if a row is selected and then takes all the information in the row and send it to the profile  page
 ============================================================ */
+
+
+// globalmvariable that contains client profile data
+let clientData
+
 document.addEventListener('click', function(e) {
     let row = e.target.closest('#tableBody tr');
     let isDelete = e.target.closest('.delete-btn');
 
     if (row === null || isDelete !== null) return;
 
-    // Extracting data from table columns (Indices match <thead>)
+    // Extracting clientData from table columns (Indices match <thead>)
     let cells = row.cells;
-    let data = {
+    clientData = {
 
         ID:             cells[1].innerText,  
         CLIENTS_NAME:   cells[2].innerText,
@@ -36,11 +41,11 @@ document.addEventListener('click', function(e) {
 
     };
 
-    openProfile(data);
+    openProfile(clientData);
 });
 
 
-// Helper to write data to the DOM. Checks if ID exists before writing.
+// Helper to write clientData to the DOM. Checks if ID exists before writing.
 function writeToUI(elementId, value) {
     let target = document.getElementById(elementId);
     if (target !== null) {
@@ -53,9 +58,9 @@ function writeToUI(elementId, value) {
     }
 }
 
-function openProfile(data) {
+function openProfile(clientData) {
 
-
+    // sets the profile window visible
     let profileCard = document.getElementById("profile-modal-background");
     profileCard.style.display = "flex";
 
@@ -63,36 +68,72 @@ function openProfile(data) {
 
      // Direct Mapping to the Template IDs we created
 
-    writeToUI('view-name',    data.CLIENTS_NAME);
-    writeToUI('customer-name',data.CLIENTS_NAME);
-    writeToUI('view-id',      data.ID);
-    writeToUI('view-plan',    data.PLAN);
-    writeToUI('view-creds',   data.CREDENTIALS);
-    writeToUI('view-applied', data.DATE_APPLIED);
-    writeToUI('view-age',     data.AGE);
-    writeToUI('view-sex',     data.SEX);
-    writeToUI('view-job',     data.OCCUPATION);
-    writeToUI('view-dob',     data.DATE_OF_BIRTH);
-    writeToUI('view-pob',     data.PLACE_OF_BIRTH);
-    writeToUI('view-address', data.ADDRESS);
-    writeToUI('view-contact', data.CONTACT_NO);
-    writeToUI('view-social',  data.SOCIAL_MEDIA);
-    writeToUI('view-optical', data.OPTICAL_INFO);
-    writeToUI('view-tech',    data.INSTALLED_BY);
-    writeToUI('view-remarks', data.REMARKS);
-    writeToUI('view-sc',      data.SC_CONNECTOR);
-    writeToUI('view-fiber',   data.FIBER_DROP);
-    writeToUI('view-clip',    data.TAPPING_CLIP);
-    writeToUI('view-tie',     data.CABLE_TIE);
-    writeToUI('view-fclamp',  data.F_CLAMP);
+    writeToUI('view-name',    clientData.CLIENTS_NAME);
+    writeToUI('customer-name',clientData.CLIENTS_NAME);
+    writeToUI('view-id',      clientData.ID);
+    writeToUI('view-plan',    clientData.PLAN);
+    writeToUI('view-creds',   clientData.CREDENTIALS);
+    writeToUI('view-applied', clientData.DATE_APPLIED);
+    writeToUI('view-age',     clientData.AGE);
+    writeToUI('view-sex',     clientData.SEX);
+    writeToUI('view-job',     clientData.OCCUPATION);
+    writeToUI('view-dob',     clientData.DATE_OF_BIRTH);
+    writeToUI('view-pob',     clientData.PLACE_OF_BIRTH);
+    writeToUI('view-address', clientData.ADDRESS);
+    writeToUI('view-contact', clientData.CONTACT_NO);
+    writeToUI('view-social',  clientData.SOCIAL_MEDIA);
+    writeToUI('view-optical', clientData.OPTICAL_INFO);
+    writeToUI('view-tech',    clientData.INSTALLED_BY);
+    writeToUI('view-remarks', clientData.REMARKS);
+    writeToUI('view-sc',      clientData.SC_CONNECTOR);
+    writeToUI('view-fiber',   clientData.FIBER_DROP);
+    writeToUI('view-clip',    clientData.TAPPING_CLIP);
+    writeToUI('view-tie',     clientData.CABLE_TIE);
+    writeToUI('view-fclamp',  clientData.F_CLAMP);
 }
+
 
 function closeProfile() {
     let profileCard = document.getElementById("profile-modal-background");
+    // set's the profile window not visible
     profileCard.style.display = "none";
 }
 
-function openHistory(data) {
-    loadTemplates('view-payment-history')
-}
 
+// the function responsible for fetching all the profile info for update request
+
+document.getElementById('update-btn').addEventListener('click', function() {
+
+
+    var takeInput = (id) => {
+        const elementVal = document.getElementById(id);
+        return elementVal.innerText
+    }
+
+   const s = JSON.stringify({
+        ID: clientData.ID, // Assuming ID is not editable via takeInput
+        CLIENTS_NAME: takeInput('view-name'),
+        PLAN: takeInput('view-plan'),
+        CREDENTIALS: takeInput('view-creds'),
+        DATE_APPLIED: takeInput('view-applied'),
+        AGE: takeInput('view-age'),
+        SEX: takeInput('view-sex'),
+        OCCUPATION: takeInput('view-job'),
+        DATE_OF_BIRTH: takeInput('view-dob'),
+        PLACE_OF_BIRTH: takeInput('view-pob'),
+        ADDRESS: takeInput('view-address'),
+        CONTACT_NO: takeInput('view-contact'),
+        SOCIAL_MEDIA: takeInput('view-social'),
+        OPTICAL_INFO: takeInput('view-optical'),
+        INSTALLED_BY: takeInput('view-tech'),
+        REMARKS: takeInput('view-remarks'),
+        SC_CONNECTOR: takeInput('view-sc'),
+        FIBER_DROP: takeInput('view-fiber'),
+        TAPPING_CLIP: takeInput('view-clip'),
+        CABLE_TIE: takeInput('view-tie'),
+        F_CLAMP: takeInput('view-fclamp')
+    });
+
+    console.log(JSON.stringify(s));
+    updateCustomer(s);
+});

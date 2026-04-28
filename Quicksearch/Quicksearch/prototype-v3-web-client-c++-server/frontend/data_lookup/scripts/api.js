@@ -1,4 +1,14 @@
 
+
+
+// get's the right token from document token
+async function getToken() {
+    return await localStorage.getItem('JWT');
+}
+
+
+
+
 async function fetchClientmasterList() {
     try {
 
@@ -39,8 +49,9 @@ async function fetchClientmasterList() {
 
 
 /* ============================================================
-    4. EVENT HANDLING (The Bridge)
+    4. EVENT HANDLING 
 ============================================================ */
+
 async function deleteCustomer(e) {
     let row = e.target.closest('#tableBody tr');
 
@@ -74,7 +85,6 @@ async function deleteCustomer(e) {
     }
 };
 
-
 async function addCustomer(data) {
 
     try {
@@ -96,9 +106,21 @@ async function addCustomer(data) {
 }
 
 
+// PROFILE HANDLING for cuastomer info update
 
-// get's the right token from document token
-async function getToken() {
-    return await localStorage.getItem('JWT');
+async function updateCustomer(data) {
+    try {
+        const res = await fetch('http://127.0.0.1:2222/update/customer', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify({
+                token: await getToken(),
+                updateCustomer: data
+            })
+        })
+    } catch (err) {
+         console.error("Fetch failed: ", err);
+    }
 }
-

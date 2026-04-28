@@ -88,8 +88,6 @@ body::after {
     width: 100%;
     padding: 12px 24px;
     background: white;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     border: 1px solid #e2e8f0;
     /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); */
     gap: 20px;
@@ -155,8 +153,6 @@ body::after {
 ========================= */
 .data-card {
     background: transparent;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
     overflow: hidden; 
 }
 
@@ -247,7 +243,6 @@ td {
 .scroll-area::-webkit-scrollbar-track { background: #f1f5f9; }
 .scroll-area::-webkit-scrollbar-thumb { 
     background: #cbd5e1; 
-    border-radius: 10px; 
 }
 
 /* =========================
