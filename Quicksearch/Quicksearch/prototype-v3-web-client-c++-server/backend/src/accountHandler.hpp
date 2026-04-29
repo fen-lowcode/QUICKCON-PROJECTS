@@ -19,6 +19,7 @@ public:
     nlohmann::json      getCustomerData();
     bool                deleteCustomer(const nlohmann::json& JSONreq);
     bool                addCustomer(const nlohmann::json& JSONreq);
+    bool                updateCustomer(const nlohmann::json& JSONreq);
 
 
 private:

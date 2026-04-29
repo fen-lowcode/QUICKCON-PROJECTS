@@ -110,7 +110,7 @@ document.getElementById('update-btn').addEventListener('click', function() {
         return elementVal.innerText
     }
 
-   const s = JSON.stringify({
+   const s = {
         ID: clientData.ID, // Assuming ID is not editable via takeInput
         CLIENTS_NAME: takeInput('view-name'),
         PLAN: takeInput('view-plan'),
@@ -132,7 +132,7 @@ document.getElementById('update-btn').addEventListener('click', function() {
         TAPPING_CLIP: takeInput('view-clip'),
         CABLE_TIE: takeInput('view-tie'),
         F_CLAMP: takeInput('view-fclamp')
-    });
+    };
 
     console.log(JSON.stringify(s));
     updateCustomer(s);

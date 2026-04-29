@@ -1,8 +1,10 @@
 #include "accountHandler.hpp"
+#include "databaseService.hpp"
 #include <exception>
 #include <fstream>
 #include <jwt-cpp/jwt.h>
 #include <jwt-cpp/traits/kazuho-picojson/traits.h>
+#include <mariadb/conncpp/Exception.hpp>
 #include <mutex>
 #include <nlohmann/json_fwd.hpp>
 #include <resolv.h>
@@ -112,6 +114,44 @@ bool AccountHandler::deleteCustomer(const nlohmann::json& JSONreq) {
         std::cout << JSONreq.at("CLIENTS_NAME") << " Data Info NOT Deleted" << std::endl;
         return false;
     }
+}
+
+
+bool AccountHandler::updateCustomer(const nlohmann::json& JSONreq) {
+
+    try {
+
+    databaseServ.updateCustomer(
+        JSONreq.at("ID").get<std::string>(),
+            JSONreq.at("CLIENTS_NAME").get<std::string>(),
+            JSONreq.at("CREDENTIALS").get<std::string>(),
+            JSONreq.at("ADDRESS").get<std::string>(),
+            JSONreq.at("PLAN").get<std::string>(),
+            JSONreq.at("DATE_APPLIED").get<std::string>(),
+            JSONreq.at("CONTACT_NO").get<std::string>(),
+            JSONreq.at("AGE").get<std::string>(),
+            JSONreq.at("SEX").get<std::string>(),
+            JSONreq.at("SOCIAL_MEDIA").get<std::string>(),
+            JSONreq.at("OCCUPATION").get<std::string>(),
+            JSONreq.at("DATE_OF_BIRTH").get<std::string>(),
+            JSONreq.at("PLACE_OF_BIRTH").get<std::string>(),
+            JSONreq.at("OPTICAL_INFO").get<std::string>(),
+            JSONreq.at("SC_CONNECTOR").get<std::string>(),
+            JSONreq.at("FIBER_DROP").get<std::string>(),
+            JSONreq.at("TAPPING_CLIP").get<std::string>(),
+            JSONreq.at("CABLE_TIE").get<std::string>(),
+            JSONreq.at("F_CLAMP").get<std::string>(),
+            JSONreq.at("REMARKS").get<std::string>(),
+            JSONreq.at("INSTALLED_BY").get<std::string>()
+        );
+        return true;
+
+    } catch(nlohmann::json::exception& e) {
+        std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
+        std::cout << JSONreq.at("CLIENTS_NAME") << " Data Info NOT Deleted" << std::endl;
+        return false;
+    }
+    return false;
 }
 
 

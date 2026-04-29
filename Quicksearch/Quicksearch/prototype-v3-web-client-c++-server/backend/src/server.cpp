@@ -1,4 +1,5 @@
 #include "server.hpp"
+#include "accountHandler.hpp"
 #include <iterator>
 #define DATA_PROTECTION
 
@@ -140,8 +141,35 @@ void Server::addCustomerReq() {
             res.status = 200;
             res.set_content("\"reply\": \"Things are good, you got a new customer nice\"", "application/json");
         } else {
-            res.status = 200;
+            res.status = 400;
             res.set_content("\"reply\": \"oh shitty fuck that long encoding and the customer is failed to be added in the backend\"", "application/json");
+        }
+    });
+}
+
+void Server::updateCustomer() {
+    serverHandler.Post("/update/customer", [this](const httplib::Request& req, httplib::Response& res) {
+        res.set_header("Access-Control-Allow-Origin", "*");
+    
+        if(!reqIsJson(req, res)) {return;}
+
+        nlohmann::json JSONreq = nlohmann::json::parse(req.body);
+        
+        #ifdef DATA_PROTECTION
+        if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
+            res.status = 401;
+            res.set_content("{\"reply\":\"You Are Not Allowed To Do That\"}", "application/json");
+            std::cout << " REQUEST REFUSED " << std::endl; 
+            return;
+        }
+        #endif
+
+        if(accounthandler.updateCustomer(JSONreq.at("updateCustomer"))) {
+            res.status = 200;
+            res.set_content("{\"reply\": \"Things are good, customer info is updated\"}", "application/json");
+        } else {
+            res.status = 400;
+            res.set_content("{\"reply\": \"opsss update failed man\"}", "application/json");
         }
     });
 }

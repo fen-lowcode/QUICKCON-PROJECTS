@@ -12,7 +12,7 @@ async function getToken() {
 async function fetchClientmasterList() {
     try {
 
-        let response = await fetch('http://127.0.0.1:2222/get/customerlist', { 
+        let response = await fetch('http://192.168.24.254:2222/get/customerlist', { 
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ async function deleteCustomer(e) {
     console.log(customerToDelete);
 
     try {
-        let res = await fetch("http://127.0.0.1:2222/delete/customerinfo", {
+        let res = await fetch("http://192.168.24.254:2222/delete/customerinfo", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -88,7 +88,7 @@ async function deleteCustomer(e) {
 async function addCustomer(data) {
 
     try {
-        const res = await fetch('http://127.0.0.1:2222/add/customer', {
+        const res = await fetch('http://192.168.24.254:2222/add/customer', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
@@ -110,7 +110,7 @@ async function addCustomer(data) {
 
 async function updateCustomer(data) {
     try {
-        const res = await fetch('http://127.0.0.1:2222/update/customer', {
+        const res = await fetch('http://192.168.24.254:2222/update/customer', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",

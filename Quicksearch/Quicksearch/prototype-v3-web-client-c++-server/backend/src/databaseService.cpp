@@ -267,3 +267,90 @@ bool DatabaseService::AddCustomer(
 
     return false;
 }
+
+bool DatabaseService::updateCustomer(
+
+    const std::string& ID, const std::string& CLIENTS_NAME, const std::string& CREDENTIALS, 
+    const std::string& ADDRESS,const std::string& PLAN, const std::string& DATE_APPLIED, 
+    const std::string& CONTACT_NO, const std::string& AGE, const std::string& SEX, 
+    const std::string& SOCIAL_MEDIA,const std::string& OCCUPATION, const std::string& DATE_OF_BIRTH, 
+    const std::string& PLACE_OF_BIRTH,const std::string& OPTICAL_INFO, const std::string& SC_CONNECTOR, 
+    const std::string& FIBER_DROP,const std::string& TAPPING_CLIP, const std::string& CABLE_TIE, 
+    const std::string& F_CLAMP,const std::string& REMARKS, const std::string& INSTALLED_BY
+
+) {
+    std::lock_guard<std::mutex> lock(dbMutex);
+
+    std::string statement = 
+        "UPDATE CUSTOMER_RECORDS SET " 
+
+        // Group 1: Personal & Bio Information
+        "CLIENTS_NAME = ?, CREDENTIALS = ?, ADDRESS = ?, AGE = ?, SEX = ?, " 
+        "SOCIAL_MEDIA = ?, OCCUPATION = ?, DATE_OF_BIRTH = ?, PLACE_OF_BIRTH = ?, " 
+
+        // Group 2: Account & Contact Details
+        "PLAN = ?, DATE_APPLIED = ?, CONTACT_NO = ?, "
+
+        // Group 3: Technical Hardware / Optical Specs
+        "OPTICAL_INFO = ?, SC_CONNECTOR = ?, FIBER_DROP = ?, " 
+        "TAPPING_CLIP = ?, CABLE_TIE = ?, F_CLAMP = ?, "
+
+        // Group 4: Administrative
+        "REMARKS = ?, INSTALLED_BY = ? " 
+        // The Guardrail
+        "WHERE ID = ?";
+
+
+    try {
+
+        auto stmt = std::unique_ptr<sql::PreparedStatement>(this -> conn -> prepareStatement(statement));
+
+        // Group 1: Personal & Bio Information
+        stmt->setString(1, CLIENTS_NAME);
+        stmt->setString(2, CREDENTIALS);
+        stmt->setString(3, ADDRESS);
+        stmt->setString(4, AGE);
+        stmt->setString(5, SEX);
+        stmt->setString(6, SOCIAL_MEDIA);
+        stmt->setString(7, OCCUPATION);
+        stmt->setString(8, DATE_OF_BIRTH);
+        stmt->setString(9, PLACE_OF_BIRTH);
+
+        // Group 2: Account & Contact Details
+        stmt->setString(10, PLAN);
+        stmt->setString(11, DATE_APPLIED);
+        stmt->setString(12, CONTACT_NO);
+
+        // Group 3: Technical Hardware / Optical Specs
+        stmt->setString(13, OPTICAL_INFO);
+        stmt->setString(14, SC_CONNECTOR);
+        stmt->setString(15, FIBER_DROP);
+        stmt->setString(16, TAPPING_CLIP);
+        stmt->setString(17, CABLE_TIE);
+        stmt->setString(18, F_CLAMP);
+
+        // Group 4: Administrative
+        stmt->setString(19, REMARKS);
+        stmt->setString(20, INSTALLED_BY);
+
+        // The Guardrail (WHERE clause)
+        stmt->setString(21, ID);
+
+
+        auto rowAffected = stmt->executeUpdate();
+
+        if(rowAffected > 0) {
+            std::cout << "User: " << CLIENTS_NAME << " is successfully updated" << std::endl;
+            return true;
+        } else {
+            std::cout << "User: " << CLIENTS_NAME << " is not updated" << std::endl;
+            return false;
+        }
+
+    } catch (sql::SQLException& e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    return false;
+}
+
