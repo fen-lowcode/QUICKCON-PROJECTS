@@ -1,7 +1,10 @@
 FROM CLIENT MASTER LIST
 
 Malabon
+Area F
+Area H
 Benjamin
+Phase 1 mitch
 Phase 5
 Phase 4A
 Phase 4B

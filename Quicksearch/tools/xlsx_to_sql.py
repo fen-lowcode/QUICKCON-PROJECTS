@@ -1,7 +1,7 @@
 import pandas as pd
 
 # 1. Load the Excel (no headers)
-df = pd.read_excel("CLIENT_Masterlist.xlsx", sheet_name="Mediacon", header=None)
+df = pd.read_excel("CLIENT_Masterlist.xlsx", sheet_name="AREA H", header=None)
 
 # 2. Alignment Fix: Capture exactly 20 columns (Index 0 to 19)
 df = df.iloc[:, 0:20] 

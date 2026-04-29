@@ -1,296 +1,226 @@
 /* =========================
-    VARIABLES & MODERN RESET
+    COMPACT DATA-FIRST VARIABLES
 ========================= */
 :root {
-    --bg: #f8fafc;           /* Light, gentle background */
+    --bg: #f1f5f9;
     --surface: #ffffff;
-    --text-main: #1e293b;    
+    --text-main: #334155;    
     --text-muted: #64748b;
-    --accent: #6366f1;       /* Indigo Accent */
-    --brand-blue: #0003cc;   /* Your Brand Blue */
-    --border: #e2e8f0;
-    --radius-lg: 16px;
-    --radius-md: 10px;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+    --accent: #2563eb;       /* Sharper Blue */
+    --brand-blue: #0003cc;
+    --border: #cbd5e1;       /* Slightly darker for cell definition */
+    --row-hover: #f1f5f9;
+    --header-bg: #f8fafc;
 }
 
-/* Import Inter: Research-backed for high legibility in data dashboards */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
 * { 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
-    /* Inter provides better character spacing than Quicksand for data */
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
     background-color: var(--bg);
-    background-image: url('../../assets/login_background.jpg');
-    /* background-size: cover; */
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     color: var(--text-main);
-    line-height: 1.5; /* Slightly tighter for professional UI */
+    font-size: 13px; /* Smaller base size for high density */
+    line-height: 1.2;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 /* =========================
-    BACKGROUND OVERLAY (PREMIUM LOOK)
+    MINIMALIST CONTROLS (THE "RIBBON")
 ========================= */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background:
-        radial-gradient(circle at 20% 10%, rgba(74, 234, 255, 0.367), transparent 40%),
-        radial-gradient(circle at 80% 30%, rgb(255, 255, 255), transparent 45%),
-        linear-gradient(to bottom, rgba(165, 162, 162, 0.55), rgba(110, 110, 110, 0.25));
-    backdrop-filter: blur(2px);
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background: rgba(0, 0, 0, 0.08);
-}
-
-/* =========================
-    MAIN CONTAINER
-========================= */
-#app-container { 
-    width: 95%;
-    max-width: 1750px;
-    margin: 30px auto !important; 
-    padding: 0 !important;
-}
-
-/* =========================
-    HEADER & CONTROLS
-========================= */
-.glass-header {
-    margin-bottom: 0px;
-}
-
 .controls {
     display: flex;
     align-items: center;
-    flex-wrap: wrap; /* Allows wrapping on mobile */
-    width: 100%;
-    padding: 12px 24px;
-    background: white;
-    border: 1px solid #e2e8f0;
-    /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); */
-    gap: 20px;
+    padding: 6px 12px;
+    background: rgb(233, 248, 252);
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+    height: 48px; /* Fixed height for consistency */
 }
 
 .controls img {
-    height: 60px;
+    height: 28px; /* Compact logo */
     width: auto;
-    order: -1;           
-    margin-right: auto;  
-    margin-left: 0;      
-    object-fit: contain;
 }
 
 #tableSearch {
-    flex: 1;
-    min-width: 250px;
-    max-width: 500px;
-    padding: 12px 18px;
-    border-radius: 8px;
+    height: 32px;
+    flex: 0 1 300px;
+    padding: 0 10px;
+    border-radius: 4px;
     border: 1px solid var(--border);
-    background: #f1f5f9;
-    font-size: 0.95rem;
-    transition: all 0.2s ease;
-}
-
-#tableSearch:focus { 
-    background: white;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
-    outline: none;
+    font-size: 12px;
 }
 
 #add-customer-btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
+    height: 32px;
+    padding: 0 15px;
+    border-radius: 4px;
     background: var(--brand-blue);
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
     color: white;
-    font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-#add-customer-btn:hover { 
-    filter: brightness(1.2);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 3, 204, 0.2);
 }
 
 .count-badge { 
-    font-size: 0.85rem; 
-    font-weight: 700; 
-    background: lightblue; 
-    padding: 8px 16px; 
-    border-radius: 8px; 
-    color: black; 
+    font-size: 11px;
+    padding: 2px 8px;
+    background: #e2e8f0;
+    border-radius: 12px;
+    color: var(--text-main);
 }
 
 /* =========================
-    TABLE & DATA CARD
+    EXCEL-STYLE TABLE GRID
 ========================= */
-.data-card {
-    background: transparent;
-    overflow: hidden; 
+#app-container { 
+    width: 100%; /* Use full width for Excel feel */
+    margin: 0 !important; 
+    padding: 0 !important;
 }
 
 .scroll-area { 
-    overflow-x: auto; 
-    max-height: 85vh;
-    -webkit-overflow-scrolling: touch; /* Smooth mobile scroll */
+    overflow: auto; 
+    height: calc(100vh - 48px); /* Fill remaining viewport */
+    background: white;
 }
 
 table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    font-size: 0.88rem;
-    white-space: nowrap;
+    width: max-content; /* Allows horizontal scrolling like a real sheet */
+    min-width: 100%;
+    border-collapse: collapse; /* Critical for the grid look */
+    table-layout: fixed; /* Faster rendering */
 }
 
 th {
-    padding: 16px 24px;
-    text-align: left;
-    background: rgba(255, 255, 255, 0.7); 
-    color: rgb(10, 10, 10);
-    font-size: 12px; /* Optimized size */
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid var(--border);
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 30;
+    background: var(--header-bg);
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border-right: 1px solid var(--border);
+    border-bottom: 2px solid var(--border);
+    user-select: none;
 }
 
 td {
-    padding: 5px 30px; /* Increased vertical padding for better readability */
-    border-bottom: 1px solid #f1f5f9;
-    color: var(--text-main);
+    padding: 6px 12px; /* Tight vertical padding */
+    border-right: 1px solid #edf2f7;
+    border-bottom: 1px solid #edf2f7;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.1s;
     cursor: pointer;
-    transition: all 0.2s;
-    vertical-align: middle;
 }
 
-#tableBody tr:hover td { 
-    background-color: #f8fafc; 
+/* Zebra Striping */
+tr:nth-child(even) td {
+    background-color: #fafafa;
+}
+
+tr:hover td { 
+    background-color: #f0f7ff !important; /* Light blue highlight */
 }
 
 /* =========================
-    ACTION ELEMENTS
+    SMALL-SCALE UTILITIES
 ========================= */
+.delete-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+.delete-btn img {
+    width: 14px;
+    height: 14px;
+}
+
+/* Scrollbar refinement */
+.scroll-area::-webkit-scrollbar { width: 10px; height: 10px; }
+.scroll-area::-webkit-scrollbar-track { background: #f1f1f1; }
+.scroll-area::-webkit-scrollbar-thumb { 
+    background: #ccc; 
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+}
+
+/* =========================
+    LOW-RESOLUTION OPTIMIZATION
+========================= */
+@media (max-height: 700px) {
+    body { font-size: 12px; }
+    th, td { padding: 4px 8px; }
+    .controls { height: 40px; }
+    .controls img { height: 22px; }
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+    #tableSearch { flex: 0 0 150px; }
+}
+
+/* =========================
+    REFINED DELETE HOVER EFFECT
+========================= */
+
+/* The 'Danger Row' effect - highlights the whole row when hovering the delete button */
 #tableBody tr:has(.delete-btn:hover) td {
-    background-color: #fff1f2 !important;
-    color: #e11d48;
+    background-color: #fff1f2 !important; /* Soft red background */
+    color: #e11d48;                       /* Alert red text */
+    border-bottom-color: #fecdd3;
 }
 
 .delete-btn {
     background: transparent;
     border: none;
-    width: 38px;
-    height: 38px;
-    border-radius: 8px;
+    width: 28px;        /* Compact size */
+    height: 28px;
+    border-radius: 4px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
     margin: 0 auto;
 }
 
 .delete-btn img {
-    width: 20px;
-    height: 20px;
-    opacity: 0.5;
+    width: 16px;        /* Smaller icon for high-density */
+    height: 16px;
+    opacity: 0.4;       /* Subtle when not active */
+    transition: filter 0.1s;
 }
 
+/* Button specific hover */
 .delete-btn:hover {
     background: #e11d48;
-    transform: scale(1.01);
+    transform: scale(1.1);
 }
 
 .delete-btn:hover img {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1); /* Turns icon white */
     opacity: 1;
 }
 
-/* =========================
-    CUSTOM SCROLLBAR
-========================= */
-.scroll-area::-webkit-scrollbar { height: 8px; width: 6px; }
-.scroll-area::-webkit-scrollbar-track { background: #f1f5f9; }
-.scroll-area::-webkit-scrollbar-thumb { 
-    background: #cbd5e1; 
-}
-
-/* =========================
-    RESPONSIVE MEDIA QUERIES
-========================= */
-
-/* Laptops & Small Monitors */
-@media (max-width: 1440px) {
-    #app-container {
-        width: 98%;
-        margin: 20px auto !important;
-    }
-    td, th {
-        padding: 12px 20px;
-    }
-}
-
-/* Tablets */
-@media (max-width: 1024px) {
-    .controls {
-        gap: 15px;
-    }
-    #tableSearch {
-        max-width: 300px;
-    }
-}
-
-/* Mobile Phones */
-@media (max-width: 768px) {
-    .controls {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 16px;
-    }
-    .controls img {
-        margin: 0 auto;
-        height: 50px;
-    }
-    #tableSearch {
-        max-width: 100%;
-        min-width: 100%;
-    }
-    #add-customer-btn {
-        width: 100%;
-        text-align: center;
-    }
-    td, th {
-        padding: 12px 15px;
-        font-size: 0.8rem;
-    }
+/* Keep cell borders clean during hover */
+#tableBody tr:hover td {
+    border-right-color: rgba(0,0,0,0.05);
 }
