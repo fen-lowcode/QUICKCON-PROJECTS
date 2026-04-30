@@ -1,331 +1,369 @@
 :root {
-    /* Core Color Scheme Preserved */
-    --accent: #6366f1;  
-    --accent-hover: #4f46e5;
-    --border: #e2e8f0;
-    --bg-app: #f1f5f9;
-    --bg-card: #ffffff;
-    --bg-field: #f8fafc;
-    --text-main: #1e293b;
-    --text-muted: #64748b;
-    --header-indigo: #1e1b4b; /* Your dark indigo */
-    --brand-blue:  #0003cc;
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-dark: #3730a3;
+    --surface: #ffffff;
+    --surface-elevated: #f8fafc;
+    --surface-ground: #f1f5f9;
+    --border-subtle: #e2e8f0;
+    --border-default: #cbd5e1;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-tertiary: #94a3b8;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-
+/* ─── FONT DELEGATION ─── */
 @font-face {
     font-family: 'Quicksand';
-    font-weight: 500;
-    src: url('../../assets/Quicksand/Quicksand-VariableFont_wght.ttf');
+    /* Using the variable font to cover all weights (300 to 700) */
+    src: url('../../assets/Quicksand/Quicksand-VariableFont_wght.ttf') format('truetype');
+    font-weight: 300 700;
+    font-style: normal;
+    font-display: swap;
 }
 
-/* 1. OVERLAY - Modern Mesh Backdrop */
+/* ─── BASE RESET ─── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* This forces every element to inherit your font */
+    font-family: 'Quicksand', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    background: var(--surface-ground);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── MODAL OVERLAY ─── */
 #profile-modal-background {
-    display: none; 
+    display: none;
     position: fixed;
+    inset: 0;
     z-index: 9999;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at top left, rgba(149, 150, 226, 0.15), transparent),
-                rgba(140, 152, 181, 0.75);
-    backdrop-filter: blur(12px);
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
 }
 
-/* 2. MODAL WRAPPER */
+#profile-modal-background.active { display: flex; }
+
+/* ─── MODAL SHELL ─── */
 .modal-wrapper {
     display: flex;
     width: 100%;
-    max-width: 1300px;
-    height: 88vh;
-    background: var(--bg-card);
-    border-radius: 24px;
+    max-width: 1280px;
+    height: 90vh;
+    background: var(--surface);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    /* border: 1px solid rgba(255, 255, 255, 0.1); */
+    box-shadow: var(--shadow-lg);
 }
 
-/* 3. PREMIUM SIDEBAR */
+/* ─── SIDEBAR ─── */
 .modal-sidebar {
-    width: 260px;
-    /* Premium Gradient: From your accent to your dark indigo */
-    background: white;
+    width: 240px;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 0;
-    position: relative;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Subtle glass overlay on sidebar */
-.modal-sidebar::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(rgba(255,255,255,0.05), transparent);
-    pointer-events: none;
-}
-
-#profile-sidebar-padding {
-    height: 100px;
-    display: block;
-}
+#profile-sidebar-padding { height: 64px; }
 
 .nav-item {
-    margin: 8px 18px;
-    padding: 14px 20px;
-    color: rgb(0, 0, 0);
+    margin: 2px 12px;
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
     text-decoration: none;
-    font-size: 16px;
-    font-weight: bolder;
-    border-radius: 14px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: var(--transition);
-    display: block;
-    z-index: 1;
-}
-
-.nav-item:hover {
-    color: #000000;
-    background: rgb(79, 190, 255);
-    transform: translateX(4px);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all var(--transition-fast);
 }
 
 .nav-item.active {
-    background: rgba(255, 255, 255, 0.15);
-    color: #fff;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--primary);
+    color: white;
 }
 
 .sidebar-footer {
-    padding: 24px;
-    z-index: 1;
+    margin-top: auto;
+    padding: 20px;
+    border-top: 1px solid var(--border-subtle);
 }
 
-/* 4. CONTENT MAIN - Static Logic */
+/* ─── MAIN CONTENT BLOCK ─── */
 .content-main {
     flex: 1;
     display: flex;
     flex-direction: column;
+    min-width: 0;
     height: 100%;
     overflow: hidden;
-    background: var(--bg-app);
 }
 
-/* 5. STATIC HEADER */
 #profile-modal-header {
     flex-shrink: 0;
-    background: #fff;
-    padding: 24px 40px;
+    padding: 20px 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-subtle);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--border);
-    z-index: 10;
 }
 
 #customer-name {
-    font-family: 'Quicksand', sans-serif;
-    font-size: 26px;
-    font-weight: bolder;
-    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
-.close-modal {
-    cursor: pointer;
-    font-size: 28px;
-    color: var(--text-muted);
-    transition: var(--transition);
-}
-
-.close-modal:hover {
-    color: #f43f5e;
-    transform: rotate(90deg);
-}
-
-/* 6. SCROLLABLE INFO GRID */
-.info-grid {
+/* ─── SCROLLABLE AREA ─── */
+.content-body {
     flex: 1;
     overflow-y: auto;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-ground);
+}
+
+/* ─── INFO GRID ─── */
+.info-grid {
+    flex-shrink: 0;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    align-content: start;
+    gap: 20px;
+    padding: 24px 32px;
 }
 
-/* Custom Scrollbar for Info Grid */
-.info-grid::-webkit-scrollbar { width: 8px; }
-.info-grid::-webkit-scrollbar-track { background: transparent; }
-.info-grid::-webkit-scrollbar-thumb { 
-    background: rgba(0,0,0,0.1); 
-    border-radius: 10px; 
-}
-
-/* 7. CARDS & FIELDS */
 .info-card {
     grid-column: span 4;
-    background: var(--bg-card);
-    padding: 28px;
-    border-radius: 24px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
-    transition: var(--transition);
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
 }
 
 .info-card.full-width { grid-column: span 12; }
 
-.info-card h3 {
-    font-size: 12px;
-    font-weight: 900;
-    color: var(--accent);
+/* ─── HISTORY SECTION ─── */
+.history-scroll-area {
+    flex-shrink: 0; 
+    padding: 0 32px 32px 32px;
+}
+
+.history-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-wrapper {
+    max-height: 350px;
+    overflow-y: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-subtle);
+}
+
+/* ─── TABLE DESIGN ─── */
+.payment-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.payment-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--surface-elevated);
+    padding: 12px 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-secondary);
     text-transform: uppercase;
-    margin-bottom: 24px;
-    letter-spacing: 1.5px;
+    border-bottom: 2px solid var(--border-subtle);
+    text-align: left;
 }
 
+.payment-table td {
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.875rem;
+    font-weight: 600; /* Made slightly bolder for Quicksand visibility */
+}
+
+/* ─── FORM ELEMENTS ─── */
 .field-group {
-    background: var(--bg-field);
-    padding: 12px 16px;
-    border-radius: 12px;
-    margin-bottom: 14px;
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.field-group:hover {
-    background: #fff;
-    border-color: var(--accent);
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.05);
+    background: var(--surface-elevated);
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    margin-bottom: 10px;
 }
 
 .field-group label {
     display: block;
-    font-size: 10px;
-    font-weight: 900;
-    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-tertiary);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .editable-field {
-    font-size: 15px;
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--text-main);
+    color: var(--text-primary);
     outline: none;
+    border: none;
+    background: transparent;
 }
 
-/* 8. MATERIALS GRID */
+/* ─── MATERIALS GRID ─── */
 .materials-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 14px;
+    gap: 12px;
 }
 
 .material-item {
-    background: var(--bg-field);
-    padding: 16px;
-    border-radius: 16px;
-    border: 1px solid var(--border);
+    background: var(--surface-elevated);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    text-align: center;
 }
 
-/* 9. PREMIUM UPDATE BUTTON */
+/* ─── BUTTONS ─── */
 #update-btn {
     width: 100%;
-    padding: 16px;
-    background: #000000;
+    padding: 14px;
+    background: var(--text-primary);
     color: white;
     border: none;
-    border-radius: 16px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
     cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: 0.2s;
 }
 
-#update-btn:hover {
-    background: var(--bg-card);
-    transform: scale(1.1);
-    color: black;
-    box-shadow: 0px 0px 30px rgb(24, 170, 255);
+#update-btn:hover { background: var(--primary); }
+
+.close-modal {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-tertiary);
 }
 
-/* =============================================
-   RESPONSIVE LOGIC (Small Monitors & Phones)
-   ============================================= */
-
-/* SMALL LAPTOPS (e.g., 13" Screens) */
-@media (max-width: 1100px) {
-    .info-card { grid-column: span 6; }
-    .modal-wrapper { max-width: 95%; }
+#add-history-btn {
+    /* Positioning & Spacing */
+    display: inline-block;
+    margin-bottom: 15px;
+    padding: 10px 20px;
+    
+    /* Colors & Typography */
+    background-color: #2563eb; /* Modern Primary Blue */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif; /* Clean sans-serif */
+    
+    /* Borders & Shape */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    /* Modern Effects */
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    outline: none;
 }
 
-/* TABLETS & SMALL BROWSERS */
-@media (max-width: 850px) {
-    .modal-sidebar { width: 200px; }
-    .nav-item { margin: 5px 10px; font-size: 12px; }
-    #customer-name { font-size: 18px; }
+/* Hover State: Slightly lighter blue and lift effect */
+#add-history-btn:hover {
+    background-color: #3b82f6;
+    box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+    transform: translateY(-1px);
 }
 
-/* SMARTPHONES */
-@media (max-width: 600px) {
-    .modal-wrapper {
-        flex-direction: column; /* Stack sidebar on top */
-        height: 98vh;
-        border-radius: 16px;
-    }
-
-    .modal-sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row; /* Horizontal sidebar menu */
-        overflow-x: auto;
-        padding: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    #profile-sidebar-padding, .sidebar-footer {
-        display: none; /* Hide unnecessary space on mobile */
-    }
-
-    .nav-item {
-        margin: 0 5px;
-        padding: 10px 15px;
-        white-space: nowrap; /* Keep items in a row */
-        font-size: 11px;
-    }
-
-    #profile-modal-header {
-        padding: 15px 20px;
-    }
-
-    .info-grid {
-        padding: 15px;
-        grid-template-columns: 1fr; /* Single column layout */
-    }
-
-    .info-card {
-        grid-column: span 12;
-        padding: 20px;
-    }
-
-    .materials-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for materials */
-    }
+/* Active State: "Pressed" effect */
+#add-history-btn:active {
+    background-color: #1d4ed8;
+    transform: translateY(0);
 }
 
-/* VERY SMALL PHONES */
-@media (max-width: 400px) {
-    .materials-grid {
-        grid-template-columns: 1fr;
-    }
+/* Accessibility: Focus ring for keyboard users */
+#add-history-btn:focus-visible {
+ 
+    display: flex;
+    flex-direction: row;      /* Arranges items side-by-side */
+    align-items: center;      /* Centers items vertically relative to each other */
+    justify-content: flex-start; /* Keeps them to the left; use 'space-between' to push them to opposite ends */
+    gap: 20px;                /* Adds modern spacing between the elements */
+    width: 100%;              /* Ensures the ribbon spans the full container */
+
 }
+
+/* The Horizontal Ribbon Container */
+#payment-history-ribbon {
+    display: flex;
+    flex-direction: row;      /* Force horizontal alignment */
+    align-items: center;      /* Vertically center the text and button */
+    justify-content: space-between; /* Pushes Title to left, Button to right */
+    padding: 10px 0;          /* Adds some breathing room above/below */
+    margin-bottom: 20px;      /* Space between ribbon and the table */
+}
+
+/* Reset h3 margins to prevent alignment "jumping" */
+#payment-history-ribbon h3 {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    color: #1e293b;           /* Dark slate for a modern look */
+}
+
+/* Your Modern Blue Button */
+#add-history-btn {
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#add-history-btn:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+}
+
+/* Table Wrapper for spacing */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto; /* Keeps things mobile friendly */
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-thumb { background: var(--border-default); border-radius: 10px; }

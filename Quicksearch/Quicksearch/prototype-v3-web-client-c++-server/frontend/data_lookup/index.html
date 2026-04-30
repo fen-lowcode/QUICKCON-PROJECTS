@@ -66,9 +66,6 @@
     </template>
 
 
-
-
-
 <div id="profile-modal-background">
     <div class="modal-wrapper">
         <aside class="modal-sidebar">
@@ -76,7 +73,7 @@
             <nav>
                 <a href="#" class="nav-item active">Profile Info</a>
                 <a href="#" class="nav-item">Billing History</a>
-                 <a href="#" class="nav-item">Change Logs</a>
+                <a href="#" class="nav-item">Change Logs</a>
             </nav>
             <div class="sidebar-footer">
                 <button id="update-btn">Update Record</button>
@@ -89,72 +86,92 @@
                 <span class="close-modal" onclick="closeProfile()">&times;</span>
             </header>
 
-            <div class="info-grid">
-                <section class="info-card">
-                    <h3>Account & Plan</h3>
-                    <div class="field-group"><label>Client ID</label><div id="view-id" class="editable-field"></div></div>
-                    <div class="field-group"><label>Client Name</label><div id="view-name" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Date Applied</label><div id="view-applied" class="editable-field"></div></div>
-                </section>
+            <!-- WRAPPER: Added to create flex distribution between static and scrollable areas -->
+            <div class="content-body">
+                
+                <!-- START: Static Info Sections -->
+                <div class="info-grid">
+                    <section class="info-card">
+                        <h3>Account & Plan</h3>
+                        <div class="field-group"><label>Client ID</label><div id="view-id" class="editable-field"></div></div>
+                        <div class="field-group"><label>Client Name</label><div id="view-name" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Date Applied</label><div id="view-applied" class="editable-field"></div></div>
+                    </section>
 
-                <section class="info-card">
-                    <h3>Client Identity</h3>
-                    <div class="field-group"><label>Age / Sex</label>
-                        <div style="display: flex; gap: 10px;">
-                            <div id="view-age" class="editable-field" contenteditable="true" style="width: 50%;"></div>
-                            <div id="view-sex" class="editable-field" contenteditable="true" style="width: 50%;"></div>
+                    <section class="info-card">
+                        <h3>Client Identity</h3>
+                        <div class="field-group"><label>Age / Sex</label>
+                            <div style="display: flex; gap: 10px;">
+                                <div id="view-age" class="editable-field" contenteditable="true" style="width: 50%;"></div>
+                                <div id="view-sex" class="editable-field" contenteditable="true" style="width: 50%;"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="field-group"><label>Occupation</label><div id="view-job" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Birth Date</label><div id="view-dob" class="editable-field"></div></div>
-                    <div class="field-group"><label>Birth Place</label><div id="view-pob" class="editable-field"></div></div>
-                </section>
+                        <div class="field-group"><label>Occupation</label><div id="view-job" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Birth Date</label><div id="view-dob" class="editable-field"></div></div>
+                        <div class="field-group"><label>Birth Place</label><div id="view-pob" class="editable-field"></div></div>
+                    </section>
 
-                <section class="info-card">
-                    <h3>Contact & Localization</h3>
-                    <div class="field-group"><label>Full Address</label><div id="view-address" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Contact No</label><div id="view-contact" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Social Media</label><div id="view-social" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Remarks</label><div id="view-remarks" contenteditable="true" class="editable-field"></div></div>
-                    <div class="field-group"><label>Installed By</label><div id="view-tech" class="editable-field"></div></div>
-                </section>
+                    <section class="info-card">
+                        <h3>Contact & Localization</h3>
+                        <div class="field-group"><label>Full Address</label><div id="view-address" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Contact No</label><div id="view-contact" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Social Media</label><div id="view-social" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Remarks</label><div id="view-remarks" contenteditable="true" class="editable-field"></div></div>
+                        <div class="field-group"><label>Installed By</label><div id="view-tech" class="editable-field"></div></div>
+                    </section>
 
-                <section class="info-card full-width">
-                    <h3>Installation Materials & Hardware</h3>
-                    <div class="materials-grid">
-                        <div class="material-item">
-                            <label>Optical Info</label>
-                            <div id="view-optical" class="editable-field" ></div>
+                    <section class="info-card full-width">
+                        <h3>Installation Materials & Hardware</h3>
+                        <div class="materials-grid">
+                            <div class="material-item"><label>Optical Info</label><div id="view-optical" class="editable-field"></div></div>
+                            <div class="material-item"><label>Fiber Drop</label><div id="view-fiber" class="editable-field"></div></div>
+                            <div class="material-item"><label>Tapping Clips</label><div id="view-clip" class="editable-field"></div></div>
+                            <div class="material-item"><label>Cable Ties</label><div id="view-tie" class="editable-field"></div></div>
+                            <div class="material-item"><label>F-Clamp</label><div id="view-fclamp" class="editable-field"></div></div>
+                            <div class="material-item"><label>SC Connector</label><div id="view-sc" class="editable-field"></div></div>
                         </div>
-                        <div class="material-item">
-                            <label>Fiber Drop</label>
-                            <div id="view-fiber" class="editable-field" ></div>
+                    </section>
+                </div>
+                <!-- END: Static Info Sections -->
+
+                <!-- START: Scrollable History Section -->
+                <div class="history-scroll-area">
+                    <section class="info-card full-width">
+
+                        <div id="payment-history-ribbon">
+                             <h3>Payment History</h3>
+                            <button id="add-history-btn"> Add Payment Record </button>
                         </div>
-                        <div class="material-item">
-                            <label>Tapping Clips</label>
-                            <div id="view-clip" class="editable-field"></div>
+                       
+                        <div class="table-wrapper">
+                            <table class="payment-table">
+                            
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                        <th>For the month of</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="payment-history-list">
+                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
+                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
+                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="material-item">
-                            <label>Cable Ties</label>
-                            <div id="view-tie" class="editable-field" ></div>
-                        </div>
-                        <div class="material-item">
-                            <label>F-Clamp</label>
-                            <div id="view-fclamp" class="editable-field" ></div>
-                        </div>
-                        <div class="material-item">
-                            <label>SC Connector</label>
-                            <div id="view-sc" class="editable-field"></div>
-                        </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
+                <!-- END: Scrollable History Section -->
+
             </div>
+            <!-- END: content-body wrapper -->
+
         </main>
     </div>
 </div>
-
 
 
 

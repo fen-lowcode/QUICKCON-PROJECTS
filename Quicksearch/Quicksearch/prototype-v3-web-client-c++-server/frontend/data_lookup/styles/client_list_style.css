@@ -37,7 +37,7 @@ body {
     display: flex;
     align-items: center;
     padding: 6px 12px;
-    background: rgb(233, 248, 252);
+    background: rgb(254, 254, 254);
     border-bottom: 1px solid var(--border);
     gap: 12px;
     height: 48px; /* Fixed height for consistency */
