@@ -1,0 +1,104 @@
+/* 1. The Full-Screen Dark Overlay */
+.history-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(101, 101, 101, 0.697); /* Dark grayish semi-transparent */
+    display: none;                /* Centering Magic */
+    justify-content: center;      /* Horizontal Center */
+    align-items: center;          /* Vertical Center */
+    z-index: 9999;                /* Stay on top of everything */
+    backdrop-filter: blur(3px);   /* Optional: adds a nice glass blur to the background */
+}
+
+/* 2. The Floating Modal Box */
+.history-payment-modal {
+    background-color: #ffffff;
+    width: 90%;
+    max-width: 450px;             /* Keeps it a nice "box" shape */
+    border-radius: 12px;          /* Rounded corners for a modern look */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); /* Deep shadow to make it "float" */
+    overflow: hidden;             /* Keeps the header/footer inside the radius */
+    animation: slideIn 0.3s ease-out;
+}
+
+/* 3. Modal Sections */
+.history-modal-header {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.history-modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+}
+
+.modal-body {
+    padding: 25px;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;    /* Aligns buttons to the right */
+    gap: 10px;                    /* Space between buttons */
+}
+
+/* 4. Form Styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.input-group input, 
+.input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Crucial for width: 100% */
+}
+
+
+#payment-history-btn-save {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#payment-history-btn-save:hover { background: #0056b3; }
+
+
+/* Close 'X' Button */
+.close-modal {
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: #999;
+}
+
+/* Float-in Animation */
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

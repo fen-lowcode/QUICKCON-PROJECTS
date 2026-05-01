@@ -25,6 +25,7 @@ public:
     void deleteCustomerReq();
     void addCustomerReq();
     void updateCustomer();
+    void addPaymentHistory();
 
 
     void listen(const std::string host, int port);

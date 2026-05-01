@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/client_list_style.css">
     <link rel="stylesheet" href="styles/profile_history_style.css">
     <link rel="stylesheet" href="styles/client_profile_style.css">
+    <link rel="stylesheet" href="styles/add_history.css">
     <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet"> -->
 </head>
 <body>
@@ -26,7 +27,7 @@
 
                 <!-- This is the refresh button but i left the id name ssame to add customer button so 
                 the css style is not repetitive -->
-                <button id="add-customer-btn" onclick="fetchClientmasterList()""> Refresh </button>
+                <button id="add-customer-btn"> Refresh </button>
             </div>
         </header>
         <div class="data-card">
@@ -142,7 +143,7 @@
 
                         <div id="payment-history-ribbon">
                              <h3>Payment History</h3>
-                            <button id="add-history-btn"> Add Payment Record </button>
+                            <button id="add-history-btn" onclick="showPaymentHistoryForm()"> Add Payment Record </button>
                         </div>
                        
                         <div class="table-wrapper">
@@ -150,15 +151,15 @@
                             
                                 <thead>
                                     <tr>
-                                        <th>Date</th>
-                                        <th>Amount</th>
+                                        <th>Date of Payment</th>
+                                        <th>Amount Paid</th>
+                                        <th>Payment Method</th>
+                                        <th>Notes</th>
                                         <th>For the month of</th>
                                     </tr>
                                 </thead>
                                 <tbody id="payment-history-list">
-                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
-                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
-                                    <tr><td>2023-10-27</td><td>$50.00</td><td>September</td></tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -280,9 +281,73 @@
         </div>
     </div>
 
+    
+    <!-- The Overlay: This creates the dark grayish background -->
+    <div id="add-history-modal" class="history-modal-overlay">
+        <div class="history-payment-modal">
+            <div class="history-modal-header">
+                <h2>Record New Payment</h2>
+                <span class="close-modal" onclick="hidePaymentHistoryForm()">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <form id="paymentForm">
+                    <div class="input-group">
+                        <label>Date of Payment</label>
+                        <input type="date" id="p-date" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Amount Paid</label>
+                        <input type="number" id="p-amount" placeholder="0.00" step="0.01" required>
+                    </div>
+
+                     <div class="input-group">
+                        <label>Payment Method</label>
+                         <select id="p-method">
+                            <option>on-cash Office</option>
+                            <option>online</option>
+                            <option>collector</option>
+                        </select>
+                    </div>
+
+
+                     <div class="input-group">
+                        <label>Notes</label>
+                         <input type="textarea" id="p-notes">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Payment for the Month of</label>
+                        <select id="p-for-month">
+                            <option>January</option>
+                            <option>February</option>
+                            <option>March</option>
+                            <option>April</option>
+                            <option>May</option>
+                            <option>June</option>
+                            <option>July</option>
+                            <option>August</option>
+                            <option>September</option>
+                            <option>October</option>
+                            <option>November</option>
+                            <option>December</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="payment-history-btn-save" onlick="getValsHistoryForm()">Save Payment</button>
+            </div>
+        </div>
+    </div> 
+
     <script src="scripts/viewProfileLogic.js"></script>
     <script src="scripts/add_client.js"></script>
     <script src="scripts/tableListLogic.js"></script>
     <script src="scripts/api.js"></script>
+    <script src="scripts/add_history.js"></script>
+
 </body>
 </html>

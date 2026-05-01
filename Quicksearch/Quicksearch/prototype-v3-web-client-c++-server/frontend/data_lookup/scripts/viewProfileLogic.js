@@ -102,7 +102,7 @@ function closeProfile() {
 
 // the function responsible for fetching all the profile info for update request
 
-document.getElementById('update-btn').addEventListener('click', function() {
+document.getElementById('update-btn').addEventListener('click', async function() {
 
 
     var takeInput = (id) => {
@@ -136,4 +136,12 @@ document.getElementById('update-btn').addEventListener('click', function() {
 
     console.log(JSON.stringify(s));
     updateCustomer(s);
+    await fetchClientmasterList();
+    filterTable();
+    closeProfile();
 });
+
+document.getElementById("add-customer-btn").addEventListener('click', async function() {
+    await fetchClientmasterList();
+    filterTable();
+})

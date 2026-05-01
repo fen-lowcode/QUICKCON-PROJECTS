@@ -20,6 +20,7 @@ int main() {
     server.deleteCustomerReq();
     server.addCustomerReq();
     server.updateCustomer();
+    server.addPaymentHistory();
 
     server.listen("0.0.0.0", 2222);
 }
