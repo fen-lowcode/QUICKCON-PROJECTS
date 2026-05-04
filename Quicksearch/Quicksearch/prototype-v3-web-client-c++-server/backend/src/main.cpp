@@ -21,6 +21,7 @@ int main() {
     server.addCustomerReq();
     server.updateCustomer();
     server.addPaymentHistory();
+    server.getPaymentHistory();
 
     server.listen("0.0.0.0", 2222);
 }

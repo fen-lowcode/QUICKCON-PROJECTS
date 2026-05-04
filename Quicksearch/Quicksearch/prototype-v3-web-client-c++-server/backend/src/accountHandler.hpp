@@ -17,9 +17,11 @@ public:
     std::string         accountAuth(  const std::string& firstName, const std::string& lastName, const std::string& password );
     bool                vrfyJwtToken(std::string token);
     nlohmann::json      getCustomerData();
+    nlohmann::json      getCustomerHistory(const std::string& ID);
     bool                deleteCustomer(const nlohmann::json& JSONreq);
     bool                addCustomer(const nlohmann::json& JSONreq);
     bool                updateCustomer(const nlohmann::json& JSONreq);
+    bool                addPaymentHistory(const nlohmann::json& JSONreq);
 
 
 private:

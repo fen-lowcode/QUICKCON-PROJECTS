@@ -41,6 +41,7 @@ document.addEventListener('click', function(e) {
 
     };
 
+    getPaymentHistory(clientData.ID);
     openProfile(clientData);
 });
 
@@ -145,3 +146,31 @@ document.getElementById("add-customer-btn").addEventListener('click', async func
     await fetchClientmasterList();
     filterTable();
 })
+
+
+function renderHistoryRows(historyArray) {
+    let tableBody = document.getElementById('payment-history-list');
+    
+    // Safety check: handle empty or null data
+    if (!historyArray || historyArray.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="5" style="text-align:center;">No history found for this ID.</td></tr>`;
+        return;
+    }
+
+    let htmlBuilder = "";
+
+    for (let i = 0; i < historyArray.length; i++) {
+        // FIX: Use 'historyArray' instead of 'dataList'
+        let c = historyArray[i];
+        
+        htmlBuilder += `
+            <tr>
+                <td>${c.PAYMENT_DATE || 'N/A'}</td>
+                <td>${c.AMOUNT_PAID || '0.00'}</td>
+                <td>${c.PAYMENT_METHOD || 'Other'}</td>
+                <td>${c.NOTES || ''}</td>
+                <td>${c.PAYMENT_FOR_MONTHOF || ''}</td>
+            </tr>`;
+    }
+    tableBody.innerHTML = htmlBuilder;
+}

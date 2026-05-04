@@ -42,7 +42,13 @@ std::string AccountHandler::accountAuth(
 }
 
 nlohmann::json AccountHandler::getCustomerData() {
+     std::lock_guard<std::mutex> lock(this -> mutexGuard);
     return databaseServ.fetchCustomerData();
+}
+
+nlohmann::json AccountHandler::getCustomerHistory(const std::string& ID) {
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
+    return databaseServ.fetchCustomerHistory(ID);
 }
 
 bool AccountHandler::addCustomer(const nlohmann::json& JSONreq) {
@@ -119,6 +125,7 @@ bool AccountHandler::deleteCustomer(const nlohmann::json& JSONreq) {
 
 bool AccountHandler::updateCustomer(const nlohmann::json& JSONreq) {
 
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
     try {
 
     databaseServ.updateCustomer(
@@ -153,6 +160,29 @@ bool AccountHandler::updateCustomer(const nlohmann::json& JSONreq) {
     }
     return false;
 }
+
+bool AccountHandler::addPaymentHistory(const nlohmann::json& JSONreq) {
+    std::lock_guard<std::mutex> lock(this -> mutexGuard);
+
+    try {
+
+        databaseServ.addPaymentHistory(
+            std::stoi(JSONreq.at("ID").get<std::string>()), 
+            JSONreq.at("PAYMENT_DATE"), 
+            JSONreq.at("AMOUNT_PAID"),
+            JSONreq.at("PAYMENT_METHOD"), 
+            JSONreq.at("NOTES"),
+            JSONreq.at("PAYMENT_FOR_MONTHOF")
+        );
+        return true;
+
+    } catch(nlohmann::json::exception& e) {
+        std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
+        std::cout << JSONreq.at("ID") << " payment historyt not added" << std::endl;
+        return false;
+    }
+    return false;
+};
 
 
 bool AccountHandler::vrfyJwtToken(std::string token) {

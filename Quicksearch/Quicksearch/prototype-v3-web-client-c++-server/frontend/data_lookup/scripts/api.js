@@ -12,7 +12,7 @@ async function getToken() {
 async function fetchClientmasterList() {
     try {
 
-        let response = await fetch('http://192.168.1.19:2222/get/customerlist', { 
+        let response = await fetch('http://192.168.1.22:2222/get/customerlist', { 
             method: 'POST', 
             headers: {
                 'Content-Type': 'application/json'
@@ -25,7 +25,6 @@ async function fetchClientmasterList() {
 
         if (!response.ok) throw new Error("HTTP Error " + response.status);
 
-        console.log(document.cookie)
 
         let dataArray = await response.json();
         renderTableRows(dataArray);
@@ -66,7 +65,7 @@ async function deleteCustomer(e) {
     console.log(customerToDelete);
 
     try {
-        let res = await fetch("http://192.168.1.19:2222/delete/customerinfo", {
+        let res = await fetch("http://192.168.1.22:2222/delete/customerinfo", {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json"
@@ -88,7 +87,7 @@ async function deleteCustomer(e) {
 async function addCustomer(data) {
 
     try {
-        const res = await fetch('http://192.168.1.19:2222/add/customer', {
+        const res = await fetch('http://192.168.1.22:2222/add/customer', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
@@ -110,7 +109,7 @@ async function addCustomer(data) {
 
 async function updateCustomer(data) {
     try {
-        const res = await fetch('http://192.168.1.19:2222/update/customer', {
+        const res = await fetch('http://192.168.1.22:2222/update/customer', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
@@ -129,7 +128,7 @@ async function updateCustomer(data) {
 
 async function submitpaymentHistory(data) {
      try {
-        const res = await fetch('http://192.168.1.19:2222/add/customer/history', {
+        const res = await fetch('http://192.168.1.22:2222/add/customer/history', {
             method: "POST",
             headers: {
                 "Content-Type" : "application/json",
@@ -141,5 +140,37 @@ async function submitpaymentHistory(data) {
         })
     } catch (err) {
          console.error("Fetch failed: ", err);
+    }
+}
+
+async function getPaymentHistory(id) {
+    try {
+        const token = await getToken();
+        
+        const res = await fetch('http://192.168.1.22:2222/get/customer/history', {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify({
+                token: token,
+                id: id // Sending 'id' here
+            })
+        });
+
+        if (!res.ok) {
+            const errorText = await res.text();
+            throw new Error(`Server returned ${res.status}: ${errorText}`);
+        }
+
+        const historyArray = await res.json();
+        
+        // Ensure we pass the actual data received to the renderer
+        renderHistoryRows(historyArray);
+
+    } catch (err) {
+         console.error("Fetch failed: ", err.message);
+         document.getElementById('payment-history-list').innerHTML = 
+            `<tr><td colspan="5" style="color:red; text-align:center;">Failed to load history: ${err.message}</td></tr>`;
     }
 }

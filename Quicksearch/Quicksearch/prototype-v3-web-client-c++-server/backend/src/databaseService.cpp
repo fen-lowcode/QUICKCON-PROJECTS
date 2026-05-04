@@ -166,6 +166,38 @@ nlohmann::json DatabaseService::fetchCustomerData() {
     return customerList;
 }
 
+nlohmann::json DatabaseService::fetchCustomerHistory(const std::string& ID){
+    std::lock_guard<std::mutex> lock(dbMutex);
+    nlohmann::json historyList = nlohmann::json::array(); // Initialize as an array
+
+    try {
+
+        auto stmt = std::unique_ptr<sql::PreparedStatement>(
+            conn->prepareStatement("SELECT * FROM PAYMENT_HISTORY WHERE ID = ?")
+        ); stmt -> setString(1, ID);
+
+        auto res = std::unique_ptr<sql::ResultSet>(stmt->executeQuery());
+
+        while(res -> next()) {
+              nlohmann::json history;
+
+            history["PAYMENT_DATE"]     = res->getString("PAYMENT_DATE");
+            history["AMOUNT_PAID"]      = res->getString("AMOUNT_PAID");
+            history["PAYMENT_METHOD"]   = res->getString("PAYMENT_METHOD");
+            history["NOTES"]   = res->getString("NOTES");
+            history["PAYMENT_FOR_MONTHOF"]   = res->getString("PAYMENT_FOR_MONTHOF");
+
+            historyList.push_back(history);
+        }
+
+    } catch (sql::SQLException &e) {
+        std::cerr << "Database Fetching History List Error: " << e.what() << std::endl;
+        return nlohmann::json::object({{"error", e.what()}});
+    }
+
+    return historyList;
+}
+
 bool DatabaseService::RemoveCustomer(const std::string& userID) {
     std::lock_guard<std::mutex> lock(dbMutex);
     try {
@@ -353,4 +385,50 @@ bool DatabaseService::updateCustomer(
 
     return false;
 }
+
+
+bool DatabaseService::addPaymentHistory(
+                    const int& ID, 
+                    const std::string& PAYMENT_DATE,
+                    const std::string& AMOUNT_PAID,
+                    const std::string& PAYMENT_METHOD,
+                    const std::string& NOTES,
+                    const std::string PAYMENT_FOR_MONTHOF
+                    ) {
+
+    std::lock_guard<std::mutex> lock(dbMutex);
+
+    std::string statement = 
+        "INSERT INTO PAYMENT_HISTORY"
+        "(ID, PAYMENT_DATE, AMOUNT_PAID, PAYMENT_METHOD, NOTES,  PAYMENT_FOR_MONTHOF)"
+        "VALUES (?, ? ,?, ?, ? , ?)";
+    
+    try {
+
+        auto stmt =  std::unique_ptr<sql::PreparedStatement>(this -> conn -> prepareStatement(statement));
+        stmt -> setInt(1, ID);
+        stmt -> setString(2, PAYMENT_DATE);
+        stmt -> setString(3, AMOUNT_PAID);
+        stmt -> setString(4, PAYMENT_METHOD);
+        stmt -> setString(5, NOTES);
+        stmt -> setString(6, PAYMENT_FOR_MONTHOF);
+
+
+        auto rowAffected = stmt->executeUpdate();
+
+        if(rowAffected > 0) {
+            std::cout << "User: " << ID << " is successfully updated payment history" << std::endl;
+            return true;
+        } else {
+            std::cout << "User: " << ID << " is payment history failed to update" << std::endl;
+        }
+
+    } catch (sql::SQLException& e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    return false;
+}
+
+
 

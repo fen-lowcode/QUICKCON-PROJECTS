@@ -1,5 +1,6 @@
 #include "server.hpp"
 #include "accountHandler.hpp"
+#include <exception>
 #include <iterator>
 #define DATA_PROTECTION
 
@@ -192,7 +193,48 @@ void Server::addPaymentHistory() {
         }
         #endif
 
-        std::cout << JSONreq.at("paymentHistory") << std::endl;
+
+        if(accounthandler.addPaymentHistory(JSONreq.at("paymentHistory"))) {
+            res.status = 200;
+            res.set_content("{\"reply\": \"Things are good, customer payment history is updated\"}", "application/json");
+        } else {
+            res.status = 400;
+            res.set_content("{\"reply\": \"opsss payment history update failed man\"}", "application/json");
+        }
+        
+    });
+}
+
+void Server::getPaymentHistory() {
+     serverHandler.Post("/get/customer/history", [this](const httplib::Request& req, httplib::Response& res) {
+        
+        try {
+
+             res.set_header("Access-Control-Allow-Origin", "*");
+    
+            if(!reqIsJson(req, res)) {return;}
+
+            nlohmann::json JSONreq = nlohmann::json::parse(req.body);
+            
+            #ifdef DATA_PROTECTION
+            if (!accounthandler.vrfyJwtToken(JSONreq.at("token"))) {
+                res.status = 401;
+                res.set_content("{\"reply\":\"You Are Not Allowed To Do That\"}", "application/json");
+                std::cout << " REQUEST REFUSED " << std::endl; 
+                return;
+            }
+            #endif
+
+            std::string ID =  JSONreq.at("id");
+
+           
+            res.set_content(accounthandler.getCustomerHistory(JSONreq.at("id").get<std::string>()).dump(), "application/json");
+
+        } catch(std::exception& e) {
+            std::cout << "Error: "  << e.what() << std::endl;
+        }
+
+
     });
 }
 

@@ -47,5 +47,17 @@ public:
                         const std::string& FIBER_DROP,const std::string& TAPPING_CLIP, const std::string& CABLE_TIE, 
                         const std::string& F_CLAMP,const std::string& REMARKS, const std::string& INSTALLED_BY
                     );
+
+    bool            addPaymentHistory(  
+                        const int& ID, 
+                        const std::string& PAYMENT_DATE,
+                        const std::string& AMOUNT_PAID,
+                        const std::string& PAYMENT_METHOD,
+                        const std::string& NOTES,
+                        const std::string PAYMENT_FOR_MONTHOF
+                    );
+
+
+    nlohmann::json fetchCustomerHistory(const std::string& ID);
 };
 
