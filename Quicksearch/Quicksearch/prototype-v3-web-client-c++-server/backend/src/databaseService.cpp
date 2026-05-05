@@ -173,7 +173,7 @@ nlohmann::json DatabaseService::fetchCustomerHistory(const std::string& ID){
     try {
 
         auto stmt = std::unique_ptr<sql::PreparedStatement>(
-            conn->prepareStatement("SELECT * FROM PAYMENT_HISTORY WHERE ID = ?")
+            conn->prepareStatement("SELECT * FROM PAYMENT_HISTORY WHERE ID = ? ORDER BY PAYMENT_DATE DESC;")
         ); stmt -> setString(1, ID);
 
         auto res = std::unique_ptr<sql::ResultSet>(stmt->executeQuery());

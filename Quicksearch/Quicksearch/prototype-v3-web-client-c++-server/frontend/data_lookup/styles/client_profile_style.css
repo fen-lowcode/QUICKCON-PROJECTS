@@ -71,7 +71,7 @@ html, body {
 
 /* ─── SIDEBAR ─── */
 .modal-sidebar {
-    width: 240px;
+    width: 200px;
     flex-shrink: 0;
     border-right: 1px solid var(--border-subtle);
     display: flex;

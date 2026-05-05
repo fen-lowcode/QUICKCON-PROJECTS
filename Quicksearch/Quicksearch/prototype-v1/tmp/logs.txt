@@ -4735,3 +4735,15 @@
 [2026-04-14 11:44:52.824] [file-log] [info] Fetching password from the database
 [2026-04-14 11:44:53.432] [file-log] [debug] 
 [2026-04-14 11:44:53.433] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-05-04 16:14:52.412] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-05-04 16:14:52.419] [file-log] [info] Login: Initializing logo image
+[2026-05-04 16:14:52.421] [file-log] [info] Login: Initialized Logo image
+[2026-05-04 16:15:22.981] [file-log] [debug] LOGIN BUTTON IS CLICKED
+[2026-05-04 16:15:22.982] [file-log] [info] Fetching password from the database
+[2026-05-04 16:15:22.982] [file-log] [info] Login success User: 1
+[2026-05-04 16:15:22.982] [file-log] [debug] 1234
+[2026-05-04 16:15:22.984] [file-log] [debug] CHECKING ADMIN STATUS
+[2026-05-04 16:15:22.987] [file-log] [info] Account is Admin
+[2026-05-04 16:15:37.315] [file-log] [info] Database connection established on HOST: 127.0.0.1 on PORT: 3306
+[2026-05-04 16:15:37.322] [file-log] [info] Login: Initializing logo image
+[2026-05-04 16:15:37.324] [file-log] [info] Login: Initialized Logo image
