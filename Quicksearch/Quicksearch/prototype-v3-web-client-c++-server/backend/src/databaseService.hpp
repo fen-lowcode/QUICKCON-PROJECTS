@@ -50,6 +50,7 @@ public:
 
     bool            addPaymentHistory(  
                         const int& ID, 
+                        const int& USERID,
                         const std::string& PAYMENT_DATE,
                         const std::string& AMOUNT_PAID,
                         const std::string& PAYMENT_METHOD,

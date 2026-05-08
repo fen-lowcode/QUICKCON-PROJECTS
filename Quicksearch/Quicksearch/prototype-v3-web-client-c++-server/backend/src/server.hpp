@@ -1,11 +1,13 @@
 #pragma once
 
-#include "accountHandler.hpp"
 #define CPPHTTPLIB_OPENSSL_SUPPORT
+#define CPPHTTPLIB_IMPLEMENTATION  
+#include <httplib.h>
+
+#include "accountHandler.hpp"
 #include <nlohmann/json.hpp>
 
 #include <string>
-#include <httplib.h>
 #include "tokenService.hpp"
 
 class Server {

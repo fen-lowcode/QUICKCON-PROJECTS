@@ -193,8 +193,13 @@ void Server::addPaymentHistory() {
         }
         #endif
 
+        // get user's token
+        const std::string userID = accounthandler.getUserId(JSONreq.at("token"));
 
-        if(accounthandler.addPaymentHistory(JSONreq.at("paymentHistory"))) {
+        std::cout << userID << std::endl;
+
+
+        if(accounthandler.addPaymentHistory(std::stoi(userID), JSONreq.at("paymentHistory"))) {
             res.status = 200;
             res.set_content("{\"reply\": \"Things are good, customer payment history is updated\"}", "application/json");
         } else {
@@ -224,10 +229,7 @@ void Server::getPaymentHistory() {
                 return;
             }
             #endif
-
-            std::string ID =  JSONreq.at("id");
-
-           
+ 
             res.set_content(accounthandler.getCustomerHistory(JSONreq.at("id").get<std::string>()).dump(), "application/json");
 
         } catch(std::exception& e) {

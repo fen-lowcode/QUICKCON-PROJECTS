@@ -19,7 +19,7 @@ document.getElementById('payment-history-btn-save').addEventListener('click', fu
     const payment_for_monthof = document.getElementById('p-for-month');
 
     const data = {
-        ID: clientData.ID,
+        CLIENTID: clientData.ID,
         PAYMENT_DATE: payment_date.value,
         AMOUNT_PAID: payment_amount.value,
         PAYMENT_METHOD: payment_method.value,

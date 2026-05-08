@@ -1,0 +1,5 @@
+g++ src/main.cpp src/accountHandler.cpp src/server.cpp src/databaseService.cpp \
+    -o quicksearch_server \
+    -DCPPHTTPLIB_OPENSSL_SUPPORT \
+    -I /usr/include/mariadb \
+    -lssl -lcrypto -lmariadbcpp -lsodium -lpthread -lcpp-httplib

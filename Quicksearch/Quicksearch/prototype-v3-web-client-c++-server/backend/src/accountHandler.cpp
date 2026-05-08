@@ -41,6 +41,7 @@ std::string AccountHandler::accountAuth(
     return "";
 }
 
+
 nlohmann::json AccountHandler::getCustomerData() {
      std::lock_guard<std::mutex> lock(this -> mutexGuard);
     return databaseServ.fetchCustomerData();
@@ -161,13 +162,14 @@ bool AccountHandler::updateCustomer(const nlohmann::json& JSONreq) {
     return false;
 }
 
-bool AccountHandler::addPaymentHistory(const nlohmann::json& JSONreq) {
+bool AccountHandler::addPaymentHistory(const int& USERID, const nlohmann::json& JSONreq) {
     std::lock_guard<std::mutex> lock(this -> mutexGuard);
 
     try {
 
         databaseServ.addPaymentHistory(
-            std::stoi(JSONreq.at("ID").get<std::string>()), 
+            std::stoi(JSONreq.at("CLIENTID").get<std::string>()), 
+            USERID,
             JSONreq.at("PAYMENT_DATE"), 
             JSONreq.at("AMOUNT_PAID"),
             JSONreq.at("PAYMENT_METHOD"), 
@@ -178,7 +180,7 @@ bool AccountHandler::addPaymentHistory(const nlohmann::json& JSONreq) {
 
     } catch(nlohmann::json::exception& e) {
         std::cout << "JSON ERROR MISSING KEY: " << e.what() << std::endl;
-        std::cout << JSONreq.at("ID") << " payment historyt not added" << std::endl;
+        std::cout << JSONreq.at("CLIENTID") << " payment historyt not added" << std::endl;
         return false;
     }
     return false;
@@ -201,6 +203,32 @@ bool AccountHandler::vrfyJwtToken(std::string token) {
 
     return false;
 }
+
+std::string AccountHandler::getUserId(const std::string& token) {
+    try {
+        // 1. Attempt to decode the token
+        // This throws if the token is malformed (e.g., missing dots or invalid Base64)
+        auto decoded = jwt::decode(token);
+
+        // 2. Check and return the specific claim
+        if (decoded.has_payload_claim("user_id")) {
+            return decoded.get_payload_claim("user_id").as_string();
+        }
+        
+    } catch (const std::invalid_argument& e) {
+        // This is usually thrown by the library if the token format is invalid
+        std::cerr << "JWT Decoding Error (Invalid Format): " << e.what() << std::endl;
+    } catch (const std::runtime_error& e) {
+        // Thrown for JSON parsing issues or other runtime failures
+        std::cerr << "JWT Runtime Error: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        // Generic fallback for any other unexpected standard exception
+        std::cerr << "Unexpected error decoding token: " << e.what() << std::endl;
+    }
+
+    return ""; // Return an empty string as a "failure" signal
+}
+
 
 void AccountHandler::extractSecrets() {
     try {

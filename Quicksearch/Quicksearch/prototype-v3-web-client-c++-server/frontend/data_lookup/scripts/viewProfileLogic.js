@@ -112,7 +112,7 @@ document.getElementById('update-btn').addEventListener('click', async function()
     }
 
    const s = {
-        ID: clientData.ID, // Assuming ID is not editable via takeInput
+        ID: clientData.ID, 
         CLIENTS_NAME: takeInput('view-name'),
         PLAN: takeInput('view-plan'),
         CREDENTIALS: takeInput('view-creds'),
@@ -135,7 +135,6 @@ document.getElementById('update-btn').addEventListener('click', async function()
         F_CLAMP: takeInput('view-fclamp')
     };
 
-    console.log(JSON.stringify(s));
     updateCustomer(s);
     await fetchClientmasterList();
     filterTable();
@@ -165,6 +164,7 @@ function renderHistoryRows(historyArray) {
         
         htmlBuilder += `
             <tr>
+                <td>${c.USERID || 'N/A'}</td>
                 <td>${c.PAYMENT_DATE || 'N/A'}</td>
                 <td>${c.AMOUNT_PAID || '0.00'}</td>
                 <td>${c.PAYMENT_METHOD || 'Other'}</td>

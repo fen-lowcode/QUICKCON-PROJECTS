@@ -166,26 +166,35 @@ nlohmann::json DatabaseService::fetchCustomerData() {
     return customerList;
 }
 
-nlohmann::json DatabaseService::fetchCustomerHistory(const std::string& ID){
+nlohmann::json DatabaseService::fetchCustomerHistory(const std::string& ID) {
     std::lock_guard<std::mutex> lock(dbMutex);
-    nlohmann::json historyList = nlohmann::json::array(); // Initialize as an array
+    nlohmann::json historyList = nlohmann::json::array();
 
     try {
+        // Use an INNER JOIN to pull the firstname from the USERS table
+        // We alias PAYMENT_HISTORY as 'ph' and USERS as 'u' for readability
+        std::string query = 
+            "SELECT ph.*, u.firstname "
+            "FROM PAYMENT_HISTORY ph "
+            "JOIN USERS u ON ph.USERID = u.USERID "
+            "WHERE ph.CLIENTID = ? "
+            "ORDER BY ph.PAYMENT_DATE DESC;";
 
-        auto stmt = std::unique_ptr<sql::PreparedStatement>(
-            conn->prepareStatement("SELECT * FROM PAYMENT_HISTORY WHERE ID = ? ORDER BY PAYMENT_DATE DESC;")
-        ); stmt -> setString(1, ID);
+        auto stmt = std::unique_ptr<sql::PreparedStatement>(conn->prepareStatement(query));
+        stmt->setString(1, ID);
 
         auto res = std::unique_ptr<sql::ResultSet>(stmt->executeQuery());
 
-        while(res -> next()) {
-              nlohmann::json history;
+        while (res->next()) {
+            nlohmann::json history;
 
+            // Per your request, we put the 'firstname' into the "USERID" key
+            history["USERID"]           = res->getString("firstname"); 
             history["PAYMENT_DATE"]     = res->getString("PAYMENT_DATE");
             history["AMOUNT_PAID"]      = res->getString("AMOUNT_PAID");
             history["PAYMENT_METHOD"]   = res->getString("PAYMENT_METHOD");
-            history["NOTES"]   = res->getString("NOTES");
-            history["PAYMENT_FOR_MONTHOF"]   = res->getString("PAYMENT_FOR_MONTHOF");
+            history["NOTES"]            = res->getString("NOTES");
+            history["PAYMENT_FOR_MONTHOF"] = res->getString("PAYMENT_FOR_MONTHOF");
 
             historyList.push_back(history);
         }
@@ -388,7 +397,8 @@ bool DatabaseService::updateCustomer(
 
 
 bool DatabaseService::addPaymentHistory(
-                    const int& ID, 
+                    const int& CLIENTID,
+                    const int& USERID,
                     const std::string& PAYMENT_DATE,
                     const std::string& AMOUNT_PAID,
                     const std::string& PAYMENT_METHOD,
@@ -400,27 +410,28 @@ bool DatabaseService::addPaymentHistory(
 
     std::string statement = 
         "INSERT INTO PAYMENT_HISTORY"
-        "(ID, PAYMENT_DATE, AMOUNT_PAID, PAYMENT_METHOD, NOTES,  PAYMENT_FOR_MONTHOF)"
-        "VALUES (?, ? ,?, ?, ? , ?)";
+        "(CLIENTID, USERID, PAYMENT_DATE, AMOUNT_PAID, PAYMENT_METHOD, NOTES,  PAYMENT_FOR_MONTHOF)"
+        "VALUES (?, ?, ? ,?, ?, ? , ?)";
     
     try {
 
         auto stmt =  std::unique_ptr<sql::PreparedStatement>(this -> conn -> prepareStatement(statement));
-        stmt -> setInt(1, ID);
-        stmt -> setString(2, PAYMENT_DATE);
-        stmt -> setString(3, AMOUNT_PAID);
-        stmt -> setString(4, PAYMENT_METHOD);
-        stmt -> setString(5, NOTES);
-        stmt -> setString(6, PAYMENT_FOR_MONTHOF);
+        stmt -> setInt(1, CLIENTID);
+        stmt -> setInt(2, USERID);
+        stmt -> setString(3, PAYMENT_DATE);
+        stmt -> setString(4, AMOUNT_PAID);
+        stmt -> setString(5, PAYMENT_METHOD);
+        stmt -> setString(6, NOTES);
+        stmt -> setString(7, PAYMENT_FOR_MONTHOF);
 
 
         auto rowAffected = stmt->executeUpdate();
 
         if(rowAffected > 0) {
-            std::cout << "User: " << ID << " is successfully updated payment history" << std::endl;
+            std::cout << "User: " << CLIENTID << " is successfully updated payment history by: " << USERID << std::endl;
             return true;
         } else {
-            std::cout << "User: " << ID << " is payment history failed to update" << std::endl;
+            std::cout << "User: " << CLIENTID << " is payment history failed to update by:"  << USERID << std::endl;
         }
 
     } catch (sql::SQLException& e) {

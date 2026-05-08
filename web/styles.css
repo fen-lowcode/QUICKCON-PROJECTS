@@ -1,5 +1,5 @@
 /* =========================
-    RESET
+    RESET & BASE
 ========================= */
 * {
     margin: 0;
@@ -7,62 +7,32 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 16px; /* keeps rem consistency if used later */
-}
-
 body {
-    font-family: "Inter", sans-serif;
-    color: white;
+    font-family: "Inter", -apple-system, sans-serif;
+    color: #f1f5f9;
+    background-color: #030712;
+    line-height: 1.5;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 /* =========================
-    LOGO
-========================= */
-.logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-container img {
-    height: 38px;
-    width: auto;
-    filter: drop-shadow(0 0 6px rgba(255,255,255,0.25));
-}
-
-.logo-container span {
-    font-size: 1.3rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-
-    background: linear-gradient(to right, #ffffff, #bcdfff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* =========================
-    BACKGROUND
+    BACKGROUND (RESTORED & POLISHED)
 ========================= */
 .bg {
     position: fixed;
     inset: 0;
     background: url("./assets/homepage_background.png") center/cover no-repeat;
-    filter: brightness(0.8);
     z-index: -2;
+    opacity: 0.4; /* Stronger visibility */
 }
 
 .bg::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.3),
-        rgba(0, 0, 0, 0.7),
-        rgb(0,0,0)
-    );
+    background: radial-gradient(circle at 50% 0%, rgba(0, 0, 0, 0.15), transparent 70%),
+                linear-gradient(to bottom, rgba(3, 7, 18, 0.2) 0%, #030712 95%);
 }
 
 /* =========================
@@ -72,259 +42,241 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 60px;
-    backdrop-filter: blur(12px);
-    background: rgba(0,0,0,0.3);
-    flex-wrap: wrap;
-    width: 100%;
-    height: 90px;
+    padding: 0 5%;
+    height: 80px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    background: rgba(3, 7, 18, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 600;
+.logo-container span {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
 }
-
 
 .nav-links button {
     background: none;
-    height: 100%;
     border: none;
-    color: white;
-    margin-left: 20px;
+    color: #94a3b8;
+    margin-left: 30px;
     cursor: pointer;
-    font-size: 16px;
-    opacity: 0.8;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-
-
 .nav-links button:hover {
-    opacity: 1;
+    color: #38bdf8;
 }
 
 /* =========================
-    HERO
+    HERO SECTION (COMPACT FOR VISIBILITY)
 ========================= */
 .hero {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    padding: 80px 60px;
-}
-
-.hero-left {
-    max-width: 500px;
-}
-
-.hero-left h1 {
-    margin-top: -20px;
-    font-size: 3.5rem;
-    font-weight: 700;
-    line-height: 1.1;
-}
-
-.hero-left p {
-    margin-top: 25px;
-    font-size: 1.1rem;
-    opacity: 0.8;
-}
-
-/* HERO LOGO */
-.quickcon-logo {
-    margin-top: -100px;
-    margin-bottom: 0px;
+    text-align: center;
+    padding: 80px 20px 140px; /* Large bottom padding for card overlap */
+    min-height: auto;
 }
 
 .quickcon-logo img {
-    height: 350px;
-    width: auto;
-    filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
-    /* transform: rotate(-3deg); */
-    transition: 0.3s ease;
+    height: 200px; /* More professional size */
+    margin-top: -100px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.3));
 }
 
-.quickcon-logo img:hover {
-    transform: rotate(0deg) scale(1.05);
+.hero-left h1 {
+    font-size: clamp(2.5rem, 6vw, 4.2rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #ffffff 60%, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-left p {
+    font-size: 1.15rem;
+    color: #94a3b8;
+    max-width: 550px;
+    margin: 0 auto 35px;
 }
 
 /* =========================
-    Get Connected Logo
+    THE "10X" CONNECTED BUTTON
 ========================= */
 .get-connected-button {
-    width: 300px;
-    height: 70px;
-
-    font-size: 24px;
-
-    margin-top: 25px;
-    padding: 12px 24px;
+    padding: 18px 48px;
+    font-size: 16px;
     border: none;
-    border-radius: 8px;
-    background: white;
-    color: black;
-    font-weight: 600;
+    border-radius: 12px; /* Sleeker tech radius */
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.25s;
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.4), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .get-connected-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(14, 165, 233, 0.6);
+    background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
 }
 
 /* =========================
-    PLANS
+    PRICING CARDS (ABOVE THE FOLD)
 ========================= */
+#plans {
+    margin-top: -100px; /* PULLS CARDS INTO HERO VIEW */
+    padding: 0 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+
 .plans {
-    margin-top: 200px;
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .card {
-    margin-top: 10px;
-    width: 300px;
-    padding: 35px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.04);
+    flex: 1;
+    max-width: 350px;
+    padding: 50px 30px;
+    border-radius: 28px;
+    background: rgba(15, 23, 42, 0.7); /* Deep glass */
     backdrop-filter: blur(15px);
-    cursor: pointer;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
-    transition: 0.3s;
-
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    border-color: rgba(56, 189, 248, 0.5);
+    background: rgba(15, 23, 42, 0.9);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
 }
 
-.highlight {
-    background: white;
-    color: black;
+.card.highlight {
+    background: linear-gradient(165deg, rgba(14, 165, 233, 0.15) 0%, rgba(15, 23, 42, 0.8) 100%);
+    border: 1.5px solid #38bdf8;
+    position: relative;
+    box-shadow: 0 0 30px rgba(14, 165, 233, 0.2);
 }
 
-/* CARD TEXT */
 .card h2 {
-    font-size: 1.4rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: #38bdf8;
+    margin-bottom: 15px;
+    font-weight: 800;
 }
 
 .price {
-    font-size: 1.8rem;
-    margin: 10px 0;
-    font-weight: 700;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 5px;
 }
 
 .card span {
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-
-/* =========================
-    RESPONSIVE
-========================= */
-@media (max-width: 1200px) {
-
-        
-    .quickcon-logo img {
-        height: 200px;
-        width: auto;
-        filter: drop-shadow(0 0 20px rgba(255,255,255,0.25));
-        /* transform: rotate(-3deg); */
-        transition: 0.3s ease;
-    }
-
-    .get-connected-button {
-        width: 250px;
-        height: 55px;
-        font-size: 22px;
-    }
-
-    .hero {
-        flex-direction: column;
-        gap: 40px;
-        text-align: center;
-    }
-
-    .plans {
-        flex-direction: column;
-    }
+    font-size: 0.95rem;
+    color: #94a3b8;
+    font-weight: 500;
 }
 
 /* =========================
     ABOUT SECTION
 ========================= */
 .about-section {
-    margin-top: 90px;
-    padding: 60px 40px;
-    text-align: center;
+    padding: 100px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .about-section h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
     margin-bottom: 20px;
-    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .about-section > p {
-    max-width: 800px;
-    margin: 0 auto 50px;
-    font-size: 1.05rem;
-    opacity: 0.85;
-    line-height: 1.6;
+    text-align: center;
+    max-width: 750px;
+    margin: 0 auto 80px;
+    font-size: 1.1rem;
+    color: #94a3b8;
 }
 
-/* GRID */
 .about-grid {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
 }
 
-/* CARDS */
 .about-card {
-    width: 300px;
-    padding: 30px;
-    border-radius: 16px;
-
-    background: rgba(255, 255, 255, 0);
-    backdrop-filter: blur(10px);
-
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-
+    padding: 40px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: 0.3s ease;
 }
 
 .about-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .about-card h2 {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
-    color: #ffffff;
+    color: #38bdf8;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 800;
 }
 
 .about-card p {
+    color: #94a3b8;
     font-size: 0.95rem;
-    opacity: 0.8;
-    line-height: 1.5;
+    line-height: 1.7;
 }
 
 /* =========================
-    ABOUT RESPONSIVE
+    RESPONSIVE
 ========================= */
-@media (max-width: 1200px) {
-    .about-section {
-        padding: 40px 20px;
+@media (max-width: 900px) {
+    .nav { padding: 0 5%; }
+    #plans { margin-top: 0; }
+    .hero { padding-bottom: 60px; }
+    .plans {
+        flex-direction: column;
+        align-items: center;
     }
-
-    .about-card {
-        width: 100%;
-        max-width: 400px;
-    }
+    .card { width: 100%; max-width: 400px; }
 }
