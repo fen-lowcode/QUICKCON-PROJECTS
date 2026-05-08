@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Statement of Account</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="assets/logo.png" alt="Logo">
+  </div>
+
+  <div class="title">STATEMENT OF ACCOUNT</div>
+
+  <!-- TOP SECTION -->
+  <div class="top">
+
+    <!-- CUSTOMER INFO -->
+    <div class="card">
+      <div class="info-title">CUSTOMER INFORMATION</div>
+
+      <div class="row">
+        <span class="label">Name</span>
+        <input id="top-client-name" class="input" type="text">
+      </div>
+
+      <div class="row">
+        <span class="label">Address</span>
+        <textarea id="top-address" class="input textarea"></textarea>
+      </div>
+
+      <div class="row">
+        <span class="label">Contact</span>
+        <input id="top-contact" class="input" type="text">
+      </div>
+
+    </div>
+
+    <!-- BILLING -->
+    <div class="card">
+      <div class="info-title">BILLING DETAILS</div>
+
+      <div class="row">
+        <span class="label">Amount Due</span>
+        <input id="billing-amount-due" class="input" type="text" value="P 1,000.00">
+      </div>
+
+      <div class="row">
+        <span class="label">Customer ID</span>
+        <input id="billing-customer-id" class="input" type="text">
+      </div>
+
+      <div class="row">
+        <span class="label">Billing Period</span>
+        <input id="billing-period" class="input" type="date">
+      </div>
+
+      <div class="row">
+        <span class="label">Due Date</span>
+        <input id="billing-due-date" class="input" type="date">
+      </div>
+
+      <div class="row">
+        <span class="label red">GCASH / MAYA</span>
+        <input id="billing-gcash-maya" class="input" type="text">
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="section">STATEMENT SUMMARY</div>
+
+  <div class="grid">
+
+    <!-- PREVIOUS -->
+    <div class="box">
+      <h4>PREVIOUS BILL</h4>
+
+      <table>
+        <tr>
+          <td>
+            Previous Bill<br><br>
+            LESS:<br>
+            Payment<br>
+            Adjustment
+          </td>
+
+          <td class="amount">
+            <input id="prev-bill-amount" class="input">
+            <input id="prev-payment" class="input">
+            <input id="prev-adjustment" class="input">
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>TOTAL</b></td>
+          <td class="amount">
+            <input id="prev-total" class="input">
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- CURRENT -->
+    <div class="box">
+      <h4>CURRENT BILL</h4>
+
+      <table>
+        <tr>
+          <td>
+            PLAN:
+            <input id="current-plan-speed" class="input"><br><br>
+            LESS:<br>
+            Discounts<br>
+            Adjustment
+          </td>
+
+          <td class="amount">
+            <input id="current-bill-amount" class="input">
+            <input id="current-discounts" class="input">
+            <input id="current-adjustment" class="input">
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>TOTAL</b></td>
+          <td class="amount">
+            <input id="current-total" class="input">
+          </td>
+        </tr>
+
+        <tr>
+          <td><b>AMOUNT TO PAY</b></td>
+          <td class="amount">
+            <input id="amount-to-pay" class="input">
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+  </div>
+
+  <!-- NOTICE -->
+  <div class="notice">
+    Please settle your account on or before due date to avoid service interruption.
+  </div>
+
+  <!-- OFFICE -->
+  <div class="office">
+    <b>Office:</b> Block 13, Lot 865, Phase 1A, Townville, Brgy. Sto. Cristo, SJDM Bulacan<br>
+    Customer Support: 09362169215
+  </div>
+
+  <!-- STUB 1 -->
+  <div class="stub">
+
+    <div class="stub-title">PAYMENT STUB</div>
+
+    <div class="stub-grid">
+
+      <div class="stub-left">
+        <input id="stub1-name" class="input">
+        <input id="stub1-address" class="input">
+        <input id="stub1-city" class="input">
+        <input id="stub1-contact" class="input">
+
+        <div class="sign">Signature Over Printed Name</div>
+      </div>
+
+      <div class="stub-right">
+        <div class="line"><span>AMOUNT</span><input id="stub1-amount"></div>
+        <div class="line"><span>CUSTOMER ID</span><input id="stub1-customer-id"></div>
+        <div class="line"><span>BILLING</span><input id="stub1-billing"></div>
+        <div class="line"><span>DUE DATE</span><input id="stub1-due-date"></div>
+        <div class="line"><span class="red">GCASH/MAYA</span><input id="stub1-gcash-maya"></div>
+
+        <div class="received">RECEIVED BY: __________________</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STUB 2 -->
+  <div class="stub">
+
+    <div class="stub-title">PAYMENT STUB</div>
+
+    <div class="stub-grid">
+
+      <div class="stub-left">
+        <input id="stub2-name" class="input">
+        <input id="stub2-address" class="input">
+        <input id="stub2-city" class="input">
+        <input id="stub2-contact" class="input">
+
+        <div class="sign">Signature Over Printed Name</div>
+      </div>
+
+      <div class="stub-right">
+        <div class="line"><span>AMOUNT</span><input id="stub2-amount"></div>
+        <div class="line"><span>CUSTOMER ID</span><input id="stub2-customer-id"></div>
+        <div class="line"><span>BILLING</span><input id="stub2-billing"></div>
+        <div class="line"><span>DUE DATE</span><input id="stub2-due-date"></div>
+        <div class="line"><span class="red">GCASH/MAYA</span><input id="stub2-gcash-maya"></div>
+
+        <div class="received">RECEIVED BY: __________________</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

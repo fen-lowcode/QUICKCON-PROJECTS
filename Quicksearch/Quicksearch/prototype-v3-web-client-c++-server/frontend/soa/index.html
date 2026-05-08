@@ -22,38 +22,31 @@
   <!-- TOP -->
   <div class="top">
 
-    <!-- LEFT -->
     <div class="card">
       <div class="info-title">CUSTOMER INFORMATION</div>
 
       <div class="row">
         <span class="label">Name</span>
-        <input class="input" value="Sylvia B. Decena">
+        <input class="input">
       </div>
 
       <div class="row">
         <span class="label">Address</span>
-        <input class="input" value="Blk 90, L12 Area B Purok 9">
-      </div>
-
-      <div class="row">
-        <span class="label">City</span>
-        <input class="input" value="CSJDM, BULACAN">
+        <textarea class="input textarea"></textarea>
       </div>
 
       <div class="row">
         <span class="label">Contact</span>
-        <input class="input" value="0966 8162868">
+        <input class="input">
       </div>
     </div>
 
-    <!-- RIGHT -->
     <div class="card">
       <div class="info-title">BILLING DETAILS</div>
 
       <div class="row">
         <span class="label">Amount Due</span>
-        <input class="input" value="P 1,000.00">
+        <input class="input" value="P 1,000.00" style="font-weight:bold;">
       </div>
 
       <div class="row">
@@ -63,18 +56,19 @@
 
       <div class="row">
         <span class="label">Billing Period</span>
-        <input class="input" value="MARCH 1-31, 2026">
+        <input class="input" type="date">
       </div>
 
       <div class="row">
         <span class="label">Due Date</span>
-        <input class="input" value="APRIL 01, 2026">
+        <input class="input" type="date">
       </div>
 
       <div class="row">
-        <span class="label red">GCASH / MAYA</span>
+        <span class="label">GCASH / MAYA</span>
         <input class="input" value="09362169215">
       </div>
+
     </div>
 
   </div>
@@ -84,43 +78,69 @@
 
   <div class="grid">
 
+    <!-- PREVIOUS BILL -->
     <div class="box">
       <h4>PREVIOUS BILL</h4>
+
       <table>
         <tr>
-          <td>Previous Bill<br><br>LESS:<br>Payment<br>Adjustment</td>
-          <td class="amount">
-            <input class="input" value="P 0.00">
-            <input class="input" value="P 0.00">
-            <input class="input" value="P 0.00">
-          </td>
-        </tr>
-        <tr>
-          <td><b>TOTAL</b></td>
+          <td>Previous Bill</td>
           <td class="amount"><input class="input" value="P 0.00"></td>
+        </tr>
+
+        <tr>
+          <td>Discount</td>
+          <td class="amount"><input class="input" value="P 0.00"></td>
+        </tr>
+
+        <tr>
+          <td>Adjustment</td>
+          <td class="amount"><input class="input" value="P 0.00"></td>
+        </tr>
+
+        <tr id="container-box-for-total-amount">
+          <td><b>TOTAL</b></td>
+          <td class="amount"><input class="input" value="P 0.00" style="font-weight:bold;"></td>
         </tr>
       </table>
     </div>
 
+    <!-- CURRENT BILL (FIXED GRID ALIGNMENT) -->
     <div class="box">
       <h4>CURRENT BILL</h4>
+
       <table>
+
         <tr>
-          <td>PLAN: <input class="input" value="65Mbps"><br><br>LESS:<br>Discounts<br>Adjustment</td>
-          <td class="amount">
-            <input class="input" value="P 1,000.00">
-            <input class="input" value="P 0.00">
-            <input class="input" value="P 0.00">
-          </td>
+          <td>PLAN</td>
+          <td class="amount"><input class="input" value="65Mbps"></td>
         </tr>
+
         <tr>
+          <td></td>
+          <td class="amount"><input class="input" value="P 1,000.00"></td>
+        </tr>
+
+        <tr>
+          <td>DISCOUNT</td>
+          <td class="amount"><input class="input" value="P 0.00"></td>
+        </tr>
+
+        <tr>
+          <td>ADJUSTMENT</td>
+          <td class="amount"><input class="input" value="P 0.00"></td>
+        </tr>
+
+        <tr id="container-box-for-total-amount">
           <td><b>TOTAL</b></td>
-          <td class="amount"><input class="input" value="P 1,000.00"></td>
+          <td class="amount"><input class="input" value="P 0.00" style="font-weight:bold;"></td>
         </tr>
+
         <tr>
-          <td><b>DUE</b></td>
-          <td class="amount"><input class="input" value="P 1,000.00"></td>
+          <td><b>AMOUNT TO PAY</b></td>
+          <td class="amount"><input class="input" value="0.00" style="font-weight:bold;"></td>
         </tr>
+
       </table>
     </div>
 
@@ -134,7 +154,6 @@
   <!-- OFFICE -->
   <div class="office">
     <b>Office:</b> Block 13, Lot 865, Phase 1A, Townville, Brgy. Sto. Cristo, SJDM Bulacan<br>
-    Customer Support: 09362169215
   </div>
 
   <!-- STUB 1 -->
@@ -149,8 +168,6 @@
         <input value="Blk 90, L12 Area B Purok 9">
         <input value="CSJDM, BULACAN">
         <input value="0966 8162868">
-
-        <div class="sign">Signature Over Printed Name</div>
       </div>
 
       <div class="stub-right">
@@ -159,9 +176,7 @@
         <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
         <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
         <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-        <div class="line"><span class="red">GCASH/MAYA</span><input value="09362169215"></div>
-
-        <div class="received">RECEIVED BY: __________________</div>
+        <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
 
       </div>
 
@@ -169,7 +184,7 @@
 
   </div>
 
-  <!-- STUB 2 -->
+  <!-- STUB 2 (UNCHANGED) -->
   <div class="stub">
 
     <div class="stub-title">PAYMENT STUB</div>
@@ -181,8 +196,6 @@
         <input value="Blk 90, L12 Area B Purok 9">
         <input value="CSJDM, BULACAN">
         <input value="0966 8162868">
-
-        <div class="sign">Signature Over Printed Name</div>
       </div>
 
       <div class="stub-right">
@@ -191,9 +204,7 @@
         <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
         <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
         <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-        <div class="line"><span class="red">GCASH/MAYA</span><input value="09362169215"></div>
-
-        <div class="received">RECEIVED BY: __________________</div>
+        <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
 
       </div>
 
