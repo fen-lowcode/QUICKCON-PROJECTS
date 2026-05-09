@@ -5,206 +5,269 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Statement of Account</title>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="soa.css">
 </head>
 
 <body>
 
-<div class="page">
+<!-- MODAL -->
+<div class="modal-overlay">
 
-  <!-- HEADER -->
-  <div class="header">
-    <img src="assets/683115129_1359027916053255_2329588610600427561_n.png">
-  </div>
+  <div class="modal-container">
 
-  <div class="title">STATEMENT OF ACCOUNT</div>
+    <button class="close-modal" onclick="window.print()">
+      PRINT
+    </button>
 
-  <!-- TOP -->
-  <div class="top">
+    <div class="page">
 
-    <div class="card">
-      <div class="info-title">CUSTOMER INFORMATION</div>
-
-      <div class="row">
-        <span class="label">Name</span>
-        <input class="input">
+      <!-- HEADER -->
+      <div class="header">
+        <img src="../assets/683115129_1359027916053255_2329588610600427561_n.png">
       </div>
 
-      <div class="row">
-        <span class="label">Address</span>
-        <textarea class="input textarea"></textarea>
-      </div>
+      <div class="title">STATEMENT OF ACCOUNT</div>
 
-      <div class="row">
-        <span class="label">Contact</span>
-        <input class="input">
-      </div>
-    </div>
+      <!-- TOP -->
+      <div class="top">
 
-    <div class="card">
-      <div class="info-title">BILLING DETAILS</div>
+        <div class="card">
+          <div class="info-title">CUSTOMER INFORMATION</div>
 
-      <div class="row">
-        <span class="label">Amount Due</span>
-        <input class="input" value="P 1,000.00" style="font-weight:bold;">
-      </div>
+          <div class="row">
+            <span class="label">Name</span>
+            <input class="input" id="top-client-name" style="font-weight:bold; font-size: 13px;">
+          </div>
 
-      <div class="row">
-        <span class="label">Customer ID</span>
-        <input class="input" value="RVM-LP93-NP2-P6">
-      </div>
+          <div class="row">
+            <span class="label">Address</span>
+            <textarea class="input textarea" id="top-client-address"></textarea>
+          </div>
 
-      <div class="row">
-        <span class="label">Billing Period</span>
-        <input class="input" type="date">
-      </div>
+          <div class="row">
+            <span class="label">Contact</span>
+            <input class="input" id="top-client-contact">
+          </div>
+        </div>
 
-      <div class="row">
-        <span class="label">Due Date</span>
-        <input class="input" type="date">
-      </div>
+        <div class="card">
+          <div class="info-title">BILLING DETAILS</div>
 
-      <div class="row">
-        <span class="label">GCASH / MAYA</span>
-        <input class="input" value="09362169215">
-      </div>
+          <div class="row">
+            <span class="label">Amount Due</span>
+            <input class="input" id="top-client-amount-due" value="" style="font-weight:bold;">
+          </div>
 
-    </div>
+          <div class="row">
+            <span class="label">Customer ID</span>
+            <input class="input" id="top-client-credentials" style="font-weight:bold;" value="">
+          </div>
 
-  </div>
+          <div class="row">
+            <span class="label">Billing Period</span>
+            <input class="input" id="top-billing-period" style="font-weight:bold;" type="date">
+          </div>
 
-  <!-- SUMMARY -->
-  <div class="section">STATEMENT SUMMARY</div>
+          <div class="row">
+            <span class="label">Due Date</span>
+            <input class="input" id="top-due-date" style="font-weight:bold;" type="date">
+          </div>
 
-  <div class="grid">
+          <div class="row">
+            <span class="label">GCASH / MAYA</span>
+            <input class="input" id="top-due-date" value="09362169215">
+          </div>
 
-    <!-- PREVIOUS BILL -->
-    <div class="box">
-      <h4>PREVIOUS BILL</h4>
-
-      <table>
-        <tr>
-          <td>Previous Bill</td>
-          <td class="amount"><input class="input" value="P 0.00"></td>
-        </tr>
-
-        <tr>
-          <td>Discount</td>
-          <td class="amount"><input class="input" value="P 0.00"></td>
-        </tr>
-
-        <tr>
-          <td>Adjustment</td>
-          <td class="amount"><input class="input" value="P 0.00"></td>
-        </tr>
-
-        <tr id="container-box-for-total-amount">
-          <td><b>TOTAL</b></td>
-          <td class="amount"><input class="input" value="P 0.00" style="font-weight:bold;"></td>
-        </tr>
-      </table>
-    </div>
-
-    <!-- CURRENT BILL (FIXED GRID ALIGNMENT) -->
-    <div class="box">
-      <h4>CURRENT BILL</h4>
-
-      <table>
-
-        <tr>
-          <td>PLAN</td>
-          <td class="amount"><input class="input" value="65Mbps"></td>
-        </tr>
-
-        <tr>
-          <td></td>
-          <td class="amount"><input class="input" value="P 1,000.00"></td>
-        </tr>
-
-        <tr>
-          <td>DISCOUNT</td>
-          <td class="amount"><input class="input" value="P 0.00"></td>
-        </tr>
-
-        <tr>
-          <td>ADJUSTMENT</td>
-          <td class="amount"><input class="input" value="P 0.00"></td>
-        </tr>
-
-        <tr id="container-box-for-total-amount">
-          <td><b>TOTAL</b></td>
-          <td class="amount"><input class="input" value="P 0.00" style="font-weight:bold;"></td>
-        </tr>
-
-        <tr>
-          <td><b>AMOUNT TO PAY</b></td>
-          <td class="amount"><input class="input" value="0.00" style="font-weight:bold;"></td>
-        </tr>
-
-      </table>
-    </div>
-
-  </div>
-
-  <!-- NOTICE -->
-  <div class="notice">
-    Please settle your account on or before due date to avoid service interruption.
-  </div>
-
-  <!-- OFFICE -->
-  <div class="office">
-    <b>Office:</b> Block 13, Lot 865, Phase 1A, Townville, Brgy. Sto. Cristo, SJDM Bulacan<br>
-  </div>
-
-  <!-- STUB 1 -->
-  <div class="stub">
-
-    <div class="stub-title">PAYMENT STUB</div>
-
-    <div class="stub-grid">
-
-      <div class="stub-left">
-        <input value="Sylvia B. Decena">
-        <input value="Blk 90, L12 Area B Purok 9">
-        <input value="CSJDM, BULACAN">
-        <input value="0966 8162868">
-      </div>
-
-      <div class="stub-right">
-
-        <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
-        <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
-        <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
-        <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-        <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+        </div>
 
       </div>
 
-    </div>
+      <!-- SUMMARY -->
+      <div class="section">STATEMENT SUMMARY</div>
 
-  </div>
+      <div class="grid">
 
-  <!-- STUB 2 (UNCHANGED) -->
-  <div class="stub">
+        <!-- PREVIOUS BILL -->
+        <div class="box">
+          <h4>PREVIOUS BILL</h4>
 
-    <div class="stub-title">PAYMENT STUB</div>
+          <table>
+            <tr>
+              <td>PREVIOUS BILL</td>
+              <td class="amount">
+                <input class="input" id="summary-previous-amount" value="P 0.00" style="font-weight:bold;">
+              </td>
+            </tr>
 
-    <div class="stub-grid">
+            <tr>
+              <td>DISCOUNT</td>
+              <td class="amount">
+                <input class="input" id="summary-previous-Discount" value="P 0.00">
+              </td>
+            </tr>
 
-      <div class="stub-left">
-        <input value="Sylvia B. Decena">
-        <input value="Blk 90, L12 Area B Purok 9">
-        <input value="CSJDM, BULACAN">
-        <input value="0966 8162868">
+            <tr>
+              <td>ADJUSTMENT</td>
+              <td class="amount">
+                <input class="input" id="summary-previous-adjustment" value="P 0.00">
+              </td>
+            </tr>
+
+            <tr id="container-box-for-total-amount">
+              <td><b>TOTAL</b></td>
+              <td class="amount">
+                <input class="input" id="summary-previous-total" value="P 0.00" style="font-weight:bold;">
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- CURRENT BILL -->
+        <div class="box">
+          <h4>CURRENT BILL</h4>
+
+          <table>
+
+            <tr>
+              <td>PLAN</td>
+              <td class="amount" id="summary-mbps">
+                <input class="input" value="">
+              </td>
+            </tr>
+
+            <tr>
+              <td>AMOUNT DUE</td>
+              <td class="amount" id="summary-amount-due">
+                <input style="font-weight:bold;" class="input" value="P 1,000.00">
+              </td>
+            </tr>
+
+            <tr>
+              <td>DISCOUNT</td>
+              <td class="amount">
+                <input class="input" id="summary-discount" value="P 0.00">
+              </td>
+            </tr>
+
+            <tr>
+              <td>ADJUSTMENT</td>
+              <td class="amount">
+                <input class="input" id="summary-adjustment" value="P 0.00">
+              </td>
+            </tr>
+
+            <tr id="container-box-for-total-amount">
+              <td><b>TOTAL</b></td>
+              <td class="amount">
+                <input class="input" id="summary-total" value="P 0.00" style="font-weight:bold;">
+              </td>
+            </tr>
+
+            <tr>
+              <td><b>AMOUNT TO PAY</b></td>
+              <td class="amount">
+                <input class="input" id="summary-amount-to-pay" value="0.00" style="font-weight:bold; font-size: 16px;">
+              </td>
+            </tr>
+
+          </table>
+        </div>
+
       </div>
 
-      <div class="stub-right">
+      <!-- NOTICE -->
+      <div class="notice">
+        Please keep your account current to avoid internet disconnection, Thank You!
+      </div>
 
-        <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
-        <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
-        <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
-        <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-        <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+      <!-- OFFICE -->
+      <div class="office">
+        <b>Office:</b> Block 13, Lot 865, Phase 1A, Townville, Brgy. Sto. Cristo, SJDM Bulacan<br>
+      </div>
+
+      <!-- STUB 1 -->
+      <div class="stub">
+
+        <div class="stub-title">PAYMENT STUB</div>
+
+        <div class="stub-grid">
+
+          <div class="stub-left">
+            <input value="Sylvia B. Decena">
+            <input value="Blk 90, L12 Area B Purok 9">
+            <input value="CSJDM, BULACAN">
+            <input value="0966 8162868">
+          </div>
+
+          <div class="stub-right">
+
+            <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
+            <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
+            <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
+            <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
+            <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+
+          </div>
+
+        </div>
+
+        <div class="stub-footer">
+
+          <div class="received">
+            RECEIVED BY:
+          </div>
+
+          <div class="signature-area">
+            <div class="signature-line"></div>
+            <div class="signature-label">
+              SIGNATURE OVER PRINTED NAME
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- STUB 2 -->
+      <div class="stub">
+
+        <div class="stub-title">PAYMENT STUB</div>
+
+        <div class="stub-grid">
+
+          <div class="stub-left">
+            <input value="Sylvia B. Decena">
+            <input value="Blk 90, L12 Area B Purok 9">
+            <input value="CSJDM, BULACAN">
+            <input value="0966 8162868">
+          </div>
+
+          <div class="stub-right">
+
+            <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
+            <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
+            <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
+            <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
+            <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+
+          </div>
+
+        </div>
+
+        <div class="stub-footer">
+
+          <div class="received">
+            RECEIVED BY:
+          </div>
+
+          <div class="signature-area">
+            <div class="signature-line"></div>
+            <div class="signature-label">
+              SIGNATURE OVER PRINTED NAME
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
