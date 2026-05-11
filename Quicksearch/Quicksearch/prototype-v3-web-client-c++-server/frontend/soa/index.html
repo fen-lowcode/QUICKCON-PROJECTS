@@ -55,12 +55,12 @@
 
           <div class="row">
             <span class="label">Amount Due</span>
-            <input class="input" id="top-client-amount-due" value="" style="font-weight:bold;">
+            <input class="input" id="top-client-amount-due" style="font-weight:bold;">
           </div>
 
           <div class="row">
             <span class="label">Customer ID</span>
-            <input class="input" id="top-client-credentials" style="font-weight:bold;" value="">
+            <input class="input" id="top-client-credentials" style="font-weight:bold;">
           </div>
 
           <div class="row">
@@ -75,7 +75,7 @@
 
           <div class="row">
             <span class="label">GCASH / MAYA</span>
-            <input class="input" id="top-due-date" value="09362169215">
+            <input class="input" id="top-gcash" value="09362169215">
           </div>
 
         </div>
@@ -102,7 +102,7 @@
             <tr>
               <td>DISCOUNT</td>
               <td class="amount">
-                <input class="input" id="summary-previous-Discount" value="P 0.00">
+                <input class="input" id="summary-previous-discount" value="P 0.00">
               </td>
             </tr>
 
@@ -113,7 +113,7 @@
               </td>
             </tr>
 
-            <tr id="container-box-for-total-amount">
+            <tr id="container-box-for-total-previous">
               <td><b>TOTAL</b></td>
               <td class="amount">
                 <input class="input" id="summary-previous-total" value="P 0.00" style="font-weight:bold;">
@@ -130,15 +130,15 @@
 
             <tr>
               <td>PLAN</td>
-              <td class="amount" id="summary-mbps">
-                <input class="input" value="">
+              <td class="amount">
+                <input class="input" id="summary-mbps" value="">
               </td>
             </tr>
 
             <tr>
               <td>AMOUNT DUE</td>
-              <td class="amount" id="summary-amount-due">
-                <input style="font-weight:bold;" class="input" value="P 1,000.00">
+              <td class="amount">
+                <input class="input" id="summary-amount-due" value="P 0.00" style="font-weight:bold;">
               </td>
             </tr>
 
@@ -156,7 +156,7 @@
               </td>
             </tr>
 
-            <tr id="container-box-for-total-amount">
+            <tr id="container-box-for-total-current">
               <td><b>TOTAL</b></td>
               <td class="amount">
                 <input class="input" id="summary-total" value="P 0.00" style="font-weight:bold;">
@@ -164,9 +164,9 @@
             </tr>
 
             <tr>
-              <td><b>AMOUNT TO PAY</b></td>
+              <td><b style="font-size: 14px;">AMOUNT TO PAY</b></td>
               <td class="amount">
-                <input class="input" id="summary-amount-to-pay" value="0.00" style="font-weight:bold; font-size: 16px;">
+                <input class="input" id="summary-amount-to-pay" value="1,000.00" style="font-weight:bold; font-size: 14px;">
               </td>
             </tr>
 
@@ -188,24 +188,22 @@
       <!-- STUB 1 -->
       <div class="stub">
 
-        <div class="stub-title">PAYMENT STUB</div>
+        <div class="stub-title">QUICKCON PAYMENT STUB</div>
 
         <div class="stub-grid">
 
           <div class="stub-left">
-            <input value="Sylvia B. Decena">
-            <input value="Blk 90, L12 Area B Purok 9">
-            <input value="CSJDM, BULACAN">
-            <input value="0966 8162868">
+            <input id="stub1-client-name" value="John Smith" style="font-weight:bold; font-size: 12px;">
+            <textarea class="input textarea" id="stub1-client-address"></textarea>
           </div>
 
           <div class="stub-right">
 
-            <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
-            <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
-            <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
-            <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-            <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+            <div class="line"><span>AMOUNT</span><input id="stub-amount-due" value="P 1,000.00" style="font-weight:bold; font-size: 15px;"></div>
+            <div class="line"><span>CUSTOMER ID</span><input id="stub-credentials" style="font-weight:bold;"></div>
+            <div class="line"><span>BILLING</span><input id="stub-billing" style="font-weight:bold;" value="MONTH 1-31, 2026"></div>
+            <div class="line"><span>DUE DATE</span><input id="stub-due-date" type="date" style="font-weight:bold;"></div>
+            <div class="line"><span>GCASH/MAYA</span><input id="stub-gcash" style="font-weight:bold;" value="09362169215"></div>
 
           </div>
 
@@ -213,9 +211,7 @@
 
         <div class="stub-footer">
 
-          <div class="received">
-            RECEIVED BY:
-          </div>
+          <div class="received">RECEIVED BY:</div>
 
           <div class="signature-area">
             <div class="signature-line"></div>
@@ -231,24 +227,22 @@
       <!-- STUB 2 -->
       <div class="stub">
 
-        <div class="stub-title">PAYMENT STUB</div>
+        <div class="stub-title">QUICKCON PAYMENT STUB</div>
 
         <div class="stub-grid">
 
           <div class="stub-left">
-            <input value="Sylvia B. Decena">
-            <input value="Blk 90, L12 Area B Purok 9">
-            <input value="CSJDM, BULACAN">
-            <input value="0966 8162868">
+            <input id="stub2-client-name" value="John Smith" style="font-weight:bold; font-size: 12px;">
+            <textarea class="input textarea" id="stub2-client-address"></textarea>
           </div>
 
           <div class="stub-right">
 
-            <div class="line"><span>AMOUNT</span><input value="P 1,000.00"></div>
-            <div class="line"><span>CUSTOMER ID</span><input value="RVM-LP93-NP2-P6"></div>
-            <div class="line"><span>BILLING</span><input value="MARCH 1-31, 2026"></div>
-            <div class="line"><span>DUE DATE</span><input value="APRIL 01, 2026"></div>
-            <div class="line"><span>GCASH/MAYA</span><input value="09362169215"></div>
+            <div class="line"><span>AMOUNT</span><input id="stub-amount-due" value="P 1,000.00" style="font-weight:bold; font-size: 15px;"></div>
+            <div class="line"><span>CUSTOMER ID</span><input id="stub-credentials" style="font-weight:bold;"></div>
+            <div class="line"><span>BILLING</span><input id="stub-billing" style="font-weight:bold;" value="MONTH 1-31, 2026"></div>
+            <div class="line"><span>DUE DATE</span><input id="stub-due-date" type="date" style="font-weight:bold;"></div>
+            <div class="line"><span>GCASH/MAYA</span><input id="stub-gcash" style="font-weight:bold;" value="09362169215"></div>
 
           </div>
 
@@ -256,9 +250,7 @@
 
         <div class="stub-footer">
 
-          <div class="received">
-            RECEIVED BY:
-          </div>
+          <div class="received">RECEIVED BY:</div>
 
           <div class="signature-area">
             <div class="signature-line"></div>
