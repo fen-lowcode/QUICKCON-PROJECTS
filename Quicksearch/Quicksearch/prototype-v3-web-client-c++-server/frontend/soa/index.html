@@ -36,7 +36,7 @@
 
           <div class="row">
             <span class="label">Name</span>
-            <input class="input" id="top-client-name" style="font-weight:bold; font-size: 13px;">
+            <input class="input" id="top-client-name" style="font-weight:bold; font-size: 11px;">
           </div>
 
           <div class="row">
@@ -54,7 +54,7 @@
           <div class="info-title">BILLING DETAILS</div>
 
           <div class="row">
-            <span class="label">Amount Due</span>
+            <span class="label">Amount To Pay</span>
             <input class="input" id="top-client-amount-due" style="font-weight:bold;">
           </div>
 
@@ -75,7 +75,7 @@
 
           <div class="row">
             <span class="label">GCASH / MAYA</span>
-            <input class="input" id="top-gcash" value="09362169215">
+            <input class="input" id="top-gcash" value="09362169215" style="font-weight:bold;">
           </div>
 
         </div>
@@ -131,7 +131,7 @@
             <tr>
               <td>PLAN</td>
               <td class="amount">
-                <input class="input" id="summary-mbps" value="">
+                <input class="input" id="summary-mbps" value="" style="font-weight:bold;">
               </td>
             </tr>
 
@@ -183,6 +183,7 @@
       <!-- OFFICE -->
       <div class="office">
         <b>Office:</b> Block 13, Lot 865, Phase 1A, Townville, Brgy. Sto. Cristo, SJDM Bulacan<br>
+        <b>Customer Service Contact:</b> 09362169215<br>
       </div>
 
       <!-- STUB 1 -->
@@ -193,8 +194,8 @@
         <div class="stub-grid">
 
           <div class="stub-left">
-            <input id="stub1-client-name" value="John Smith" style="font-weight:bold; font-size: 12px;">
-            <textarea class="input textarea" id="stub1-client-address"></textarea>
+            <input id="stub-client-name" value="John Smith" style="font-weight:bold; font-size: 12px;">
+            <textarea class="input textarea" id="stub-client-address"></textarea>
           </div>
 
           <div class="stub-right">
@@ -239,7 +240,7 @@
           <div class="stub-right">
 
             <div class="line"><span>AMOUNT</span><input id="stub-amount-due" value="P 1,000.00" style="font-weight:bold; font-size: 15px;"></div>
-            <div class="line"><span>CUSTOMER ID</span><input id="stub-credentials" style="font-weight:bold;"></div>
+            <div class="line"><span>CUSTOMER ID</span><input id="stub2-credentials" style="font-weight:bold;"></div>
             <div class="line"><span>BILLING</span><input id="stub-billing" style="font-weight:bold;" value="MONTH 1-31, 2026"></div>
             <div class="line"><span>DUE DATE</span><input id="stub-due-date" type="date" style="font-weight:bold;"></div>
             <div class="line"><span>GCASH/MAYA</span><input id="stub-gcash" style="font-weight:bold;" value="09362169215"></div>
@@ -266,6 +267,8 @@
     </div>
 
   </div>
+
+   <script src="script.js"></script>
 
 </div>
 

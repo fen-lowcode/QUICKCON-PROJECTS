@@ -72,9 +72,8 @@
         <aside class="modal-sidebar">
             <div id="profile-sidebar-padding"></div>
             <nav>
-                <a href="#" class="nav-item active">Profile Info</a>
-                <!-- <a href="#" class="nav-item">Billing History</a> -->
-                <a href="#" class="nav-item">Change Logs</a>
+                <a href="#" class="nav-item">Profile Info</a>
+                <a href="../soa/index.html" class="nav-item" target="_blank" rel="noopener noreferrer" onclick="storeInfoToSession()">Statement of Account</a>
             </nav>
             <div class="sidebar-footer">
                 <button id="update-btn">Update Record</button>
@@ -143,7 +142,7 @@
 
                         <div id="payment-history-ribbon">
                              <h3>Payment History</h3>
-                            <button id="add-history-btn" onclick="showPaymentHistoryForm()"> Add Payment Record </button>
+                             <button id="add-history-btn" onclick="showPaymentHistoryForm()"> Add Payment Record </button>
                         </div>
                        
                         <div class="table-wrapper">
@@ -349,6 +348,7 @@
     <script src="scripts/tableListLogic.js"></script>
     <script src="scripts/api.js"></script>
     <script src="scripts/add_history.js"></script>
+    <script src="scripts/soa.js"></script>
 
 </body>
 </html>

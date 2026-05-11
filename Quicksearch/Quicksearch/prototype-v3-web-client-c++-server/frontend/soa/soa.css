@@ -332,7 +332,7 @@ td{
 .modal-overlay{
   position:fixed;
   inset:0;
-  background:rgba(155, 155, 155, 0.55);
+  background:rgb(177, 177, 177);
   display:flex;
   justify-content:center;
   align-items:flex-start;

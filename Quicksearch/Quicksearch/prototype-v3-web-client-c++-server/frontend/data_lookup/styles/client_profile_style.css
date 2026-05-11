@@ -60,8 +60,8 @@ html, body {
 /* ─── MODAL SHELL ─── */
 .modal-wrapper {
     display: flex;
-    width: 100%;
-    max-width: 1280px;
+    width: 150%;
+    max-width: 1500px;
     height: 90vh;
     background: var(--surface);
     border-radius: var(--radius-lg);
@@ -94,7 +94,7 @@ html, body {
     transition: all var(--transition-fast);
 }
 
-.nav-item.active {
+.nav-item:hover {
     background: var(--primary);
     color: white;
 }

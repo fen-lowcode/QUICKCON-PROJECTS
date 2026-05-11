@@ -3,7 +3,7 @@
 
 // get's the right token from document token
 async function getToken() {
-    return await localStorage.getItem('JWT');
+    return await sessionStorage.getItem('JWT');
 }
 
 

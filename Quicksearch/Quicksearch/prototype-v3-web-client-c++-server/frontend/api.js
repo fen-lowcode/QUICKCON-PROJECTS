@@ -21,7 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
 
         if (response.ok) {
 
-            localStorage.setItem('JWT', data.token);
+            sessionStorage.setItem('JWT', data.token);
 
             // Redirect
             window.location.href = "./data_lookup/index.html";
