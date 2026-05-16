@@ -59,12 +59,14 @@ function renderTableRows(dataList) {
         const currentStatus = (c.STATUS ?? "").toUpperCase().trim(); 
         let badgeClass = "";
 
-        if (currentStatus === "ACTIVE") {
-            badgeClass = "badge-active";
+        if (currentStatus === "CURRENT") {
+            badgeClass = "badge-current";
         } else if (currentStatus === "DELIQUENT") {
             badgeClass = "badge-delinquent";
         } else if (currentStatus === "DISCONNECTED") {
             badgeClass = "badge-disconnected";
+        }  else if (currentStatus === "PULL-OUT") {
+            badgeClass = "badge-pull-out";
         } else {
             badgeClass = "badge-default"; // Fallback for empty or unknown statuses
         }
@@ -111,6 +113,7 @@ function renderTableRows(dataList) {
     document.getElementById("rowCount").textContent =
         `${dataList.length} Records Loaded`;
 }
+
 /* ============================================================
     5. SEARCH LOGIC (Imperative Logic)
 ============================================================ */

@@ -226,6 +226,7 @@ tr:hover td {
 }
 
 /* Base Badge Design */
+
 .status-badge {
     display: inline-block;
     padding: 4px 8px;
@@ -237,21 +238,32 @@ tr:hover td {
 }
 
 /* Active: Light Green Text/BG */
-.status-badge.badge-active {
+.status-badge.badge-current {
     background-color: #e2f5ea;
     color: #135232;
+     font-weight: bold;
 }
 
 /* Delinquent: Light Red Text/BG */
 .status-badge.badge-delinquent {
     background-color: #fce8e6;
     color: #a8201a;
+     font-weight: bold;
 }
 
 /* Disconnected: Clean Gray Text/BG */
 .status-badge.badge-disconnected {
-    background-color: #040404;
+    background-color: #3d3d3d5c;
+    color: #000000;
+     font-weight: bold;
+}
+
+
+/* Delinquent: Light Red Text/BG */
+.status-badge.badge-pull-out {
+    background-color: #0a0a0a;
     color: #ffffff;
+    font-weight: bold;
 }
 
 /* Default Fallback */
