@@ -225,27 +225,37 @@ tr:hover td {
     border-right-color: rgba(0,0,0,0.05);
 }
 
-/* ─── STATUS ROW STYLES ─── */
-
-/* Light Green for Active Users */
-tr.row-active td {
-    background-color: #e2f5ea !important;
-    color: #135232 !important;
+/* Base Badge Design */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px; /* Soft square or change to 12px for a pill shape */
+    text-align: center;
+    letter-spacing: 0.05em;
 }
 
-/* Light Red for Delinquent Users */
-tr.row-delinquent td {
-    background-color: #fce8e6 !important;
-    color: #a8201a !important;
+/* Active: Light Green Text/BG */
+.status-badge.badge-active {
+    background-color: #e2f5ea;
+    color: #135232;
 }
 
-/* Gray for Disconnected Users */
-tr.row-disconnected td {
-    background-color: #9a9a9a !important;
-    color: #000000 !important;
+/* Delinquent: Light Red Text/BG */
+.status-badge.badge-delinquent {
+    background-color: #fce8e6;
+    color: #a8201a;
 }
 
-/* Optional: Subtle hover effect that darkens the row slightly when moused over */
-tr.row-active:hover td { background-color: #d1eedc !important; }
-tr.row-delinquent:hover td { background-color: #f9d2ce !important; }
-tr.row-disconnected:hover td { background-color: #e4e7ea !important; }
+/* Disconnected: Clean Gray Text/BG */
+.status-badge.badge-disconnected {
+    background-color: #040404;
+    color: #ffffff;
+}
+
+/* Default Fallback */
+.status-badge.badge-default {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--text-tertiary, #aaaaaa);
+}

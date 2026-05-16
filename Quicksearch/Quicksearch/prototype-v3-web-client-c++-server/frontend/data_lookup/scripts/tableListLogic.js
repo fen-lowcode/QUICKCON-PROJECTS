@@ -55,23 +55,20 @@ function renderTableRows(dataList) {
         const c = dataList[i];
         const row = document.createElement("tr");
 
-        // ─── STATUS COLOR CODING LOGIC ───
-        // Fallback to empty string if missing, and ensure we match ALL CAPS
+        // ─── STATUS BADGE LOGIC ───
         const currentStatus = (c.STATUS ?? "").toUpperCase().trim(); 
-        let statusClass = "";
+        let badgeClass = "";
 
         if (currentStatus === "ACTIVE") {
-            statusClass = "row-active";
+            badgeClass = "badge-active";
         } else if (currentStatus === "DELIQUENT") {
-            statusClass = "row-delinquent";
+            badgeClass = "badge-delinquent";
         } else if (currentStatus === "DISCONNECTED") {
-            statusClass = "row-disconnected";
+            badgeClass = "badge-disconnected";
+        } else {
+            badgeClass = "badge-default"; // Fallback for empty or unknown statuses
         }
-
-        if (statusClass) {
-            row.classList.add(statusClass);
-        }
-        // ─────────────────────────────────
+        // ──────────────────────────
 
         row.innerHTML = `
             <td>
@@ -80,7 +77,9 @@ function renderTableRows(dataList) {
                 </button>
             </td>
 
-            <td>${c.STATUS ?? ""}</td>
+            <!-- Applied the badge class directly to a span container inside the TD -->
+            <td><span class="status-badge ${badgeClass}">${c.STATUS ?? ""}</span></td>
+            
             <td>${c.ID ?? ""}</td>
             <td>${c.CLIENTS_NAME ?? ""}</td>
             <td>${c.CREDENTIALS ?? ""}</td>
