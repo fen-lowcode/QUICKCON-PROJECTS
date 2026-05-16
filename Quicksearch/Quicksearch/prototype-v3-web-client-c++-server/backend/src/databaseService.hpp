@@ -45,7 +45,7 @@ public:
                         const std::string& SOCIAL_MEDIA,const std::string& OCCUPATION, const std::string& DATE_OF_BIRTH, 
                         const std::string& PLACE_OF_BIRTH,const std::string& OPTICAL_INFO, const std::string& SC_CONNECTOR, 
                         const std::string& FIBER_DROP,const std::string& TAPPING_CLIP, const std::string& CABLE_TIE, 
-                        const std::string& F_CLAMP,const std::string& REMARKS, const std::string& INSTALLED_BY
+                        const std::string& F_CLAMP,const std::string& REMARKS, const std::string& STATUS, const std::string& INSTALLED_BY
                     );
 
     bool            addPaymentHistory(  

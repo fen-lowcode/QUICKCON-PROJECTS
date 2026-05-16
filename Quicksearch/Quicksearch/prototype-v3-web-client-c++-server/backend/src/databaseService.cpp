@@ -134,6 +134,7 @@ nlohmann::json DatabaseService::fetchCustomerData() {
 
             // Mapping SQL columns to JSON keys
             customer["ID"]              = res->getInt("ID");
+            customer["STATUS"]          = std::string(res->getString("STATUS"));
             customer["CLIENTS_NAME"]    = std::string(res->getString("CLIENTS_NAME"));
             customer["CREDENTIALS"]     = std::string(res->getString("CREDENTIALS"));
             customer["ADDRESS"]         = std::string(res->getString("ADDRESS"));
@@ -317,7 +318,7 @@ bool DatabaseService::updateCustomer(
     const std::string& SOCIAL_MEDIA,const std::string& OCCUPATION, const std::string& DATE_OF_BIRTH, 
     const std::string& PLACE_OF_BIRTH,const std::string& OPTICAL_INFO, const std::string& SC_CONNECTOR, 
     const std::string& FIBER_DROP,const std::string& TAPPING_CLIP, const std::string& CABLE_TIE, 
-    const std::string& F_CLAMP,const std::string& REMARKS, const std::string& INSTALLED_BY
+    const std::string& F_CLAMP,const std::string& REMARKS,  const std::string& STATUS, const std::string& INSTALLED_BY
 
 ) {
     std::lock_guard<std::mutex> lock(dbMutex);
@@ -337,7 +338,7 @@ bool DatabaseService::updateCustomer(
         "TAPPING_CLIP = ?, CABLE_TIE = ?, F_CLAMP = ?, "
 
         // Group 4: Administrative
-        "REMARKS = ?, INSTALLED_BY = ? " 
+        "REMARKS = ?, INSTALLED_BY = ?, STATUS = ? " 
         // The Guardrail
         "WHERE ID = ?";
 
@@ -373,9 +374,10 @@ bool DatabaseService::updateCustomer(
         // Group 4: Administrative
         stmt->setString(19, REMARKS);
         stmt->setString(20, INSTALLED_BY);
+        stmt->setString(21, STATUS);
 
         // The Guardrail (WHERE clause)
-        stmt->setString(21, ID);
+        stmt->setString(22, ID);
 
 
         auto rowAffected = stmt->executeUpdate();

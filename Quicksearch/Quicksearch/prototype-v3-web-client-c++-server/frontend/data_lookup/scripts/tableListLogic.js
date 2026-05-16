@@ -37,8 +37,8 @@ function loadTemplates(templateId) {
 /* ============================================================
     3. DATA FETCHING (C++ Backend Interaction)
 ============================================================ */
-function renderTableRows(dataList) {
 
+function renderTableRows(dataList) {
     const tableBody = document.getElementById("tableBody");
     const customerTable = document.getElementById("customerTable");
 
@@ -52,10 +52,26 @@ function renderTableRows(dataList) {
     const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < dataList.length; i++) {
-
         const c = dataList[i];
-
         const row = document.createElement("tr");
+
+        // ─── STATUS COLOR CODING LOGIC ───
+        // Fallback to empty string if missing, and ensure we match ALL CAPS
+        const currentStatus = (c.STATUS ?? "").toUpperCase().trim(); 
+        let statusClass = "";
+
+        if (currentStatus === "ACTIVE") {
+            statusClass = "row-active";
+        } else if (currentStatus === "DELIQUENT") {
+            statusClass = "row-delinquent";
+        } else if (currentStatus === "DISCONNECTED") {
+            statusClass = "row-disconnected";
+        }
+
+        if (statusClass) {
+            row.classList.add(statusClass);
+        }
+        // ─────────────────────────────────
 
         row.innerHTML = `
             <td>
@@ -64,6 +80,7 @@ function renderTableRows(dataList) {
                 </button>
             </td>
 
+            <td>${c.STATUS ?? ""}</td>
             <td>${c.ID ?? ""}</td>
             <td>${c.CLIENTS_NAME ?? ""}</td>
             <td>${c.CREDENTIALS ?? ""}</td>

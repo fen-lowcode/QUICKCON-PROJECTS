@@ -27,6 +27,7 @@ async function fetchClientmasterList() {
 
 
         let dataArray = await response.json();
+        console.log(dataArray);
         renderTableRows(dataArray);
 
         let countDisp = document.getElementById('rowCount');

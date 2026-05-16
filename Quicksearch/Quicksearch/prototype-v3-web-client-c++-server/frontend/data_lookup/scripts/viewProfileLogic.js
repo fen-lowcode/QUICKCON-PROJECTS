@@ -17,27 +17,28 @@ document.addEventListener('click', function(e) {
     let cells = row.cells;
     clientData = {
 
-        ID:             cells[1].innerText,  
-        CLIENTS_NAME:   cells[2].innerText,
-        CREDENTIALS:    cells[3].innerText,
-        ADDRESS:        cells[4].innerText,
-        PLAN:           cells[5].innerText,
-        DATE_APPLIED:   cells[6].innerText,
-        CONTACT_NO:     cells[7].innerText,
-        AGE:            cells[8].innerText,
-        SEX:            cells[9].innerText,
-        SOCIAL_MEDIA:   cells[10].innerText,
-        OCCUPATION:     cells[11].innerText,
-        DATE_OF_BIRTH:  cells[12].innerText,
-        PLACE_OF_BIRTH: cells[13].innerText,
-        OPTICAL_INFO:   cells[14].innerText,
-        SC_CONNECTOR:   cells[15].innerText,
-        FIBER_DROP:     cells[16].innerText,
-        TAPPING_CLIP:   cells[17].innerText,
-        CABLE_TIE:      cells[18].innerText,
-        F_CLAMP:        cells[19].innerText,
-        REMARKS:        cells[20].innerText,
-        INSTALLED_BY:   cells[21].innerText,
+        STATUS:         cells[1].innerText,  
+        ID:             cells[2].innerText,  
+        CLIENTS_NAME:   cells[3].innerText,
+        CREDENTIALS:    cells[4].innerText,
+        ADDRESS:        cells[5].innerText,
+        PLAN:           cells[6].innerText,
+        DATE_APPLIED:   cells[7].innerText,
+        CONTACT_NO:     cells[8].innerText,
+        AGE:            cells[9].innerText,
+        SEX:            cells[10].innerText,
+        SOCIAL_MEDIA:   cells[11].innerText,
+        OCCUPATION:     cells[12].innerText,
+        DATE_OF_BIRTH:  cells[13].innerText,
+        PLACE_OF_BIRTH: cells[14].innerText,
+        OPTICAL_INFO:   cells[15].innerText,
+        SC_CONNECTOR:   cells[16].innerText,
+        FIBER_DROP:     cells[17].innerText,
+        TAPPING_CLIP:   cells[18].innerText,
+        CABLE_TIE:      cells[19].innerText,
+        F_CLAMP:        cells[20].innerText,
+        REMARKS:        cells[21].innerText,
+        INSTALLED_BY:   cells[22].innerText,
 
     };
 
@@ -68,6 +69,8 @@ function openProfile(clientData) {
     // Header logic
 
      // Direct Mapping to the Template IDs we created
+
+    document.getElementById('view-status').value = clientData.STATUS;
 
     writeToUI('view-name',    clientData.CLIENTS_NAME);
     writeToUI('customer-name',clientData.CLIENTS_NAME);
@@ -114,6 +117,7 @@ document.getElementById('update-btn').addEventListener('click', async function()
    const s = {
         ID: clientData.ID, 
         CLIENTS_NAME: takeInput('view-name'),
+        STATUS: document.getElementById('view-status').value,
         PLAN: takeInput('view-plan'),
         CREDENTIALS: takeInput('view-creds'),
         DATE_APPLIED: takeInput('view-applied'),

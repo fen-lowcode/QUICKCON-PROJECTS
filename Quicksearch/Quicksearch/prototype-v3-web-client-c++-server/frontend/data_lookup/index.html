@@ -36,7 +36,7 @@
                     <thead>
                         <tr id="table">
                             <th>DELETE</th>
-                            <!-- <th>STATUS</th> -->
+                            <th>STATUS</th>
                             <th>ID</th>
                             <th>NAME</th>
                             <th>CREDENTIALS</th>
@@ -98,6 +98,13 @@
                         <div class="field-group"><label>Service Plan</label><div id="view-plan" contenteditable="true" class="editable-field"></div></div>
                         <div class="field-group"><label>Credentials</label><div id="view-creds" contenteditable="true" class="editable-field"></div></div>
                         <div class="field-group"><label>Date Applied</label><div id="view-applied" class="editable-field"></div></div>
+                        <div class="field-group"><label>Status</label> 
+                            <select id="view-status">
+                                <option value="ACTIVE">ACTIVE</option>
+                                <option value="DISCONNECTED">DISCONNECTED</option>
+                                <option value="DELIQUENT">DELIQUENT</option>
+                            </select>
+                        </div>
                     </section>
 
                     <section class="info-card">

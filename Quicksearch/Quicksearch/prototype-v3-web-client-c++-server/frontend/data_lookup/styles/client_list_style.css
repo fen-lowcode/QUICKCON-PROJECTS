@@ -224,3 +224,28 @@ tr:hover td {
 #tableBody tr:hover td {
     border-right-color: rgba(0,0,0,0.05);
 }
+
+/* ─── STATUS ROW STYLES ─── */
+
+/* Light Green for Active Users */
+tr.row-active td {
+    background-color: #e2f5ea !important;
+    color: #135232 !important;
+}
+
+/* Light Red for Delinquent Users */
+tr.row-delinquent td {
+    background-color: #fce8e6 !important;
+    color: #a8201a !important;
+}
+
+/* Gray for Disconnected Users */
+tr.row-disconnected td {
+    background-color: #9a9a9a !important;
+    color: #000000 !important;
+}
+
+/* Optional: Subtle hover effect that darkens the row slightly when moused over */
+tr.row-active:hover td { background-color: #d1eedc !important; }
+tr.row-delinquent:hover td { background-color: #f9d2ce !important; }
+tr.row-disconnected:hover td { background-color: #e4e7ea !important; }
